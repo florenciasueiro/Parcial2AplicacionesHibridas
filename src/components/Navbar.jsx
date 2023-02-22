@@ -12,9 +12,15 @@ function Navbar() {
           <li><a href="#blog">Blog</a></li>
           {/*<li><a href="" className=''>Login</a></li>*/}
           <input type="checkbox" id="active"/>
-            <label for="active" className='menu-btn'>Login</label>
+            <li>
+              <label for="active" className='menu-btn'>Login</label>
+            </li>
             <label for="active" className='close'></label>
-            <div class="wrapper"></div>
+            <div className='wrapper'>
+              <div className=''>
+                {/* ACA VA EL INICIO DE SESION*/}
+              </div>
+            </div>
         </ul>
       </div>
     </Navbarcontainer>  
@@ -49,6 +55,7 @@ const Navbarcontainer = styled.nav`
   li{
     display: inline-block;
     padding: 10px 15px;
+    z-index: 10;
   }
   li a{
     color: white;
@@ -64,12 +71,9 @@ const Navbarcontainer = styled.nav`
 
 
 
-
-
-
-
-
-
+  .oculto{
+    display: none;
+  }
 
   .wrapper{
     position: fixed;
@@ -89,15 +93,6 @@ const Navbarcontainer = styled.nav`
 
   }
   .menu-btn{
-    z-index: 2;
-    right: 20px;
-    /*left: 20px; */
-    top: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 50%;
     font-size: 15px;
     cursor: pointer;
     /*color: #fff;*/
