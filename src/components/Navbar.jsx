@@ -84,7 +84,7 @@ const Navbarcontainer = styled.nav`
     backdrop-filter: blur(10px);
     border-radius: 50px;
     transition: all 0.6s ease-in-out;
-  }
+    box-shadow: inset 7px 6px 10px 0px rgba(0,0,0,0.75);
   #active:checked ~ .wrapper{
     display: flex;
     justify-content: center;
