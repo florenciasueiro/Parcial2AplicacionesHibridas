@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Login from './Login';
 
 function Navbar() {
   return (
@@ -18,7 +19,7 @@ function Navbar() {
             <label for="active" className='close'></label>
             <div className='wrapper'>
               <div className=''>
-                {/* ACA VA EL INICIO DE SESION*/}
+                <Login/>
               </div>
             </div>
         </ul>

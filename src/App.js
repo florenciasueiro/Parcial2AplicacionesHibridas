@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Cards from './components/Cards';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <header className="App-header">       
         <>
         <Navbar/>
+        
         </>
       </header>
     </div>
