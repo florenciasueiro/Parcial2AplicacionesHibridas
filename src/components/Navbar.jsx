@@ -15,10 +15,10 @@ function Navbar() {
           <input type="checkbox" id="active"/>
             <li>
               <label for="active" className='menu-btn'>Login</label>
+              <label for="active" className='close'></label>
             </li>
-            <label for="active" className='close'></label>
             <div className='wrapper'>
-              <div className=''>
+              <div className='login'>
                 <Login/>
               </div>
             </div>
@@ -35,6 +35,24 @@ function Navbar() {
 export default Navbar
 
 const Navbarcontainer = styled.nav`
+.login{
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.6s ease-in-out;
+  
+  
+}
+#active:checked ~ .wrapper .login{
+  display: flex;
+  z-index:-10;
+  background-color:red;
+
+  
+
+}
   Navbarcontainer{
     display: flex;
     position: fixed;
