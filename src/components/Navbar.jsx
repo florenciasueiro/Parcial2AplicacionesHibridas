@@ -7,25 +7,17 @@ function Navbar() {
     <Navbarcontainer>
       <div className='navprimario'>
         <ul className='box'>
-          <li><a href="logo.html"><img src="/img/LogoBlanco.png" alt="" /></a></li>
+          <li><a href="logo.html"><img src="/img/LogoBlanco.png" alt=""/></a></li>
           <li><a href="quarters.html">Quarters</a></li>
           <li><a href="#blog">Blog</a></li>
-          <li><div className='container'>
-                <input type="checkbox" id="toggle" checked/>
-                <label className='button' for="toggle"></label>
-                <nav className='nav'>
-                  <ul>
-                    <a href="http://sashatran.com" target="_blank">About</a>
-                    <a href="https://codepen.io/sashatran/pens/public/" target="_blank">Home</a>
-                    <a href="https://www.linkedin.com/in/sasha-tran-23498989/" target="_blank">Hire Me</a>
-                    <a href="https://www.youtube.com/channel/UCCATAa8MWoBuH-sR_Jlx29A" target="_blank">Subscribe</a>
-                  </ul>
-                </nav>
-              </div>
-          </li>
+          {/*<li><a href="" className=''>Login</a></li>*/}
+          <input type="checkbox" id="active"/>
+            <label for="active" class="menu-btn">Login</label>
+            <label for="active" class="close"></label>
+            <div class="wrapper"></div> 
         </ul>
       </div>
-    </Navbarcontainer>
+    </Navbarcontainer>  
     </>
   )
 }
@@ -42,14 +34,11 @@ const Navbarcontainer = styled.nav`
     justify-content: center;
     align-items: center;
   }
-
+  .navprimario{
+    margin: 20px;
+  }
   ul{
-    display: flex;
-    background-color: rgba(255, 255, 255, 0.25); 
-    backdrop-filter: blur(10px);
-    border-radius: 50px;
-    justify-content: center;
-    align-items: center;
+    
   }
   li{
     display: inline-block;
@@ -76,98 +65,169 @@ const Navbarcontainer = styled.nav`
 
 
 
+  .wrapper{
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    
+    
+    background-color: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
 
-.container {
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
 
+    transition: all 0.6s ease-in-out;
+  }
+  #active:checked ~ .wrapper{
+    display: flex;
+    justify-content: center;
+    width: 200%;
+    height: 500%;
 
-.button {
-  position: absolute;
-  z-index: 999;
-  width: 43px;
-  height: 43px;
-  background: $purple;
-  border-radius: 100%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: -12px;
-
-  &:before {
+  }
+  .menu-btn{
+    z-index: 2;
+    right: 20px;
+    /*left: 20px; */
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+    /*color: #fff;*/
+    /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+    transition: all 0.3s ease-in-out;
+  }
+  .menu-btn span,
+  .menu-btn:before,
+  .menu-btn:after{
     position: absolute;
-    content: "";
-    width: 20px;
-    height: 2px;
-    background: #fff;
-    transform: rotate(90deg);
-    transition: all 0.4s ease;
+    top: calc(50% - 1px);
+    left: 30%;
+    width: 40%;
+    border-bottom: 2px solid #000;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .menu-btn:before{
+    transform: translateY(-8px);
+  }
+  .menu-btn:after{
+    transform: translateY(8px);
   }
   
-  &:after {
+  
+  .close {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: background .6s;
+  }
+  
+  /* closing animation */
+  #active:checked + .menu-btn span {
+    transform: scaleX(0);
+  }
+  #active:checked + .menu-btn:before {
+    transform: rotate(45deg);
+    border-color: #fff;
+  }
+  #active:checked + .menu-btn:after {
+    transform: rotate(-45deg);
+    border-color: #fff;
+  }
+  .wrapper ul{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  .wrapper ul li{
+    height: 10%;
+    margin: 15px 0;
+  }
+  .wrapper ul li a{
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: #fff;
+    border-radius: 50px;
+    position: absolute;
+    line-height: 50px;
+    margin: 5px 30px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .wrapper ul li a:after{
     position: absolute;
     content: "";
-    width: 20px;
-    height: 2px;
     background: #fff;
-    transition: all 0.4s ease;
+     /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+    /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    transition: transform 0.3s ease;
   }
-}
-
-.nav {
-  opacity: 0;
-  transition: all 0.4s ease-in-out;
-  background: #fff;
-  width: 100%;
-  border-radius: 5px;
-  transform: translateY(0%);
-  box-shadow: 2px 3px 10px 0 rgba(81, 81, 81, 0.1);
-  border: 1px solid #e4e4e4;
-  padding: 10px;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+  .wrapper ul li a:hover:after{
+    transform: scaleY(1);
+  }
+  .wrapper ul li a:hover{
+    color: #1a73e8;
+  }
+  input[type="checkbox"]{
+    display: none;
   }
 
-  a {
+  .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
     text-align: center;
-    margin: 20px 0;
-    color: $purple;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
-    
-    &:hover {
-      color: $light-purple;
-    }
+    width: 100%;
+    color: #202020;
   }
-}
+  .content .title{
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .content p{
+    font-size: 35px;
+    font-weight: 600;
+  }
+  
+  #active:checked ~ .wrapper ul li a{
+    opacity: 1;
+  }
+  .wrapper ul li a{
+    transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateX(100px);
+  }
+  #active:checked ~ .wrapper ul li a{
+    transform: none;
+    transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+     transition-delay: .6s;
+    transform: translateX(-100px);
+  }
 
-#toggle:checked ~ .nav {
-  opacity: 1;
-  transform: translateY(10%);
-}
-
-#toggle:checked ~ .button:before {
-  transform: rotate(225deg);
-}
-
-#toggle:checked ~ .button:after {
-  transform: rotate(135deg);
-}
-
-
-}
 
 
 
