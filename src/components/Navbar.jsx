@@ -12,9 +12,9 @@ function Navbar() {
           <li><a href="#blog">Blog</a></li>
           {/*<li><a href="" className=''>Login</a></li>*/}
           <input type="checkbox" id="active"/>
-            <label for="active" class="menu-btn">Login</label>
-            <label for="active" class="close"></label>
-            <div class="wrapper"></div> 
+            <label for="active" className='menu-btn'>Login</label>
+            <label for="active" className='close'></label>
+            <div class="wrapper"></div>
         </ul>
       </div>
     </Navbarcontainer>  
@@ -37,8 +37,14 @@ const Navbarcontainer = styled.nav`
   .navprimario{
     margin: 20px;
   }
-  ul{
-    
+  .box{
+    display: flex;
+
+    backdrop-filter: blur(0px);
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
   }
   li{
     display: inline-block;
@@ -66,18 +72,13 @@ const Navbarcontainer = styled.nav`
 
 
   .wrapper{
-    z-index: -10;
     position: fixed;
     top: 0;
     height: 100%;
     width: 100%;
-    
-    
     background-color: rgba(255, 255, 255, 0.25); 
     backdrop-filter: blur(10px);
     border-radius: 50px;
-
-
     transition: all 0.6s ease-in-out;
   }
   #active:checked ~ .wrapper{
@@ -156,44 +157,11 @@ const Navbarcontainer = styled.nav`
     height: 10%;
     margin: 15px 0;
   }
-  .wrapper ul li a{
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 500;
-    padding: 5px 30px;
-    color: #fff;
-    border-radius: 50px;
-    position: absolute;
-    line-height: 50px;
-    margin: 5px 30px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  .wrapper ul li a:after{
-    position: absolute;
-    content: "";
-    background: #fff;
-     /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
-    /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    border-radius: 50px;
-    transform: scaleY(0);
-    z-index: -1;
-    transition: transform 0.3s ease;
-  }
-  .wrapper ul li a:hover:after{
-    transform: scaleY(1);
-  }
-  .wrapper ul li a:hover{
-    color: #1a73e8;
-  }
+
   input[type="checkbox"]{
     display: none;
   }
+
 
   .content{
     position: absolute;
