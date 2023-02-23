@@ -1,10 +1,10 @@
 import React from 'react'
-import video from '../assets/video-background.mp4';
+import bgCSS from './Background.module.css'
 
 function Background() {
   return (
-    <div>
-        <video src={video}/>
+    <div className={bgCSS.contenedor}>
+        <video className={bgCSS.video} src="/assets/video-background.mp4"/>
     </div>
   )
 }
