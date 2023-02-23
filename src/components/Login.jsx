@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginCSS from './Login.module.css';
+import LoginCSS from '../css/Login.module.css';
 
 function Login() {
   return (

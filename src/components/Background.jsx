@@ -1,10 +1,11 @@
 import React from 'react'
-import bgCSS from './Background.module.css'
+import bgCSS from '../css/Background.module.css'
+import video from '../assets/video-background.mp4'
 
 function Background() {
   return (
     <div className={bgCSS.contenedor}>
-        <video className={bgCSS.video} src="/assets/video-background.mp4"/>
+        <video className={bgCSS.video} src={video} autoPlay loop muted/>
     </div>
   )
 }

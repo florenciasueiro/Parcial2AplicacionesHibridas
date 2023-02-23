@@ -11,10 +11,10 @@ function App() {
     <div className="App">
       <header className="App-header">       
         <>
-        <Navbar/>
-        <Background/>
+        <Navbar className='navbar'/>
         </>
       </header>
+      <Background className='background'/>
     </div>
   );
 }

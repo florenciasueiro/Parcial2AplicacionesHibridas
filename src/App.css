@@ -1,5 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
 .App {
   text-align: center;
+}
+
+.navbar{
+  position: absolute;
 }
 
 .App-logo {
@@ -24,4 +34,14 @@
 
 .App-link {
   color: #61dafb;
+}
+.navbar{
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+.background{
+  display: flex;
+  justify-content: center;
+  z-index: 1;
 }
