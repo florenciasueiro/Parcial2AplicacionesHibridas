@@ -14,8 +14,9 @@ function Navbar() {
             <input type="checkbox" id="active"/>
               <li className={NavbarCSS.menuItem}>
                 <label for="active" className={NavbarCSS.menubtn}>Login</label>
+                <label for="active" className={NavbarCSS.close}></label>
               </li>
-              <label for="active" className={NavbarCSS.close}></label>
+              
               <div className={NavbarCSS.wrapper}>
                 <div className={NavbarCSS.login}>
                 <Login/>
