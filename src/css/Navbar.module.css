@@ -14,7 +14,7 @@
 }
 #active:checked ~ .wrapper .login{
   display: flex;
-  z-index: -1;
+  z-index: -10;
   background-color:red;
 }
   .Navbarcontainer{
@@ -25,13 +25,12 @@
   }
   .navprimario{
     margin: 20px;
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 50px;
+
   }
   .box{
     display: flex;
 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
     border-radius: 50px;
     justify-content: center;
     align-items: center;
@@ -67,7 +66,6 @@
     justify-content: center;
     width: 200%;
     height: 500%;
-    background-color: red;
 
   }
   .menubtn{
