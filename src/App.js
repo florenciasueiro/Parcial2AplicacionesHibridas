@@ -14,7 +14,9 @@ function App() {
         <Navbar className='navbar'/>
         </>
       </header>
-      <Background className='background'/>
+      <>
+      <Background className="background"/>
+      </>
     </div>
   );
 }

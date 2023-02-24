@@ -14,7 +14,7 @@
 }
 #active:checked ~ .wrapper .login{
   display: flex;
-  z-index:-10;
+  z-index: -1;
   background-color:red;
 }
   .Navbarcontainer{
@@ -31,17 +31,17 @@
   .box{
     display: flex;
 
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(10px);
     border-radius: 50px;
     justify-content: center;
     align-items: center;
   }
-  li{
+  .menuItem{
     display: inline-block;
     padding: 5px 15px;
     z-index: 10;
   }
-  li a{
+  .menuItem a{
     color: white;
     list-style: none;
     text-decoration: none;
@@ -51,13 +51,6 @@
     height: 25px;
   }
 
-
-
-
-
-  .oculto{
-    display: none;
-  }
 
   .wrapper{
     position: fixed;
@@ -74,9 +67,10 @@
     justify-content: center;
     width: 200%;
     height: 500%;
+    background-color: red;
 
   }
-  .menu-btn{
+  .menubtn{
     font-size: 15px;
     cursor: pointer;
     /*color: #fff;*/
@@ -85,9 +79,9 @@
    /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
     transition: all 0.3s ease-in-out;
   }
-  .menu-btn span,
-  .menu-btn:before,
-  .menu-btn:after{
+  .menubtn span,
+  .menubtn:before,
+  .menubtn:after{
     position: absolute;
     top: calc(50% - 1px);
     left: 30%;
@@ -95,10 +89,10 @@
     border-bottom: 2px solid #000;
     transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
-  .menu-btn:before{
+  .menubtn:before{
     transform: translateY(-8px);
   }
-  .menu-btn:after{
+  .menubtn:after{
     transform: translateY(8px);
   }
   
@@ -112,17 +106,7 @@
   }
   
   /* closing animation */
-  #active:checked + .menu-btn span {
-    transform: scaleX(0);
-  }
-  #active:checked + .menu-btn:before {
-    transform: rotate(45deg);
-    border-color: #fff;
-  }
-  #active:checked + .menu-btn:after {
-    transform: rotate(-45deg);
-    border-color: #fff;
-  }
+
   .wrapper ul{
     position: absolute;
     top: 60%;
@@ -141,26 +125,6 @@
     display: none;
   }
 
-
-  .content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    text-align: center;
-    width: 100%;
-    color: #202020;
-  }
-  .content .title{
-    font-size: 40px;
-    font-weight: 700;
-  }
-  .content p{
-    font-size: 35px;
-    font-weight: 600;
-  }
-  
   #active:checked ~ .wrapper ul li a{
     opacity: 1;
   }
@@ -174,4 +138,3 @@
      transition-delay: .6s;
     transform: translateX(-100px);
   }
-

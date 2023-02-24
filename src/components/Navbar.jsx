@@ -19,8 +19,8 @@ function Navbar() {
               
               <div className={NavbarCSS.wrapper}>
                 <div className={NavbarCSS.login}>
-                <Login/>
-              </div>
+                  <Login/>
+                </div>
             </div>
         </ul>
       </div>
