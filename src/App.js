@@ -18,6 +18,12 @@ function App() {
       <>
       <Background className="background"/>
       </>
+      <div className="cards">
+        <>
+        <Cards className="card"/>
+        <Cards className="card"/>
+        </>
+      </div>
     </div>
   );
 }

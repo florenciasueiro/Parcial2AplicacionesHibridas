@@ -7,9 +7,9 @@ function Navbar() {
   <div className={NavbarCSS.Navbarcontainer}>
       <div className={NavbarCSS.navprimario}>
         <ul className={NavbarCSS.box}>
-            <li className={NavbarCSS.menuItem}><a href="logo.html"><img src="/img/LogoBlanco.png" alt=""/></a></li>
+            <li className={NavbarCSS.menuItem}><a className={NavbarCSS.logo} href="logo.html"><img src="/img/LogoBlanco.png" alt=""/></a></li>
             <li className={NavbarCSS.menuItem}><a href="quarters.html">Quarters</a></li>
-            <li className={NavbarCSS.menuItem}><a href="#blog">Blog</a></li>
+            <li className={NavbarCSS.menuItem}><a href="#blog">Eventos</a></li>
             {/*<li><a href="" className=''>Login</a></li>*/}
             <input type="checkbox" id="active"/>
               <li className={NavbarCSS.menuItem}>
