@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import Cards from '../css/Cards.module.css';
 
 
 export default function ActionAreaCard() {
@@ -16,7 +15,7 @@ export default function ActionAreaCard() {
           height="140"
           image="/img/mano-que-sostiene-cubo-madera-destino.jpg"
           alt="mision y vision"
-        />s
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Mision y vision

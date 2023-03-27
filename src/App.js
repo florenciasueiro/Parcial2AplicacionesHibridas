@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Cards from './components/Cards';
-import Login from './components/Login';
+//import Login from './components/Login';
 import Background from './components/Background';
 
 
