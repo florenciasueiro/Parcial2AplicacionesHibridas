@@ -1,100 +1,48 @@
-{/*import React from 'react';
+import React from 'react'
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import FooterCSS from '../css/Footer.module.css';
 
 
-
-export default function App() {
+function Footer() {
   return (
-    <MDBFooter className='text-center text-white' style={{ backgroundColor: '#f1f1f1' }}>
-      <MDBContainer className='pt-4'>
-        <section className='mb-4'>
-          <MDBBtn
-            rippleColor="dark"
-            color='link'
-            floating
-            size="lg"
-            className='text-dark m-1'
-            href='#!'
-            role='button'
-          >
-            <MDBIcon fab className='fab fa-facebook-f' />
-          </MDBBtn>
-
-          <MDBBtn
-            rippleColor="dark"
-            color='link'
-            floating
-            size="lg"
-            className='text-dark m-1'
-            href='#!'
-            role='button'
-          >
-            <MDBIcon fab className='fa-twitter' />
-          </MDBBtn>
-
-          <MDBBtn
-            rippleColor="dark"
-            color='link'
-            floating
-            size="lg"
-            className='text-dark m-1'
-            href='#!'
-            role='button'
-          >
-            <MDBIcon fab className='fa-google' />
-          </MDBBtn>
-
-          <MDBBtn
-            rippleColor="dark"
-            color='link'
-            floating
-            size="lg"
-            className='text-dark m-1'
-            href='#!'
-            role='button'
-          >
-            <MDBIcon fab className='fa-instagram' />
-          </MDBBtn>
-
-          <MDBBtn
-            rippleColor="dark"
-            color='link'
-            floating
-            size="lg"
-            className='text-dark m-1'
-            href='#!'
-            role='button'
-          >
-            <MDBIcon fab className='fa-linkedin' />
-          </MDBBtn>
-
-          <MDBBtn
-            rippleColor="dark"
-            color='link'
-            floating
-            size="lg"
-            className='text-dark m-1'
-            href='#!'
-            role='button'
-          >
-            <MDBIcon fab className='fa-github' />
-          </MDBBtn>
+    <footer className={FooterCSS.footerBox}>
+      <div  className={`${FooterCSS.pt-4} ${FooterCSS.container}`}>
+        <section className={`${FooterCSS.mb-4} ${FooterCSS.bgBlack}`}>
+        <ul>
+  <li className={FooterCSS.footerLi}>
+    <a className={`${FooterCSS.footerA} ${FooterCSS.facebook}`} href="#">
+      <FacebookIcon/>
+    </a>
+  </li>
+  <li className={FooterCSS.footerLi}>
+    <a cclassName={`${FooterCSS.footerA} ${FooterCSS.twitter}`} href="#">
+      <TwitterIcon/>
+    </a>
+  </li>
+  <li className={FooterCSS.footerLi}>
+    <a className={`${FooterCSS.footerA} ${FooterCSS.instagram}`} href="#">
+      <InstagramIcon/>
+    </a>
+  </li>
+  <li className={FooterCSS.footerLi}>
+    <a className={`${FooterCSS.footerA} ${FooterCSS.youtube}`} href="#">
+      <YouTubeIcon/>
+    </a>
+  </li>
+</ul>
         </section>
-      </MDBContainer>
+      </div>
 
-      <div className='text-center text-dark p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-        © 2020 Copyright:
+      <div className={`${FooterCSS.text-center} ${FooterCSS.footerCopy} ${FooterCSS.text-dark} ${FooterCSS.p-3}`}>
+        © 2022 Copyright:
         <a className='text-dark' href='https://mdbootstrap.com/'>
-          MDBootstrap.com
+          Asset
         </a>
       </div>
-    </MDBFooter>
+    </footer>
   );
 }
-
-import React from 'react'
-import styled from 'styled-components'
-import TwitterIcon from '@mui/icons-material/Twitter';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TableFooter from '@mui/material/TableFooter';*/}
+export default Footer

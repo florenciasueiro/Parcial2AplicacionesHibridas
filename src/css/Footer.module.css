@@ -1,0 +1,46 @@
+.footerBox{
+    text-align: center;
+    background-color: #f1f1f1;
+}
+.pt-4{
+    padding-top: 1.5rem;
+}
+.mb-4{
+    margin-bottom: 1.5rem;
+}
+ul{
+    display: inline-flex;
+    list-style: none;
+}
+.bgBlack{
+    background-color: black;
+}
+.footerLi .footerA{
+    color: white !important;
+    text-decoration: none;
+    margin: 0.5rem;
+}
+.facebook :hover{
+    color:  #4267B2;
+}
+.twitter :hover{
+    color:  #1DA1F2;
+}
+.instagram :hover{
+    color: #C13584;
+}
+.youtube :hover{
+    color:  #FF0000;
+}
+.footerCopy{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.text-center{
+    text-align: center;
+}
+.text-dark{
+    color: black;
+}
+.p-3{
+    padding: $spacer !important;
+}

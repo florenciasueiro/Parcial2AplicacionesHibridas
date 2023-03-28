@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Cards from './components/Cards';
 //import Login from './components/Login';
 import Background from './components/Background';
+import Footer from './components/Footer.jsx';
 
 
 function App() {
@@ -22,6 +23,11 @@ function App() {
         <>
         <Cards className="card"/>
         <Cards className="card"/>
+        </>
+      </div>
+      <div className="footer">
+        <>
+        <Footer/>
         </>
       </div>
     </div>
