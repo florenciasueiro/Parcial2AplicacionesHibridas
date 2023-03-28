@@ -36,7 +36,7 @@ function Footer() {
         </section>
       </div>
 
-      <div className={`${FooterCSS.text-center} ${FooterCSS.footerCopy} ${FooterCSS.text-dark} ${FooterCSS.p-3}`}>
+      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.textDark} ${FooterCSS.p-3}`}>
         © 2022 Copyright:
         <a className='text-dark' href='https://mdbootstrap.com/'>
           Asset
