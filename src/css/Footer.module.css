@@ -41,6 +41,3 @@ ul{
 .textDark{
     color: black;
 }
-.p-3{
-    padding: $spacer !important;
-}
