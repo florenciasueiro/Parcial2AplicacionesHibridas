@@ -11,10 +11,10 @@ function Navbar() {
             <li className={NavbarCSS.menuItem}><a href="quarters.html">Quarters</a></li>
             <li className={NavbarCSS.menuItem}><a href="#blog">Eventos</a></li>
             {/*<li><a href="" className=''>Login</a></li>*/}
-            <input type="checkbox" id="active"/>
+            <input type="checkbox" id={NavbarCSS.active}/>
               <li className={NavbarCSS.menuItem}>
-                <label for="active" className={NavbarCSS.menubtn}>Login</label>
-                <label for="active" className={NavbarCSS.close}></label>
+                <label for={NavbarCSS.active} className={NavbarCSS.menubtn}>Login</label>
+                <label for={NavbarCSS.active} className={NavbarCSS.close}></label>
               </li>
               
               <div className={NavbarCSS.wrapper}>
