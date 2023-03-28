@@ -6,6 +6,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import FooterCSS from '../css/Footer.module.css';
 
 
+
 function Footer() {
   return (
     <footer className={FooterCSS.footerBox}>
@@ -18,7 +19,7 @@ function Footer() {
     </a>
   </li>
   <li className={FooterCSS.footerLi}>
-    <a cclassName={`${FooterCSS.footerA} ${FooterCSS.twitter}`} href="#">
+    <a className={`${FooterCSS.footerA} ${FooterCSS.twitter}`} href="#">
       <TwitterIcon/>
     </a>
   </li>
