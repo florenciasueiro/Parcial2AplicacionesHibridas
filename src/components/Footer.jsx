@@ -37,9 +37,9 @@ function Footer() {
         </section>
       </div>
 
-      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.textDark} ${FooterCSS.p-3}`}>
+      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p-3}`}>
         © 2022 Copyright:
-        <a className='text-dark' href='https://mdbootstrap.com/'>
+        <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
           Asset
         </a>
       </div>
