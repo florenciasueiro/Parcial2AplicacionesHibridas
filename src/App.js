@@ -13,13 +13,10 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <header className={InicioCSS.inicioHeader}>       
-
         
           <Navbar className={InicioCSS.navbar}/>
         
-
       </header>
-
       <>
         <Base/>
       </>
