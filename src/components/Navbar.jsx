@@ -9,6 +9,7 @@ function Navbar() {
       <div className={NavbarCSS.navprimario}>
         <ul className={NavbarCSS.box}>
             <li className={NavbarCSS.menuItem}><NavLink to="/" className={NavbarCSS.logo}><img src="/img/LogoBlanco.png" alt=""/></NavLink></li>
+            <li className={NavbarCSS.menuItem}><NavLink to="/">Inicio</NavLink></li>
             <li className={NavbarCSS.menuItem}><NavLink to="/quarters">Quarters</NavLink></li>
             <li className={NavbarCSS.menuItem}><NavLink to="/eventos">Eventos</NavLink></li>
             {/*<li><a href="" className=''>Login</a></li>*/}

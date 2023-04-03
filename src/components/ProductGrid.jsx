@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Card from './Cards';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -16,24 +17,33 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function BasicGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={10}>
-          <Item>xs=10</Item>
+      <Grid
+            container spacing={2}
+            direction="row"
+            justifyContent="center"
+            alignItems="center">
+
+        <Grid item xs={5}>
+          <Item><Card/></Item>
         </Grid>
         <Grid item xs={5}>
-          <Item>xs=5</Item>
+          <Item><Card/></Item>
+          <Item><Card/></Item>
         </Grid>
         <Grid item xs={5}>
-          <Item>xs=5</Item>
+          <Item><Card/></Item>
+        </Grid>
+        <Grid item xs={5}>
+          <Item><Card/></Item>
         </Grid>
         <Grid item xs={3}>
-          <Item>xs=3</Item>
+          <Item><Card/></Item>
         </Grid>
         <Grid item xs={3}>
-          <Item>xs=3</Item>
+          <Item><Card/></Item>
         </Grid>
         <Grid item xs={3}>
-          <Item>xs=3</Item>
+          <Item><Card/></Item>
         </Grid>
       </Grid>
     </Box>
