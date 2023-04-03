@@ -1,38 +1,36 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
+import Base from './pages/Base.js';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Cards from './components/Cards';
-//import Login from './components/Login';
-import Background from './components/Background';
 import Footer from './components/Footer.jsx';
+
+import InicioCSS from './css/Inicio.module.css';
 
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">       
-        <>
-        <Navbar className='navbar'/>
-        </>
+      <header className={InicioCSS.inicioHeader}>       
+
+        
+          <Navbar className={InicioCSS.navbar}/>
+        
+
       </header>
+
       <>
-      <Background className="background"/>
+        <Base/>
       </>
-      <div className="cards">
-        <>
-        <Cards className="card"/>
-        <Cards className="card"/>
-        </>
-      </div>
-      <div className="footer">
+      <div className={InicioCSS.footer}>
         <>
         <Footer/>
         </>
       </div>
     </div>
+    </BrowserRouter>
   );
 }
-
 export default App;
 //xd

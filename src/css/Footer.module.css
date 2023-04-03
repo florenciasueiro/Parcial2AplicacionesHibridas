@@ -5,6 +5,9 @@
 .pt-4{
     padding-top: 1.5rem;
 }
+.p-3{
+    padding: 1rem;
+}
 .mb-4{
     margin-bottom: 1.5rem;
 }
@@ -40,4 +43,15 @@ ul{
 }
 .textDark{
     color: black;
+}
+.textCenter{
+    text-align: center;
+    color: white;
+}
+.footerCopy{
+    background-color: black;
+}
+.linkText{
+    color: white;
+    text-decoration: none;
 }

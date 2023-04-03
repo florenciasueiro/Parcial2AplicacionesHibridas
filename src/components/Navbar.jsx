@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
 
@@ -7,9 +8,9 @@ function Navbar() {
   <div className={NavbarCSS.Navbarcontainer}>
       <div className={NavbarCSS.navprimario}>
         <ul className={NavbarCSS.box}>
-            <li className={NavbarCSS.menuItem}><a className={NavbarCSS.logo} href="logo.html"><img src="/img/LogoBlanco.png" alt=""/></a></li>
-            <li className={NavbarCSS.menuItem}><a href="quarters.html">Quarters</a></li>
-            <li className={NavbarCSS.menuItem}><a href="#blog">Eventos</a></li>
+            <li className={NavbarCSS.menuItem}><NavLink to="/" className={NavbarCSS.logo}><img src="/img/LogoBlanco.png" alt=""/></NavLink></li>
+            <li className={NavbarCSS.menuItem}><NavLink to="/quarters">Quarters</NavLink></li>
+            <li className={NavbarCSS.menuItem}><NavLink to="/eventos">Eventos</NavLink></li>
             {/*<li><a href="" className=''>Login</a></li>*/}
             <input type="checkbox" id={NavbarCSS.active}/>
               <li className={NavbarCSS.menuItem}>
