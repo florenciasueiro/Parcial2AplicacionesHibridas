@@ -22,12 +22,7 @@ export default function BasicGrid() {
             direction="row"
             justifyContent="center"
             alignItems="center">
-
-        <Grid item xs={5}>
-          <Item><Card/></Item>
-        </Grid>
-        <Grid item xs={5}>
-          <Item><Card/></Item>
+        <Grid item xs={10}>
           <Item><Card/></Item>
         </Grid>
         <Grid item xs={5}>

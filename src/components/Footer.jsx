@@ -10,7 +10,7 @@ import FooterCSS from '../css/Footer.module.css';
 function Footer() {
   return (
     <footer className={FooterCSS.footerBox}>
-      <div  className={`${FooterCSS.pt-4} ${FooterCSS.container}`}>
+      <div  className={`${FooterCSS.pt4} ${FooterCSS.container}`}>
         <section className={`${FooterCSS.mb-4} ${FooterCSS.bgBlack}`}>
         <ul>
   <li className={FooterCSS.footerLi}>
@@ -37,7 +37,7 @@ function Footer() {
         </section>
       </div>
 
-      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p-3}`}>
+      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
         © 2022 Copyright:
         <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
           Asset
