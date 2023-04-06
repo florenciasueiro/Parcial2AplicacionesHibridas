@@ -53,37 +53,25 @@ import CtCSS from '../css/Contacto.module.css';
   
 //   export function LoginForm();
 
-const options = {
-  method: 'GET',
-  headers: {accept: 'application/json', key: '343654e3d1014f792344a19ee8f40503'}
-};
 
-fetch('https://api.holded.com/api/invoicing/v1/contacts?customId=testmail%40gmail.com%3Bpassword', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
-
-const mail= "testmail@gmail.com";
-const pass= "password"
-const customid= mail.replace(/@/g,"%40")+"%3B"+pass;
-console.log(customid);
-export default function Contactos() {
+export default function Contactos({ customId }) {
   const [contactos, setContactos] = useState([]);
-
+  // const customid = `${mail.replace(/@/g, "%40")}%3B${pass}`;
   useEffect(() => {
     async function fetchContactos() {
       try {
-        const response = await fetch('https://api.holded.com/api/invoicing/v1/contacts?customid=${customid}', {
+        const response = await fetch(`https://api.holded.com/api/invoicing/v1/contacts?customId=${customid}`, {
           headers: {
             'customid':customid,
             'key': '343654e3d1014f792344a19ee8f40503',
             'accept': 'application/json',
             'Acces-Control-Allow-Origin': '*'
+            
           }
         });
         const data = await response.json();
         setContactos(data);
-        console.log(data);
+        
       } catch (error) {
         console.error(error);
       }
