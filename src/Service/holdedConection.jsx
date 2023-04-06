@@ -54,9 +54,9 @@ import CtCSS from '../css/Contacto.module.css';
 //   export function LoginForm();
 
 
-export default function Contactos({ customId }) {
+export default function Contactos({ a }) {
   const [contactos, setContactos] = useState([]);
-  // const customid = `${mail.replace(/@/g, "%40")}%3B${pass}`;
+  const customid = `${a.email.replace(/@/g, "%40")}%3B${a.password}`;
   useEffect(() => {
     async function fetchContactos() {
       try {
@@ -76,25 +76,8 @@ export default function Contactos({ customId }) {
         console.error(error);
       }
     }
-    fetchContactos();
+    
   }, []);
   
-  return (
-    <div>
-      <h1>Lista de contactos:</h1>
-      <ul>
-        {contactos.map((contacto) => (
-          <>
-          <li className={CtCSS.nombre}>nombre: {contacto.name}</li>
-          
-          
-          <li className={CtCSS.mail}>email: {contacto.email}</li>
-
-          <li className={CtCSS.pass}>password: {contacto.customId}</li>
-          </>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
