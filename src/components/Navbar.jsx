@@ -2,8 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
+import login from '../service/holdedConection'
 
 function Navbar() {
+  const handleLogin = (email, password) => {
+    login(email, password);
+  };
+  
   return (
   <div className={NavbarCSS.Navbarcontainer}>
       <div className={NavbarCSS.navprimario}>
@@ -21,7 +26,7 @@ function Navbar() {
               
               <div className={NavbarCSS.wrapper}>
                 <div className={NavbarCSS.login}>
-                  <Login/>
+                  <Login login={handleLogin}/>
                 </div>
             </div>
         </ul>

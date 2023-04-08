@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,21 +10,25 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Contactos from '../Service/holdedConection';
-
+import Login from '../service/holdedConection'
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({login}) {
+  const [email,setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    login(email, password);
+
+    // const data = new FormData(event.currentTarget);
   
-    const credenciales={
-      email: data.get('email'),
-      password: data.get('password'),
-    };
-    console.log(credenciales);
-    Contactos(credenciales)
+    // const credenciales={
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // };
+    // console.log(credenciales);
+    // Contactos(credenciales)
   };
 
   return (
@@ -52,6 +56,8 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e)=> setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -62,6 +68,8 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

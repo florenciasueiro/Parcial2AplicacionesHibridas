@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CtCSS from '../css/Contacto.module.css';
 
-
+//const
 // const options = {
 //   method: 'GET',
 //   headers: {accept: 'application/json', key: '343654e3d1014f792344a19ee8f40503'}
@@ -53,10 +53,40 @@ import CtCSS from '../css/Contacto.module.css';
   
 //   export function LoginForm();
 
+// export default function login(email, password) {
+//   const url = "https://api.holded.com/api/invoicing/v1/contacts";
+//   const customid = `${email.replace(/@/g, "%40")}%3B${password}`;
+//   const options = {
+//     method: "GET",
+//     body: JSON.stringify({customid:customid}),
+//  headers: {
+//             'customid':customid,
+//             'key': '343654e3d1014f792344a19ee8f40503',
+//             'accept': 'application/json',
+//             'Acces-Control-Allow-Origin': '*'
+//           }
+//   };
 
-export default function Contactos({ a }) {
+//   fetch(url, options)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//         console.log(data);
+//       // hacer algo con la respuesta
+//     })
+//     .catch((error) => {
+//       console.error("There was a problem with the fetch operation:", error);
+//     });
+// }
+
+// export default login;
+export default function Contactos(email, password) {
   const [contactos, setContactos] = useState([]);
-  const customid = `${a.email.replace(/@/g, "%40")}%3B${a.password}`;
+  const customid = `${email.replace(/@/g, "%40")}%3B${password}`;
   useEffect(() => {
     async function fetchContactos() {
       try {
@@ -66,7 +96,6 @@ export default function Contactos({ a }) {
             'key': '343654e3d1014f792344a19ee8f40503',
             'accept': 'application/json',
             'Acces-Control-Allow-Origin': '*'
-            
           }
         });
         const data = await response.json();
@@ -81,3 +110,38 @@ export default function Contactos({ a }) {
   
 }
 
+// import React, { useState } from "react";
+
+// function LoginForm({ login }) {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     login(email, password);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>
+//         Email:
+//         <input
+//           type="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//       </label>
+//       <label>
+//         Password:
+//         <input
+//           type="password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+//       </label>
+//       <button type="submit">Login</button>
+//     </form>
+//   );
+// }
+
+// export default LoginForm;
