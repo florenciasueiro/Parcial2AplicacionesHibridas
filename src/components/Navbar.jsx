@@ -2,13 +2,31 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
-import login from '../service/holdedConection'
+import Contactos from "../service/holdedConection";
 
 function Navbar() {
-  const handleLogin = (email, password) => {
-    login(email, password);
-  };
+
+  const usuario = sessionStorage.getItem("userName");
+  console.log(usuario);
+  const displayName = (props) => {
+    if(usuario==null){
+      console.log("No usuario");
+    return (
+      <p>Login</p>
+    );
+  }
+  else{
+      console.log("si usuario");
+  return(
   
+      <p>{usuario}</p>
+  );
+  }
+  }
+
+  const handleLogin = (email, password) => {
+    Contactos(email, password);
+  };
   return (
   <div className={NavbarCSS.Navbarcontainer}>
       <div className={NavbarCSS.navprimario}>
@@ -20,13 +38,13 @@ function Navbar() {
             {/*<li><a href="" className=''>Login</a></li>*/}
             <input type="checkbox" id={NavbarCSS.active}/>
               <li className={NavbarCSS.menuItem}>
-                <label for={NavbarCSS.active} className={NavbarCSS.menubtn}>Login</label>
+              <label for={NavbarCSS.active} className={NavbarCSS.menubtn}>{displayName()}</label>
                 <label for={NavbarCSS.active} className={NavbarCSS.close}></label>
               </li>
               
               <div className={NavbarCSS.wrapper}>
                 <div className={NavbarCSS.login}>
-                  <Login login={handleLogin}/>
+                  <Login Contactos={handleLogin}/>
                 </div>
             </div>
         </ul>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import CtCSS from '../css/Contacto.module.css';
 
 //const
@@ -84,32 +84,53 @@ import CtCSS from '../css/Contacto.module.css';
 // }
 
 // export default login;
-export default function Contactos(email, password) {
-  const [contactos, setContactos] = useState([]);
+export default function useContactos(){
+const contactos= useCallback(async (email, password) => {
+  
   const customid = `${email.replace(/@/g, "%40")}%3B${password}`;
-  useEffect(() => {
-    async function fetchContactos() {
-      try {
-        const response = await fetch(`https://api.holded.com/api/invoicing/v1/contacts?customId=${customid}`, {
+  console.log(customid);
+    try {
+        const response = await  fetch(`https://api.holded.com/api/invoicing/v1/contacts?customId=${customid}`, {
           headers: {
             'customid':customid,
             'key': '343654e3d1014f792344a19ee8f40503',
             'accept': 'application/json',
             'Acces-Control-Allow-Origin': '*'
-          }
-        });
-        const data = await response.json();
-        setContactos(data);
-        
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    
-  }, []);
-  
-}
+                    }
+                }
+            );
+        if (!response.ok){
+            throw new Error(`Network response was not ok (${response.status})`)
+            }
 
+        const data = await response.json();
+            console.log(data);
+            console.log("data[0]");
+            console.log(data[0]);
+            console.log("JSON.stringify(data)");
+            console.log(JSON.stringify(data));
+            
+            sessionStorage.setItem("user", JSON.stringify(data[0]));
+            sessionStorage.setItem("userName", JSON.stringify(data[0].name));
+            console.log(data[0].name);
+            console.log("sessionStorage.getItem('user')");
+            console.log(sessionStorage.getItem("user"));
+            window.location.reload();
+        }catch(error){
+            console.error("There was a problem with the fetch operation:", error);
+          }
+        }, []);
+        
+        return contactos;
+    //     }).then((resp)=> {
+    //         console.log(resp.json());
+    //     })
+    //     .catch((error)=> {
+    //         console.log("There was a problem with the fetch operation: ", error)
+    //     });
+    // },[]);
+    // return contactos;
+}
 // import React, { useState } from "react";
 
 // function LoginForm({ login }) {
