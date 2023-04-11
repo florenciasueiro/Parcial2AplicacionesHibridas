@@ -3,7 +3,6 @@
   padding: 0;
 }
 
-
 .inicio {
   text-align: center;
 }
@@ -49,5 +48,6 @@
   justify-content: space-evenly;
   align-items: center;
   margin: 20px auto;
-  position: relative; 
+  position: relative;
+  z-index: -20;
 }

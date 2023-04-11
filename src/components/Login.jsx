@@ -10,9 +10,21 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import { purple } from '@mui/material/colors';
+import LoginCSS from '../css/Login.module.css';
+import { color } from '@mui/system';
 
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#f9a825",
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});;
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -30,7 +42,7 @@ export default function SignIn() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 6,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -40,7 +52,15 @@ export default function SignIn() {
             Inicia Sesión
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+            <TextField 
+            InputLabelProps={{
+              style: { color: 'white'},
+            }}
+            InputProps={{
+              style: { color: 'white'},
+              classes: { notchedOutline: LoginCSS.fieldset }
+            }}
+              className={LoginCSS.fieldset}
               margin="normal"
               required
               fullWidth
@@ -51,6 +71,13 @@ export default function SignIn() {
               autoFocus
             />
             <TextField
+            InputLabelProps={{
+              style: { color: 'white'},
+            }}
+            InputProps={{
+              style: { color: 'white'},
+              classes: { notchedOutline: LoginCSS.fieldset }
+            }}
               margin="normal"
               required
               fullWidth
@@ -60,28 +87,31 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Recuerdame"
-            />
+            <div className={LoginCSS.centeredContainer}>
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
+                label="Recuerdame"
+              />
+            </div>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 1, mb: 1 }}
             >
               Iniciar Sesión
             </Button>
-            <Grid container
+            <Grid container display={'flex'}
+            
             justifyContent="center">
-              <Grid item xs>
-                <Link href="#" variant="body2">
+              <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
+                <Link style={{padding: '10px', color: "#d5880c"}} align="center" href="#" variant="body2">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item center>
               ¿No tienes cuenta? 
-                <Link to="/registro">
+                <Link style={{color: "#d5880c"}}  to="/registro">
                   {"Registrate"}
                 </Link>
               </Grid>
