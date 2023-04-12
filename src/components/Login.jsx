@@ -173,7 +173,12 @@ else{
               control={<Checkbox value="remember" color="primary" />}
               label="Recuerdame"
             /> */}
-            <h5>nombre:{usuario.name}</h5>
+            <h5>nombre: {usuario.name}</h5>
+            <h5>email: {usuario.email}</h5>
+            <h5>Telefono: {usuario.mobile}</h5>
+            <h5>id: {usuario.id}</h5>
+            <h5>productos:</h5>
+
             <Button
               type="submit"
               fullWidth
@@ -184,7 +189,7 @@ else{
               Cerrar Sesión
               
             </Button>
-            <Grid container
+            {/* <Grid container
             justifyContent="center">
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -197,7 +202,7 @@ else{
                   {"Registrate"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
       </Container>

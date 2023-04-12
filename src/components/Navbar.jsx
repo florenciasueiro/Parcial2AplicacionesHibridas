@@ -6,7 +6,7 @@ import Contactos from "../service/holdedConection";
 
 function Navbar() {
 
-  const usuario = sessionStorage.getItem("userName");
+  const usuario= JSON.parse(sessionStorage.getItem('user'));
   console.log(usuario);
   const displayName = (props) => {
     if(usuario==null){
@@ -19,7 +19,7 @@ function Navbar() {
       console.log("si usuario");
   return(
   
-      <p>{usuario}</p>
+      <p>{usuario.name}</p>
   );
   }
   }
