@@ -17,7 +17,7 @@ function Inicio() {
       <div className={InicioCSS.cards}>
         <>
         <Cards className={InicioCSS.card}/>
-        <ContactCard className={InicioCSS.card}/>
+        <Cards className={InicioCSS.card}/>
         </>
       </div>
     </div>
