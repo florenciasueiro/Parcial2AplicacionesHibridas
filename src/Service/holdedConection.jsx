@@ -29,6 +29,7 @@ const contactos= useCallback(async (email, password) => {
         if (!response.ok){
             throw new Error(`Network response was not ok (${response.status})`)
             }
+        const arrayVacio = (arr) => !Array.isArray(arr) || arr.length === 0;
 
         const data = await response.json();
         // borrar todos los console log
@@ -38,8 +39,10 @@ const contactos= useCallback(async (email, password) => {
             console.log("JSON.stringify(data)");
             console.log(JSON.stringify(data));
             // guardo el user en un sessionStorgae
-            
-            sessionStorage.setItem("user", JSON.stringify(data[0]));
+            console.log(arrayVacio(data))
+            sessionStorage.setItem("user", JSON.stringify(data));
+            // sessionStorage.setItem("user", JSON.stringify(data[0]));
+
             // no elimine este por que fue el primer intentno y no estoy seguro si lo sigo usando en algun otro lugar
             sessionStorage.setItem("userName", JSON.stringify(data[0].name));
             console.log(data[0].name);

@@ -8,8 +8,9 @@ function Navbar() {
 
   const usuario= JSON.parse(sessionStorage.getItem('user'));
   console.log(usuario);
+
   const displayName = (props) => {
-    if(usuario==null){
+    if(!usuario || Object.keys(usuario).length==0){
       console.log("No usuario");
     return (
       <p>Login</p>
@@ -19,7 +20,7 @@ function Navbar() {
       console.log("si usuario");
   return(
   
-      <p>{usuario.name}</p>
+      <p>{usuario[0].name}</p>
   );
   }
   }
