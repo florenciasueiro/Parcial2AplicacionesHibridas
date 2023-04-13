@@ -1,13 +1,20 @@
 import React from 'react';
-import Page from '../components/Register';
-import { BrowserRouter } from 'react-router-dom';
+import { BackgroundRegistro } from  '../components/Background';
+import Registro from '../components/Registro';
+import RegistroCSS from '../css/Registro.module.css'
 
-export default function Registro() {
+
+function Register() {
   return (
-    
-    <BrowserRouter>
-    <Page/>
-    </BrowserRouter>
-      
-  )
+    <div className={RegistroCSS.body}>
+      <BackgroundRegistro className={RegistroCSS.background}/>
+      <div>
+        <>
+        <Registro/>
+        </>
+      </div>
+    </div>
+  );
 }
+export default Register;
+//xd

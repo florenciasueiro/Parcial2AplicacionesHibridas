@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { purple } from '@mui/material/colors';
-import LoginCSS from '../css/Login.module.css';
+import RegistroCSS from '../css/Registro.module.css';
 import { color } from '@mui/system';
 
 
@@ -24,12 +24,7 @@ const theme = createTheme({
       main: '#f44336',
     },
   },
-  typography: {
-    fontFamily: [
-      '"Segoe UI"'
-    ].join(','),
-    },
-  });
+});;
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -45,32 +40,52 @@ export default function SignIn() {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
+        <Box className={RegistroCSS.box}
           sx={{
-            marginTop: 6,
+            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
           <Typography component="h1" variant="h5">
-            Inicia Sesión
+            Registrate
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+              InputLabelProps={{
+                style: { color: 'white'},
+              }}
+              InputProps={{
+                style: { color: 'white'},
+                classes: { notchedOutline: RegistroCSS.fieldset }
+              }}
+                className={RegistroCSS.fieldset}
+                margin='normal'
+                autoComplete="name"
+                name="name"
+                variant="outlined"
+                required
+                fullWidth
+                id="name"
+                label="Nombre y Apellido"
+                autoFocus
+                size='small'
+              />
             <TextField 
             InputLabelProps={{
               style: { color: 'white'},
             }}
             InputProps={{
               style: { color: 'white'},
-              classes: { notchedOutline: LoginCSS.fieldset }
+              classes: { notchedOutline: RegistroCSS.fieldset }
             }}
-              className={LoginCSS.fieldset}
+              className={RegistroCSS.fieldset}
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -82,22 +97,22 @@ export default function SignIn() {
             }}
             InputProps={{
               style: { color: 'white'},
-              classes: { notchedOutline: LoginCSS.fieldset }
+              classes: { notchedOutline: RegistroCSS.fieldset }
             }}
               margin="normal"
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               id="password"
               autoComplete="current-password"
               size='small'
             />
-            <div className={LoginCSS.centeredContainer}>
+            <div className={RegistroCSS.centeredContainer}>
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
-                label="Recuerdame"
+                label="Acepto los terminos y condciones"
               />
             </div>
             <Button
@@ -106,20 +121,14 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 1, mb: 1 }}
             >
-              Iniciar Sesión
+              Registrar
             </Button>
             <Grid container display={'flex'}
-            
             justifyContent="center">
-              <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
-                <Link style={{padding: '10px', color: "#d5880c"}} align="center" href="#" variant="body2">
-                  ¿Olvidaste tu contraseña?
-                </Link>
-              </Grid>
               <Grid item center>
-              ¿No tienes cuenta? ‎ 
-                <Link style={{color: "#d5880c"}}  to="/registro">
-                  {"Registrate"}
+              ¿Ya tienes cuenta? ‎ 
+                <Link style={{color: "#d5880c"}}  to="/">
+                  {"Inicia Sesion"}
                 </Link>
               </Grid>
             </Grid>
