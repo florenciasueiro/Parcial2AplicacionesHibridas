@@ -10,6 +10,12 @@ import FooterCSS from '../css/Footer.module.css';
 function Footer() {
   return (
     <footer className={FooterCSS.footerBox}>
+      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
+        © 2022 Copyright:
+        <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
+          Asset
+        </a>
+      </div>
       <div  className={`${FooterCSS.pt4} ${FooterCSS.container}`}>
         <section className={`${FooterCSS.mb-4} ${FooterCSS.bgBlack}`}>
         <ul>
@@ -36,13 +42,12 @@ function Footer() {
 </ul>
         </section>
       </div>
-
-      <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
-        © 2022 Copyright:
-        <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
-          Asset
+      <div>
+      <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
+          Preguntas Frecuentes
         </a>
       </div>
+
     </footer>
   );
 }

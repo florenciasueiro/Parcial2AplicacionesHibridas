@@ -4,17 +4,29 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import { purple } from '@mui/material/colors';
+import LoginCSS from '../css/Login.module.css';
+import { color } from '@mui/system';
 import useContactos from "../service/holdedConection";
 
 
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#f9a825",
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});;
 
 
 
@@ -66,7 +78,7 @@ if(usuario==null || Object.keys(usuario).length==0) {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 8,
+              marginTop: 6,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -77,8 +89,16 @@ if(usuario==null || Object.keys(usuario).length==0) {
             </Typography>
             {showError && <p>Email o contraseña inválidos.</p>}
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
+              <TextField 
+              InputLabelProps={{
+              style: { color: 'white'},
+            }}
+            InputProps={{
+              style: { color: 'white'},
+              classes: { notchedOutline: LoginCSS.fieldset }
+            }}
+              className={LoginCSS.fieldset}
+              margin="normal"
                 required
                 fullWidth
                 id="email"
@@ -90,7 +110,14 @@ if(usuario==null || Object.keys(usuario).length==0) {
                 onChange={(e)=> setEmail(e.target.value)}
               />
               <TextField
-                margin="normal"
+              InputLabelProps={{
+              style: { color: 'white'},
+            }}
+            InputProps={{
+              style: { color: 'white'},
+              classes: { notchedOutline: LoginCSS.fieldset }
+            }}
+              margin="normal"
                 required
                 fullWidth
                 name="password"
@@ -101,31 +128,34 @@ if(usuario==null || Object.keys(usuario).length==0) {
                 value={password}
                 onChange={(e)=> setPassword(e.target.value)}
               />
+              <div className={LoginCSS.centeredContainer}>
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Recuerdame"
-              />
-              <Button
+                  control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
+                  label="Recuerdame"
+                />
+              </div>
+            <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 1, mb: 1 }}
                 >
                 
   
                 Iniciar Sesión
                 
               </Button>
-              <Grid container
+              <Grid container display={'flex'}
+            
               justifyContent="center">
-                <Grid item xs>
-                  <Link href="#" variant="body2">
+                <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
+                  <Link style={{padding: '10px', color: "#d5880c"}} align="center" href="#" variant="body2">
                     ¿Olvidaste tu contraseña?
                   </Link>
                 </Grid>
-                <Grid item>
+                <Grid item center>
                 ¿No tienes cuenta? 
-                  <Link to="/registrar">
+                  <Link style={{color: "#d5880c"}}  to="/registro">
                     {"Registrate"}
                   </Link>
                 </Grid>
