@@ -3,8 +3,7 @@ import React from 'react';
 import InicioCSS from '../css/Inicio.module.css';
 import Cards from '../components/Cards';
 //import Login from './components/Login';
-import Background from '../components/Background';
-import ContactCard from '../components/ContactCard';
+import { Background } from  '../components/Background';
 
 
 

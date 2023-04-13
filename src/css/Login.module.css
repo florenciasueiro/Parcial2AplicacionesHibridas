@@ -14,9 +14,14 @@
 .fieldset {
    border-color: #d5880c!important;
    border-radius: 8px!important;
+   
  }
 /* .centeredContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 } */
+.fieldset input {
+   padding: 8.5px!important;
+   
+ }

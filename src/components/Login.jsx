@@ -26,7 +26,12 @@ const theme = createTheme({
       main: '#f44336',
     },
   },
-});;
+  typography: {
+    fontFamily: [
+      '"Segoe UI"'
+    ].join(','),
+    },
+  });
 
 
 
@@ -108,7 +113,8 @@ if(usuario==null || Object.keys(usuario).length==0) {
                 autoFocus
                 value={email}
                 onChange={(e)=> setEmail(e.target.value)}
-              />
+                size='small'
+            />
               <TextField
               InputLabelProps={{
               style: { color: 'white'},
@@ -127,7 +133,8 @@ if(usuario==null || Object.keys(usuario).length==0) {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e)=> setPassword(e.target.value)}
-              />
+                size='small'
+            />
               <div className={LoginCSS.centeredContainer}>
               <FormControlLabel
                   control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
@@ -154,7 +161,7 @@ if(usuario==null || Object.keys(usuario).length==0) {
                   </Link>
                 </Grid>
                 <Grid item center>
-                ¿No tienes cuenta? 
+                ¿No tienes cuenta? ‎ 
                   <Link style={{color: "#d5880c"}}  to="/registro">
                     {"Registrate"}
                   </Link>
@@ -166,6 +173,7 @@ if(usuario==null || Object.keys(usuario).length==0) {
       </ThemeProvider>
     );
   }
+
 
 // else if(usuario==[] || Object.keys(usuario).length==0) {
 //     return (
