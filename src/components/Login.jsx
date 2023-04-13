@@ -38,7 +38,7 @@ const theme = createTheme({
 
 
 export default function SignIn({Contactos}) {
-  const arrayVacio = (arr) => !Array.isArray(arr) || arr.length === 0;
+  
  
   const usuario= JSON.parse(sessionStorage.getItem('user'));
   // if(usuario!=null || !usuario==[]){
