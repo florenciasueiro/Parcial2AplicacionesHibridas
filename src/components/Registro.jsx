@@ -26,11 +26,12 @@ const theme = createTheme({
   },
 });;
 
-export default function SignIn() {
+export default function Registro() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      name : data.get('name'),
       email: data.get('email'),
       password: data.get('password'),
     });
