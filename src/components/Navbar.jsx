@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
-import Contactos from "../service/holdedConection";
+import Contactos from "../Service/holdedConection";
 
 function Navbar() {
 
@@ -20,7 +20,7 @@ function Navbar() {
       console.log("si usuario");
   return(
   
-      <p>{usuario[0].name}</p>
+      <p>{usuario.name}</p>
   );
   }
   }

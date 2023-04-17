@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import LoginCSS from '../css/Login.module.css';
 import { color } from '@mui/system';
-import useContactos from "../service/holdedConection";
+import useContactos from '../Service/holdedConection'
 
 
 
@@ -298,10 +298,10 @@ else{
               control={<Checkbox value="remember" color="primary" />}
               label="Recuerdame"
             /> */}
-            <h5>nombre: {usuario[0].name}</h5>
-            <h5>email: {usuario[0].email}</h5>
-            <h5>Telefono: {usuario[0].mobile}</h5>
-            <h5>id: {usuario[0].id}</h5>
+            <h5>nombre: {usuario.name}</h5>
+            <h5>email: {usuario.email}</h5>
+            <h5>Telefono: {usuario.mobile}</h5>
+            <h5>id: {usuario.id}</h5>
             <h5>productos:</h5>
 
             <Button
