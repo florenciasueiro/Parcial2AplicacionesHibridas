@@ -1,0 +1,17 @@
+.body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 70px;
+    position: relative;
+  }
+  
+  .inputs {
+    flex: 1;
+    margin-right: 30px;
+  }
+  
+  .carouselContainer {
+    flex: 3;
+    
+  }

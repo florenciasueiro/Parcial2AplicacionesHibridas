@@ -34,7 +34,7 @@
 
   .box{
     display: flex;
-    background-color: #000;
+    background-color: white;
     /*backdrop-filter: blur(0px);*/
     border-radius: 50px;
     justify-content: center;
@@ -46,7 +46,7 @@
     z-index: 10;
   }
   .menuItem a{
-    color: white;
+    color: black;
     list-style: none;
     text-decoration: none;
     font-size: 15px;
@@ -78,7 +78,9 @@
 
 .wrapper {
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  color: #f44336;
   position: absolute;
   top: 0;
   left: 0;
@@ -98,7 +100,7 @@
 button {
   background-color: transparent;
   border: none;
-  color: white;
+  color: black;
 }
   
 .show {

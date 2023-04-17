@@ -1,13 +1,15 @@
 .footerBox{
     text-align: center;
-    background-color: #f1f1f1;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    background-color: black;
+    background-color: #f5f5f7;
     width: 100%;
     padding: 0.5rem;
+        position: relative;
+        bottom: 0;
+        font-size: 11px;
 }
 /*.pt4{
     padding-top: 1.5rem;
@@ -26,7 +28,7 @@ ul{
     background-color: black;
 }
 .footerLi .footerA{
-    color: white !important;
+    color: darkgray !important;
     text-decoration: none;
     margin: 0.5rem;
 }
@@ -43,7 +45,7 @@ ul{
     color:  #FF0000;
 }
 .footerCopy{
-    background-color: rgba(0, 0, 0, 0.2);
+    color: darkgray;
 }
 .textCenter{
     text-align: center;
@@ -53,12 +55,12 @@ ul{
 }
 .textCenter{
     text-align: center;
-    color: white;
+    color: #6e6e73;
 }
 .footerCopy{
-    background-color: black;
+    
 }
 .linkText{
-    color: white;
+    color: #0645AD  ;
     text-decoration: none;
 }

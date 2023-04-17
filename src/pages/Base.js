@@ -5,6 +5,8 @@ import Eventos from './Eventos';
 import Inicio from './Inicio';
 import Registro from './Registro';
 import PreguntasFrecuentes from './PreguntasFrecuentes';
+import Shop from './Shop';
+
 
 
 
@@ -18,8 +20,8 @@ const Base = () => {
         <Route path='/eventos' element={<Eventos/>}/>
         <Route path='/registro' element={<Registro/>}/>
         <Route path='/preguntasfrecuentes' element={<PreguntasFrecuentes/>}/>
+        <Route path='/shop' element={<Shop/>}/>
       </Routes>
-
       </React.Fragment>
   );
 }

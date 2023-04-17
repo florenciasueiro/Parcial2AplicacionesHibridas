@@ -10,19 +10,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import { purple } from '@mui/material/colors';
 import LoginCSS from '../css/Login.module.css';
-import { color } from '@mui/system';
 
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#f9a825",
+      main: "#000",
     },
-    secondary: {
-      main: '#f44336',
-    },
+
   },
   typography: {
     fontFamily: [
@@ -53,16 +49,16 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" style={{color: "black"}}>
             Inicia Sesión
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField 
             InputLabelProps={{
-              style: { color: 'white'},
+              style: { color: 'black'}, 
             }}
             InputProps={{
-              style: { color: 'white'},
+              style: { color: 'black'},
               classes: { notchedOutline: LoginCSS.fieldset }
             }}
               className={LoginCSS.fieldset}
@@ -78,10 +74,10 @@ export default function SignIn() {
             />
             <TextField
             InputLabelProps={{
-              style: { color: 'white'},
+              style: { color: 'black'},
             }}
             InputProps={{
-              style: { color: 'white'},
+              style: { color: 'black'},
               classes: { notchedOutline: LoginCSS.fieldset }
             }}
               margin="normal"
@@ -95,8 +91,8 @@ export default function SignIn() {
               size='small'
             />
             <div className={LoginCSS.centeredContainer}>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
+              <FormControlLabel style={{color: "black"}}
+                control={<Checkbox value="remember"/>}
                 label="Recuerdame"
               />
             </div>
@@ -112,13 +108,13 @@ export default function SignIn() {
             
             justifyContent="center">
               <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
-                <Link style={{padding: '10px', color: "#d5880c"}} align="center" href="#" variant="body2">
+                <Link style={{padding: '10px', color: "#0645AD"}} align="center" href="#" variant="body2">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </Grid>
-              <Grid item center>
+              <Grid item center style={{color: "black"}}>
               ¿No tienes cuenta? ‎ 
-                <Link style={{color: "#d5880c"}}  to="/registro">
+                <Link style={{color: "#0645AD"}}  to="/registro">
                   {"Registrate"}
                 </Link>
               </Grid>

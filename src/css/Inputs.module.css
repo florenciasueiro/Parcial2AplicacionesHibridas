@@ -1,0 +1,12 @@
+.label {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-left: 10px;
+}
+
+.input:checked  {
+  background-color: red!important;
+}
