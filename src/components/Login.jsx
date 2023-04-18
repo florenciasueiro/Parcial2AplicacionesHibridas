@@ -60,9 +60,22 @@ export default function SignIn({Contactos}) {
       setTimeout(() => {
         setShowError(true);
       }, 1000);
+      
     }
+
+    
     // window.location.reload();
   };
+
+  const handleInvalid = (event) => {
+    event.preventDefault();
+    contactos(email, password);
+    if(!usuario || Object.keys(usuario).length==0){
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      
+    }}
     // const data = new FormData(event.currentTarget);
   
     // const credenciales={
@@ -92,7 +105,7 @@ if(usuario==null || Object.keys(usuario).length==0) {
               Inicia Sesión
             </Typography>
             {showError && <p>Email o contraseña inválidos.</p>}
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleInvalid} noValidate sx={{ mt: 1 }}>
               <TextField 
               InputLabelProps={{
               style: { color: 'white'},
