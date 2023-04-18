@@ -10,23 +10,24 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import { purple } from '@mui/material/colors';
-import RegistroCSS from '../css/Registro.module.css';
-import { color } from '@mui/system';
+import LoginCSS from '../css/Login.module.css';
 
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#f9a825",
+      main: "#000",
     },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});;
 
-export default function SignIn() {
+  },
+  typography: {
+    fontFamily: [
+      '"Segoe UI"'
+    ].join(','),
+    },
+  });
+
+export default function Register() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,48 +40,47 @@ export default function SignIn() {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box className={RegistroCSS.box}
+        <CssBaseline/>
+        <Box
           sx={{
-            marginTop: 8,
+            marginTop: 9,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
-            Registrate
+          <Typography component="h1" variant="h5" style={{color: "black"}}>
+            Registrar
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-              InputLabelProps={{
-                style: { color: 'white'},
-              }}
-              InputProps={{
-                style: { color: 'white'},
-                classes: { notchedOutline: RegistroCSS.fieldset }
-              }}
-                className={RegistroCSS.fieldset}
-                margin='normal'
-                autoComplete="name"
-                name="name"
-                variant="outlined"
-                required
-                fullWidth
-                id="name"
-                label="Nombre y Apellido"
-                autoFocus
-                size='small'
-              />
-            <TextField 
+          <TextField 
             InputLabelProps={{
-              style: { color: 'white'},
+              style: { color: 'black'}, 
             }}
             InputProps={{
-              style: { color: 'white'},
-              classes: { notchedOutline: RegistroCSS.fieldset }
+              style: { color: 'black'},
+              classes: { notchedOutline: LoginCSS.fieldset }
             }}
-              className={RegistroCSS.fieldset}
+              className={LoginCSS.fieldset}
+              margin="normal"
+              required
+              fullWidth
+              id="nombre"
+              label="Nombre y Apellido"
+              name="nombre"
+              autoComplete="name"
+              autoFocus
+              size='small'
+            />
+            <TextField 
+            InputLabelProps={{
+              style: { color: 'black'}, 
+            }}
+            InputProps={{
+              style: { color: 'black'},
+              classes: { notchedOutline: LoginCSS.fieldset }
+            }}
+              className={LoginCSS.fieldset}
               margin="normal"
               required
               fullWidth
@@ -93,11 +93,29 @@ export default function SignIn() {
             />
             <TextField
             InputLabelProps={{
-              style: { color: 'white'},
+              style: { color: 'black'},
             }}
             InputProps={{
-              style: { color: 'white'},
-              classes: { notchedOutline: RegistroCSS.fieldset }
+              style: { color: 'black'},
+              classes: { notchedOutline: LoginCSS.fieldset }
+            }}
+              margin="normal"
+              required
+              fullWidth
+              name="tel"
+              label="Telefono"
+              type="tel"
+              id="tel"
+              autoComplete="tel"
+              size='small'
+            />
+            <TextField
+            InputLabelProps={{
+              style: { color: 'black'},
+            }}
+            InputProps={{
+              style: { color: 'black'},
+              classes: { notchedOutline: LoginCSS.fieldset }
             }}
               margin="normal"
               required
@@ -109,10 +127,10 @@ export default function SignIn() {
               autoComplete="current-password"
               size='small'
             />
-            <div className={RegistroCSS.centeredContainer}>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
-                label="Acepto los terminos y condciones"
+            <div className={LoginCSS.centeredContainer}>
+              <FormControlLabel style={{color: "black"}}
+                control={<Checkbox value="remember"/>}
+                label="Acepto los terminos y condiciones"
               />
             </div>
             <Button
@@ -123,13 +141,13 @@ export default function SignIn() {
             >
               Registrar
             </Button>
-            <Grid container display={'flex'}
-            justifyContent="center">
-              <Grid item center>
+            <Grid container display={'flex'} 
+              justifyContent="center">
+              <Grid item center style={{color: "black"}}>
               ¿Ya tienes cuenta? ‎ 
-                <Link style={{color: "#d5880c"}}  to="/">
+                <Link style={{color: "#0645AD"}}  to="/registro">
                   {"Inicia Sesion"}
-                </Link>
+                </Link> 
               </Grid>
             </Grid>
           </Box>

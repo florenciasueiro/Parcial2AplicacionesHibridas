@@ -1,12 +1,30 @@
-.label {
+.radioInputs {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.radioInput {
   display: flex;
   align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
 }
 
-.input {
-  margin-left: 10px;
+.radioInput:last-child {
+  margin-right: 0;
 }
 
-.input:checked  {
-  background-color: red!important;
+.radioInput.selected {
+  border-color: #007bff;
+}
+
+.radioInput input[type="radio"] {
+  margin-right: 5px;
+  cursor: pointer;
 }

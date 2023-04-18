@@ -1,7 +1,7 @@
 import React from 'react';
 import ShopCSS from '../css/Shop.module.css';
 import Carousel from '../components/Carousel';
-import Inputs from '../components/InputsCompra';
+import RadioInputs from '../components/InputsCompra';
 
 function Shop() {
   return (
@@ -10,7 +10,7 @@ function Shop() {
         <Carousel />
       </div>
       <div className={ShopCSS.inputs}>
-        <Inputs />
+        <RadioInputs />
       </div>
     </div>
   );
