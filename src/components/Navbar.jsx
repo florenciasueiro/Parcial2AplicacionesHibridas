@@ -6,24 +6,23 @@ import Contactos from "../Service/holdedConection";
 
 function Navbar() {
 
-  const usuario= JSON.parse(sessionStorage.getItem('user'));
-  console.log(usuario);
+const usuarioJson = sessionStorage.getItem('user');
+const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+console.log(usuario);
 
-  const displayName = (props) => {
-    if(!usuario || Object.keys(usuario).length==0){
-      console.log("No usuario");
+const displayName = (props) => {
+  if (!usuario || Object.keys(usuario).length === 0) {
+    console.log("No usuario");
     return (
       <p>Login</p>
     );
-  }
-  else{
-      console.log("si usuario");
-  return(
-  
+  } else {
+    console.log("usuario");
+    return (
       <p>{usuario.name}</p>
-  );
+    );
   }
-  }
+};
 
   const handleLogin = (email, password) => {
     Contactos(email, password);

@@ -10,9 +10,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import { purple } from '@mui/material/colors';
+
 import RegistroCSS from '../css/Registro.module.css';
-import { color } from '@mui/system';
+
 
 
 const theme = createTheme({

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import LoginCSS from '../css/Login.module.css';
-import { color } from '@mui/system';
+
 import useContactos from '../Service/holdedConection'
 
 
@@ -44,9 +44,15 @@ const theme = createTheme({
 export default function SignIn({Contactos}) {
   
  
-  const usuario= JSON.parse(sessionStorage.getItem('user'));
+
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+
+
   // if(usuario!=null || !usuario==[]){
   // console.log(usuario[0].name)}
+
+
   const [email,setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showError, setShowError]= useState(false);
@@ -56,7 +62,8 @@ export default function SignIn({Contactos}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     contactos(email, password);
-    if(!usuario || Object.keys(usuario).length==0){
+    
+    if(!usuario || Object.keys(usuario).length===0){
       setTimeout(() => {
         setShowError(true);
       }, 1000);
@@ -67,28 +74,11 @@ export default function SignIn({Contactos}) {
     // window.location.reload();
   };
 
-  const handleInvalid = (event) => {
-    event.preventDefault();
-    contactos(email, password);
-    if(!usuario || Object.keys(usuario).length==0){
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-      
-    }}
-    // const data = new FormData(event.currentTarget);
-  
-    // const credenciales={
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // };
-    // console.log(credenciales);
-    // Contactos(credenciales)
     const handleLogout = () => {
       sessionStorage.clear();
       window.location.reload();
   }
-if(usuario==null || Object.keys(usuario).length==0) {
+if(!usuario) {
     return (
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
@@ -105,7 +95,7 @@ if(usuario==null || Object.keys(usuario).length==0) {
               Inicia Sesión
             </Typography>
             {showError && <p>Email o contraseña inválidos.</p>}
-            <Box component="form" onSubmit={handleInvalid} noValidate sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField 
               InputLabelProps={{
               style: { color: 'white'},
@@ -186,85 +176,6 @@ if(usuario==null || Object.keys(usuario).length==0) {
     );
   }
 
-
-// else if(usuario==[] || Object.keys(usuario).length==0) {
-//     return (
-//       <ThemeProvider theme={theme}>
-//         <Container component="main" maxWidth="xs">
-//           <CssBaseline />
-//           <Box
-//             sx={{
-//               marginTop: 8,
-//               display: 'flex',
-//               flexDirection: 'column',
-//               alignItems: 'center',
-//             }}
-//           >
-//             <Typography component="h1" variant="h5">
-//               Inicia Sesión
-//             </Typography>
-//             <p>Email o contraseña invalidos.</p>
-//             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-//               <TextField
-//                 margin="normal"
-//                 required
-//                 fullWidth
-//                 id="email"
-//                 label="Email Address"
-//                 name="email"
-//                 autoComplete="email"
-//                 autoFocus
-//                 value={email}
-//                 onChange={(e)=> setEmail(e.target.value)}
-//               />
-//               <TextField
-//                 margin="normal"
-//                 required
-//                 fullWidth
-//                 name="password"
-//                 label="Password"
-//                 type="password"
-//                 id="password"
-//                 autoComplete="current-password"
-//                 value={password}
-//                 onChange={(e)=> setPassword(e.target.value)}
-//               />
-//               <FormControlLabel
-//                 control={<Checkbox value="remember" color="primary" />}
-//                 label="Recuerdame"
-//               />
-//               <Button
-//                 type="submit"
-//                 fullWidth
-//                 variant="contained"
-//                 sx={{ mt: 3, mb: 2 }}
-//                 >
-                
-  
-//                 Iniciar Sesión
-                
-//               </Button>
-//               <Grid container
-//               justifyContent="center">
-//                 <Grid item xs>
-//                   <Link href="#" variant="body2">
-//                     ¿Olvidaste tu contraseña?
-//                   </Link>
-//                 </Grid>
-//                 <Grid item>
-//                 ¿No tienes cuenta? 
-//                   <Link to="/registrar">
-//                     {"Registrate"}
-//                   </Link>
-//                 </Grid>
-//               </Grid>
-//             </Box>
-//           </Box>
-//         </Container>
-//       </ThemeProvider>
-//     );
-//   }
-
 else{
   
   return (
@@ -282,35 +193,8 @@ else{
           <Typography component="h1" variant="h5">
             Tu cuenta
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            {/* <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e)=> setPassword(e.target.value)}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Recuerdame"
-            /> */}
+          <Box component="form" onSubmit={handleLogout} noValidate sx={{ mt: 1 }}>
+   
             <h5>nombre: {usuario.name}</h5>
             <h5>email: {usuario.email}</h5>
             <h5>Telefono: {usuario.mobile}</h5>
