@@ -11,12 +11,13 @@ function Footer() {
   return (
     <footer className={FooterCSS.footerBox}>
       <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
-        © 2022 Copyright:
+      Copyright © 2023 Asset Real Estate S.A. Todos los derechos reservados.
         <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
-          Asset
+          
         </a>
+        
       </div>
-      <div  className={`${FooterCSS.pt4} ${FooterCSS.container}`}>
+      {/* <div  className={`${FooterCSS.pt4} ${FooterCSS.container}`}>
         <section className={`${FooterCSS.mb-4} ${FooterCSS.bgBlack}`}>
         <ul>
   <li className={FooterCSS.footerLi}>
@@ -45,6 +46,12 @@ function Footer() {
       <div>
       <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
           Preguntas Frecuentes
+        </a>
+      </div> */}
+
+      <div>
+      <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
+      Registrarse | Iniciar sesión | Soporte
         </a>
       </div>
 

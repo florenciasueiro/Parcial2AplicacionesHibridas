@@ -19,11 +19,9 @@ import useContactos from '../Service/holdedConection'
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#f9a825",
+      main: "#000",
     },
-    secondary: {
-      main: '#f44336',
-    },
+
   },
   typography: {
     fontFamily: [
@@ -91,17 +89,17 @@ if(!usuario) {
               alignItems: 'center',
             }}
           >
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" style={{color: "black"}}>
               Inicia Sesión
             </Typography>
             {showError && <p>Email o contraseña inválidos.</p>}
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField 
               InputLabelProps={{
-              style: { color: 'white'},
+              style: { color: 'black'}, 
             }}
             InputProps={{
-              style: { color: 'white'},
+              style: { color: 'black'},
               classes: { notchedOutline: LoginCSS.fieldset }
             }}
               className={LoginCSS.fieldset}
@@ -117,12 +115,12 @@ if(!usuario) {
                 onChange={(e)=> setEmail(e.target.value)}
                 size='small'
             />
-              <TextField
-              InputLabelProps={{
-              style: { color: 'white'},
+            <TextField
+            InputLabelProps={{
+              style: { color: 'black'},
             }}
             InputProps={{
-              style: { color: 'white'},
+              style: { color: 'black'},
               classes: { notchedOutline: LoginCSS.fieldset }
             }}
               margin="normal"
@@ -137,12 +135,12 @@ if(!usuario) {
                 onChange={(e)=> setPassword(e.target.value)}
                 size='small'
             />
-              <div className={LoginCSS.centeredContainer}>
-              <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" style={{color: '#d5880c'}}/>}
-                  label="Recuerdame"
-                />
-              </div>
+            <div className={LoginCSS.centeredContainer}>
+              <FormControlLabel style={{color: "black"}}
+                control={<Checkbox value="remember"/>}
+                label="Recuerdame"
+              />
+            </div>
             <Button
                 type="submit"
                 fullWidth
@@ -158,13 +156,13 @@ if(!usuario) {
             
               justifyContent="center">
                 <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
-                  <Link style={{padding: '10px', color: "#d5880c"}} align="center" href="#" variant="body2">
+                  <Link style={{padding: '10px', color: "#0645AD"}} align="center" href="#" variant="body2">
                     ¿Olvidaste tu contraseña?
                   </Link>
                 </Grid>
-                <Grid item center>
+                <Grid item center style={{color: "black"}}>
                 ¿No tienes cuenta? ‎ 
-                  <Link style={{color: "#d5880c"}}  to="/registro">
+                  <Link style={{color: "#0645AD"}}  to="/registro">
                     {"Registrate"}
                   </Link>
                 </Grid>
@@ -175,6 +173,7 @@ if(!usuario) {
       </ThemeProvider>
     );
   }
+
 
 else{
   

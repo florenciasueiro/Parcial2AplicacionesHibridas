@@ -7,7 +7,7 @@ import RegistroCSS from '../css/Registro.module.css'
 function Register() {
   return (
     <div className={RegistroCSS.body}>
-      <BackgroundRegistro className={RegistroCSS.background}/>
+      
       <div>
         <>
         <Registro/>

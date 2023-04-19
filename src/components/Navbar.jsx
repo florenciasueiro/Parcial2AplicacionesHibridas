@@ -33,11 +33,12 @@ const displayName = (props) => {
     setShowLogin(!showLogin);
   };
 
+
   return (
     <div className={NavbarCSS.Navbarcontainer}>
       <div className={NavbarCSS.navprimario}>
         <ul className={NavbarCSS.box}>
-          <li className={NavbarCSS.menuItem}><NavLink exact to="/" className={NavbarCSS.logo}><img src="/img/LogoBlanco.png" alt=""/></NavLink></li>
+          <li className={NavbarCSS.menuItem}><NavLink exact to="/" className={NavbarCSS.logo}><img src="/img/LogoNegro.png" alt=""/></NavLink></li>
           <li className={NavbarCSS.menuItem}><NavLink exact to="/">Inicio</NavLink></li>
           <li className={NavbarCSS.menuItem}><NavLink to="/quarters">Quarters</NavLink></li>
           <li className={NavbarCSS.menuItem}><NavLink to="/eventos">Eventos</NavLink></li>
