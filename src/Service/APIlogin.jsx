@@ -37,3 +37,19 @@ export default function useContactos(){
 
   return contactos;
 }
+
+
+// const options = {
+//   method: 'POST',
+//   headers: {
+//     accept: 'application/json',
+//     'content-type': 'application/json',
+//     key: '343654e3d1014f792344a19ee8f40503'
+//   },
+//   body: JSON.stringify({name: 'test', email: 'testReg@gmail.com', mobile: '1234', note: 'password'})
+// };
+
+// fetch('https://api.holded.com/api/invoicing/v1/contacts', options)
+//   .then(response => response.json())
+//   .then(response => console.log(response))
+//   .catch(err => console.error(err));
