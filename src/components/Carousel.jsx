@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../css/Carousel.module.css';
 import image1 from '../img/image1.png';
 import image2 from '../img/image2.png';
 import image3 from '../img/image3.png';
+import css from 'styled-jsx/css';
 
 const images = [
   image1,
@@ -29,13 +30,23 @@ const Carousel = () => {
     setCurrentIndex(index);
   };
 
-  console.log("Current index:", currentIndex);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlide();
+    }, 6000);
 
-  
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [currentIndex]);
 
   return (
+    <div>
+      <div className={styles.h1}>
+        <h1>Producto</h1>
+      </div>
     <div className={styles.carousel}>
-      <div className={styles.carouselImages}>
+      <div className={styles.carouselImages} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <img
             key={index}
@@ -54,6 +65,7 @@ const Carousel = () => {
         <i className="fas fa-chevron-right"></i>
       </button>
       {console.log(currentIndex)}
+    </div>
     </div>
     
   );

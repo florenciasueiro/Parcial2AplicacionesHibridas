@@ -1,12 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import InputCSS from '../css/Inputs.module.css';
 
 export default function RadioInputs() {
   const [selectedTerreno, setSelectedTerreno] = useState('F1');
   const [input3Disabled, setInput3Disabled] = useState(true);
   const [selectedAlmacenamiento, setSelectedAlmacenamiento] = useState('Pequeño');
+  const [selectedCard, setSelectedCard] = useState('Pequeño');
   const [selectedGuarderia, setSelectedGuarderia] = useState('6');
   const [selectedSUM, setSelectedSUM] = useState('6');
+  const [selectedPago, setSelectedPago] = useState('1');
+
+  const almacenamientoRef = useRef(null);
+  const cardRef = useRef(null);
+  const guarderiaRef = useRef(null);
+  const sumRef = useRef(null);
+  const pagoRef = useRef(null);
+
+  useEffect(() => {
+    almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedTerreno]);
+
+  useEffect(() => {
+    cardRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedCard]);
+
+  useEffect(() => {
+    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedAlmacenamiento]);
+
+  useEffect(() => {
+    sumRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedGuarderia]);
+
+  useEffect(() => {
+    pagoRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedSUM]);
 
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
@@ -16,30 +44,39 @@ export default function RadioInputs() {
     } else {
       setInput3Disabled(true);
     }
-  }
+  };
 
   const handleSelectAlmacenamiento = (event) => {
     setSelectedAlmacenamiento(event.target.value);
-  }
+  };
+
+  const handleSelectCard = (event) => {
+    setSelectedCard(event.target.value);
+  };
 
   const handleSelectGuarderia = (event) => {
     setSelectedGuarderia(event.target.value);
-  }
+  };
 
   const handleSelectSUM = (event) => {
     setSelectedSUM(event.target.value);
-  }
+  };
+
+  const handleSelectPago = (event) => {
+    setSelectedPago(event.target.value);
+  };
 
   return (
     <div>
       <div>
-        <p><b>Terreno.</b> ¿Cuál es el mejor para su familia?</p>
-      <div className={InputCSS['radioInputs']}>
-        
-        <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'F1' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="F1" checked={selectedTerreno === 'F1'} onChange={handleSelectTerreno} />
-          F1
-        </label>
+        <p>
+          <b>Terreno.</b> ¿Cuál es el mejor para su familia?
+        </p>
+        <div className={InputCSS['radioInputs']}>
+          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'F1' ? InputCSS.selected : ''}`}>
+            <input type="radio" value="F1" checked={selectedTerreno === 'F1'} onChange={handleSelectTerreno} />
+            F1
+          </label>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'F2' ? InputCSS.selected : ''}`}>
           <input type="radio" value="F2" checked={selectedTerreno === 'F2'} onChange={handleSelectTerreno} />
           F2
@@ -98,11 +135,23 @@ export default function RadioInputs() {
         </div>
 
 
-        <p><b>Almacenamiento.</b> ¿Cuánto espacio es el adecuado?</p>
-      <div className={InputCSS['radioInputs']}>
+        <div className={InputCSS['ref']} ref={cardRef}>
+        <p><b>Asset Card.</b> Cuántas personas viven con usted?</p>
+        <div className={InputCSS['radioInputs']}>
+        <label className={`${InputCSS['radioInput']} ${selectedCard === '0' ? InputCSS.selected : ''}`}>
+          <input type="number"  checked={selectedCard === '0'} onChange={handleSelectCard} />
+            
+        </label>
+        <br/>
+      </div>
+      </div>
+
+        <div className={InputCSS['ref']} ref={almacenamientoRef}>
+        <p><b>Almacenamiento.</b> ¿Cuánto espacio necesitará para almacenar sus cosas?</p>
+        <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Pequeño' ? InputCSS.selected : ''}`}>
           <input type="radio" value="Pequeño" checked={selectedAlmacenamiento === 'Pequeño'} onChange={handleSelectAlmacenamiento} />
-          Pequeño
+            Pequeño
         </label>
         <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Mediano' ? InputCSS.selected : ''}`}>
           <input type="radio" value="Mediano" checked={selectedAlmacenamiento === 'Mediano'} onChange={handleSelectAlmacenamiento} />
@@ -114,9 +163,10 @@ export default function RadioInputs() {
         </label>
         <br/>
       </div>
+      </div>
 
 
-
+      <div className={InputCSS['ref']} ref={guarderiaRef}>
       <p><b> Guardería.</b> ¿Cuál es el plan que mejor se adapta a ti?</p>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '6' ? InputCSS.selected : ''}`}>
@@ -133,8 +183,9 @@ export default function RadioInputs() {
         </label>
         <br/>
       </div>
+      </div>
 
-
+      <div className={InputCSS['ref']} ref={sumRef}>
       <p><b> SUM.</b> Reservá el espacio para lo que tu quieras.</p>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
@@ -151,7 +202,30 @@ export default function RadioInputs() {
         </label>
         <br/>
       </div>
+      </div>
+
+      <div className={InputCSS['ref']} ref={pagoRef}>
+      <p><b> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
+      <div className={InputCSS['radioInputs']}>
+        <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="1" checked={selectedPago === '1'} onChange={handleSelectPago} />
+          1 cuota
+        </label>
+        <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="6" checked={selectedPago === '6'} onChange={handleSelectPago} />
+          6 cuotas
+        </label>
+        <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="12" checked={selectedPago === '12'} onChange={handleSelectPago} />
+          12 cuotas
+        </label>
+        <br/>
+      </div>
+      </div>
     </div>
     
+
+
+
   );
-}
+} 
