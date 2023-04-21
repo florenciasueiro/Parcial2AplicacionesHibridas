@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import LoginCSS from '../css/Login.module.css';
+import Avatar from '@mui/material/Avatar';
+
 
 
 const theme = createTheme({
@@ -43,15 +45,16 @@ export default function Register() {
         <CssBaseline/>
         <Box
           sx={{
-            marginTop: 9,
+            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5" style={{color: "black"}}>
-            Registrar
-          </Typography>
+  <Avatar src="/broken-image.jpg" sx={{ width: 64, height: 64 }} />
+  <Typography component="h1" variant="h5" style={{color: "black"}}>
+    Registrar
+  </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField 
             InputLabelProps={{

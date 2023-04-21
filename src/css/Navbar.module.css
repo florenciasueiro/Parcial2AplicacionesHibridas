@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: 20000;
 }
 .navprimario{
   top: 20px;

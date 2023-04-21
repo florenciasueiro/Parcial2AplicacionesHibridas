@@ -17,7 +17,7 @@ function App() {
         
       </header>
       <>
-        <Base/>
+        <Base className={InicioCSS.base}/>
       </>
       <div className={InicioCSS.footer}>
         <>
