@@ -35,11 +35,11 @@ export default function useRegistro() {
             throw new Error(errorMessage);
         }
         else if (response.status === 400) {
-            errorMessage = 'Faltan datos requeridos en la solicitud.';
+          let errorMessage = 'Faltan datos requeridos en la solicitud.';
             throw new Error(errorMessage);
             } 
         else if (response.status === 409) {
-              errorMessage = 'El usuario ya ha sido registrado previamente.';
+          let npmerrorMessage = 'El usuario ya ha sido registrado previamente.';
               throw new Error(errorMessage);
             }
             

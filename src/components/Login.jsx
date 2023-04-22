@@ -188,26 +188,14 @@ else{
             <h5>id: {usuario.id}</h5>
             <h5>productos:</h5>
             {usuario.productos.length > 0 ? (usuario.productos.map((producto, index) => (<h5 key={index}>-{producto}</h5>))) : (<h5>aún no tienes productos</h5>)}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={()=>handleLogout()}>
-
-              Mi cuenta
-              
-            </Button>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={()=>handleLogout()}>
-
-              Mis ordenes
-              
-            </Button>
+            
+            <Link style={{color: "#0645AD"}}  to="/perfil">
+                    {"Mi Perfil\n"}
+                  </Link>
+            <br/>      
+            <Link style={{color: "#0645AD"}}  to="/perfil">
+                    {"Mis Productos"}
+                  </Link>
             <Button
               type="submit"
               fullWidth

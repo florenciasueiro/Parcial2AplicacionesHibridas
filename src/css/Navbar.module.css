@@ -112,7 +112,7 @@ button {
   transition: max-height 0.3s ease-in;
 }
 .wrapper.show {
-  height: calc(75vh - 80px);
+  height: fit-content;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
