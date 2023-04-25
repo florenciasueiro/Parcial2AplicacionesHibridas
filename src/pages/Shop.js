@@ -2,7 +2,7 @@ import React from 'react';
 import ShopCSS from '../css/Shop.module.css';
 import Carousel from '../components/Carousel';
 import Inputs from '../components/InputsCompra';
-import FAQ from '../components/PreguntasFrecuentes'
+import FAQ from '../components/PreguntasFrecuentes';
 
 function Shop() {
   return (
