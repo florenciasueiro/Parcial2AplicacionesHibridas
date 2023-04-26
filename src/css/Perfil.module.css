@@ -15,8 +15,8 @@
 .card{
     display: grid;
     grid-template-columns: 4fr 1fr;
-    background-color: rgba(240, 240, 240, 0.7);
-    box-shadow: 0 0 10px 0.5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    box-shadow: 2px 4px 12px rgba(0,0,0,.08);
     padding: 20px;
     border-radius: 15px;
     text-decoration: none;
@@ -61,4 +61,7 @@
 }
 .text h1{
     font-size: 28px;
+}
+.listaElemento button:focus{
+    color: #0071e3;
 }

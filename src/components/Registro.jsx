@@ -56,25 +56,50 @@ export default function Register() {
     Registrar
   </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField 
-            InputLabelProps={{
-              style: { color: 'black'}, 
-            }}
-            InputProps={{
-              style: { color: 'black'},
-              classes: { notchedOutline: LoginCSS.fieldset }
-            }}
-              className={LoginCSS.fieldset}
-              margin="normal"
-              required
-              fullWidth
-              id="nombre"
-              label="Nombre y Apellido"
-              name="nombre"
-              autoComplete="name"
-              autoFocus
-              size='small'
-            />
+  <div style={{ display: 'inline-block'}}>
+    <TextField 
+      InputLabelProps={{
+        style: { color: 'black'}, 
+      }}
+      InputProps={{
+        style: { color: 'black'},
+        classes: { notchedOutline: LoginCSS.fieldset }
+      }}
+      className={LoginCSS.fieldset}
+      margin="normal"
+      required
+      fullWidth
+      id="nombre"
+      label="Nombre"
+      name="nombre"
+      autoComplete="name"
+      autoFocus
+      size='small'
+    />
+  </div>
+  <div style={{ display: 'inline-block' }}>
+    <TextField 
+      InputLabelProps={{
+        style: { color: 'black'}, 
+      }}
+      InputProps={{
+        style: { color: 'black'},
+        classes: { notchedOutline: LoginCSS.fieldset }
+      }}
+      className={LoginCSS.fieldset}
+      margin="normal"
+      required
+      fullWidth
+      id="apellido"
+      label="Apellido"
+      name="apellido"
+      autoComplete="name"
+      autoFocus
+      size='small'
+    />
+  </div>
+
+
             <TextField 
             InputLabelProps={{
               style: { color: 'black'}, 
