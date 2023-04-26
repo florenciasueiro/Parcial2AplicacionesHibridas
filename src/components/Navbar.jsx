@@ -40,10 +40,10 @@ const displayName = (props) => {
     <div className={NavbarCSS.Navbarcontainer}>
       <div className={NavbarCSS.navprimario}>
         <ul className={NavbarCSS.box}>
-          <li className={NavbarCSS.menuItem}><button onClick={hideLogin}><NavLink exact to="/" className={NavbarCSS.logo}><img src="/img/LogoNegro.png" alt=""/></NavLink></button></li>
-          <li className={NavbarCSS.menuItem}><button onClick={hideLogin}><NavLink exact to="/">Inicio</NavLink></button></li>
-          <li className={NavbarCSS.menuItem}><button onClick={hideLogin}><NavLink to="/quarters">Quarters</NavLink></button></li>
-          <li className={NavbarCSS.menuItem}><button onClick={hideLogin}><NavLink to="/eventos">Eventos</NavLink></button></li>
+          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} exact to="/" className={NavbarCSS.logo}><img src="/img/LogoNegro.png" alt=""/></NavLink></li>
+          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} exact to="/">Inicio</NavLink></li>
+          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} to="/quarters">Quarters</NavLink></li>
+          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} to="/eventos">Eventos</NavLink></li>
           <li className={NavbarCSS.menuItem}><button onClick={toggleLogin}>{displayName()}</button></li>
           <div className={`${NavbarCSS.wrapper} ${showLogin ? NavbarCSS.show : ''}`}>
             <div className={NavbarCSS.login}>
