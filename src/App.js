@@ -5,16 +5,16 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer.jsx';
 import InicioCSS from './css/Inicio.module.css';
-//comentario para hacer commit en main
+
 
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
-      <header className={InicioCSS.inicioHeader}>       
-        
+    <div className={InicioCSS.App}>
+      <header className={InicioCSS.inicioHeader}>
+
           <Navbar className={InicioCSS.navbar}/>
-        
+
       </header>
       <>
         <Base className={InicioCSS.base}/>

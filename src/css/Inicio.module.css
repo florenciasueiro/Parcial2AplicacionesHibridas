@@ -51,3 +51,7 @@
   position: relative;
   z-index: -20;
 }
+
+.App{
+  background-color: #f5f5f7;
+}

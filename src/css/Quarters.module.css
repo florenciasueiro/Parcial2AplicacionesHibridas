@@ -1,0 +1,10 @@
+.text{
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    margin-top: 75vh;
+    width: 100vw;
+}

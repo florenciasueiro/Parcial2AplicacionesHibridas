@@ -3,13 +3,12 @@
 
 
 }
-
 .contenedor{
     height: 90vh;
     object-fit: cover;
     display: flex;
     justify-content: center;
-    z-index: -50;
+    z-index: 0;
     position: relative;
 }
 .contenedor2{
@@ -23,7 +22,8 @@
 }
 
 .video{
-    
+    width: 100%;
+    object-fit: cover;
 }
 .imagen{
     width: 100%;
