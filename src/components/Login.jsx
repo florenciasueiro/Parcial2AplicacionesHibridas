@@ -189,11 +189,11 @@ else{
             <h5>productos:</h5>
             {usuario.productos.length > 0 ? (usuario.productos.map((producto, index) => (<h5 key={index}>-{producto}</h5>))) : (<h5>aún no tienes productos</h5>)}
             
-            <Link style={{color: "#0645AD"}}  to="/perfil">
+            <Link style={{color: "#0645AD"}}  to="/profile">
                     {"Mi Perfil\n"}
                   </Link>
             <br/>      
-            <Link style={{color: "#0645AD"}}  to="/perfil">
+            <Link style={{color: "#0645AD"}}  to="/shop">
                     {"Mis Productos"}
                   </Link>
             <Button

@@ -3,6 +3,8 @@ import PerfilCSS from '../css/Perfil.module.css';
 import Avatar from '@mui/material/Avatar';
 
 function Perfil(props) {
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const { onSectionClick, sectionTitle } = props;
 
   const handleSection1Click = () => {
@@ -42,8 +44,8 @@ function Perfil(props) {
     <div className={PerfilCSS.perfil}>
       <Avatar className={PerfilCSS.perfilImg} src="/broken-image.jpg" sx={{ width: 64, height: 64 }} />
       <div className={PerfilCSS.perfilInfo}>
-        <h2>Nombre de usuario</h2>
-        <p>emeplo.mail@gmail.com</p>
+        <h2>{usuario.name}</h2>
+        <p>{usuario.email}</p>
       </div>
       <ul className={PerfilCSS.lista}>
         <li className={PerfilCSS.listaElemento}>
