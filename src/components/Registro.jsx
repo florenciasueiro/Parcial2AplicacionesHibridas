@@ -26,15 +26,17 @@ const theme = createTheme({
     ].join(','),
     },
   });
-
+ 
+  
 export default function Register({Registro}) {
 const [show201, setShow201]= useState(false);
 const [show400, setShow400]= useState(false);
 const [show409, setShow409]= useState(false);
 const [show500, setShow500]= useState(false);
-  const registro = useRegistro();
-  
-  const handleSubmit = async (event) => {
+
+const registro = useRegistro();
+
+const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -62,6 +64,8 @@ const [show500, setShow500]= useState(false);
       setShow500(true);
     }
   };
+
+ 
 
   return (
     <ThemeProvider theme={theme}>
