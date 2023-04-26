@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import LoginCSS from '../css/Login.module.css';
 import Avatar from '@mui/material/Avatar';
 
-
+import useRegistro from '../Service/APIregister'
 
 const theme = createTheme({
   palette: {
@@ -28,16 +28,46 @@ const theme = createTheme({
     ].join(','),
     },
   });
+ 
+  
+export default function Register({Registro}) {
+const [show201, setShow201]= useState(false);
+const [show400, setShow400]= useState(false);
+const [show409, setShow409]= useState(false);
+const [show500, setShow500]= useState(false);
 
-export default function Register() {
-  const handleSubmit = (event) => {
+const registro = useRegistro();
+
+const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+
+    const usuario={
+      nombre : data.get('name'),
       email: data.get('email'),
+      mobile: data.get('tel'),
       password: data.get('password'),
-    });
+    }
+    console.log(usuario);
+
+    const res= registro(usuario, ()=> {console.log("usuario enviado a api.jsx");});
+    
+    console.log(await res)
+    if(await res === 201){
+      setShow201(true);
+    }
+    else if(await res === 400){
+      setShow400(true);
+    }
+    else if(await res === 409){
+      setShow409(true);
+    }
+    else if(await res === 500){
+      setShow500(true);
+    }
   };
+
+ 
 
   return (
     <ThemeProvider theme={theme}>
@@ -55,6 +85,10 @@ export default function Register() {
   <Typography component="h1" variant="h5" style={{color: "black"}}>
     Registrar
   </Typography>
+          {show201 && <p className={LoginCSS.statusMessages}>Contacto creado con exito👌👍.</p>}
+          {show400 && <p className={LoginCSS.statusMessages}>Faltan datos requeridos.</p>}
+          {show409 && <p className={LoginCSS.statusMessages}>Este usuario ya esta registrado.</p>}
+          {show500 && <p className={LoginCSS.statusMessages}>Error Desconocido, reintentar.</p>}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
   <div style={{ display: 'inline-block'}}>
     <TextField 
@@ -69,9 +103,9 @@ export default function Register() {
       margin="normal"
       required
       fullWidth
-      id="nombre"
+      id="name"
       label="Nombre"
-      name="nombre"
+      name="name"
       autoComplete="name"
       autoFocus
       size='small'

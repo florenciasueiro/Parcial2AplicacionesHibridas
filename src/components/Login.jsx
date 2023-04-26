@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import LoginCSS from '../css/Login.module.css';
+
+import useContactos from '../Service/APIlogin'
 
 
 const theme = createTheme({
@@ -27,34 +29,61 @@ const theme = createTheme({
     },
   });
 
-export default function SignIn() {
+export default function SignIn({Contactos}) {
+  
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+
+
+  // if(usuario!=null || !usuario==[]){
+  // console.log(usuario[0].name)}
+
+
+  const [email,setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showError, setShowError]= useState(false);
+  const contactos = useContactos();
+  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    contactos(email, password);
+    
+    if(!usuario || Object.keys(usuario).length===0){
+      setTimeout(() => {
+        setShowError(true);
+      }, 1000);
+      
+    }
+
+    
+    // window.location.reload();
   };
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 6,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Typography component="h1" variant="h5" style={{color: "black"}}>
-            Inicia Sesión
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField 
-            InputLabelProps={{
+    const handleLogout = () => {
+      sessionStorage.clear();
+      window.location.reload();
+  }
+if(!usuario) {
+    return (
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 6,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Typography component="h1" variant="h5" style={{color: "black"}}>
+              Inicia Sesión
+            </Typography>
+            {showError && <p>Email o contraseña inválidos.</p>}
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+              <TextField 
+              InputLabelProps={{
               style: { color: 'black'}, 
             }}
             InputProps={{
@@ -63,14 +92,16 @@ export default function SignIn() {
             }}
               className={LoginCSS.fieldset}
               margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              size='small'
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                value={email}
+                onChange={(e)=> setEmail(e.target.value)}
+                size='small'
             />
             <TextField
             InputLabelProps={{
@@ -81,14 +112,16 @@ export default function SignIn() {
               classes: { notchedOutline: LoginCSS.fieldset }
             }}
               margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              size='small'
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e)=> setPassword(e.target.value)}
+                size='small'
             />
             <div className={LoginCSS.centeredContainer}>
               <FormControlLabel style={{color: "black"}}
@@ -97,31 +130,102 @@ export default function SignIn() {
               />
             </div>
             <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1, mb: 1 }}
+                >
+                
+  
+                Iniciar Sesión
+                
+              </Button>
+              <Grid container display={'flex'}
+            
+              justifyContent="center">
+                <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
+                  <Link style={{padding: '10px', color: "#0645AD"}} align="center" href="#" variant="body2">
+                    ¿Olvidaste tu contraseña?
+                  </Link>
+                </Grid>
+                <Grid item center style={{color: "black"}}>
+                ¿No tienes cuenta? ‎ 
+                  <Link style={{color: "#0645AD"}}  to="/registro">
+                    {"Registrate"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        </Container>
+      </ThemeProvider>
+    );
+  }
+
+
+else{
+  
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Tu cuenta
+          </Typography>
+          <Box component="form" onSubmit={handleLogout} noValidate sx={{ mt: 1 }}>
+   
+            <h5>nombre: {usuario.name}</h5>
+            <h5>email: {usuario.email}</h5>
+            <h5>Telefono: {usuario.mobile}</h5>
+            <h5>id: {usuario.id}</h5>
+            <h5>productos:</h5>
+            {usuario.productos.length > 0 ? (usuario.productos.map((producto, index) => (<h5 key={index}>-{producto}</h5>))) : (<h5>aún no tienes productos</h5>)}
+            
+            <Link style={{color: "#0645AD"}}  to="/perfil">
+                    {"Mi Perfil\n"}
+                  </Link>
+            <br/>      
+            <Link style={{color: "#0645AD"}}  to="/perfil">
+                    {"Mis Productos"}
+                  </Link>
+            <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 1, mb: 1 }}
-            >
-              Iniciar Sesión
+              sx={{ mt: 3, mb: 2 }}
+              onClick={()=>handleLogout()}>
+
+              Cerrar Sesión
+              
             </Button>
-            <Grid container display={'flex'}
-            
+            {/* <Grid container
             justifyContent="center">
-              <Grid item xs justifyContent="center" display={'flex'} alignItems="center">
-                <Link style={{padding: '10px', color: "#0645AD"}} align="center" href="#" variant="body2">
+              <Grid item xs>
+                <Link href="#" variant="body2">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </Grid>
-              <Grid item center style={{color: "black"}}>
-              ¿No tienes cuenta? ‎ 
-                <Link style={{color: "#0645AD"}}  to="/registro">
+              <Grid item>
+              ¿No tienes cuenta? 
+                <Link to="/registrar">
                   {"Registrate"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
       </Container>
     </ThemeProvider>
   );
+
 }
+}
+

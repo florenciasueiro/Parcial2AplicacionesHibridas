@@ -6,12 +6,13 @@
   align-items: center;
   overflow: hidden;
   z-index: 20000;
+    
 }
 .navprimario{
   top: 20px;
   position: fixed;
   border-radius: 50px;
-}
+    box-shadow: 0 0 20px 5px rgba(0,0,0,0.1);}
 
 .box{
   display: flex;
@@ -19,6 +20,7 @@
   border-radius: 50px;
   justify-content: center;
   align-items: center;
+    
 }
 .menuItem{
   display: inline-block;
@@ -49,6 +51,7 @@
   opacity: 1;
   pointer-events: all;
   transition: all 0.3s ease-in-out;
+  
 }
 
 .wrapper {
@@ -67,6 +70,7 @@
   overflow: hidden;
   max-height: 0;
   transform: translateY(-100%);
+  box-shadow: 0 0 50px 10px rgba(0,0,0,0.1);
 }
 
 #active:not(:checked) ~ .wrapper {
