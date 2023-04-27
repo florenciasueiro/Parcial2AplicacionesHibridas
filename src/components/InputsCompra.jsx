@@ -15,54 +15,55 @@ export default function RadioInputs() {
 
   
 
-  const [selectedTerreno, setSelectedTerreno] = useState('');
+
   const [input2Disabled, setInput2Disabled] = useState(true);
   const [input3Disabled, setInput3Disabled] = useState(true);
   const [input4Disabled, setInput4Disabled] = useState(true);
   const [input5Disabled, setInput5Disabled] = useState(true);
-  const [input6Disabled, setInput6Disabled] = useState(true);
-  const [selectedAlmacenamiento, setSelectedAlmacenamiento] = useState('');
-  const [selectedCard, setSelectedCard] = useState('');
-  const [selectedGuarderia, setSelectedGuarderia] = useState('');
-  const [selectedSUM, setSelectedSUM] = useState('');
-  const [selectedPago, setSelectedPago] = useState('');
-  const [showDisp, setShowDisp] = useState(false);
+  const [input6Disabled, setInput6Disabled] = useState(true); 
 
+  const [selectedTerreno,         setSelectedTerreno]        = useState('');
+  const [selectedAlmacenamiento,  setSelectedAlmacenamiento] = useState('');
+  const [selectedCard,            setSelectedCard]           = useState('');
+  const [selectedGuarderia,       setSelectedGuarderia]      = useState('');
+  const [selectedSUM,             setSelectedSUM]            = useState('');
+  const [selectedPago,            setSelectedPago]           = useState('');
   
-
-
-
-
-
-
-
-
-
+  
+  
+  
   const almacenamientoRef = useRef(null);
-  const cardRef = useRef(null);
-  const guarderiaRef = useRef(null);
-  const sumRef = useRef(null);
-  const pagoRef = useRef(null);
+  const cardRef           = useRef(null);
+  const guarderiaRef      = useRef(null);
+  const sumRef            = useRef(null);
+  const pagoRef           = useRef(null);
 
-  useEffect(() => {
-    cardRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedTerreno]);
+  const request = {
+    terreno         : selectedTerreno,
+    almacenamiento  : selectedAlmacenamiento,
+    card            : selectedCard,
+    guarderia       : selectedGuarderia,
+    sum             : selectedSUM,
+    pago            : selectedPago
+  }
+console.log(request)
 
-  useEffect(() => {
-    almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedCard]);
 
-  useEffect(() => {
-    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedAlmacenamiento]);
 
-  useEffect(() => {
-    sumRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedGuarderia]);
+  useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
-  useEffect(() => {
-    pagoRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedSUM]);
+  useEffect(() => {almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedCard]);
+
+  useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedAlmacenamiento]);
+
+  useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
+
+  useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
+
+
+
+
+
 
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
@@ -74,6 +75,9 @@ export default function RadioInputs() {
       }
     };
 
+
+
+
     const handleSelectCard = (event) => {
       setSelectedCard(event.target.value);
       
@@ -84,6 +88,10 @@ export default function RadioInputs() {
       }
     };
     
+
+
+
+
     const handleSelectAlmacenamiento = (event) => {
       setSelectedAlmacenamiento(event.target.value);
   
@@ -93,6 +101,10 @@ export default function RadioInputs() {
         setInput4Disabled(true);
       }
     };
+
+
+
+
 
     const handleSelectGuarderia = (event) => {
       setSelectedGuarderia(event.target.value);
@@ -104,6 +116,10 @@ export default function RadioInputs() {
     }
   };
 
+
+
+
+
   const handleSelectSUM = (event) => {
     setSelectedSUM(event.target.value);
 
@@ -113,6 +129,9 @@ export default function RadioInputs() {
       setInput6Disabled(true);
     }
   };
+
+
+
 
   const handleSelectPago = (event) => {
     setSelectedPago(event.target.value);
@@ -143,6 +162,13 @@ export default function RadioInputs() {
 
   console.log(checkStockByName("Lote 1"));
   
+
+
+
+
+
+
+
   return (
     <div>
       <div>
