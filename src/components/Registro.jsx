@@ -90,7 +90,7 @@ const handleSubmit = async (event) => {
           {show409 && <p className={LoginCSS.statusMessages}>Este usuario ya esta registrado.</p>}
           {show500 && <p className={LoginCSS.statusMessages}>Error Desconocido, reintentar.</p>}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-  <div style={{ display: 'inline-block'}}>
+  <div className={LoginCSS.textfield}>
     <TextField 
       InputLabelProps={{
         style: { color: 'black'}, 
@@ -110,8 +110,6 @@ const handleSubmit = async (event) => {
       autoFocus
       size='small'
     />
-  </div>
-  <div style={{ display: 'inline-block' }}>
     <TextField 
       InputLabelProps={{
         style: { color: 'black'}, 

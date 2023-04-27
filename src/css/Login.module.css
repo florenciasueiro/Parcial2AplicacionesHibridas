@@ -28,3 +28,8 @@
    padding: 8.5px!important;
    
  }
+.textfield{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 15px;
+}
