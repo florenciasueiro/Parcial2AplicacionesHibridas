@@ -1,10 +1,21 @@
 .text{
-    display: flex;
     position: absolute;
     z-index: 10;
     justify-content: center;
     align-items: center;
-    color:white;
-    margin-top: 75vh;
+    margin-top: 65vh;
     width: 100vw;
-}
+    color: white;
+  }
+  .text h1, .text p, .link{
+    display: flex;
+    width: 75vw;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .link{
+    color: #0071e3;
+  }
