@@ -5,7 +5,13 @@ import PerfilCSS from '../css/Perfil.module.css';
 
 function ProfilePage() {
   const [activeSection, setActiveSection] = useState('Inicio de Sesion');
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
+  if(usuario===null){
+    return <h1>Debes crearte una cuenta para acceder a esta pagina</h1>
+  }
+  else{
   return (
     <div className={PerfilCSS.profilePage}>
       <div className={PerfilCSS.leftSection}>
@@ -28,6 +34,7 @@ function ProfilePage() {
       </div>
     </div>
   );
+  }
 }
 
 export default ProfilePage;
