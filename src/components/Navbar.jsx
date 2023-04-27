@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
 // import Contactos from "../Service/APIlogin";
-
+// import useProducto from '../Service/APIproducto';
 function Navbar() {
 
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 console.log(usuario);
+
+
 
 const displayName = (props) => {
   if (!usuario || Object.keys(usuario).length === 0) {

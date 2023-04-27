@@ -15,7 +15,7 @@ const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const previousSlide = () => {
-    console.log('Previous slide clicked');
+    // console.log('Previous slide clicked');
     const lastIndex = images.length - 1;
     const shouldResetIndex = currentIndex === 0;
     const index = shouldResetIndex ? lastIndex : currentIndex - 1;
@@ -23,7 +23,7 @@ const Carousel = () => {
   };
   
   const nextSlide = () => {
-    console.log('Next slide clicked');
+    // console.log('Next slide clicked');
     const lastIndex = images.length - 1;
     const shouldResetIndex = currentIndex === lastIndex;
     const index = shouldResetIndex ? 0 : currentIndex + 1;
@@ -64,7 +64,7 @@ const Carousel = () => {
       <button className={`${styles.carouselButton} ${styles.next}`} onClick={nextSlide}>
         <i className="fas fa-chevron-right"></i>
       </button>
-      {console.log(currentIndex)}
+      {/* {console.log(currentIndex)} */}
     </div>
     </div>
     

@@ -35,6 +35,8 @@ export default function SignIn({Contactos}) {
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
 
+ 
+
   // if(usuario!=null || !usuario==[]){
   // console.log(usuario[0].name)}
 
@@ -59,6 +61,7 @@ export default function SignIn({Contactos}) {
     
     // window.location.reload();
   };
+
 
     const handleLogout = () => {
       sessionStorage.clear();
@@ -151,7 +154,7 @@ if(!usuario) {
                 <Grid item center style={{color: "black"}}>
                 ¿No tienes cuenta? ‎ 
                   <Link style={{color: "#0645AD"}}  to="/registro">
-                    {"Registrate"}
+                    Registrate
                   </Link>
                 </Grid>
               </Grid>
@@ -193,7 +196,7 @@ else{
                     {"Mi Perfil\n"}
                   </Link>
             <br/>      
-            <Link style={{color: "#0645AD"}}  to="/shop">
+            <Link  style={{color: "#0645AD"}}  to="/shop">
                     {"Mis Productos"}
                   </Link>
             <Button
