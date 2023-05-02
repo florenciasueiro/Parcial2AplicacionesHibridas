@@ -1,0 +1,35 @@
+.container{
+    margin: auto;
+    padding: 10px;
+    
+ }
+ .statusMessages{
+    color:red;
+ }
+ 
+ /* .input{
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+ } */
+ 
+ .fieldset {
+    border-color: darkgray!important;
+    border-radius: 8px!important;
+    
+  }
+ /* .centeredContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ } */
+ .fieldset input {
+    padding: 8.5px!important;
+    
+  }
+ .textfield{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+ }

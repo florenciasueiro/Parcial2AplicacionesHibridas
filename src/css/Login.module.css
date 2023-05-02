@@ -7,29 +7,72 @@
    color:red;
 }
 
-/* .input{
-   border: 1px solid white;
-   border-radius: 8px;
-   background-color: black;
-   color: white;
-} */
+.loginContainer{
+  top: 30px;
+  position: relative;
+}
 
-.fieldset {
-   border-color: darkgray!important;
-   border-radius: 8px!important;
-   
- }
-/* .centeredContainer {
+
+
+
+
+
+
+
+ .inputContainer {
+  position: relative;
+  margin: 1rem auto;
+}
+
+.label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.2s ease-out;
+}
+
+.input {
+  width: -webkit-fill-available;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.2s ease-out;
+  margin: 0.5rem;
+} 
+
+.inputContainer:focus-within .label,
+.input:focus + .label {
+  top: 0;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.inputContainer:focus-within .input,
+.input:focus {
+  border-color: #333;
+}
+
+
+
+
+
+ 
+ .h1{
   display: flex;
   justify-content: center;
-  align-items: center;
-} */
-.fieldset input {
-   padding: 8.5px!important;
-   
+  color: black;
  }
-.textfield{
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 15px;
-}
+
+ .checkbox{
+  display: flex;
+  justify-content: start;
+  margin: 0.5rem;
+ }
+ .inputcb{
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+ }

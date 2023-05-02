@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
 import Contactos from "../Service/APIlogin";
+import NavbarBlackCSS from '../css/NavbarBlack.module.css'
 
 function Navbar() {
+  
+  const location = useLocation();
+  const isShopPage = location.pathname === '/shop';
 
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
@@ -29,6 +33,8 @@ const displayName = (props) => {
   };
   const [showLogin, setShowLogin] = useState(false);
 
+
+
   const toggleLogin = () => {
     setShowLogin(!showLogin);
   };
@@ -37,16 +43,16 @@ const displayName = (props) => {
 
 
   return (
-    <div className={NavbarCSS.Navbarcontainer}>
-      <div className={NavbarCSS.navprimario}>
-        <ul className={NavbarCSS.box}>
-          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} exact to="/" className={NavbarCSS.logo}><img src="/img/LogoNegro.png" alt=""/></NavLink></li>
-          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} exact to="/">Inicio</NavLink></li>
-          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} to="/quarters">Quarters</NavLink></li>
-          <li className={NavbarCSS.menuItem}><NavLink onClick={hideLogin} to="/eventos">Eventos</NavLink></li>
-          <li className={NavbarCSS.menuItem}><button onClick={toggleLogin}>{displayName()}</button></li>
-          <div className={`${NavbarCSS.wrapper} ${showLogin ? NavbarCSS.show : ''}`}>
-            <div className={NavbarCSS.login}>
+    <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarBlackCSS.Navbarcontainer : ''}`}>
+      <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarBlackCSS.navbarcontainer : ''}`}>
+        <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarBlackCSS.box : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} exact to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}><img src="/img/LogoNegro.png" alt=""/></NavLink></li>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} exact to="/">Inicio</NavLink></li>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} to="/quarters">Quarters</NavLink></li>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} to="/eventos">Eventos</NavLink></li>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><button onClick={toggleLogin}>{displayName()}</button></li>
+          <div className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarBlackCSS.wrapper} ${showLogin ? NavbarBlackCSS.show : ''}` : ''} ${showLogin ? NavbarCSS.show : ''}`}>
+            <div className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
               <Login Contactos={handleLogin}/>
             </div>
           </div>

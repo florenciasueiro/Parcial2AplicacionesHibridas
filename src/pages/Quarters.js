@@ -13,7 +13,7 @@ function Quarters() {
       <div className={QuartersCSS.text}>
         <h1>Quarters Family 1</h1>
         <p>En nuestro barrio residencial podrás disfrutar de la sofisticación y la alta calidad que mereces. No esperes más para asegurar el futuro de tu familia, reserva ahora mismo tu terreno en nuestro exclusivo barrio y comienza a disfrutar de una vida plena y confortable.</p>
-        <Link className={QuartersCSS.link} to="/shop">Comprar</Link>
+        <Link className={QuartersCSS.link} to="/shop"><b>Comprar</b></Link>
       </div>
       <BackgroundQuarters className={QuartersCSS.background}/>
       </>

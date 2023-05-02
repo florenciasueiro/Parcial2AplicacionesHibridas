@@ -3,6 +3,7 @@ import ShopCSS from '../css/Shop.module.css';
 import Carousel from '../components/Carousel';
 import Inputs from '../components/InputsCompra';
 import FAQ from '../components/PreguntasFrecuentes';
+import Comparative from '../components/Comparative';
 
 function Shop() {
   return (
@@ -19,10 +20,16 @@ function Shop() {
         <h1>Que incluye mi compra?</h1>
         <br/>
       </div>
+      <div className={ShopCSS.comparative}>
+        <div>
+          <Comparative/>
+        </div>
+      </div>
       <div className={ShopCSS.faq}>
       <h1>Preguntas Frecuentes</h1>
         <FAQ/>
       </div>
+      
 
     </div>
   );
