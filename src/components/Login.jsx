@@ -6,9 +6,17 @@ import LoginCSS from '../css/Login.module.css';
 export default function SignIn() {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showError, setShowError] = useState(false);
+
+
+ 
+
+  // if(usuario!=null || !usuario==[]){
+  // console.log(usuario[0].name)}
+
+
+  const [email,setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showError, setShowError]= useState(false);
   const contactos = useContactos();
   const [emailLabel, setEmailLabel] = useState('');
   const [passwordLabel, setPasswordLabel] = useState('');
@@ -24,6 +32,7 @@ export default function SignIn() {
       }, 1000);
     }
   };
+
 
   const handleLogout = () => {
     sessionStorage.clear();
