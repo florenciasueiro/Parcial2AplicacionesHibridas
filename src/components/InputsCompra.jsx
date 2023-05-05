@@ -166,15 +166,20 @@ useEffect(() => {
   cargarProductos();
 }, [cargaron, productos]);
 
-  // useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
+useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
-  // useEffect(() => {almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedCard]);
+useEffect(() => {almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedCard]);
 
-  // useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedAlmacenamiento]);
+useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedAlmacenamiento]);
 
-  // useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
+useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
 
-  // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
+useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
+
+
+
+
+
 
 
 //MERCADO PAGO
