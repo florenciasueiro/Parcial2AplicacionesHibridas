@@ -27,10 +27,6 @@ const Checkout = ({ onClick }) => {
     {/* <section className={shoppingCartClass}> */}
     <section className={InputCSS.shoppingCart}>
     <div className={InputCSS["container"]} id={InputCSS["container"]}>
-      <div className={InputCSS.blockHeading}>
-        <h2>Tu Compra</h2>
-        <p></p>
-      </div>
       <div className={InputCSS.content}>
         <div className={InputCSS["row"]}>
           <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-8"]}>
@@ -44,22 +40,6 @@ const Checkout = ({ onClick }) => {
                       </div>
                       <div className={InputCSS["col-md-4"] + " " + InputCSS.productDetail}>
                         
-                        <div className={InputCSS.productInfo}>
-                          <b>Description: </b>
-                          <span id={InputCSS["product-description"]}>{orderData.description}</span>
-                          <br />
-                          <b>Asset Cards: </b>{orderData.cards}
-                          <br />
-                          <b>Almacenamiento: </b>{orderData.storage}
-                          <br />
-                          <b>Guardería: </b>{orderData.guarderia}
-                          <br />
-                          <b>SUM: </b>{orderData.sum}
-                          <br />
-                          
-                          <b>Precio por el lote:</b> $ <span id={InputCSS["unit-price"]}>${orderData.price}</span>
-                          <br />
-                        </div>
                       </div>
                       {/* <div className={InputCSS["col-md-3"] + " " + InputCSS["product-detail"]}>
                         <label htmlFor="quantity">
