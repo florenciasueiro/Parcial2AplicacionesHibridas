@@ -39,7 +39,7 @@ export default function RadioInputs() {
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0 });
+  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
 //FIN DE MERCADO PAGO
 
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -79,6 +79,10 @@ orderData.storage=request.almacenamiento;
 orderData.sum=request.sum;
 orderData.guarderia=request.guarderia;
 
+const usuarioJson = sessionStorage.getItem('user');
+const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+console.log(usuario);
+orderData.user = usuario;
 console.log(orderData);
 
 
