@@ -1,0 +1,70 @@
+.footerBox{
+    text-align: center;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    background-color: #f5f5f7;
+    width: 100%;
+    padding: 0.5rem;
+        position: relative;
+        bottom: 0;
+        font-size: 11px;
+}
+/*.pt4{
+    padding-top: 1.5rem;
+}
+.p3{
+    padding: 1rem;
+}*/
+.mb-4{
+    margin-bottom: 1.5rem;
+}
+ul{
+    display: inline-flex;
+    list-style: none;
+}
+.bgBlack{
+    background-color: black;
+}
+.footerLi .footerA{
+    color: darkgray !important;
+    text-decoration: none;
+    margin: 0.5rem;
+}
+.facebook :hover{
+    color:  #4267B2;
+}
+.twitter :hover{
+    color:  #1DA1F2;
+}
+.instagram :hover{
+    color: #C13584;
+}
+.youtube :hover{
+    color:  #FF0000;
+}
+.footerCopy{
+    color: darkgray;
+}
+.textCenter{
+    text-align: center;
+}
+.textDark{
+    color: black;
+}
+.textCenter{
+    text-align: center;
+    color: #6e6e73;
+}
+.footerCopy{
+    
+}
+.linkText{
+    color: #0645AD  ;
+    text-decoration: none;
+}
+
+.groupLink{
+    padding-right: 10px;
+}

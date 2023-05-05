@@ -1,23 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Base from './pages/Base.js';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Cards from './components/Cards';
-import Login from './components/Login';
-import Background from './components/Background';
+import Footer from './components/Footer.jsx';
+import InicioCSS from './css/Inicio.module.css';
 
 function App() {
+  // const location = useLocation(); // obtén la ubicación actual
+
+  // let navbarClass = InicioCSS.navbar; // clase CSS predeterminada para el Navbar
+
+  // // Si la ruta actual es "/base", cambia la clase CSS del Navbar
+  // if (location.pathname === '/base') {
+  //   navbarClass = InicioCSS.navbarBase;
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">       
+    <BrowserRouter>
+      <div className={InicioCSS.App}>
+        <header className={InicioCSS.inicioHeader}>
+          <Navbar/>
+        </header>
         <>
-        <Navbar/>
-        <Background/>
+          <Base className={InicioCSS.base} />
         </>
-      </header>
-    </div>
+        <div className={InicioCSS.footer}>
+          <>
+            <Footer />
+          </>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
-//xd

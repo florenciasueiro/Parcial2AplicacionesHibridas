@@ -1,0 +1,35 @@
+/* Shop.module.css */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  height: 2200px;
+}
+
+.carousel {
+  width: 70vw;
+  height: fit-content;
+  position: sticky;
+  top: 50px;
+}
+
+.inputs {
+  padding: 1rem;
+  width: 30vw;
+  max-height: 340px;
+  top: 90px;
+  position: relative;
+}
+
+.faq{
+  padding-bottom: 1rem;
+}

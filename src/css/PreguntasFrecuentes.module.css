@@ -1,0 +1,46 @@
+/* Icono de la flecha */
+.faqChevron {
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #333;
+  border-right: 2px solid #333;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.faqChevronUp {
+  transform: rotate(135deg);
+}
+
+/* Respuesta */
+.faqAnswer {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 16px;
+}
+
+
+
+/* Contenedor de la pregunta y la respuesta */
+.faqContainer {
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  padding-top: 20px;
+  width: 70vw;
+}
+
+/* Pregunta */
+.faqQuestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 0;
+  cursor: pointer;
+  color: #333;
+}
+
+.faqQuestion:hover {
+  color: #0080ff;
+}
