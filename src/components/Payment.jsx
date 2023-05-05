@@ -20,7 +20,7 @@ const Payment = () => {
 
     return (
       <Wallet 
-        initialization={{ preferenceId: preferenceId }}
+        initialization={{ preferenceId: preferenceId , redirectMode:'modal' }}
         onReady={handleOnReady} />
       )
   }
