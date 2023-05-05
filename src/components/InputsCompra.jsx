@@ -84,29 +84,6 @@ console.log(orderData);
 
 
 
-const productos = useProducto();
-useEffect(() => {
-  async function cargarProductos(){
-    if(!cargaron){
-      await productos();
-      
-      
-      
-      setCargaron(true)
-    }
-  }
-  cargarProductos();
-}, [cargaron, productos]);
-
-
-function checkPriceByName(name) {
-  const obj = producto.find(item => item.name === name);
-  if (obj && obj.price > 0) {
-    return obj.price;
-  } else {
-    return 0;
-  }
-}
 
 
 
@@ -117,7 +94,7 @@ function checkPriceByName(name) {
 
 const postVenta = async () => {
   try {
-    const response = await fetch(`http://192.168.1.89:8080/v1/venta`, {
+    const response = await fetch(`http://localhost:8080/v1/venta`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -171,7 +148,19 @@ console.error(error.status);
     // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
   }
 }
-
+const productos = useProducto();
+useEffect(() => {
+  async function cargarProductos(){
+    if(!cargaron){
+      await productos();
+      
+      
+      
+      setCargaron(true)
+    }
+  }
+  cargarProductos();
+}, [cargaron, productos]);
 
   // useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
@@ -240,6 +229,10 @@ if(cargaron){
 
   const productoJson = sessionStorage.getItem('productos');
   const producto = productoJson ? JSON.parse(productoJson) : null;
+
+
+
+
 
  function checkPriceByName(name) {
   const obj = producto.find(item => item.name === name);
