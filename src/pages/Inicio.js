@@ -3,21 +3,26 @@ import React from 'react';
 import InicioCSS from '../css/Inicio.module.css';
 import Cards from '../components/Cards';
 //import Login from './components/Login';
-import { Background } from  '../components/Background';
+import {CardGrid9, CardGrid10 } from '../components/GridApp';
+import { BackgroundQuarters } from  '../components/Background';
 
 
 
 function Inicio() {
   return (
     <div className={InicioCSS.inicio}>
+      <div className={InicioCSS.text}>
+        <h1 className={InicioCSS.h1}>Somos Asset</h1>
+        <p className={InicioCSS.p}>Tu valor agregado.</p>
+      </div>
       <>
-      <Background className={InicioCSS.background}/>
+      <BackgroundQuarters className={InicioCSS.background}/>
       </>
 
       <div className={InicioCSS.cards}>
         <>
-        <Cards className={InicioCSS.card}/>
-        <Cards className={InicioCSS.card}/>
+        <CardGrid9/>
+        <CardGrid10/>
         </>
       </div>
     </div>

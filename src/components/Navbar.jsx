@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
-// import Contactos from "../Service/APIlogin";
+import Contactos from "../Service/APIlogin";
 import NavbarBlackCSS from '../css/NavbarBlack.module.css'
 
 function Navbar() {
@@ -52,7 +52,7 @@ const displayName = (props) => {
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} exact to="/">Inicio</NavLink></li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} to="/quarters">Quarters</NavLink></li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} to="/eventos">Eventos</NavLink></li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><button onClick={toggleLogin}>{displayName()}</button></li>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><button className={NavbarCSS.btn} onClick={toggleLogin}>{displayName()}</button></li>
           <div className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarBlackCSS.wrapper} ${showLogin ? NavbarBlackCSS.show : ''}` : ''} ${showLogin ? NavbarCSS.show : ''}`}>
             <div className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
               <Login Contactos={handleLogin}/>

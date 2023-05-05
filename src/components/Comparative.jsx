@@ -17,50 +17,170 @@ function ProductSelection() {
       <div>
         <label htmlFor="product1">Product 1</label>
         <select id="product1" value={product1} onChange={handleProduct1Change}>
-          <option value="">Select an option</option>
-          <option value="product1-option1">Product 1 Option 1</option>
-          <option value="product1-option2">Product 1 Option 2</option>
-          <option value="product1-option3">Product 1 Option 3</option>
+          <option value="">Selecciona una opcion</option>
+          <option value="product1-option1">F1</option>
+          <option value="product1-option2">F2</option>
+          <option value="product1-option3">F3</option>
+          <option value="product1-option4">F4</option>
+          <option value="product1-option5">F5</option>
+          <option value="product1-option6">F6</option>
+          <option value="product1-option7">F7</option>
+          <option value="product1-option8">F8</option>
+          <option value="product1-option9">F9</option>
+          <option value="product1-option10">F10</option>
+          <option value="product1-option11">F11</option>
+          <option value="product1-option12">F12</option>
+          <option value="product1-option13">F13</option>
         </select>
         {product1 === 'product1-option1' && (
           <div>
-            <p>Option 1 content for Product 1</p>
+          <p>F1</p>
           </div>
         )}
         {product1 === 'product1-option2' && (
-          <div>
-            <p>Option 2 content for Product 1</p>
-          </div>
+        <div>
+          <p>F2</p>
+        </div>
         )}
         {product1 === 'product1-option3' && (
-          <div>
-            <p>Option 3 content for Product 1</p>
-          </div>
+        <div>
+          <p>F3</p>
+        </div>
+        )}
+        {product1 === 'product1-option4' && (
+        <div>
+          <p>F4</p>
+        </div>
+        )}
+        {product1 === 'product1-option5' && (
+        <div>
+          <p>F5</p>
+        </div>
+        )}
+        {product1 === 'product1-option6' && (
+        <div>
+          <p>F6</p>
+        </div>
+        )}
+        {product1 === 'product1-option7' && (
+        <div>
+          <p>F7</p>
+        </div>
+        )}
+        {product1 === 'product1-option8' && (
+        <div>
+          <p>F8</p>
+        </div>
+        )}
+        {product1 === 'product1-option9' && (
+        <div>
+          <p>F9</p>
+        </div>
+        )}
+        {product1 === 'product1-option10' && (
+        <div>
+          <p>F10</p>
+        </div>
+        )}
+        {product1 === 'product1-option11' && (
+        <div>
+          <p>F11</p>
+        </div>
+        )}
+        {product1 === 'product1-option12' && (
+        <div>
+          <p>F12</p>
+        </div>
+        )}
+        {product1 === 'product1-option13' && (
+        <div>
+          <p>F13</p>
+        </div>
         )}
       </div>
       <div>
         <label htmlFor="product2">Product 2</label>
         <select id="product2" value={product2} onChange={handleProduct2Change}>
-          <option value="">Select an option</option>
-          <option value="product2-option1">Product 2 Option 1</option>
-          <option value="product2-option2">Product 2 Option 2</option>
-          <option value="product2-option3">Product 2 Option 3</option>
+          <option value="">Selecciona una opcion</option>
+          <option value="product2-option1">F1</option>
+          <option value="product2-option2">F2</option>
+          <option value="product2-option3">F3</option>
+          <option value="product2-option4">F4</option>
+          <option value="product2-option5">F5</option>
+          <option value="product2-option6">F6</option>
+          <option value="product2-option7">F7</option>
+          <option value="product2-option8">F8</option>
+          <option value="product2-option9">F9</option>
+          <option value="product2-option10">F10</option>
+          <option value="product2-option11">F11</option>
+          <option value="product2-option12">F12</option>
+          <option value="product2-option13">F13</option>
         </select>
         {product2 === 'product2-option1' && (
-          <div>
-            <p>Option 1 content for Product 2</p>
-          </div>
+        <div>
+          <p>F1</p>
+        </div>
         )}
         {product2 === 'product2-option2' && (
-          <div>
-            <p>Option 2 content for Product 2</p>
-          </div>
+        <div>
+          <p>F2</p>
+        </div>
         )}
         {product2 === 'product2-option3' && (
-          <div>
-            <p>Option 3 content for Product 2</p>
-          </div>
+        <div>
+          <p>F3</p>
+        </div>
         )}
+        {product2 === 'product2-option4' && (
+        <div>
+          <p>F4</p>
+        </div>
+        )}
+        {product2 === 'product2-option5' && (
+        <div>
+          <p>F5</p>
+        </div>
+        )}
+        {product2 === 'product2-option6' && (
+        <div>
+          <p>F6</p>
+        </div>
+        )}
+        {product2 === 'product2-option7' && (
+        <div>
+          <p>F7</p>
+        </div>
+        )}
+        {product2 === 'product2-option8' && (
+        <div>
+          <p>F8</p>
+        </div>
+        )}
+        {product2 === 'product2-option9' && (
+        <div>
+          <p>F9</p>
+        </div>
+        )}
+        {product2 === 'product2-option10' && (
+        <div>
+          <p>F10</p>
+        </div>
+        )}
+        {product2 === 'product2-option11' && (
+        <div>
+          <p>F11</p>
+        </div>
+        )}
+        {product2 === 'product2-option12' && (
+        <div>
+          <p>F12</p>
+        </div>
+        )}
+        {product2 === 'product2-option13' && (
+        <div>
+          <p>F13</p>
+        </div>
+)}
       </div>
     </div>
   );

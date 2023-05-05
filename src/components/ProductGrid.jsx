@@ -19,10 +19,6 @@
       </div>
     );
   }
-  
-
-  
-  
 
   // Define el componente de la grilla
   function GrillaTarjetas({ tarjetas }) {

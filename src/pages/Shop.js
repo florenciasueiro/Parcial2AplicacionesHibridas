@@ -3,7 +3,7 @@ import ShopCSS from '../css/Shop.module.css';
 import Carousel from '../components/Carousel';
 import Inputs from '../components/InputsCompra';
 import FAQ from '../components/PreguntasFrecuentes';
-import Comparative from '../components/Comparative';
+// import Comparative from '../components/Comparative';
 
 function Shop() {
   return (
@@ -22,7 +22,7 @@ function Shop() {
       </div>
       <div className={ShopCSS.comparative}>
         <div>
-          <Comparative/>
+          {/* <Comparative/> */}
         </div>
       </div>
       <div className={ShopCSS.faq}>
