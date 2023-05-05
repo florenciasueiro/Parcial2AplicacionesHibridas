@@ -44,7 +44,7 @@ export default function SignIn() {
       <div className={LoginCSS.loginContainer}>
         <h1 className={LoginCSS.h1}>Inicia Sesión</h1>
         {showError && <p>Email o contraseña inválidos.</p>}
-        <form onSubmit={handleSubmit}>
+        <form className={LoginCSS.form} onSubmit={handleSubmit}>
           <div className={LoginCSS.inputContainer}>
             <label className={LoginCSS.label} htmlFor="email">Email Address:</label>
             <input className={LoginCSS.input}
@@ -67,20 +67,20 @@ export default function SignIn() {
               required
             />
           </div>
-          <div className={LoginCSS.centeredContainer}>
+          <div>
             <label className={LoginCSS.checkbox}>
               <input className={LoginCSS.inputcb} type="checkbox" value="remember" />
               Recuérdame
             </label>
           </div>
-          <button type="submit">Iniciar Sesión</button>
+          <button className={LoginCSS.btn} type="submit">INICIAR SESIÓN</button>
           <div className={LoginCSS.centeredContainer}>
             <Link style={{ padding: '10px', color: '#0645AD' }} align="center" href="#" variant="body2">
               ¿Olvidaste tu contraseña?
             </Link>
           </div>
           <div className={LoginCSS.centeredContainer}>
-            <p style={{ color: 'black' }}>¿No tienes cuenta?‎</p>
+            <p style={{ color: 'black' }}>¿No tienes cuenta? ‎</p>
             <Link style={{ color: '#0645AD' }} to="/registro">
               Regístrate
             </Link>

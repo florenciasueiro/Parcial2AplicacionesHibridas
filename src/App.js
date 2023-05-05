@@ -6,27 +6,33 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer.jsx';
 import InicioCSS from './css/Inicio.module.css';
 
-
 function App() {
+  // const location = useLocation(); // obtén la ubicación actual
+
+  // let navbarClass = InicioCSS.navbar; // clase CSS predeterminada para el Navbar
+
+  // // Si la ruta actual es "/base", cambia la clase CSS del Navbar
+  // if (location.pathname === '/base') {
+  //   navbarClass = InicioCSS.navbarBase;
+  // }
+
   return (
     <BrowserRouter>
-    <div className={InicioCSS.App}>
-      <header className={InicioCSS.inicioHeader}>
-
-          <Navbar className={InicioCSS.navbar}/>
-
-      </header>
-      <>
-        <Base className={InicioCSS.base}/>
-      </>
-      <div className={InicioCSS.footer}>
+      <div className={InicioCSS.App}>
+        <header className={InicioCSS.inicioHeader}>
+          <Navbar/>
+        </header>
         <>
-        <Footer/>
+          <Base className={InicioCSS.base} />
         </>
+        <div className={InicioCSS.footer}>
+          <>
+            <Footer />
+          </>
+        </div>
       </div>
-    </div>
     </BrowserRouter>
   );
 }
+
 export default App;
-//xd

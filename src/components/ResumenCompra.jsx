@@ -22,7 +22,7 @@ const AppleStyle = () => {
         <p className={ResumenCSS.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Nullam bibendum, dolor nec lacinia tincidunt, magna massa
-          tristique dui, vel consequat sapien felis in lectus. Sed
+          tristique dui, vel consequat sapien  felis in lectus. Sed
           lacinia volutpat tempor. Morbi porttitor leo vel eros
           tincidunt, at congue nunc dapibus. Sed suscipit dolor a
           lorem ullamcorper, sit amet semper metus tempor. Integer

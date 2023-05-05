@@ -347,7 +347,7 @@ const handleSelectSUM = (event) => {
       <div>
         <p>
           <b>Terreno.</b> ¿Cuál es el mejor para su familia?
-        </p>
+        </p><p className={InputCSS['icono']}>?</p>
         <div className={InputCSS['radioInputs']}>
           <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
             <input 
@@ -479,10 +479,6 @@ const handleSelectSUM = (event) => {
           <input type="radio" value="4" checked={selectedCard === '4'} onChange={handleSelectCard} disabled={input2Disabled}/>
           4
         </label>
-        <label className={`${InputCSS['radioInput']} ${selectedCard === '5' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="5" checked={selectedCard === '5'} onChange={handleSelectCard} disabled={input2Disabled}/>
-          5
-        </label>
         <br/>
       </div>
       </div>
@@ -525,6 +521,10 @@ const handleSelectSUM = (event) => {
         <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '24' ? InputCSS.selected : ''}`}>
           <input type="radio" value="24" checked={selectedGuarderia === '24'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
           24 Meses
+        </label>
+        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '24' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="24" checked={selectedGuarderia === '24'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+          Ninguno
         </label>
         <br/>
       </div>

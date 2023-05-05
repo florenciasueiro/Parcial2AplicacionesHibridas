@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FooterCSS from '../css/Footer.module.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -49,11 +50,19 @@ function Footer() {
         </a>
       </div> */}
 
-      <div>
-      <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
-      Registrarse | Iniciar sesión | Soporte
-        </a>
+<div className={FooterCSS.container}>
+      <div className={FooterCSS.groupLink}>
+        <Link className={FooterCSS.linkText} to='/registro'>
+          Registrarse | ‎
+        </Link>
+        <Link className={FooterCSS.linkText} to='/login'>
+          Iniciar sesión | ‎
+        </Link>
+        <Link className={FooterCSS.linkText} to='/soporte'>
+          Soporte  ‎
+        </Link>
       </div>
+    </div>
 
     </footer>
   );

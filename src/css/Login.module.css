@@ -8,13 +8,19 @@
 }
 
 .loginContainer{
-  top: 30px;
+  top: 10px;
   position: relative;
+  margin: 20px 0px;
 }
 
 
+.form{
+}
 
-
+.centeredContainer{
+  display: flex;
+  justify-content: center;
+}
 
 
 
@@ -57,22 +63,47 @@
 
 
 
-
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  width: -webkit-fill-available;
+  margin: 10px;
+  padding: 10px;
+}
 
  
  .h1{
+  margin: 10px;
   display: flex;
   justify-content: center;
   color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
  }
 
  .checkbox{
   display: flex;
   justify-content: start;
   margin: 0.5rem;
+  align-items: center;
  }
  .inputcb{
   display: flex;
   justify-content: center;
   margin: 0.5rem;
  }
+
+ input[type="checkbox"],
+input[type="radio"]{
+	width: 1.5em;
+	height: 1.5em;
+	margin-right: 0.65rem;
+}
+input[type="checkbox"]:checked{
+  background-color: black;
+}
