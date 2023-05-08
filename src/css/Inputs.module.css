@@ -42,3 +42,59 @@
   height: 50px;
   border-radius: 5px;
 }
+
+
+/* .infoIcon{
+  background-color: rgb(216, 216, 216);
+  color: gray;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+span[title] {
+  position: relative;
+} */
+
+span[title]:hover:after {
+  content: attr(title);
+  display: flex;
+  position: absolute;
+  right: 0;
+  box-sizing: border-box;
+  padding: 5px;
+  background-color: gray;
+  color: white;
+  font-size: 14px;
+  z-index: 1;
+}
+
+
+
+.MuiSvgIconRoot {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
+.MuiSvgIcon-colorPrimary {
+  color: #1976d2;
+}
+.MuiSvgIcon-colorSecondary {
+  color: #dc004e;
+}
+
+
+.texto{
+  display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}

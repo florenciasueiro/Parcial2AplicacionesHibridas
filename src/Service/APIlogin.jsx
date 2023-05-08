@@ -11,7 +11,7 @@ import {useCallback } from 'react';
 export default function useContactos(){
   const contactos = useCallback(async (email, password) => {
     try {
-      const response = await fetch(`http://192.168.1.89:8080/v2/login?email=${email}&password=${password}`, {
+      const response = await fetch(`http://localhost:8080/v2/login?email=${email}&password=${password}`, {
         headers: {
           'accept': 'application/json',
           'Acces-Control-Allow-Origin': '*'

@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 export default function useRegistro() {
     const registro = useCallback(async (usuario) => {
         try {
-          const response = await fetch(`http://192.168.1.89:8080/v1/register`, {
+          const response = await fetch(`http://localhost:8080/v1/register`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

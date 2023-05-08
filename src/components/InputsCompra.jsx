@@ -222,21 +222,26 @@ function checkStockByName(name) {
 
   return (
     <div>
-      <div>
-        <p>
-          <b>Terreno.</b> ¿Cuál es el mejor para su familia?
-        </p><p className={InputCSS['icono']}>?</p>
-        <div className={InputCSS['radioInputs']}>
-          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'F1' ? InputCSS.selected : ''}`}>
-            <input 
-              type="radio" 
-              value="F1" 
-              checked={selectedTerreno === 'F1'} 
-              onChange={handleSelectTerreno}
-              disabled={!checkStockByName("Lote 1")} 
-              />
-            F1 {!checkStockByName("Lote 1") && <p>‎ Lote no disponible</p>}
-          </label>
+      <div> 
+      <p className={InputCSS['texto']}>
+  <b>Terreno.</b> 
+  ¿Cuál es el mejor para su familia?
+<span className={InputCSS['infoIcon']} title="Información adicional">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+</span>
+</p>
+
+<div className={InputCSS['radioInputs']}>
+  <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'F1' ? InputCSS.selected : ''}`}>
+    <input 
+      type="radio" 
+      value="F1" 
+      checked={selectedTerreno === 'F1'} 
+      onChange={handleSelectTerreno}
+      disabled={!checkStockByName("Lote 1")} 
+    />
+    F1 {!checkStockByName("Lote 1") && <p>‎ Lote no disponible</p>}
+  </label>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'F2' ? InputCSS.selected : ''}`}>
           <input 
           type="radio" 
