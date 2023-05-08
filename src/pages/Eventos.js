@@ -4,13 +4,15 @@ import InicioCSS from '../css/Inicio.module.css';
 import CardEvent from '../components/CardEvent';
 //import Login from './components/Login';
 import { Background, } from '../components/Background';
+import { BackgroundQuarters } from  '../components/Background';
+
 
 
 function Inicio() {
   return (
     <div className={InicioCSS.inicio}>
       <>
-      <Background className={InicioCSS.background}/>
+      <BackgroundQuarters className={InicioCSS.background}/>
       </>
 
       <div className={InicioCSS.cards}>
