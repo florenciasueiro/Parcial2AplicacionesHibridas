@@ -3,7 +3,7 @@ import styles from '../css/Carousel.module.css';
 import image1 from '../img/image1.png';
 import image2 from '../img/image2.png';
 import image3 from '../img/image3.png';
-import css from 'styled-jsx/css';
+// import css from 'styled-jsx/css';
 
 const images = [
   image1,

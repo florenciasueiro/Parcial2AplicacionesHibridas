@@ -4,7 +4,7 @@ import useProducto from '../Service/APIproducto';
 import { initMercadoPago } from "@mercadopago/sdk-react";
 import Payment from "./Payment";
 import Checkout from "./Checkout";
-import FooterMeli from "./FooterMeli.jsx";
+
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
 
@@ -174,7 +174,7 @@ useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, 
 
 useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
 
-useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
+// useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
 
 
 

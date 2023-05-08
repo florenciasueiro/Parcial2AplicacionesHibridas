@@ -29,7 +29,7 @@ export default function SignIn() {
     if (!usuario || Object.keys(usuario).length === 0) {
       setTimeout(() => {
         setShowError(true);
-      }, 1000);
+      }, 2000);
     }
   };
 
