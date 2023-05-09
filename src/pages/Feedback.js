@@ -1,30 +1,31 @@
-import {useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FeedbackCSS from '../css/Feedback.module.css';
-import { BackgroundQuarters } from  '../components/Background';
-// import useFeedback from '../Service/APIFeedback'
-
-
+import { BackgroundQuarters } from '../components/Background';
 
 function Inicio() {
-
   const urlParams = new URLSearchParams(window.location.search);
-  const apiUrl = 'http://localhost:8080/feedback';
-  console.log(Object.fromEntries(urlParams).status)// tomo del link de la pagina los datos que me manda mercado pago
-  console.log(Object.fromEntries(urlParams).status)
+  const status = Object.fromEntries(urlParams).status;
+  console.log(Object.fromEntries(urlParams))
+  let message = '';
+
+  if (status === 'approved') {
+    message = 'TU COMPRA ESTÁ APROBADA';
+  } else if (status === 'failure') {
+    message = 'TU COMPRA ESTÁ RECHAZADA';
+  } else if (status === 'pending') {
+    message = 'TU COMPRA ESTÁ EN PROCESO';
+  }
+
   return (
     <div className={FeedbackCSS.inicio}>
       <div className={FeedbackCSS.text}>
-        <h1 className={FeedbackCSS.h1}>ESTO ES EL FEEDBACK</h1>
+        <h1 className={FeedbackCSS.h1}>FEED: {message}</h1>
       </div>
       <>
-      <BackgroundQuarters className={FeedbackCSS.background}/>
+        <BackgroundQuarters className={FeedbackCSS.background} />
       </>
     </div>
   );
 }
 
-
-
 export default Inicio;
-//xd
-
