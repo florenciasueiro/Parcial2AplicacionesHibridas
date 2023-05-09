@@ -7,6 +7,7 @@ import Registro from './Registro';
 import PreguntasFrecuentes from './PreguntasFrecuentes';
 import Shop from './Shop';
 import Profile from './Perfil';
+import Feedback from './Feedback';
 
 
 
@@ -24,6 +25,7 @@ const Base = () => {
         <Route path='/preguntasfrecuentes' element={<PreguntasFrecuentes/>}/>
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/feedback' element={<Feedback/>}/>
       </Routes>
       </React.Fragment>
   );

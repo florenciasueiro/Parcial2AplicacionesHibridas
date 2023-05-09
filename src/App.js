@@ -15,6 +15,7 @@ function App() {
   // if (location.pathname === '/base') {
   //   navbarClass = InicioCSS.navbarBase;
   // }
+  
 
   return (
     <BrowserRouter>

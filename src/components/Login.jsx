@@ -29,7 +29,7 @@ export default function SignIn() {
     if (!usuario || Object.keys(usuario).length === 0) {
       setTimeout(() => {
         setShowError(true);
-      }, 1000);
+      }, 2000);
     }
   };
 
@@ -42,7 +42,7 @@ export default function SignIn() {
   if (!usuario) {
     return (
       <div className={LoginCSS.loginContainer}>
-        <h1 className={LoginCSS.h1}>Inicia Sesión</h1>
+        <h1 className={LoginCSS.h1}>Iniciar Sesión</h1>
         {showError && <p>Email o contraseña inválidos.</p>}
         <form className={LoginCSS.form} onSubmit={handleSubmit}>
           <div className={LoginCSS.inputContainer}>
@@ -91,29 +91,15 @@ export default function SignIn() {
   } else {
     return (
       <div className={LoginCSS.loginContainer}>
-        <h1>Tu cuenta</h1>
         <form onSubmit={handleLogout}>
-          <h5>Nombre: {usuario.name}</h5>
-          <h5>Email: {usuario.email}</h5>
-          <h5>Teléfono: {usuario.mobile}</h5>
-          <h5>ID: {usuario.id}</h5>
-          <h5>Productos:</h5>
-          {usuario.productos.length > 0 ? (
-            usuario.productos.map((producto, index) => <h5 key={index}>-{producto}</h5>)
-          ) : (
-            <h5>No tienes productos</h5>
-          )}
-        <div>
-          <a href="/profile" style={{ color: "#0645AD" }}>
-            Mi Perfil
-          </a>
-          <br />
-          <a href="/shop" style={{ color: "#0645AD" }}>
-            Mis Productos
-          </a>
-          <button type="submit" onClick={handleLogout}>
-            Cerrar Sesión
-          </button>
+        <div className={LoginCSS.loginContainer}>
+                <Link className={LoginCSS.link} to="/profile">
+                  Mi Perfil
+                </Link>
+
+                <button className={LoginCSS.link} type="button" onClick={handleLogout}>
+                  Cerrar Sesión
+                </button>
         </div>
       </form>
     </div>
