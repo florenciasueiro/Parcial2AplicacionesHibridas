@@ -53,9 +53,9 @@
         <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarBlackCSS.navbarcontainer : ''}`}>
           <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarBlackCSS.box : ''}`}>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} exact to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}><img src={isShopPage ? "/img/LogoBlanco.png" : "/img/LogoNegro.png"} alt=""/></NavLink></li>
-            <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} exact to="/">Inicio</NavLink></li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} to="/quarters">Quarters</NavLink></li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} to="/eventos">Eventos</NavLink></li>
+            <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><NavLink onClick={hideLogin} exact to="/shop">Store</NavLink></li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}><button className={NavbarCSS.btn} onClick={toggleLogin}>{displayName()}</button></li>
             <div className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarBlackCSS.wrapper} ${showLogin ? NavbarBlackCSS.show : ''}` : ''} ${showLogin ? NavbarCSS.show : ''}`}>
               <div className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
