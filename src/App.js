@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer.jsx';
 import InicioCSS from './css/Inicio.module.css';
+import DinamicShop from './components/DinamicShop';
 
 function App() {
   // const location = useLocation(); // obtén la ubicación actual

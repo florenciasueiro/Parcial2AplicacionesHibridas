@@ -23,7 +23,7 @@ const Checkout = ({ onClick }) => {
   }
   
   return (
-    <div className={`${InputCSS['body']}`}>
+    <div className={`${InputCSS['bodyCheckout']}`}>
     {/* <section className={shoppingCartClass}> */}
     <section className={InputCSS.shoppingCart}>
     <div className={InputCSS["container"]} id={InputCSS["container"]}>

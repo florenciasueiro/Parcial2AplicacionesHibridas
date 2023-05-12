@@ -63,11 +63,11 @@ body {
   position: relative;
 }
 
-main {
+/* main {
   margin: 4px 0 0px 0;
   background-color: #f6f6f6;
   min-height: 80vh;
-}
+} */
 
 .hidden {
   display: none
@@ -96,9 +96,10 @@ main {
 
 .shoppingCart .content {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
-  background-color: white;
-  border-radius: 5px;
-  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 10px 10px 10px;
   display: flex;
   justify-content: center;
 }
@@ -511,4 +512,16 @@ span[title]:hover:after {
   display: inline-flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+.checkout{
+  /* background-color: red; */
+}
+
+.bodyCheckout{
+  width: -webkit-fill-available;
+  top: 0px;
+  position: absolute;
 }

@@ -55,14 +55,11 @@ function Footer() {
         <Link className={FooterCSS.linkText} to='/registro'>
           Registrarse | ‎
         </Link>
-        <Link className={FooterCSS.linkText} to='/login'>
-          Iniciar sesión | ‎
-        </Link>
         <Link className={FooterCSS.linkText} to='/soporte'>
           Soporte  ‎
         </Link>
       </div>
-    </div>
+    </div> 
 
     </footer>
   );

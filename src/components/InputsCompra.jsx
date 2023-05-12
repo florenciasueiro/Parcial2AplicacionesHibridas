@@ -1,9 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, createContext } from 'react';
 import InputCSS from '../css/Inputs.module.css';
 import useProducto from '../Service/APIproducto';
 import { initMercadoPago } from "@mercadopago/sdk-react";
+
+
+
 import Payment from "./Payment";
 import Checkout from "./Checkout";
+import DinamicShop from './DinamicShop';
 
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
@@ -33,7 +37,7 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 
 
 //Test user 2 comprador TTEST65297
-
+export const SelectedTerrenoContext = createContext("");
 export default function RadioInputs() {
 
 //MERCADO PAGO 
@@ -179,6 +183,7 @@ useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selec
 
 
 
+  
 
 
 
@@ -580,20 +585,10 @@ const handleSelectSUM = (event) => {
       </div>
 
       </div> */}
-            {/* mercado pago */}
-            <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
-      <main>
-        {renderSpinner()}
-        <Checkout onClick={handleClick} description/>
-        <Payment />
-      </main>
-      {/* <FooterMeli /> */}
-    </InternalProvider>
-    {/* fin mercado pago */}
+
+
     </div>
     
-
-
 
   );
 }else{
@@ -611,9 +606,8 @@ const handleSelectSUM = (event) => {
             value="F1" 
             checked={selectedTerreno === 'Lote 1'} 
             // onChange={handleSelectTerreno}
-            
             />
-          F1 
+          F1
         </label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 2' ? InputCSS.selected : ''}`}>
         <input 
@@ -621,7 +615,6 @@ const handleSelectSUM = (event) => {
         value="F2" 
         checked={selectedTerreno === 'Lote 2'} 
         // onChange={handleSelectTerreno}
-         
         />
         F2
       </label>
@@ -819,4 +812,4 @@ const handleSelectSUM = (event) => {
 
   )
 }
-} 
+}

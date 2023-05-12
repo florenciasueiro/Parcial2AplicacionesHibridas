@@ -65,3 +65,9 @@
   top: 30vh;
   font-size: 30px;
 }
+
+
+.dinamicShop{
+  display: flex;
+  justify-content: center;
+}

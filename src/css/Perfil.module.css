@@ -1,95 +1,101 @@
-.profilePage{
+.profilePage {
     display: grid;
     grid-template-columns: 1fr 2fr;
     margin: 80px auto;
-
     justify-content: center;
     width: 75vw;
-}
-.cardGrid {
+  }
+  
+  .cardGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 25px;
   }
-.card{
+  
+  .card {
     display: grid;
     grid-template-columns: 4fr 1fr;
     background-color: white;
-    box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
     padding: 20px;
     border-radius: 15px;
     text-decoration: none;
     color: black;
-}
-.cardInicio{
+  }
+  
+  .cardInicio {
     background-color: white;
-    box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 15px;
     text-decoration: none;
     color: black;
     width: 40vw;
-}
-.cardBodyInicio{
+  }
+  
+  .cardBodyInicio {
     padding: 20px;
-}
-.cardLinkInicio{
+  }
+  
+  .cardLinkInicio {
     text-decoration: none;
-}
-.cardImg{
-    max-width: -webkit-fill-available;
+  }
+  
+  .cardImg {
+    max-width: 100%;
     border-radius: 15px 15px 0px 0px;
-}
-.icon{
+  }
+  
+  .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.perfil{
+  }
+  
+  .perfil {
     padding: 20px;
-}
-.lista{
+  }
+  
+  .lista {
     display: block;
-    
-}
-.listaElemento{
-    /* background-color: rgba(240, 240, 240, 0.7); */
+  }
+  
+  .listaElemento {
     margin: 10px 0px;
-    /* width: 40%; */
-    /* border-radius: 20px; */
-}
-
-.perfilImg{
+  }
+  
+  .perfilImg {
     margin: 5px;
-}
-
-.leftSection{
+  }
+  
+  .leftSection {
     margin: 0 auto;
-}
-.listaElemento a{
+  }
+  
+  .listaElemento a {
     color: black;
     list-style: none;
     text-decoration: none;
     padding: 10px;
     align-items: center;
-}
-.listaElemento a:hover{
+  }
+  
+  .listaElemento a:hover {
     background-color: aliceblue;
     border-radius: 20px;
-}
-.text h1{
+  }
+  
+  .text h1 {
     font-size: 28px;
-}
-.listaElemento button:focus{
+  }
+  
+  .listaElemento button:focus {
     color: #0071e3;
-}
-
-
-
-/*Modal*/
-
-
-.modalOverlay {
+  }
+  
+  /* Modal */
+  
+  .modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -104,7 +110,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.3s ;
+    transition: all 0.3s;
     background-color: #fff;
     padding: 1rem;
     width: 80vw;
@@ -123,6 +129,7 @@
     width: 100%;
     height: auto;
     margin-bottom: 1rem;
+    border-radius: 15px;
   }
   
   .modalCloseButton {
@@ -143,7 +150,24 @@
     display: block;
   }
   
-  .modalCardImg{
-    border-radius: 15px;
+  .modalTransition-enter {
+    opacity: 0;
+    transform: translateY(-100%);
   }
   
+  .modalTransition-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: all 300ms ease-in-out;
+  }
+  
+  .modalTransition-exit {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  
+  .modalTransition-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 300ms ease-out;
+  }
