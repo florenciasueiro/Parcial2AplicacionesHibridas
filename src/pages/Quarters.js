@@ -12,7 +12,7 @@ function Quarters() {
       <>
       <div className={QuartersCSS.text}>
         <h1>Quarters Family 1</h1>
-        <p>En nuestro barrio residencial podrás disfrutar de la sofisticación y la alta calidad que mereces. No esperes más para asegurar el futuro de tu familia, reserva ahora mismo tu terreno en nuestro exclusivo barrio y comienza a disfrutar de una vida plena y confortable.</p>
+        <p>Descubre Quarters Family 1: el barrio residencial ideal para familias en La Plata. Disfruta de la vida en un entorno dinámico rodeado de espacios verdes y acceso rápido al centro. Lotes exclusivos, servicios de calidad, seguridad, guardería y mucho más. ¡Haz realidad tus sueños en Quarters Family 1!</p>
         <Link className={QuartersCSS.link} to="/shop"><b>Comprar</b></Link>
       </div>
       <BackgroundQuarters className={QuartersCSS.background}/>
