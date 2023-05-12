@@ -185,8 +185,10 @@ useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selec
 //MERCADO PAGO
 
 const handleClick = () => {
+
   setIsLoading(true);
   postVenta();
+  sessionStorage.setItem("compra", JSON.stringify(orderData));
   fetch("http://localhost:8080/create_preference", {
     method: "POST",
     headers: {

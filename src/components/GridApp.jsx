@@ -5,18 +5,20 @@ import PerfilCSS from '../css/Perfil.module.css';
 import { Link } from 'react-router-dom';
 
 export function CardGrid({ handleClick }) {
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const cardData = [
     {
       id: 1,
       title: 'Asset ID',
-      description: 'Descripción de la tarjeta 1',
+      description: `tu Asset ID es: ${usuario.id}`,
       imageUrl: 'https://via.placeholder.com/150',
       link: '/ruta-para-tarjeta-1'
     },
     {
       id: 2,
       title: 'Contraseña',
-      description: 'Descripción de la tarjeta 2',
+      description: `Contraseña: ${usuario.password}`,
       imageUrl: 'https://via.placeholder.com/150',
       link: '/ruta-para-tarjeta-2'
     },
@@ -38,11 +40,13 @@ export function CardGrid({ handleClick }) {
 }
 
 export function CardGrid2({ handleClick }) {
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const cardData = [
     {
       id: 4,
       title: 'Nombre',
-      description: 'Descripción de la tarjeta 1',
+      description: `nombre: ${usuario.name}\n Segundo nombreXD:\n Apellido:`,
       imageUrl: 'https://via.placeholder.com/150',
       link: '/ruta-para-tarjeta-4'
     },
@@ -70,14 +74,14 @@ export function CardGrid2({ handleClick }) {
     {
       id: 8,
       title: 'Teléfono',
-      description: 'Descripción de la tarjeta 1',
+      description: `telefono: ${usuario.mobile}`,
       imageUrl: 'https://via.placeholder.com/150',
       link: '/ruta-para-tarjeta-8'
     },
     {
       id: 9,
       title: 'Correo personal',
-      description: 'Descripción de la tarjeta 1',
+      description: `${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
       link: '/ruta-para-tarjeta-9'
     },
@@ -149,11 +153,13 @@ export function CardGrid4({ handleClick }) {
 }
 
 export function CardGrid5({ handleClick }) {
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const cardData = [
     {
       id: 14,
       title: 'Productos enlazados',
-      description: 'Descripción de la tarjeta 1',
+      description: usuario.productos,
       imageUrl: 'https://via.placeholder.com/150',
       link: 'https://ejemplo.com/tarjeta-1'
     },
@@ -211,21 +217,40 @@ export function CardGrid5({ handleClick }) {
 }
 
 export function CardGrid6({ handleClick }) {
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  const displayPASS = (serv)=>{
+    if (usuario.servicios.find(servicio=> servicio.name.includes(serv)) && usuario.servicios.find(servicio => servicio.name.includes('pase'))) {
+      return `A su ${usuario.servicios.name} le quedan ${usuario.servicios.units} meses`;
+    } else if(usuario.servicios.find(servicio=> servicio.name.includes(serv))) {
+      return `Cuenta con ${usuario.servicios.units} horas`;
+    }else{
+      return 'No tiene servicios activos';
+    }
+  }
+
   const cardData = [
     {
       id: 21,
       title: 'SUM',
-      description: 'Descripción de la tarjeta 1',
+      description: displayPASS('SUM'),
       imageUrl: 'https://via.placeholder.com/150',
       link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 22,
       title: 'Guardería',
-      description: 'Descripción de la tarjeta 2',
+      description: displayPASS('Guarderia'),
       imageUrl: 'https://via.placeholder.com/150',
       link: 'https://ejemplo.com/tarjeta-5'
     },
+    {
+      id: 999,
+      title: 'Coworking',
+      description: displayPASS('Coworking'),
+      imageUrl: 'https://via.placeholder.com/150',
+      link: 'https://ejemplo.com/tarjeta-5'
+    }
 
   ];
   return (
