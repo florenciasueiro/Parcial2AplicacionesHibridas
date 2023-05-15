@@ -171,3 +171,8 @@
     transform: translateY(-100%);
     transition: all 300ms ease-out;
   }
+
+  .btn{
+    background-color: transparent;
+    border: none;
+  }

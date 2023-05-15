@@ -49,37 +49,37 @@ function Perfil(props) {
       </div>
       <ul className={PerfilCSS.lista}>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection1Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection1Click}>
             Inicio de sesion
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection2Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection2Click}>
             Informacion personal
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection3Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection3Click}>
             Metodos de pago
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection4Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection4Click}>
             Compartir en familia
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection5Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection5Click}>
             Mis Productos
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection6Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection6Click}>
             Mis Servicios
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection7Click}>
+          <button className={PerfilCSS.btn} onClick={handleSection7Click}>
             Mis Reservas
           </button>
         </li>

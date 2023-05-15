@@ -7,6 +7,8 @@
       justify-content: center;
       margin: 30px auto;
     }
+
+
     
     .tarjeta:nth-child(1) {
       grid-column: 1 / span 2; /* Ocupa la primera columna */
@@ -50,6 +52,7 @@
       border-radius: 15px;
       text-decoration: none;
       position: relative; /* Agregar esta propiedad para establecer el contexto de posicionamiento */
+      z-index: 20;
     }
     
     .contenido{
@@ -81,3 +84,54 @@
 
   } */
 
+  .videoContainer{
+    height: 100%;
+  }
+
+
+  /* Estilos del modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%;
+  background-color: #fff;
+  padding: 20px;
+  overflow: auto;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: #555;
+}
