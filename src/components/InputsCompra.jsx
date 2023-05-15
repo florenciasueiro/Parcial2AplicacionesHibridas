@@ -11,6 +11,7 @@ import DinamicShop from './DinamicShop';
 
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
+import { DiscFullRounded } from '@mui/icons-material';
 
 //credencial de prueba test user 1
 initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
@@ -37,13 +38,13 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 
 
 //Test user 2 comprador TTEST65297
-export const SelectedTerrenoContext = createContext("");
+
 export default function RadioInputs() {
 
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
+  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {},sku:0 });
 //FIN DE MERCADO PAGO
 
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -83,11 +84,13 @@ orderData.storage=request.almacenamiento;
 orderData.sum=request.sum;
 orderData.guarderia=request.guarderia;
 
+
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 console.log(usuario);
 orderData.user = usuario;
 console.log(orderData);
+sessionStorage.setItem("compra", JSON.stringify(orderData));
 
 
 
@@ -100,62 +103,6 @@ console.log(orderData);
 
 
 
-const postVenta = async () => {
-  try {
-    const response = await fetch(`http://localhost:8080/v1/venta`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(request)
-    });
-    if (response.status > 200 || response.status <= 300) {
-      console.log(response.status)
-      console.log(await response.json());
-          if(response.status === 201){
-              
-              return response.status;
-          }
-          else if (response.status === 400){
-              
-              return response.status;
-          }
-          else if (response.status === 409){
-
-              return response.status;
-          }
-          else if (response.status === 500){
-
-              return response.status;
-          }
-    }
-    
-  else if (response.status !==200){
-      let errorMessage = 'Ha ocurrido un error.';
-      throw new Error(errorMessage);
-  }
-  else if (response.status === 400) {
-    let errorMessage = 'Lote altan datos requeridos en la solicitud.';
-      throw new Error(errorMessage);
-      } 
-  else if (response.status === 409) {
-    let errorMessage = 'El usuario ya ha sido registrado previamente.';
-        throw new Error(errorMessage);
-      }
-      
-    
-  
-    const data = await response.json();
-    console.log("se ejecuto registro");
-    console.log(data);
-  
-
-} catch (error) {
-console.error(error.message);
-console.error(error.status);
-    // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
-  }
-}
 const productos = useProducto();
 useEffect(() => {
   async function cargarProductos(){
@@ -168,7 +115,8 @@ useEffect(() => {
     }
   }
   cargarProductos();
-}, [cargaron, productos]);
+}, [cargaron]);
+
 
 useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
@@ -178,58 +126,6 @@ useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, 
 
 useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
 
-// useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
-
-
-
-
-  
-
-
-
-//MERCADO PAGO
-
-const handleClick = () => {
-
-  setIsLoading(true);
-  postVenta();
-  sessionStorage.setItem("compra", JSON.stringify(orderData));
-  fetch("http://localhost:8080/create_preference", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(orderData),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((preference) => {
-      setPreferenceId(preference.id);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-    .finally(() => {
-      setIsLoading(false);
-    });
-};
-
-const renderSpinner = () => {
-  if (isLoading) {
-    return (
-      <div className={InputCSS["spinner-wrapper"]}>
-        <SpinnerCircular color='#009EE3' />
-      </div>
-    );
-  }
-  return null;
-};
-
-
-//FIN MERCADO PAGO
-
- 
 
 
 
@@ -246,8 +142,19 @@ if(cargaron){
   const productoJson = sessionStorage.getItem('productos');
   const producto = productoJson ? JSON.parse(productoJson) : null;
 
-
-
+  function checkSKUByName(name) {
+    
+    const obj = producto.find(item => item.name === name);
+    if (obj) {
+      
+      return obj.sku;
+      
+    } else {
+      return null;
+    }
+  }
+  orderData.sku=checkSKUByName(selectedTerreno);
+  
 
 
  function checkPriceByName(name) {
@@ -277,11 +184,9 @@ const handleSelectTerreno = (event) => {
       setInput2Disabled(false);
     } else {
       setInput2Disabled(true);
+      
     }
   };
-
-
-
 
   const handleSelectCard = (event) => {
     setSelectedCard(event.target.value);
@@ -292,8 +197,6 @@ const handleSelectTerreno = (event) => {
       setInput3Disabled(true);
     }
   };
-  
-
 
 //faltaria conectar los servicos para obtener los precios, quilombo para el fin de semana
 
@@ -322,10 +225,7 @@ const handleSelectTerreno = (event) => {
   };
 };
 
-
-
-
-
+//falta que modifique el precio
   const handleSelectGuarderia = (event) => {
     setSelectedGuarderia(event.target.value);
 
@@ -336,10 +236,7 @@ const handleSelectTerreno = (event) => {
   }
 };
 
-
-
-
-
+//falta que modifique el precio
 const handleSelectSUM = (event) => {
   setSelectedSUM(event.target.value);
 
@@ -566,29 +463,6 @@ const handleSelectSUM = (event) => {
         <br/>
       </div>
       </div>
-
-      {/* <div className={InputCSS['ref']} ref={pagoRef}>
-      <p><b> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
-      <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="1" checked={selectedPago === '1'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          1 cuota
-        </label>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="6" checked={selectedPago === '6'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          6 cuotas
-        </label>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="12" checked={selectedPago === '12'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          12 cuotas
-        </label>
-        <br/>
-        
-      </div>
-
-      </div> */}
-
-
     </div>
     
 

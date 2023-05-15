@@ -5,7 +5,7 @@
   import Contactos from "../Service/APIlogin";
   import NavbarBlackCSS from '../css/NavbarBlack.module.css'
   import DinamicShop from './DinamicShop';
-  import { TerrenoContext } from './InputsCompra';
+ 
 
 
 
