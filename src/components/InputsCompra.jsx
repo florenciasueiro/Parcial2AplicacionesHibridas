@@ -1,17 +1,12 @@
-import React, { useState, useRef, useEffect, createContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import InputCSS from '../css/Inputs.module.css';
 import useProducto from '../Service/APIproducto';
 import { initMercadoPago } from "@mercadopago/sdk-react";
-
-
-
 import Payment from "./Payment";
 import Checkout from "./Checkout";
-import DinamicShop from './DinamicShop';
 
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
-import { DiscFullRounded } from '@mui/icons-material';
 
 //credencial de prueba test user 1
 initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
@@ -44,7 +39,7 @@ export default function RadioInputs() {
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {},sku:0 });
+  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
 //FIN DE MERCADO PAGO
 
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -59,7 +54,8 @@ export default function RadioInputs() {
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
   const [selectedPago,            setSelectedPago]            = useState('');
-
+  
+  
   
   
   const almacenamientoRef = useRef(null);
@@ -83,22 +79,11 @@ orderData.storage=request.almacenamiento;
 orderData.sum=request.sum;
 orderData.guarderia=request.guarderia;
 
-
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 console.log(usuario);
 orderData.user = usuario;
 console.log(orderData);
-sessionStorage.setItem("compra", JSON.stringify(orderData));
-
-
-
-
-
-
-
-
-
 
 
 
@@ -170,8 +155,7 @@ useEffect(() => {
     }
   }
   cargarProductos();
-}, [cargaron]);
-
+}, [cargaron, productos]);
 
 useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
@@ -181,6 +165,55 @@ useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, 
 
 useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
 
+// useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
+
+
+
+
+
+
+
+//MERCADO PAGO
+
+const handleClick = () => {
+  setIsLoading(true);
+  postVenta();
+  fetch("http://localhost:8080/create_preference", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(orderData),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((preference) => {
+      setPreferenceId(preference.id);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+};
+
+const renderSpinner = () => {
+  if (isLoading) {
+    return (
+      <div className={InputCSS["spinner-wrapper"]}>
+        <SpinnerCircular color='#009EE3' />
+      </div>
+    );
+  }
+  return null;
+};
+
+
+//FIN MERCADO PAGO
+
+ 
 
 
 
@@ -197,19 +230,8 @@ if(cargaron){
   const productoJson = sessionStorage.getItem('productos');
   const producto = productoJson ? JSON.parse(productoJson) : null;
 
-  function checkSKUByName(name) {
-    
-    const obj = producto.find(item => item.name === name);
-    if (obj) {
-      
-      return obj.sku;
-      
-    } else {
-      return null;
-    }
-  }
-  orderData.sku=checkSKUByName(selectedTerreno);
-  
+
+
 
 
  function checkPriceByName(name) {
@@ -239,9 +261,11 @@ const handleSelectTerreno = (event) => {
       setInput2Disabled(false);
     } else {
       setInput2Disabled(true);
-      
     }
   };
+
+
+
 
   const handleSelectCard = (event) => {
     setSelectedCard(event.target.value);
@@ -252,6 +276,8 @@ const handleSelectTerreno = (event) => {
       setInput3Disabled(true);
     }
   };
+  
+
 
 //faltaria conectar los servicos para obtener los precios, quilombo para el fin de semana
 
@@ -280,7 +306,10 @@ const handleSelectTerreno = (event) => {
   };
 };
 
-//falta que modifique el precio
+
+
+
+
   const handleSelectGuarderia = (event) => {
     setSelectedGuarderia(event.target.value);
 
@@ -291,7 +320,10 @@ const handleSelectTerreno = (event) => {
   }
 };
 
-//falta que modifique el precio
+
+
+
+
 const handleSelectSUM = (event) => {
   setSelectedSUM(event.target.value);
 
@@ -305,26 +337,21 @@ const handleSelectSUM = (event) => {
 
   return (
     <div>
-      <div> 
-      <p className={InputCSS['texto']}>
-  <b>Terreno.</b>
-  ¿Cuál es el mejor para su familia?
-<span className={InputCSS['infoIcon']} title="Información adicional">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-</span>
-</p>
-
-<div className={InputCSS['radioInputs']}>
-  <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
-    <input 
-      type="radio" 
-      value="Lote 1"
-      checked={selectedTerreno === 'Lote 1'} 
-      onChange={handleSelectTerreno}
-      disabled={!checkStockByName("Lote 1")} 
-    />
-    F1 {!checkStockByName("Lote 1") && <p>‎ Lote no disponible</p>}
-  </label>
+      <div>
+        <p>
+          <b>Terreno.</b> ¿Cuál es el mejor para su familia?
+        </p><p className={InputCSS['icono']}>?</p>
+        <div className={InputCSS['radioInputs']}>
+          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
+            <input 
+              type="radio" 
+              value="Lote 1"
+              checked={selectedTerreno === 'Lote 1'} 
+              onChange={handleSelectTerreno}
+              disabled={!checkStockByName("Lote 1")} 
+              />
+            F1 {!checkStockByName("Lote 1") && <p>‎ Lote no disponible</p>}
+          </label>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 2' ? InputCSS.selected : ''}`}>
           <input 
           type="radio" 
@@ -518,8 +545,41 @@ const handleSelectSUM = (event) => {
         <br/>
       </div>
       </div>
+
+      {/* <div className={InputCSS['ref']} ref={pagoRef}>
+      <p><b> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
+      <div className={InputCSS['radioInputs']}>
+        <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="1" checked={selectedPago === '1'} onChange={handleSelectPago} disabled={input6Disabled}/>
+          1 cuota
+        </label>
+        <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="6" checked={selectedPago === '6'} onChange={handleSelectPago} disabled={input6Disabled}/>
+          6 cuotas
+        </label>
+        <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="12" checked={selectedPago === '12'} onChange={handleSelectPago} disabled={input6Disabled}/>
+          12 cuotas
+        </label>
+        <br/>
+        
+      </div>
+
+      </div> */}
+            {/* mercado pago */}
+            <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
+      <main>
+        {renderSpinner()}
+        <Checkout onClick={handleClick} description/>
+        <Payment />
+      </main>
+      {/* <FooterMeli /> */}
+    </InternalProvider>
+    {/* fin mercado pago */}
     </div>
     
+
+
 
   );
 }else{
@@ -537,8 +597,9 @@ const handleSelectSUM = (event) => {
             value="F1" 
             checked={selectedTerreno === 'Lote 1'} 
             // onChange={handleSelectTerreno}
+            
             />
-          F1
+          F1 
         </label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 2' ? InputCSS.selected : ''}`}>
         <input 
@@ -546,6 +607,7 @@ const handleSelectSUM = (event) => {
         value="F2" 
         checked={selectedTerreno === 'Lote 2'} 
         // onChange={handleSelectTerreno}
+         
         />
         F2
       </label>
@@ -743,4 +805,4 @@ const handleSelectSUM = (event) => {
 
   )
 }
-}
+} 

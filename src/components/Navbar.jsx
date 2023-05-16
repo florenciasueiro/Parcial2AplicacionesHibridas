@@ -4,7 +4,7 @@
   import Login from './Login';
   import Contactos from "../Service/APIlogin";
   import NavbarBlackCSS from '../css/NavbarBlack.module.css';
-  import DinamicShop from './DinamicShop';
+  // import DinamicShop from './DinamicShop';
 
   function Navbar() {
     const location = useLocation();
@@ -115,11 +115,11 @@
             </div>
           </div>
         </ul>
-        {isShopPage && (
+        {/* {isShopPage && (
           <div>
             {<DinamicShop />}
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
