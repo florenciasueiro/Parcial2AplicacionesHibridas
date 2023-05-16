@@ -363,6 +363,24 @@ export function CardGrid10({ handleClick }) {
     </div>
   );
 }
+export function CardGrid11({ handleClick }) {
+  const cardData = [
+    {
+      id: 29,
+      title: 'Evento',
+      description: 'Descripción de la tarjeta 1',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/eventos",
+    },
 
+  ];
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardInicio className={PerfilCSS.cardInicio} key={card.id} card={card} />
+      ))}
+    </div>
+  );
+}
 
 export default CardGrid;

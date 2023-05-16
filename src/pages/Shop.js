@@ -4,6 +4,7 @@ import Carousel from '../components/Carousel';
 import Inputs from '../components/InputsCompra';
 import FAQ from '../components/PreguntasFrecuentes';
 // import Comparative from '../components/Comparative';
+import Resumen from '../components/ResumenCompra';
 
 function Shop() {
   return (
@@ -18,6 +19,7 @@ function Shop() {
       </div>
       <div>
         <h1>Que incluye mi compra?</h1>
+        <Resumen/>
         <br/>
       </div>
       <div className={ShopCSS.comparative}>

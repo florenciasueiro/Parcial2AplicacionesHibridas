@@ -1,7 +1,7 @@
 .profilePage {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    margin: 80px auto;
+    margin: auto;
     justify-content: center;
     width: 75vw;
   }
@@ -30,7 +30,6 @@
     border-radius: 15px;
     text-decoration: none;
     color: black;
-    width: 40vw;
   }
   
   .cardBodyInicio {
@@ -38,6 +37,9 @@
   }
   
   .cardLinkInicio {
+    text-decoration: none;
+  }
+  .link{
     text-decoration: none;
   }
   
@@ -175,4 +177,10 @@
   .btn{
     background-color: transparent;
     border: none;
+  }
+  .alto{
+    height: 100vh;
+    top: 0;
+    position: relative;
+    padding-top: 80px;
   }

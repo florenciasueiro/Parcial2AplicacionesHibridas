@@ -20,10 +20,8 @@ function Inicio() {
       </>
 
       <div className={InicioCSS.cards}>
-        <>
         <CardGrid9/>
         <CardGrid10/>
-        </>
       </div>
     </div>
   );

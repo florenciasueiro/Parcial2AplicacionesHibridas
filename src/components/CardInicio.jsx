@@ -18,7 +18,7 @@ function CardInicio({ card, cardData }) {
 
   return (
     <>
-      <Link to={card.link}>
+      <Link className={PerfilCSS.link} to={card.link}>
   <div className={PerfilCSS.cardInicio} onClick={handleOpenModal}>
     <img className={PerfilCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />
     <div className={PerfilCSS.cardBodyInicio}>

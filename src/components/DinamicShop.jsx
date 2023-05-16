@@ -20,7 +20,8 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
  export default function DinamicShop(props) {
     const [preferenceId, setPreferenceId] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [orderData, setOrderData] = useState(props);    
+    const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
+
 
     console.log("props");
     console.log(JSON.stringify(props.props));

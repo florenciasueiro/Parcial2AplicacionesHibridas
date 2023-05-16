@@ -29,7 +29,6 @@ function Tarjeta({ titulo, contenido, videoURL }) {
     <div className={GridCSS.tarjeta} ref={ref}>
       <div className={GridCSS.contenido}>
         <h2>{titulo}</h2>
-        <p>{contenido}</p>
       </div>
       <div className={GridCSS.videoContainer} onClick={openModal}>
         {videoVisible && (
