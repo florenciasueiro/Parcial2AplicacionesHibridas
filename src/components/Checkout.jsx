@@ -5,6 +5,7 @@ import InputCSS from '../css/Inputs.module.css';
 import { Background } from "@cloudinary/url-gen/qualifiers";
 
 const Checkout = ({ onClick }) => {
+  
   const [isVisible, setIsVisible] = React.useState(true);
   const { preferenceId, isLoading: disabled, orderData, setOrderData } = React.useContext(Context);
   const shoppingCartClass = classnames('shopping-cart dark', {

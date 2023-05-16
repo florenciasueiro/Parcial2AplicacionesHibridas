@@ -21,8 +21,8 @@ export function CompraProvider(props){
             try{
                 const producto = await productos();
                 setProducto(producto);
-                alert("compra-context");
-                alert(producto)
+                // alert("compra-context");
+                // alert(producto)
                 setCargaronProductos(true);
             }catch (error){
                 console.log(error);
