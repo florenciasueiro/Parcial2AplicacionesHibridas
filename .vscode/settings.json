@@ -1,0 +1,16 @@
+{
+    "console-ninja.captureFunctions": true,
+    "console-ninja.darkTheme.log.decorationAttachmentRenderOptions": {
+        
+        "border": null,
+        "borderColor": null,
+        "fontStyle": null,
+        "fontWeight": null,
+        "textDecoration": null,
+        "color": "rgba(86, 156, 214, 1)",
+        "backgroundColor": null,
+        "margin": "1em",
+        "width": null,
+        "height": null
+    }
+}
