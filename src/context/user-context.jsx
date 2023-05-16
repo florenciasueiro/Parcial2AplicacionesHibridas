@@ -9,6 +9,3 @@ export function CompraProvider(props){
 }
 
 
-useEffect(()=>{
-    async function 
-})
