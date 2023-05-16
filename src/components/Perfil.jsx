@@ -1,6 +1,7 @@
 import React from 'react';
 import PerfilCSS from '../css/Perfil.module.css';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 
 function Perfil(props) {
   const usuarioJson = sessionStorage.getItem('user');
@@ -38,6 +39,12 @@ function Perfil(props) {
   const handleSection8Click = () => {
     onSectionClick('Privacidad');
   };
+
+  
+  const handleLogout = () => {
+    sessionStorage.clear();
+    window.location.assign("/");
+  }
 
 
   return (
@@ -83,11 +90,11 @@ function Perfil(props) {
             Mis Reservas
           </button>
         </li>
-        {/* <li className={PerfilCSS.listaElemento}>
-          <button onClick={handleSection8Click}>
-            Privacidad
-          </button>
-        </li> */}
+        <li className={PerfilCSS.listaElemento}>
+          <Link onClick={handleLogout}>
+            Cerrar Sesion
+          </Link>
+        </li>
       </ul>
     </div>
   );
