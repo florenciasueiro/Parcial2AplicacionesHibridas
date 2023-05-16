@@ -4,7 +4,7 @@ import useProducto from '../Service/APIproducto';
 import { initMercadoPago } from "@mercadopago/sdk-react";
 import Payment from "./Payment";
 import Checkout from "./Checkout";
-
+import {useCompra, CompraProvider} from '../context/compra-context'
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
 
@@ -33,13 +33,19 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 
 
 //Test user 2 comprador TTEST65297
+export default () => 
+<CompraProvider>
+  <RadioInputs></RadioInputs>
+</CompraProvider>
 
-export default function RadioInputs() {
 
+ function RadioInputs() {
+//nuevo contexto:
+const {orderData, producto, cargaron, setOrderData}= useCompra();
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
+  //const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
 //FIN DE MERCADO PAGO
 
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -47,7 +53,7 @@ export default function RadioInputs() {
   const [input4Disabled, setInput4Disabled] = useState(true );
   const [input5Disabled, setInput5Disabled] = useState(true );
   const [input6Disabled, setInput6Disabled] = useState(true ); 
-  const [cargaron,             setCargaron] = useState(false);
+  //const [cargaron,             setCargaron] = useState(false);
   const [selectedTerreno,         setSelectedTerreno]         = useState('');
   const [selectedAlmacenamiento,  setSelectedAlmacenamiento]  = useState('');
   const [selectedCard,            setSelectedCard]            = useState('');
@@ -143,19 +149,19 @@ console.error(error.status);
     // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
   }
 }
-const productos = useProducto();
-useEffect(() => {
-  async function cargarProductos(){
-    if(!cargaron){
-      await productos();
+// const productos = useProducto();
+// useEffect(() => {
+//   async function cargarProductos(){
+//     if(!cargaron){
+//       await productos();
       
       
       
-      setCargaron(true)
-    }
-  }
-  cargarProductos();
-}, [cargaron, productos]);
+//       setCargaron(true)
+//     }
+//   }
+//   cargarProductos();
+// }, [cargaron, productos]);
 
 useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
@@ -227,9 +233,8 @@ const renderSpinner = () => {
 
 if(cargaron){
 
-  const productoJson = sessionStorage.getItem('productos');
-  const producto = productoJson ? JSON.parse(productoJson) : null;
-
+alert("from cargaron")
+alert(producto)
 
 
 
@@ -583,7 +588,8 @@ const handleSelectSUM = (event) => {
 
   );
 }else{
-
+  alert('descargados')
+  alert(producto)
   return(
     <div>
     <div>
