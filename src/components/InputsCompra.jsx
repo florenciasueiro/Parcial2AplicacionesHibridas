@@ -59,8 +59,7 @@ export default function RadioInputs() {
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
   const [selectedPago,            setSelectedPago]            = useState('');
-  
-  
+
   
   
   const almacenamientoRef = useRef(null);
@@ -103,6 +102,62 @@ sessionStorage.setItem("compra", JSON.stringify(orderData));
 
 
 
+const postVenta = async () => {
+  try {
+    const response = await fetch(`http://localhost:8080/v1/venta`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(request)
+    });
+    if (response.status > 200 || response.status <= 300) {
+      console.log(response.status)
+      console.log(await response.json());
+          if(response.status === 201){
+              
+              return response.status;
+          }
+          else if (response.status === 400){
+              
+              return response.status;
+          }
+          else if (response.status === 409){
+
+              return response.status;
+          }
+          else if (response.status === 500){
+
+              return response.status;
+          }
+    }
+    
+  else if (response.status !==200){
+      let errorMessage = 'Ha ocurrido un error.';
+      throw new Error(errorMessage);
+  }
+  else if (response.status === 400) {
+    let errorMessage = 'Lote altan datos requeridos en la solicitud.';
+      throw new Error(errorMessage);
+      } 
+  else if (response.status === 409) {
+    let errorMessage = 'El usuario ya ha sido registrado previamente.';
+        throw new Error(errorMessage);
+      }
+      
+    
+  
+    const data = await response.json();
+    console.log("se ejecuto registro");
+    console.log(data);
+  
+
+} catch (error) {
+console.error(error.message);
+console.error(error.status);
+    // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
+  }
+}
 const productos = useProducto();
 useEffect(() => {
   async function cargarProductos(){
@@ -252,7 +307,7 @@ const handleSelectSUM = (event) => {
     <div>
       <div> 
       <p className={InputCSS['texto']}>
-  <b>Terreno.</b> 
+  <b>Terreno.</b>
   ¿Cuál es el mejor para su familia?
 <span className={InputCSS['infoIcon']} title="Información adicional">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>

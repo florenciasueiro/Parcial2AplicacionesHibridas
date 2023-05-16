@@ -46,7 +46,7 @@ export default function SignIn() {
         {showError && <p>Email o contraseña inválidos.</p>}
         <form className={LoginCSS.form} onSubmit={handleSubmit}>
           <div className={LoginCSS.inputContainer}>
-            <label className={LoginCSS.label} htmlFor="email">Email Address:</label>
+            
             <input className={LoginCSS.input}
               type="email"
               id="email"
@@ -55,9 +55,9 @@ export default function SignIn() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            <span className={LoginCSS.span}>E-mail</span>
           </div>
           <div className={LoginCSS.inputContainer}>
-            <label className={LoginCSS.label} htmlFor="password">Password:</label>
             <input className={LoginCSS.input}
               type="password"
               id="password"
@@ -66,6 +66,7 @@ export default function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <span className={LoginCSS.span}>Password</span>
           </div>
           <div>
             <label className={LoginCSS.checkbox}>

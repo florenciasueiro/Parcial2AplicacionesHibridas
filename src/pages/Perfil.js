@@ -13,6 +13,7 @@ function ProfilePage() {
   }
   else{
   return (
+    <div className={PerfilCSS.alto}>
     <div className={PerfilCSS.profilePage}>
       <div className={PerfilCSS.leftSection}>
         <ProfileInfo onSectionClick={setActiveSection} />
@@ -32,6 +33,7 @@ function ProfilePage() {
         {/* {activeSection === 'Privacidad' && <CardGrid8 />} */}
 
       </div>
+    </div>
     </div>
   );
   }
