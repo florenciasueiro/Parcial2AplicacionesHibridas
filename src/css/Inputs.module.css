@@ -101,7 +101,7 @@ body {
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px 10px 10px 10px;
-  left: 34.1vw;
+  left: calc(50vw - 160px);
   width: 320px;
   display: flex;
   position: fixed;
@@ -530,3 +530,11 @@ span[title]:hover:after {
   top: 0px;
   position: absolute;
 }
+
+
+
+  /* .checkout{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  } */

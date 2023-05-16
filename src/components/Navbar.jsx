@@ -1,5 +1,5 @@
   import React, { useState, useRef } from 'react';
-  import { NavLink, useLocation } from 'react-router-dom';
+  import { Link, NavLink, useLocation } from 'react-router-dom';
   import NavbarCSS from '../css/Navbar.module.css';
   import Login from './Login';
   import Contactos from "../Service/APIlogin";
@@ -22,7 +22,7 @@
       } else {
         console.log("usuario");
         return (
-          <p>{usuario.name}</p>
+          <Link Link to="/profile">{usuario.name}</Link>
         );
       }
     };
@@ -92,10 +92,8 @@
               <NavLink onClick={hideLoginDropdown} exact to="/shop">Store</NavLink>
             </li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-            <button
-              className={NavbarCSS.btn}
-              onMouseEnter={showLoginDropdown}
-            >
+            <button className={NavbarCSS.btn}
+              onMouseEnter={showLoginDropdown}>
               {displayName()}
             </button>
           </li>
@@ -106,11 +104,8 @@
             }`}
             onMouseLeave={handleDropdownMouseLeave}
           >
-            <div
-                      onMouseLeave={handleDropdownMouseLeave}
-
-              className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}
-            >
+            <div onMouseLeave={handleDropdownMouseLeave}
+              className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
               <Login Contactos={handleLogin} />
             </div>
           </div>

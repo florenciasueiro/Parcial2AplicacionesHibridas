@@ -54,6 +54,7 @@ export default function RadioInputs() {
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
   const [selectedPago,            setSelectedPago]            = useState('');
+  const [showCheckout, setShowCheckout] = useState(false);
   
   
   
@@ -262,8 +263,15 @@ const handleSelectTerreno = (event) => {
     } else {
       setInput2Disabled(true);
     }
+    if (event.target.value !== '') {
+      setShowCheckout(true);
+    } else {
+      setShowCheckout(false);
+    }
   };
-
+  const handleClick = () => {
+    // Lógica para el evento onClick del Checkout
+  };
 
 
 
@@ -568,7 +576,7 @@ const handleSelectSUM = (event) => {
       </div> */}
             {/* mercado pago */}
             <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
-      <main>
+      <main className={InputCSS.checkout}>
         {renderSpinner()}
         <Checkout onClick={handleClick} description/>
         <Payment />
@@ -577,8 +585,6 @@ const handleSelectSUM = (event) => {
     </InternalProvider>
     {/* fin mercado pago */}
     </div>
-    
-
 
 
   );

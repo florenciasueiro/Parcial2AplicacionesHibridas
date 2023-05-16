@@ -92,7 +92,7 @@ export default function SignIn() {
   } else {
     return (
       <div className={LoginCSS.loginContainer}>
-        <form onSubmit={handleLogout}>
+        {/* <form onSubmit={handleLogout}>
         <div className={LoginCSS.loginContainer}>
                 <Link className={LoginCSS.link} to="/profile">
                   Mi Perfil
@@ -102,7 +102,7 @@ export default function SignIn() {
                   Cerrar Sesión
                 </button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }
