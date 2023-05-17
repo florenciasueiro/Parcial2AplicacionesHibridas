@@ -32,16 +32,16 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 // Client Secret: oPB0PWcUBp0cTl9WzzqxW4XJJOjBCiok
 
 
-//Test user 2 comprador TTEST65297
+//Test user 2  dor TTEST65297
 
 export default function RadioInputs() {
 
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 0, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
+  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 0, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {}, sku:"" });
 //FIN DE MERCADO PAGO
-
+  
   const [input2Disabled, setInput2Disabled] = useState(true );
   const [input3Disabled, setInput3Disabled] = useState(true );
   const [input4Disabled, setInput4Disabled] = useState(true );
@@ -87,62 +87,62 @@ console.log(orderData);
 
 
 
-const postVenta = async () => {
-  try {
-    const response = await fetch(`http://localhost:8080/v1/venta`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(request)
-    });
-    if (response.status > 200 || response.status <= 300) {
-      console.log(response.status)
-      console.log(await response.json());
-          if(response.status === 201){
+// const postVenta = async () => {
+//   try {
+//     const response = await fetch(`http://localhost:8080/v1/venta`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(request)
+//     });
+//     if (response.status > 200 || response.status <= 300) {
+//       console.log(response.status)
+//       console.log(await response.json());
+//           if(response.status === 201){
               
-              return response.status;
-          }
-          else if (response.status === 400){
+//               return response.status;
+//           }
+//           else if (response.status === 400){
               
-              return response.status;
-          }
-          else if (response.status === 409){
+//               return response.status;
+//           }
+//           else if (response.status === 409){
 
-              return response.status;
-          }
-          else if (response.status === 500){
+//               return response.status;
+//           }
+//           else if (response.status === 500){
 
-              return response.status;
-          }
-    }
+//               return response.status;
+//           }
+//     }
     
-  else if (response.status !==200){
-      let errorMessage = 'Ha ocurrido un error.';
-      throw new Error(errorMessage);
-  }
-  else if (response.status === 400) {
-    let errorMessage = 'Lote altan datos requeridos en la solicitud.';
-      throw new Error(errorMessage);
-      } 
-  else if (response.status === 409) {
-    let errorMessage = 'El usuario ya ha sido registrado previamente.';
-        throw new Error(errorMessage);
-      }
+//   else if (response.status !==200){
+//       let errorMessage = 'Ha ocurrido un error.';
+//       throw new Error(errorMessage);
+//   }
+//   else if (response.status === 400) {
+//     let errorMessage = 'Lote altan datos requeridos en la solicitud.';
+//       throw new Error(errorMessage);
+//       } 
+//   else if (response.status === 409) {
+//     let errorMessage = 'El usuario ya ha sido registrado previamente.';
+//         throw new Error(errorMessage);
+//       }
       
     
   
-    const data = await response.json();
-    console.log("se ejecuto registro");
-    console.log(data);
+//     const data = await response.json();
+//     console.log("se ejecuto registro");
+//     console.log(data);
   
 
-} catch (error) {
-console.error(error.message);
-console.error(error.status);
-    // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
-  }
-}
+// } catch (error) {
+// console.error(error.message);
+// console.error(error.status);
+//     // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
+//   }
+// }
 const productos = useProducto();
 useEffect(() => {
   async function cargarProductos(){
@@ -152,10 +152,13 @@ useEffect(() => {
       
       
       setCargaron(true)
+      
     }
   }
   cargarProductos();
-}, [cargaron, productos]);
+}, []);
+
+//deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
 useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
 
@@ -168,16 +171,37 @@ useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selec
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
 
 
+function checkSKUByName(name) {
+  const productoJson = sessionStorage.getItem('productos');
+  const producto = productoJson ? JSON.parse(productoJson) : null;
+  const obj = producto.find(item => item.name === name);
+  if (obj.sku) {
+    return obj.sku;
+  } else {
+    return "no habia";
+  }
+}
 
-
-
+function checkStockByName(name) {
+  const productoJson = sessionStorage.getItem('productos');
+  const producto = productoJson ? JSON.parse(productoJson) : null;
+  const obj = producto.find(item => item.name === name);
+  if (obj && obj.stock > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 //MERCADO PAGO
 
 const handleClick = () => {
+  orderData.sku=checkSKUByName(orderData.description);
+  orderData.stock=checkStockByName(orderData.description);
   setIsLoading(true);
-  postVenta();
+  // postVenta();
+  sessionStorage.setItem("compra", JSON.stringify(orderData));
   fetch("http://localhost:8080/create_preference", {
     method: "POST",
     headers: {
@@ -230,7 +254,16 @@ if(cargaron){
   const productoJson = sessionStorage.getItem('productos');
   const producto = productoJson ? JSON.parse(productoJson) : null;
 
-
+  function checkStockByName(name) {
+  
+    const obj = producto.find(item => item.name === name);
+    if (obj && obj.stock > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
 
 
 
@@ -245,14 +278,7 @@ if(cargaron){
 
 orderData.price = checkPriceByName(request.terreno);
 ;
-function checkStockByName(name) {
-  const obj = producto.find(item => item.name === name);
-  if (obj && obj.stock > 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
+
 
 const handleSelectTerreno = (event) => {
   setSelectedTerreno(event.target.value);
