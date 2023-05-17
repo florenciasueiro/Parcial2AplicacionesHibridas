@@ -28,7 +28,7 @@ const Checkout = ({ onClick }) => {
     {/* <section className={shoppingCartClass}> */}
     <section className={InputCSS.shoppingCart}>
     <div className={InputCSS["container"]} id={InputCSS["container"]}>
-      <div className={InputCSS.content}>
+      <div className={orderData.description ? InputCSS.contentShow : InputCSS.content}>
         <div className={InputCSS["row"]}>
           <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-8"]}>
             <div className={InputCSS.items}>
@@ -59,10 +59,10 @@ const Checkout = ({ onClick }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>  
           </div>
           <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]}>
-            <div className={InputCSS["summary"]}>
+            <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
               {/* <h3>Cart</h3> */}
               <div className={InputCSS["summary-item"]}>
                 <span className={InputCSS["text"]}>Subtotal</span>
@@ -74,11 +74,10 @@ const Checkout = ({ onClick }) => {
                 // className={InputCSS["btn"] + " " + InputCSS["btn-primary"] + " " + InputCSS["btn-lg"] + " " + InputCSS["btn-block"]}
                 onClick={onClick}
                 id={InputCSS["checkout-btn"]}
-                disabled={disabled}
-
-              >
+                disabled={disabled}>
                 Checkout
               </button>
+              
             </div>
           </div>
         </div>

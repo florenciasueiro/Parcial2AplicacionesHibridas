@@ -55,7 +55,7 @@ export default function SignIn() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <span className={LoginCSS.span}>E-mail</span>
+            <span className={LoginCSS.span}>E-mail *</span>
           </div>
           <div className={LoginCSS.inputContainer}>
             <input className={LoginCSS.input}
@@ -66,7 +66,7 @@ export default function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <span className={LoginCSS.span}>Password</span>
+            <span className={LoginCSS.span}>Password *</span>
           </div>
           <div>
             <label className={LoginCSS.checkbox}>

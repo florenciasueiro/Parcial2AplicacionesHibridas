@@ -54,6 +54,8 @@ export default function RadioInputs() {
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
   const [selectedPago,            setSelectedPago]            = useState('');
+
+
   
   
   
@@ -596,7 +598,8 @@ const handleSelectSUM = (event) => {
             <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
       <main>
         {renderSpinner()}
-        <Checkout onClick={handleClick} description/>
+        <Checkout onClick={handleClick} description />
+
         <Payment />
       </main>
       {/* <FooterMeli /> */}

@@ -91,8 +91,8 @@ function Perfil(props) {
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <Link onClick={handleLogout}>
-            Cerrar Sesion
+          <Link className={PerfilCSS.btn} onClick={handleLogout}>
+            Cerrar Sesión
           </Link>
         </li>
       </ul>
