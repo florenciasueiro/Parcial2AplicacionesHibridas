@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import InputCSS from '../css/Inputs.module.css';
 import useProducto from '../Service/APIproducto';
+import useServicio from '../Service/APIservicio';
 import { initMercadoPago } from "@mercadopago/sdk-react";
 import Payment from "./Payment";
 import Checkout from "./Checkout";
@@ -74,7 +75,7 @@ export default function RadioInputs() {
     sum             : selectedSUM,
     // pago            : selectedPago
   }
-console.log(request)
+
 orderData.description=request.terreno;
 orderData.cards=request.card;
 orderData.storage=request.almacenamiento;
@@ -83,82 +84,9 @@ orderData.guarderia=request.guarderia;
 
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-console.log(usuario);
 orderData.user = usuario;
+
 console.log(orderData);
-
-
-
-// const postVenta = async () => {
-//   try {
-//     const response = await fetch(`http://localhost:8080/v1/venta`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(request)
-//     });
-//     if (response.status > 200 || response.status <= 300) {
-//       console.log(response.status)
-//       console.log(await response.json());
-//           if(response.status === 201){
-              
-//               return response.status;
-//           }
-//           else if (response.status === 400){
-              
-//               return response.status;
-//           }
-//           else if (response.status === 409){
-
-//               return response.status;
-//           }
-//           else if (response.status === 500){
-
-//               return response.status;
-//           }
-//     }
-    
-//   else if (response.status !==200){
-//       let errorMessage = 'Ha ocurrido un error.';
-//       throw new Error(errorMessage);
-//   }
-//   else if (response.status === 400) {
-//     let errorMessage = 'Lote altan datos requeridos en la solicitud.';
-//       throw new Error(errorMessage);
-//       } 
-//   else if (response.status === 409) {
-//     let errorMessage = 'El usuario ya ha sido registrado previamente.';
-//         throw new Error(errorMessage);
-//       }
-      
-    
-  
-//     const data = await response.json();
-//     console.log("se ejecuto registro");
-//     console.log(data);
-  
-
-// } catch (error) {
-// console.error(error.message);
-// console.error(error.status);
-//     // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
-//   }
-// }
-const productos = useProducto();
-useEffect(() => {
-  async function cargarProductos(){
-    if(!cargaron){
-      await productos();
-      
-      
-      
-      setCargaron(true)
-      
-    }
-  }
-  cargarProductos();
-}, []);
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
@@ -172,11 +100,25 @@ useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selec
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
 
+const productos = useProducto();
+const servicios = useServicio();
+useEffect(() => {
+  async function cargar(){
+    if(!cargaron){
+      await productos;
+      await servicios;
+      setCargaron(true);
+      
+    }
+  }
+  cargar();
+}, []);
+
+
 
 function checkSKUByName(name) {
-  const productoJson = sessionStorage.getItem('productos');
-  const producto = productoJson ? JSON.parse(productoJson) : null;
-  const obj = producto.find(item => item.name === name);
+
+  const obj = productos.find(item => item.name === name);
   if (obj.sku) {
     return obj.sku;
   } else {
@@ -185,9 +127,8 @@ function checkSKUByName(name) {
 }
 
 function checkStockByName(name) {
-  const productoJson = sessionStorage.getItem('productos');
-  const producto = productoJson ? JSON.parse(productoJson) : null;
-  const obj = producto.find(item => item.name === name);
+
+  const obj = productos.find(item => item.name === name);
   if (obj && obj.stock > 0) {
     return true;
   } else {
@@ -195,7 +136,17 @@ function checkStockByName(name) {
   }
 }
 
+function checkPriceByName(name) {
+  const obj = productos.find(item => item.name === name);
+  if (obj && obj.price > 0) {
+    return obj.price;
+  } else {
+    return 0;
+  }
+}
 
+
+orderData.price = checkPriceByName(request.terreno);
 //MERCADO PAGO
 
 const handleClick = () => {
@@ -248,120 +199,96 @@ const renderSpinner = () => {
   };
 
 
+  
+  
+  
+  
+  const handleSelectTerreno = (event) => {
+    setSelectedTerreno(event.target.value);
+  
+      if (event.target.value != '') {
+        setInput2Disabled(false);
+      } else {
+        setInput2Disabled(true);
+        orderData.amount = checkPriceByName(request.terreno)
+      }
+    };
+  
+  
+  
+  
+    const handleSelectCard = (event) => {
+      setSelectedCard(event.target.value);
+      
+      if (event.target.value != '') {
+        setInput3Disabled(false);
+      } else {
+        setInput3Disabled(true);
+      }
+    };
+    
+  
+  
+  //faltaria conectar los servicos para obtener los precios, quilombo para el fin de semana
+  
+    const handleSelectAlmacenamiento = (event) => {
+      setSelectedAlmacenamiento(event.target.value);
+  
+      if (event.target.value != '') {
+        setInput4Disabled(false);
+        
+        if (event.target.value==="Pequeño"){
+          orderData.amount = checkPriceByName(request.terreno)+200;
+          console.log('pase por if 1');
+        }
+        else if(event.target.value==="Mediano"){
+          orderData.amount = checkPriceByName(request.terreno)+500;
+          console.log('pase por if 2');
+        }
+        else if(event.target.value==="Grande"){
+          orderData.amount = checkPriceByName(request.terreno)+1000;
+          console.log('pase por if 3');
+        
+      }
+      } else {
+        setInput4Disabled(true);
+  
+    };
+  };
+  
+  
+  
+  
+  
+    const handleSelectGuarderia = (event) => {
+      setSelectedGuarderia(event.target.value);
+  
+    if (event.target.value != '') {
+      setInput5Disabled(false);
+    } else {
+      setInput5Disabled(true);
+    }
+  };
+  
+  
+  
+  
+  
+  const handleSelectSUM = (event) => {
+    setSelectedSUM(event.target.value);
+  
+    if (event.target.value != '') {
+      setInput6Disabled(false);
+    } else {
+      setInput6Disabled(true);
+    }
+  };
+  
+
 
 
 
 if(cargaron){
-
-  const productoJson = sessionStorage.getItem('productos');
-  const producto = productoJson ? JSON.parse(productoJson) : null;
-
-  function checkStockByName(name) {
-  
-    const obj = producto.find(item => item.name === name);
-    if (obj && obj.stock > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  
-
-
-
- function checkPriceByName(name) {
-  const obj = producto.find(item => item.name === name);
-  if (obj && obj.price > 0) {
-    return obj.price;
-  } else {
-    return 0;
-  }
-}
-
-orderData.price = checkPriceByName(request.terreno);
-;
-
-
-const handleSelectTerreno = (event) => {
-  setSelectedTerreno(event.target.value);
-
-    if (event.target.value != '') {
-      setInput2Disabled(false);
-    } else {
-      setInput2Disabled(true);
-    }
-  };
-
-
-
-
-  const handleSelectCard = (event) => {
-    setSelectedCard(event.target.value);
-    
-    if (event.target.value != '') {
-      setInput3Disabled(false);
-    } else {
-      setInput3Disabled(true);
-    }
-  };
-  
-
-
-//faltaria conectar los servicos para obtener los precios, quilombo para el fin de semana
-
-  const handleSelectAlmacenamiento = (event) => {
-    setSelectedAlmacenamiento(event.target.value);
-
-    if (event.target.value != '') {
-      setInput4Disabled(false);
-      
-      if (event.target.value==="Pequeño"){
-        orderData.amount = checkPriceByName(request.terreno)+200;
-        console.log('pase por if 1');
-      }
-      else if(event.target.value==="Mediano"){
-        orderData.amount = checkPriceByName(request.terreno)+500;
-        console.log('pase por if 2');
-      }
-      else if(event.target.value==="Grande"){
-        orderData.amount = checkPriceByName(request.terreno)+1000;
-        console.log('pase por if 3');
-      
-    }
-    } else {
-      setInput4Disabled(true);
-
-  };
-};
-
-
-
-
-
-  const handleSelectGuarderia = (event) => {
-    setSelectedGuarderia(event.target.value);
-
-  if (event.target.value != '') {
-    setInput5Disabled(false);
-  } else {
-    setInput5Disabled(true);
-  }
-};
-
-
-
-
-
-const handleSelectSUM = (event) => {
-  setSelectedSUM(event.target.value);
-
-  if (event.target.value != '') {
-    setInput6Disabled(false);
-  } else {
-    setInput6Disabled(true);
-  }
-};
-
 
   return (
     <div>
