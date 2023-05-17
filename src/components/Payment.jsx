@@ -6,6 +6,7 @@ import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
 
 const Payment = () => {
+  
   const { preferenceId } = React.useContext(Context);
   const [isReady, setIsReady] = React.useState(false);
   const paymentClass = classnames('payment-form dark', {

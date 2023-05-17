@@ -39,7 +39,7 @@ export default function RadioInputs() {
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
+  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 0, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} });
 //FIN DE MERCADO PAGO
 
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -259,12 +259,13 @@ function checkStockByName(name) {
 const handleSelectTerreno = (event) => {
   setSelectedTerreno(event.target.value);
 
-  if (event.target.value !== '') {
-    setInput2Disabled(false);
-  } else {
-    setInput2Disabled(true);
-  }
-};
+    if (event.target.value != '') {
+      setInput2Disabled(false);
+    } else {
+      setInput2Disabled(true);
+    }
+  };
+
 
 
 
@@ -569,7 +570,7 @@ const handleSelectSUM = (event) => {
       </div> */}
             {/* mercado pago */}
             <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
-      <main className={InputCSS.checkout}>
+      <main>
         {renderSpinner()}
         <Checkout onClick={handleClick} description />
 
@@ -579,6 +580,8 @@ const handleSelectSUM = (event) => {
     </InternalProvider>
     {/* fin mercado pago */}
     </div>
+    
+
 
 
   );
