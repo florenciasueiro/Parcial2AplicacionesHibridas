@@ -54,7 +54,8 @@ export default function RadioInputs() {
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
   const [selectedPago,            setSelectedPago]            = useState('');
-  const [showCheckout, setShowCheckout] = useState(false);
+
+
   
   
   
@@ -258,20 +259,12 @@ function checkStockByName(name) {
 const handleSelectTerreno = (event) => {
   setSelectedTerreno(event.target.value);
 
-    if (event.target.value != '') {
-      setInput2Disabled(false);
-    } else {
-      setInput2Disabled(true);
-    }
-    if (event.target.value !== '') {
-      setShowCheckout(true);
-    } else {
-      setShowCheckout(false);
-    }
-  };
-  const handleClick = () => {
-    // Lógica para el evento onClick del Checkout
-  };
+  if (event.target.value !== '') {
+    setInput2Disabled(false);
+  } else {
+    setInput2Disabled(true);
+  }
+};
 
 
 
@@ -578,7 +571,8 @@ const handleSelectSUM = (event) => {
             <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
       <main className={InputCSS.checkout}>
         {renderSpinner()}
-        <Checkout onClick={handleClick} description/>
+        <Checkout onClick={handleClick} description />
+
         <Payment />
       </main>
       {/* <FooterMeli /> */}

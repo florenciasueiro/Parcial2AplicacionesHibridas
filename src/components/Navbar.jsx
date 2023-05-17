@@ -30,6 +30,10 @@
     const handleLogin = (email, password) => {
       Contactos(email, password);
       setShowLogin(false); // Ocultar el login después de iniciar sesión
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     };
 
     const [showLogin, setShowLogin] = useState(false);
@@ -47,6 +51,10 @@
 
     const hideLoginDropdown = () => {
       setShowLogin(false);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     };
 
     const handleDropdownMouseEnter = () => {
@@ -56,7 +64,7 @@
     const handleDropdownMouseLeave = () => {
       setTimeout(() => {
         setShowLogin(false);
-      }, 200); // Retrasar la ocultación del login en 2000 milisegundos (2 segundos)
+      }, 600); // Retrasar la ocultación del login en 2000 milisegundos (2 segundos)
     };
     
 
@@ -69,7 +77,7 @@
       if (!isLoginHovered) {
         setTimeout(() => {
           setShowLogin(false);
-        }, 200); // Tiempo adicional antes de cerrar el login (2 segundos)
+        }, 600); // Tiempo adicional antes de cerrar el login (2 segundos)
       }
     };
 
