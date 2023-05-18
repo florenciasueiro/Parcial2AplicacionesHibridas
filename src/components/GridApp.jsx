@@ -219,9 +219,10 @@ export function CardGrid5({ handleClick }) {
 export function CardGrid6({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  console.log(usuario)
   const displayPASS = (serv)=>{
-    if (usuario.servicios.find(servicio=> servicio.name.includes(serv)) && usuario.servicios.find(servicio => servicio.name.includes('pase'))) {
-      return `A su ${usuario.servicios.name} le quedan ${usuario.servicios.units} meses`;
+    if (usuario.servicios.find(servicio=> servicio.name.includes(serv)) && usuario.servicios.find(servicio => servicio.name.includes('Pase'))) {
+      return `A su ${usuario.servicios.find(servicio=> servicio.name.includes(serv)).name} le quedan ${usuario.servicios.find(servicio=> servicio.name.includes(serv)).units} meses`;
     } else if(usuario.servicios.find(servicio=> servicio.name.includes(serv))) {
       return `Cuenta con ${usuario.servicios.units} horas`;
     }else{
@@ -240,14 +241,14 @@ export function CardGrid6({ handleClick }) {
     {
       id: 22,
       title: 'Guardería',
-      description: displayPASS('Guarderia'),
+      description: displayPASS('Kinder'),
       imageUrl: 'https://via.placeholder.com/150',
       link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 999,
       title: 'Coworking',
-      description: displayPASS('Coworking'),
+      description: displayPASS('Pase Coworking'),
       imageUrl: 'https://via.placeholder.com/150',
       link: 'https://ejemplo.com/tarjeta-5'
     }
