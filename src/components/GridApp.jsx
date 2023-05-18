@@ -3,6 +3,8 @@ import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 export function CardGrid({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
@@ -11,25 +13,33 @@ export function CardGrid({ handleClick }) {
     {
       id: 1,
       title: 'Asset ID',
-      description: `tu Asset ID es: ${usuario.id}`,
+      description: `${usuario.id}`,
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-1'
+      icon: <FontAwesomeIcon icon={faUser} />,
     },
     {
       id: 2,
       title: 'Contraseña',
       description: `Contraseña: ${usuario.password}`,
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-2'
+      icon: <FontAwesomeIcon icon={faLock} />,
+      class: "",
+      inputs: [
+        { placeholder: 'Contraseña actual', type: 'password', button: 'PerfilCSS.none' },
+        { placeholder: 'Nueva contraseña', type: 'password', button: 'PerfilCSS.none' },
+        { placeholder: 'Repetir contraseña', type: 'password', button: 'PerfilCSS.show' }
+      ]
     },
     {
       id: 3,
       title: 'Seguridad de la cuenta',
       description: 'Descripción de la tarjeta 3',
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-3'
+      icon: <FontAwesomeIcon icon={faKey} />,
+      // No se especifican inputs para esta tarjeta
     },
   ];
+
   return (
     <div className={PerfilCSS.cardGrid} onClick={handleClick}>
       {cardData.map((card) => (
@@ -38,6 +48,10 @@ export function CardGrid({ handleClick }) {
     </div>
   );
 }
+
+
+
+
 
 export function CardGrid2({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
@@ -48,49 +62,47 @@ export function CardGrid2({ handleClick }) {
       title: 'Nombre',
       description: `nombre: ${usuario.name}\n Segundo nombreXD:\n Apellido:`,
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-4'
+      icon: <FontAwesomeIcon icon={faIdCard} />
     },
     {
       id: 5,
       title: 'Cumpleaños',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-5'
+      icon: <FontAwesomeIcon icon={faCalendar} />
     },
     {
       id: 6,
       title: 'País',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-6'
+      icon: <FontAwesomeIcon icon={faLocationDot} />
     },
     {
       id: 7,
       title: 'Idioma',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-7'
     },
     {
       id: 8,
       title: 'Teléfono',
       description: `telefono: ${usuario.mobile}`,
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-8'
+      icon: <FontAwesomeIcon icon={faMobile} />
     },
     {
       id: 9,
       title: 'Correo personal',
       description: `${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-9'
+      icon: <FontAwesomeIcon icon={faAt} />
     },
     {
       id: 10,
       title: 'Género',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: '/ruta-para-tarjeta-10'
     },
   ];
   return (
@@ -109,7 +121,6 @@ export function CardGrid3({ handleClick }) {
       title: 'Métodos de pago',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-1'
     },
   ];
   return (
@@ -130,14 +141,15 @@ export function CardGrid4({ handleClick }) {
       title: 'Miembros de familia',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-1'
+      icon: "",
+
     },
     {
       id: 13,
       title: 'Agregar nuevo miembro',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-2'
+      icon: <FontAwesomeIcon icon={faCirclePlus} />
     },
 
   ];
@@ -161,49 +173,43 @@ export function CardGrid5({ handleClick }) {
       title: 'Productos enlazados',
       description: usuario.productos,
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-1'
     },
     {
       id: 15,
       title: 'Enlazar nuevo producto',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-2'
+      icon: <FontAwesomeIcon icon={faCirclePlus} />
     },
     {
       id: 16,
       title: 'Pagos',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-3'
     },
     {
       id: 17,
       title: 'Facturas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-4'
     },
     {
       id: 18,
       title: 'Resúmenes',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 19,
       title: 'Mantenimiento',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 20,
       title: 'Documentacion',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
 
   ];
@@ -235,21 +241,18 @@ export function CardGrid6({ handleClick }) {
       title: 'SUM',
       description: displayPASS('SUM'),
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 22,
       title: 'Guardería',
       description: displayPASS('Guarderia'),
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 999,
       title: 'Coworking',
       description: displayPASS('Coworking'),
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     }
 
   ];
@@ -269,28 +272,24 @@ export function CardGrid7({ handleClick }) {
       title: 'Reservas de servicios',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 24,
       title: 'Reservas de mantenimiento',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 25,
       title: 'Reservas de servicios',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     {
       id: 26,
       title: 'Reservas de llamadas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
     
 
@@ -311,7 +310,6 @@ export function CardGrid8({ handleClick }) {
       title: 'Todavía no se qué poner acá bien.',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
-      link: 'https://ejemplo.com/tarjeta-5'
     },
 
   ];

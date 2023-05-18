@@ -7,6 +7,7 @@ function ProfilePage() {
   const [activeSection, setActiveSection] = useState('Inicio de Sesion');
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  
 
   if(usuario===null){
     return <h1>Debes crearte una cuenta para acceder a esta pagina</h1>
@@ -23,7 +24,7 @@ function ProfilePage() {
           <h1>{activeSection}</h1>
           <p>Hola, esto es un texto nformativo de ejemplo</p>
         </div>
-        {activeSection === 'Inicio de Sesion' && <CardGrid />}
+        {activeSection === 'Inicio de Sesion' && <CardGrid />}  
         {activeSection === 'Informacion personal' && <CardGrid2 />}
         {activeSection === 'Metodos de pago' && <CardGrid3 />}
         {activeSection === 'Compartir en familia' && <CardGrid4 />}

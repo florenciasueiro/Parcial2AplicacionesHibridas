@@ -9,14 +9,12 @@ function ModalCardInicio({ card, isOpen, onClose }) {
       isOpen={isOpen}
       onRequestClose={onClose}
       className={PerfilCSS.modalCard}
-      overlayClassName={PerfilCSS.modalOverlay}
-    >
+      overlayClassName={PerfilCSS.modalOverlay}>
       <CSSTransition
         in={isOpen}
         timeout={300}
         className={PerfilCSS.modalTransition}
-        unmountOnExit
-      >
+        unmountOnExit>
         <div className={PerfilCSS.modalCardContainer}>
           <div className={PerfilCSS.modalCardHeader}>
             <h3>{card.title}</h3>
