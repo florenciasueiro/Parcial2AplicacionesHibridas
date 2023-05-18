@@ -1,27 +1,29 @@
 import { useEffect, useState } from 'react';
 
-export default function useProductos() {
-  const [productos, setProductos] = useState([]);
+export default function useServicio() {
+  const [servicios, setServicios] = useState([]);
 
   useEffect(() => {
-    const fetchProductos = async () => {
+    const fetchServicios = async () => {
       try {
-        const response = await fetch('http://localhost:8080/v1/getallProducto');
+        const response = await fetch('http://localhost:8080/v1/getallServicio');
         if (!response.ok) {
           throw new Error(`Network response was not ok (${response.status})`);
         }
         const data = await response.json();
-        sessionStorage.setItem('productos', JSON.stringify(data));
-        setProductos(data);
+        sessionStorage.setItem('servicios', JSON.stringify(data));
+        setServicios(data);
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
       }
     };
 
-    fetchProductos();
+    fetchServicios();
   }, []);
 
+  
+    
  
 
-  return productos;
+  return servicios;
 }

@@ -13,7 +13,7 @@ const Payment = () => {
     'payment-form--hidden': !isReady,
   });
   const compra = sessionStorage.getItem("compra");
-  const orderData = compra ? JSON.parse(compra) : { quantity: "1", price: "0", amount: 10, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} };
+  const orderData = compra ? JSON.parse(compra) : { quantity: "1", price: "0", amount: 0, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {} };
   ;
 
   const handleOnReady = () => {
