@@ -20,7 +20,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 2,
       title: 'Contraseña',
-      description: `Contraseña: ${usuario.password}`,
+      description: `Contraseña: ${usuario.password}`, 
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
@@ -175,9 +175,8 @@ export function CardGrid5({ handleClick }) {
       imageUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 15,
-      title: 'Enlazar nuevo producto',
-      description: 'Descripción de la tarjeta 2',
+      id: 'quince',
+      className: 'card15',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCirclePlus} />
     },

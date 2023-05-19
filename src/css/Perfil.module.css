@@ -177,7 +177,7 @@
     border: none;
   }
   .alto{
-    height: 100vh;
+    height: calc(100vh - 30.4px);
     top: 0;
     position: relative;
     padding-top: 80px;
@@ -251,7 +251,7 @@
   .icono{
     display: flex;
     justify-content: center;
-    color: black;
+    color: red;
   }
 
   .titulo{
@@ -274,4 +274,19 @@
 
   .none{
     display: none;
+  }
+
+  #mas:first-child{
+    display: flex;
+    color: red;
+  }
+
+
+
+  .quince {
+    color: red;
+    background-color: red;
+  }
+  .card15{
+    color: red!important;
   }
