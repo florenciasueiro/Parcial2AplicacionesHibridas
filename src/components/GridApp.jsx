@@ -2,13 +2,33 @@ import React from 'react';
 import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
-import { Link } from 'react-router-dom';
+import useEditarUsuario from '../Service/APIeditarUsuario'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 export function CardGrid({ handleClick }) {
+  const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  let datosIngresados=[];
+  //0=pass actaul
+  //1=pass nueva
+  //2=pass nueva repetida
+  const handleChange = (e,pos) =>{
+    datosIngresados[pos]=e;
+    console.log(datosIngresados);  
+  }
+  const btnClick = ()=>{
+    if(datosIngresados[0]!=usuario.password){
+      alert("esa no es la contraseña actual");
+    }
+    else if(datosIngresados[1]!=datosIngresados[2]){
+    alert("repetir contraseña y nueva contraseña deben ser iguales")
+  }else{
+    usuario.password=datosIngresados[2];
+    alert("contraseña cambiada con exito!")
+    editar(usuario)
+  }}
   const cardData = [
     {
       id: 1,
@@ -16,6 +36,7 @@ export function CardGrid({ handleClick }) {
       description: `${usuario.id}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
+
     },
     {
       id: 2,
@@ -25,10 +46,10 @@ export function CardGrid({ handleClick }) {
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
       inputs: [
-        { placeholder: 'Contraseña actual', type: 'password', button: 'PerfilCSS.none' },
-        { placeholder: 'Nueva contraseña', type: 'password', button: 'PerfilCSS.none' },
-        { placeholder: 'Repetir contraseña', type: 'password', button: 'PerfilCSS.show' }
-      ]
+        { placeholder: 'Contraseña actual', type: 'password', change: handleChange},
+        { placeholder: 'Nueva contraseña', type: 'password', change: handleChange },
+        { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, button: 'Cambiar',onClick: btnClick}
+      ],
     },
     {
       id: 3,

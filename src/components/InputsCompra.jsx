@@ -155,6 +155,7 @@ const handleClick = () => {
   setIsLoading(true);
   // postVenta();
   sessionStorage.setItem("compra", JSON.stringify(orderData));
+
   fetch("http://localhost:8080/create_preference", {
     method: "POST",
     headers: {
@@ -503,26 +504,6 @@ if(cargaron){
       </div>
       </div>
 
-      {/* <div className={InputCSS['ref']} ref={pagoRef}>
-      <p><b> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
-      <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="1" checked={selectedPago === '1'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          1 cuota
-        </label>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="6" checked={selectedPago === '6'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          6 cuotas
-        </label>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="12" checked={selectedPago === '12'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          12 cuotas
-        </label>
-        <br/>
-        
-      </div>
-
-      </div> */}
             {/* mercado pago */}
             <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
       <main>

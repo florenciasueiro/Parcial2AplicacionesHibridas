@@ -5,8 +5,9 @@
   import Contactos from "../Service/APIlogin";
   import NavbarBlackCSS from '../css/NavbarBlack.module.css';
   // import DinamicShop from './DinamicShop';
-
+  import useContactos from '../Service/APIlogin'
   function Navbar() {
+    const contactos = useContactos();
     const location = useLocation();
     const isShopPage = location.pathname === '/shop';
 
@@ -26,6 +27,8 @@
         );
       }
     };
+
+   
 
     const handleLogin = (email, password) => {
       Contactos(email, password);
@@ -100,9 +103,14 @@
               <NavLink onClick={hideLoginDropdown} exact to="/shop">Store</NavLink>
             </li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-            <button className={NavbarCSS.btn}
-              onMouseEnter={showLoginDropdown}>
+            <button 
+            className={NavbarCSS.btn}
+            onMouseEnter={showLoginDropdown}
+            onClick= { ()=> { contactos(usuario.email, usuario.password) } }
+            >
+
               {displayName()}
+              
             </button>
           </li>
           <div

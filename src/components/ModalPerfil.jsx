@@ -2,8 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import { CSSTransition } from 'react-transition-group';
 import PerfilCSS from '../css/Perfil.module.css';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 
@@ -27,14 +25,28 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
           </div>
           <div className={PerfilCSS.modalCardBody}>
             <p className={PerfilCSS.description}>Tu Asset ID es: {card.description}</p>
+
       {card.inputs && card.inputs.map((input, index) => (
+
         <div className={PerfilCSS.inputBox} key={index}>
+          
             <div className={PerfilCSS.inputContainer}>
-                <input className={PerfilCSS.input} type={input.type} placeholder={input.placeholder} />
-                <button className={input.button}>{card.button}</button>
+                <input
+                 pattern="^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,}$" 
+                 className={PerfilCSS.input} 
+                 type={input.type} 
+                 placeholder={input.placeholder} 
+                 onChange={(e)=> input.change(e.target.value,index)}
+                 />
+                <button 
+                className={input.className}
+                onClick={input.onClick}
+                >{input.button}</button>
             </div>
+
         </div>
-        ))}
+      ))}
+
           </div>
         </div>
       </CSSTransition>
