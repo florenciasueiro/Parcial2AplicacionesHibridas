@@ -25,6 +25,7 @@ function Inicio() {
       },
       body: JSON.stringify(venta)
     });
+    
     if (response.status > 200 || response.status <= 300) {
       console.log(response.status)
       console.log(await response.json());

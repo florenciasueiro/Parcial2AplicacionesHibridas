@@ -65,8 +65,8 @@ const Checkout = ({ onClick }) => {
             <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
               {/* <h3>Cart</h3> */}
               <div className={InputCSS["summary-item"]}>
-                <span className={InputCSS["text"]}>Subtotal</span>
-                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>${orderData.amount}</span>
+                <span className={InputCSS["text"]}>Subtotal $</span>
+                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount}</span>
               </div>
               <button
               className={InputCSS.test}

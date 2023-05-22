@@ -208,13 +208,15 @@ const renderSpinner = () => {
   
       if (event.target.value != '') {
         setInput2Disabled(false);
+        orderData.amount = checkPriceByName(request.terreno);
+        
       } else {
         setInput2Disabled(true);
-        orderData.amount = checkPriceByName(request.terreno)
+        
       }
     };
   
-  
+
   
   
     const handleSelectCard = (event) => {
@@ -458,6 +460,14 @@ if(cargaron){
           <input type="radio" value="0" checked={selectedGuarderia === '0'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
           Ninguno
         </label>
+        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '1' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="1" checked={selectedGuarderia === '1'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+          1 Meses
+        </label>
+        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '3' ? InputCSS.selected : ''}`}>
+          <input type="radio" value="3" checked={selectedGuarderia === '3'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+          3 Meses
+        </label>
         <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '6' ? InputCSS.selected : ''}`}>
           <input type="radio" value="6" checked={selectedGuarderia === '6'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
           6 Meses
@@ -465,14 +475,6 @@ if(cargaron){
         <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '12' ? InputCSS.selected : ''}`}>
           <input type="radio" value="12" checked={selectedGuarderia === '12'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
           12 Meses
-        </label>
-        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '24' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="24" checked={selectedGuarderia === '24'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          24 Meses
-        </label>
-        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '24' ? InputCSS.selected : ''}`}>
-          <input type="radio" value="24" checked={selectedGuarderia === '24'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          Ninguno
         </label>
         <br/>
       </div>
@@ -529,7 +531,7 @@ if(cargaron){
 
         {/* <Payment /> */}
       </main>
-      {/* <FooterMeli /> */}
+      
     </InternalProvider>
     {/* fin mercado pago */}
     </div>
