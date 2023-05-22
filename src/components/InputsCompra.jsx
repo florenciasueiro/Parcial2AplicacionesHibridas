@@ -148,13 +148,13 @@ function checkPriceByName(name) {
 
 orderData.price = checkPriceByName(request.terreno);
 //MERCADO PAGO
+  sessionStorage.setItem("compra", JSON.stringify(orderData));
 
 const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
   setIsLoading(true);
   // postVenta();
-  sessionStorage.setItem("compra", JSON.stringify(orderData));
   fetch("http://localhost:8080/create_preference", {
     method: "POST",
     headers: {
@@ -527,7 +527,7 @@ if(cargaron){
         {renderSpinner()}
         <Checkout onClick={handleClick} description />
 
-        <Payment />
+        {/* <Payment /> */}
       </main>
       {/* <FooterMeli /> */}
     </InternalProvider>

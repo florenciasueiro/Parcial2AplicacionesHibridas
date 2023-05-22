@@ -11,10 +11,10 @@ function Shop() {
     <div className={ShopCSS.body}>
       <div className={ShopCSS.container}>
         <div className={ShopCSS.carousel}>
-          <Carousel />
+          <Carousel/>
         </div>
         <div className={ShopCSS.inputs}>
-          <Inputs />
+          <Inputs/>
         </div>
       </div>
       <div>

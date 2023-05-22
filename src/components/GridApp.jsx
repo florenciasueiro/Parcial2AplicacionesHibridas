@@ -4,7 +4,7 @@ import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 export function CardGrid({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
@@ -83,6 +83,7 @@ export function CardGrid2({ handleClick }) {
       title: 'Idioma',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faLanguage} />
     },
     {
       id: 8,
@@ -176,7 +177,8 @@ export function CardGrid5({ handleClick }) {
     },
     {
       id: 'quince',
-      className: 'card15',
+      title: 'Agregar producto',
+      className: 'card1',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCirclePlus} />
     },
