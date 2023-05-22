@@ -509,7 +509,7 @@ if(cargaron){
         {renderSpinner()}
         <Checkout onClick={handleClick} description />
 
-        {/* <Payment /> */}
+        <Payment />
       </main>
       
     </InternalProvider>
