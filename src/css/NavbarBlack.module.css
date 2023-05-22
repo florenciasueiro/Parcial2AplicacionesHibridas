@@ -29,10 +29,13 @@
     z-index: 10;
   }
   .menuItem a{
-    color: white;
+    color: rgb(160, 160, 160);
     list-style: none;
     text-decoration: none;
     font-size: 15px;
+  }
+  .menuItem a:hover{
+    color: white;
   }
   .menuItem img{
     height: 25px;

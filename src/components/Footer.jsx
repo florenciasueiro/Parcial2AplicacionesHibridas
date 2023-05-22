@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 function Footer() {
+  const usuarioJson = sessionStorage.getItem('user');
   return (
     <footer className={FooterCSS.footerBox}>
       <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
@@ -52,14 +53,20 @@ function Footer() {
 
 <div className={FooterCSS.container}>
       <div className={FooterCSS.groupLink}>
-        <Link className={FooterCSS.linkText} to='/registro'>
-          Registrarse | ‎
-        </Link>
+        {usuarioJson ? (
+          <Link className={FooterCSS.linkText} to='/profile'>
+            Mi perfil | ‎
+          </Link>
+        ) : (
+          <Link className={FooterCSS.linkText} to='/registro'>
+            Registrarse | ‎
+          </Link>
+        )}
         <Link className={FooterCSS.linkText} to='/soporte'>
-          Soporte  ‎
+          Soporte ‎
         </Link>
       </div>
-    </div> 
+    </div>
 
     </footer>
   );

@@ -65,16 +65,16 @@ function Perfil(props) {
             Informacion personal
           </button>
         </li>
-        <li className={PerfilCSS.listaElemento}>
+        {/* <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection3Click}>
             Metodos de pago
           </button>
-        </li>
-        <li className={PerfilCSS.listaElemento}>
+        </li> */}
+        {/* <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection4Click}>
             Compartir en familia
           </button>
-        </li>
+        </li> */}
         <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection5Click}>
             Mis Productos
@@ -91,9 +91,9 @@ function Perfil(props) {
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <Link className={PerfilCSS.btn} onClick={handleLogout}>
+          <button className={PerfilCSS.btn} onClick={handleLogout}>
             Cerrar Sesión
-          </Link>
+          </button>
         </li>
       </ul>
     </div>

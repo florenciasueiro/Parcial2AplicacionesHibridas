@@ -4,7 +4,7 @@ import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
 import useEditarUsuario from '../Service/APIeditarUsuario'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 export function CardGrid({ handleClick }) {
   const editar =useEditarUsuario();
@@ -41,7 +41,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 2,
       title: 'Contraseña',
-      description: `Contraseña: ${usuario.password}`,
+      description: `Contraseña: ${usuario.password}`, 
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
@@ -104,6 +104,7 @@ export function CardGrid2({ handleClick }) {
       title: 'Idioma',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faLanguage} />
     },
     {
       id: 8,
@@ -196,9 +197,9 @@ export function CardGrid5({ handleClick }) {
       imageUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 15,
-      title: 'Enlazar nuevo producto',
-      description: 'Descripción de la tarjeta 2',
+      id: 'quince',
+      title: 'Agregar producto',
+      className: 'card1',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCirclePlus} />
     },

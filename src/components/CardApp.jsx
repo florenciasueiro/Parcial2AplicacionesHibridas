@@ -17,6 +17,10 @@ function Card({ card, cardData }) {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+
+
+
     return (
         <>
       <Link to={card.link} className={PerfilCSS.card}>
@@ -26,7 +30,7 @@ function Card({ card, cardData }) {
           <p>{card.description}</p>
         </div>
         <div className={PerfilCSS.icon}>
-        <h2 className={PerfilCSS.icono}>{card.icon}</h2>
+        <h2 id={card.id} className={`${PerfilCSS[`${card.className}`]}`}>{card.icon}</h2>
         </div>
       </Link>
         <ModalCardInicio card={card} isOpen={isModalOpen} onClose={handleCloseModal} />
@@ -35,3 +39,6 @@ function Card({ card, cardData }) {
   }
   
   export default Card;
+
+
+
