@@ -3,6 +3,8 @@ import classnames from 'classname'
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
 import { Background } from "@cloudinary/url-gen/qualifiers";
+import { navprimarioWidth } from './Navbar';
+
 
 const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged]=useState(false);
@@ -37,7 +39,7 @@ const Checkout = ({ onClick }) => {
     {/* <section className={shoppingCartClass}> */}
     <section className={InputCSS.shoppingCart}>
     <div className={InputCSS["container"]} id={InputCSS["container"]}>
-      <div className={orderData.description ? InputCSS.contentShow : InputCSS.content}>
+      <div style={{width: navprimarioWidth}} className={orderData.description ? InputCSS.contentShow : InputCSS.content}>
         <div className={InputCSS["row"]}>
           <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-8"]}>
             <div className={InputCSS.items}>
