@@ -5,6 +5,8 @@ import PerfilCSS from '../css/Perfil.module.css';
 import useEditarUsuario from '../Service/APIeditarUsuario'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import PDFViewer from '../components/PDFViewer';
+
 
 export function CardGrid({ handleClick }) {
   const editar =useEditarUsuario();
@@ -189,6 +191,20 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+ 
+
+  const generarListaFacturas = () => {
+    return usuario.facturas.map((facturaId) => (
+      <li key={facturaId}>
+        <a href={`/factura?id=${facturaId}`}>
+          Factura {facturaId}
+        </a>
+      </li>
+    ));
+  };
+
+
+
   const cardData = [
     {
       id: 14,
@@ -214,6 +230,7 @@ export function CardGrid5({ handleClick }) {
       title: 'Facturas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
+      contenido: generarListaFacturas()
     },
     {
       id: 18,

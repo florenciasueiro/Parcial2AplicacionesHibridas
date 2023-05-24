@@ -6,6 +6,7 @@ import PerfilCSS from '../css/Perfil.module.css';
 
 
 function ModalCardPerfil({ card, isOpen, onClose }) {
+  console.log(card.contenido)
   return (
     <Modal
       isOpen={isOpen}
@@ -46,6 +47,8 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
 
         </div>
       ))}
+
+      <div>{card.contenido}</div>
 
           </div>
         </div>
