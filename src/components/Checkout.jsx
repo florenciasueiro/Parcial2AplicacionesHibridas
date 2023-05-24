@@ -108,6 +108,6 @@ const Checkout = ({ onClick }) => {
     </div>
   );
 };
-export { navprimarioWidth };
+
 
 export default Checkout;
