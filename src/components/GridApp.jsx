@@ -270,7 +270,7 @@ export function CardGrid5({ handleClick }) {
       title: 'Facturas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-      contenido: generarListaFacturas()
+      contenido: generarListaFacturas(),
       icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
     },
     {

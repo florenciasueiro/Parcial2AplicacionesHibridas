@@ -24,6 +24,9 @@
 .precio{
   display: flex;
   margin-right: 20px;
+  justify-content: end;
+  color: rgb(170, 170, 170);
+  font-style: italic;
 }
 
 .radioInput:last-child {
@@ -200,6 +203,11 @@ body {
   padding: 10px;
   align-items: center;
   display: flex;
+}
+
+.summaryGroup{
+  display: inline-flex;
+  color: white;
 }
 
 .shoppingCart .summaryShow {
