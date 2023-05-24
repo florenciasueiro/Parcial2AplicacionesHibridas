@@ -5,7 +5,8 @@
 }
 
 .radioInput {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   margin: 5px;
   padding: 5px 10px;
@@ -13,6 +14,16 @@
   border: 2px solid #ccc;
   cursor: pointer;
   transition: border-color 0.3s ease-in-out;
+}
+
+.noDisp{
+  font-style: italic;
+  color: rgb(170, 170, 170);
+}
+
+.precio{
+  display: flex;
+  margin-right: 20px;
 }
 
 .radioInput:last-child {

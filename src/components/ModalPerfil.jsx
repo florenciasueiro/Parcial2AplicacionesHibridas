@@ -26,15 +26,20 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
             <button className={PerfilCSS.modalCloseButton} onClick={onClose}></button>
           </div>
         <div className={PerfilCSS.modalCardBody}>
-            <p className={PerfilCSS.description}>Tu Asset ID es: {card.description}</p>
+            <p className={PerfilCSS.description}>{card.description}</p>
+            <div>
+              {card.card}
+            </div>
     {card.inputs && card.inputs.map((input, index) => (
-        <div className={PerfilCSS.inputBox} key={index}>
+      <div className={PerfilCSS.inputBox} key={index}>
             <div className={PerfilCSS.inputContainer}>
                 <input className={PerfilCSS.input} type={input.type} placeholder={input.placeholder} />
-                <button className={input.button}>{card.button}</button>
+                <button className={input.button}>{input.button}</button>
             </div>
         </div>
         ))}
+        <div>{card.contenido}</div>
+        <button>{card.button}</button>
         </div>
         </div>
       </CSSTransition>

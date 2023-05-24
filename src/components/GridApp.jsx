@@ -3,8 +3,15 @@ import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
 import { Link } from 'react-router-dom';
+import BirthdayCard from './BirthdayCard';
+import AddressCard from './CountryCard';
+import LanguageCard from './LenguageCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faKey, faIdCard, faCalendar, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faKey, faIdCard, faCalendar, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+//npm install @fortawesome/free-solid-svg-icons
+import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
+
+
 
 export function CardGrid({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
@@ -13,7 +20,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 1,
       title: 'Asset ID',
-      description: `${usuario.id}`,
+      description: `Tu Asset ID es: ${usuario.id}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
     },
@@ -25,9 +32,9 @@ export function CardGrid({ handleClick }) {
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
       inputs: [
-        { placeholder: 'Contraseña actual', type: 'password', button: 'PerfilCSS.none' },
-        { placeholder: 'Nueva contraseña', type: 'password', button: 'PerfilCSS.none' },
-        { placeholder: 'Repetir contraseña', type: 'password', button: 'PerfilCSS.show' }
+        { placeholder: 'Contraseña actual', type: 'password',},
+        { placeholder: 'Nueva contraseña', type: 'password', },
+        { placeholder: 'Repetir contraseña', type: 'password', button: 'Guardar cambios' }
       ]
     },
     {
@@ -36,6 +43,7 @@ export function CardGrid({ handleClick }) {
       description: 'Descripción de la tarjeta 3',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faKey} />,
+      button: 'Enviar codigo de autenticacion'
       // No se especifican inputs para esta tarjeta
     },
   ];
@@ -60,28 +68,41 @@ export function CardGrid2({ handleClick }) {
     {
       id: 4,
       title: 'Nombre',
-      description: `nombre: ${usuario.name}\n Segundo nombreXD:\n Apellido:`,
+      description: (
+        <span>
+          {usuario.name}<br/>
+        </span>),
+        contenido:(<form>
+        <input type="text" id="nombre" name="nombre" placeholder="Modificar nombre"/>
+        <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Modificar segundo nombre"/>
+        <input type="text" id="apellido" name="apellido" placeholder="Modificar apellido"/>
+    </form>),
       imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faIdCard} />
+      icon: <FontAwesomeIcon icon={faIdCard} />,
+      button: 'Guardar cambios',
     },
     {
       id: 5,
       title: 'Cumpleaños',
-      description: 'Descripción de la tarjeta 1',
+      description: "Mdificar fecha de nacimiento",
+      button: 'Guardar cambios',
+      card: <BirthdayCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendar} />
-    },
+    },    
     {
       id: 6,
       title: 'País',
-      description: 'Descripción de la tarjeta 1',
+      description: '',
+      card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
     },
     {
       id: 7,
       title: 'Idioma',
-      description: 'Descripción de la tarjeta 1',
+      description: '',
+      card: <LanguageCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLanguage} />
     },
@@ -90,20 +111,39 @@ export function CardGrid2({ handleClick }) {
       title: 'Teléfono',
       description: `telefono: ${usuario.mobile}`,
       imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faMobile} />
+      icon: <FontAwesomeIcon icon={faMobile} />,
+      inputs: [
+        { placeholder: 'Añadir nuevo teléfono', type: 'text'},
+      ],
+      button: 'Añadir',
     },
     {
       id: 9,
       title: 'Correo personal',
       description: `${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faAt} />
+      icon: <FontAwesomeIcon icon={faAt} />,
+      contenido:(<form>
+        <input type="text" id="email" name="email" placeholder="Modificar emal"/>
+        <input type="text" id="email" name="segundoNombre" placeholder="Añadir nuevo email"/>
+    </form>),
+    button: 'Guardar cambios',
     },
     {
       id: 10,
       title: 'Género',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faVenusMars} />,
+      contenido:   (<form>
+      <label for="genero">Género:</label>
+      <select id="genero" name="genero">
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="no-binario">No binario</option>
+        <option value="prefiero-no-mencionarlo">Prefiero no mencionarlo</option>
+      </select>
+    </form>),
     },
   ];
   return (
@@ -143,7 +183,6 @@ export function CardGrid4({ handleClick }) {
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
       icon: "",
-
     },
     {
       id: 13,
@@ -168,13 +207,8 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  const cardData = [
-    {
-      id: 14,
-      title: 'Productos enlazados',
-      description: usuario.productos,
-      imageUrl: 'https://via.placeholder.com/150',
-    },
+
+  let cardData = [
     {
       id: 'quince',
       title: 'Agregar producto',
@@ -187,33 +221,54 @@ export function CardGrid5({ handleClick }) {
       title: 'Pagos',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
     },
     {
       id: 17,
       title: 'Facturas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
     },
     {
       id: 18,
       title: 'Resúmenes',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faFileLines} />,
     },
     {
       id: 19,
       title: 'Mantenimiento',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faGears} />,
     },
     {
       id: 20,
       title: 'Documentacion',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-    },
-
+      icon: <FontAwesomeIcon icon={faFolderOpen} />,
+    }
   ];
+
+  if (usuario && usuario.productos && usuario.productos.length > 0) {
+    const productCard = usuario.productos.map((producto, index) => ({
+      id: index + 1,
+      title: producto,
+      description: producto,
+      imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faBox} />
+    }
+    
+    ));
+
+    cardData.unshift(productCard);
+
+
+  }
+
   return (
     <div className={PerfilCSS.cardGrid} onClick={handleClick}>
       {cardData.map((card) => (
@@ -222,6 +277,7 @@ export function CardGrid5({ handleClick }) {
     </div>
   );
 }
+
 
 export function CardGrid6({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
@@ -245,18 +301,21 @@ export function CardGrid6({ handleClick }) {
       title: 'SUM',
       description: displayPASS('SUM'),
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faHouseChimneyUser} />,
     },
     {
       id: 22,
       title: 'Guardería',
       description: displayPASS('Kinder'),
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faShapes} />,
     },
     {
       id: 999,
       title: 'Coworking',
       description: displayPASS('Pase Coworking'),
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faHouseLaptop} />,
     }
 
   ];
@@ -276,24 +335,22 @@ export function CardGrid7({ handleClick }) {
       title: 'Reservas de servicios',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faCalendarCheck} />,
     },
     {
       id: 24,
       title: 'Reservas de mantenimiento',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
-    },
-    {
-      id: 25,
-      title: 'Reservas de servicios',
-      description: 'Descripción de la tarjeta 1',
-      imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faCalendarCheck} />,
+
     },
     {
       id: 26,
       title: 'Reservas de llamadas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
+      // icon: <FontAwesomeIcon icon={faPhoneArrowUpRight} />,
     },
     
 
