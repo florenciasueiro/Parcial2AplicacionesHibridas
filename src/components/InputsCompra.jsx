@@ -40,7 +40,24 @@ export default function RadioInputs() {
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ quantity: "1", price: "0", amount: 0, description: "Terreno",cards: 0, storage:1, guarderia:0, sum:0, user: {}, sku:"" });
+  const [orderData, setOrderData] = useState(
+    { 
+    quantity: "1", 
+    price: "0", 
+    amount: 0, 
+    description: "Terreno",
+    cards: 0, 
+    storage:1, 
+    guarderia:0, 
+    sum:0,
+    coworking:0, 
+    user: {}, 
+    sku:"",
+    storagePrice:0,
+    guarderiaPrice:0,
+    sumPrice:0,
+    coworkingPrice:0
+  });
 //FIN DE MERCADO PAGO
   
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -57,9 +74,11 @@ export default function RadioInputs() {
   const [selectedPago,            setSelectedPago]            = useState('');
 
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const status = Object.fromEntries(urlParams).status;
+  console.log("params del link:",Object.fromEntries(urlParams))
   
-  
-  
+
   
   const almacenamientoRef = useRef(null);
   const cardRef           = useRef(null);
@@ -86,7 +105,14 @@ const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 orderData.user = usuario;
 
-console.log(orderData);
+useEffect(() => {
+  const logOrderData = async () => {
+    console.log("orderData:", await orderData);
+  };
+
+  logOrderData();
+}, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM]);
+
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
@@ -100,8 +126,12 @@ useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selec
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
 
+
+//
 const productos = useProducto();
 const servicios = useServicio();
+
+
 useEffect(() => {
   async function cargar(){
     if(!cargaron){
@@ -112,6 +142,8 @@ useEffect(() => {
     }
   }
   cargar();
+  console.log("servicios:", servicios);
+  
 }, []);
 
 
@@ -144,6 +176,13 @@ function checkPriceByName(name) {
     return 0;
   }
 }
+const servicePrice = (name) => {
+  
+
+  const serv = servicios.find(item => item.name === name);
+  
+  return serv.price;
+}
 
 
 orderData.price = checkPriceByName(request.terreno);
@@ -154,6 +193,7 @@ const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
   setIsLoading(true);
+
   // postVenta();
   fetch("http://localhost:8080/create_preference", {
     method: "POST",
@@ -205,10 +245,10 @@ const renderSpinner = () => {
   
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
-  
+    orderData.amount = checkPriceByName(event.target.value)
       if (event.target.value != '') {
         setInput2Disabled(false);
-        orderData.amount = checkPriceByName(request.terreno);
+        
         
       } else {
         setInput2Disabled(true);
@@ -232,26 +272,15 @@ const renderSpinner = () => {
   
   
   //faltaria conectar los servicos para obtener los precios, quilombo para el fin de semana
+ 
   
     const handleSelectAlmacenamiento = (event) => {
       setSelectedAlmacenamiento(event.target.value);
-  
       if (event.target.value != '') {
         setInput4Disabled(false);
         
-        if (event.target.value==="Pequeño"){
-          orderData.amount = checkPriceByName(request.terreno)+200;
-          console.log('pase por if 1');
-        }
-        else if(event.target.value==="Mediano"){
-          orderData.amount = checkPriceByName(request.terreno)+500;
-          console.log('pase por if 2');
-        }
-        else if(event.target.value==="Grande"){
-          orderData.amount = checkPriceByName(request.terreno)+1000;
-          console.log('pase por if 3');
-        
-      }
+        orderData.amount = checkPriceByName(request.terreno)+servicePrice(event.target.value);
+        orderData.storagePrice = servicePrice(event.target.value);
       } else {
         setInput4Disabled(true);
   
@@ -267,6 +296,10 @@ const renderSpinner = () => {
   
     if (event.target.value != '') {
       setInput5Disabled(false);
+      
+      orderData.guarderiaPrice = servicePrice("Pase Kinder");
+      orderData.amount = checkPriceByName(request.terreno)+((servicePrice("Pase Kinder") * selectedGuarderia));
+
     } else {
       setInput5Disabled(true);
     }
@@ -278,9 +311,12 @@ const renderSpinner = () => {
   
   const handleSelectSUM = (event) => {
     setSelectedSUM(event.target.value);
-  
+    
+    orderData.sumPrice = servicePrice("Pase SUM");
+    orderData.amount = checkPriceByName(request.terreno)+((servicePrice("Pase Kinder") * selectedGuarderia))+((servicePrice("Pase SUM") * selectedGuarderia));
     if (event.target.value != '') {
       setInput6Disabled(false);
+ 
     } else {
       setInput6Disabled(true);
     }
@@ -391,10 +427,7 @@ if(cargaron){
           <span><input type="radio" value="Lote 13" checked={selectedTerreno === 'Lote 13'} onChange={handleSelectTerreno} disabled={!checkStockByName("Lote 13")} />
           F13 </span> {!checkStockByName("Lote 13") && <div><span className={InputCSS['precio']}>Precio</span> <span className={InputCSS['noDisp']}>‎ Lote no disponible</span></div>}
         </label>
-        <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 13' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} onChange={handleSelectTerreno} disabled={!checkStockByName("Lote 13")} />
-          F13 </span> {!checkStockByName("Lote 13") && <div><span className={InputCSS['precio']}>Precio</span> <span className={InputCSS['noDisp']}>‎ Lote no disponible</span></div>}
-        </label>
+
         <br/>
         
       </div>
@@ -432,16 +465,16 @@ if(cargaron){
         <div className={InputCSS['ref']} ref={almacenamientoRef}>
         <p><b>Almacenamiento.</b> ¿Cuánto espacio necesitará para almacenar sus cosas?</p>
         <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Pequeño' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="Pequeño" checked={selectedAlmacenamiento === 'Pequeño'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled} />
+        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento S' ? InputCSS.selected : ''}`}>
+          <span><input type="radio" value="Almacenamiento S" checked={selectedAlmacenamiento === 'Almacenamiento S'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled} />
             Pequeño
         </span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Mediano' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="Mediano" checked={selectedAlmacenamiento === 'Mediano'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
+        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento M' ? InputCSS.selected : ''}`}>
+          <span><input type="radio" value="Almacenamiento M" checked={selectedAlmacenamiento === 'Almacenamiento M'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
           Mediano
         </span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Grande' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="Grande" checked={selectedAlmacenamiento === 'Grande'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
+        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento L' ? InputCSS.selected : ''}`}>
+          <span><input type="radio" value="Almacenamiento L" checked={selectedAlmacenamiento === 'Almacenamiento L'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
           Grande
         </span></label>
         <br/>
