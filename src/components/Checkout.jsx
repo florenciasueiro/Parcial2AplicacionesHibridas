@@ -76,7 +76,7 @@ const Checkout = ({ onClick }) => {
                   {showLoged ? (
                     <p>Debes iniciar sesión para comprar.</p>
                   ) : (
-                    <div>
+                    <div className={InputCSS["summaryGroup"]}>
                       <div className={InputCSS["summary-item"]}>
                         <span className={InputCSS["text"]}>Subtotal $</span>
                         <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount}</span>
@@ -108,5 +108,6 @@ const Checkout = ({ onClick }) => {
     </div>
   );
 };
+export { navprimarioWidth };
 
 export default Checkout;
