@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
-import { Link } from 'react-router-dom';
+import useEditarUsuario from '../Service/APIeditarUsuario'
 import BirthdayCard from './BirthdayCard';
 import AddressCard from './CountryCard';
 import LanguageCard from './LenguageCard';
@@ -12,10 +12,32 @@ import { faLock, faKey, faIdCard, faCalendar, faShapes,faHouseLaptop, faCalendar
 import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 
 
+import PDFViewer from '../components/PDFViewer';
+
 
 export function CardGrid({ handleClick }) {
+  const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  let datosIngresados=[];
+  //0=pass actaul
+  //1=pass nueva
+  //2=pass nueva repetida
+  const handleChange = (e,pos) =>{
+    datosIngresados[pos]=e;
+    console.log(datosIngresados);  
+  }
+  const btnClick = ()=>{
+    if(datosIngresados[0]!=usuario.password){
+      alert("esa no es la contraseña actual");
+    }
+    else if(datosIngresados[1]!=datosIngresados[2]){
+    alert("repetir contraseña y nueva contraseña deben ser iguales")
+  }else{
+    usuario.password=datosIngresados[2];
+    alert("contraseña cambiada con exito!")
+    editar(usuario)
+  }}
   const cardData = [
     {
       id: 1,
@@ -23,6 +45,7 @@ export function CardGrid({ handleClick }) {
       description: `Tu Asset ID es: ${usuario.id}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
+
     },
     {
       id: 2,
@@ -32,10 +55,10 @@ export function CardGrid({ handleClick }) {
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
       inputs: [
-        { placeholder: 'Contraseña actual', type: 'password',},
-        { placeholder: 'Nueva contraseña', type: 'password', },
-        { placeholder: 'Repetir contraseña', type: 'password', button: 'Guardar cambios' }
-      ]
+        { placeholder: 'Contraseña actual', type: 'password', change: handleChange},
+        { placeholder: 'Nueva contraseña', type: 'password', change: handleChange },
+        { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, button: 'Cambiar',onClick: btnClick}
+      ],
     },
     {
       id: 3,
@@ -207,8 +230,27 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+ 
 
-  let cardData = [
+  const generarListaFacturas = () => {
+    return usuario.facturas.map((facturaId) => (
+      <li key={facturaId}>
+        <a href={`/factura?id=${facturaId}`}>
+          Factura {facturaId}
+        </a>
+      </li>
+    ));
+  };
+
+
+
+  const cardData = [
+    {
+      id: 14,
+      title: 'Productos enlazados',
+      description: usuario.productos,
+      imageUrl: 'https://via.placeholder.com/150',
+    },
     {
       id: 'quince',
       title: 'Agregar producto',
@@ -228,6 +270,7 @@ export function CardGrid5({ handleClick }) {
       title: 'Facturas',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://via.placeholder.com/150',
+      contenido: generarListaFacturas()
       icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
     },
     {

@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classnames from 'classname'
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
 import { Background } from "@cloudinary/url-gen/qualifiers";
 
 const Checkout = ({ onClick }) => {
-  
+  const [showLoged, setShowLoged]=useState(false);
   const [isVisible, setIsVisible] = React.useState(true);
   const { preferenceId, isLoading: disabled, orderData, setOrderData } = React.useContext(Context);
   const shoppingCartClass = classnames('shopping-cart dark', {
@@ -22,6 +22,15 @@ const Checkout = ({ onClick }) => {
     const amount = parseInt(orderData.price) * parseInt(quantity);
     setOrderData({ ...orderData, quantity, amount });
   }
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+ 
+  useEffect(()=>{
+    if (usuario) setShowLoged(false);
+    else setShowLoged(true);
+  },[usuario])
+
+  
   
   return (
     <div className={`${InputCSS['bodyCheckout']}`}>
@@ -64,19 +73,27 @@ const Checkout = ({ onClick }) => {
           <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]}>
             <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
               {/* <h3>Cart</h3> */}
-              <div className={InputCSS["summary-item"]}>
+              
+              {showLoged ? (
+  <p>Debes iniciar sesión para comprar.</p>
+) : (
+
+  <div>
+    <div className={InputCSS["summary-item"]}>
                 <span className={InputCSS["text"]}>Subtotal $</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount}</span>
               </div>
-              <button
-              className={InputCSS.test}
-                // className={`${InputCSS.Boton}${InputCSS.button} ${InputCSS.btnPrimary} ${InputCSS.btnLg} ${InputCSS.btnBlock}`}
-                // className={InputCSS["btn"] + " " + InputCSS["btn-primary"] + " " + InputCSS["btn-lg"] + " " + InputCSS["btn-block"]}
-                onClick={onClick}
-                id={InputCSS["checkout-btn"]}
-                disabled={disabled}>
-                Checkout
-              </button>
+  <button
+    className={InputCSS.test}
+    onClick={onClick}
+    id={InputCSS["checkout-btn"]}
+    disabled={disabled}
+  >
+    Checkout
+  </button>
+  </div>
+)}
+
               
             </div>
           </div>
