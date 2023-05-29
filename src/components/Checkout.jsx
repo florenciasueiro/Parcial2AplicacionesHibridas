@@ -79,7 +79,7 @@ const Checkout = ({ onClick }) => {
                     <div className={InputCSS["summaryGroup"]}>
                       <div className={InputCSS["summary-item"]}>
                         <span className={InputCSS["text"]}>Subtotal $</span>
-                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount}+ IVA</span>
+                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount} + IVA</span>
                       </div>
                       <button
                         className={InputCSS.test}
