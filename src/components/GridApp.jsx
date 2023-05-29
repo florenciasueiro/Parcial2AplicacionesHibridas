@@ -97,7 +97,7 @@ export function CardGrid2({ handleClick }) {
         </span>),
         contenido:(<form>
         <input type="text" id="nombre" name="nombre" placeholder="Modificar nombre"/>
-        <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Modificar segundo nombre"/>
+        {/* <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Modificar segundo nombre"/> */}
         <input type="text" id="apellido" name="apellido" placeholder="Modificar apellido"/>
     </form>),
       imageUrl: 'https://via.placeholder.com/150',
@@ -107,7 +107,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 5,
       title: 'Cumpleaños',
-      description: "Mdificar fecha de nacimiento",
+      description: "Modificar fecha de nacimiento",
       button: 'Guardar cambios',
       card: <BirthdayCard />,
       imageUrl: 'https://via.placeholder.com/150',

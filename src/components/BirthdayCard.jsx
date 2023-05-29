@@ -19,6 +19,8 @@ function BirthdayCard() {
         dateFormat="dd/MM/yyyy"
         showYearDropdown
         maxDate={fechaActual}
+        yearDropdownItemNumber={100}
+        scrollableYearDropdown
         placeholderText="Seleccionar fecha de nacimiento"
       />
     </div>
