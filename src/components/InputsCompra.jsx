@@ -298,7 +298,10 @@ const renderSpinner = () => {
       setInput5Disabled(false);
       
       orderData.guarderiaPrice = servicePrice("Pase Kinder");
-      orderData.amount = checkPriceByName(request.terreno)+((servicePrice("Pase Kinder") * selectedGuarderia));
+      console.log("servicePrice('Pase Kinder')",servicePrice("Pase Kinder"))
+      console.log("servicePrice(selectedAlmacenamiento)",servicePrice(selectedAlmacenamiento))
+      console.log("selectedGuarderia",event.target.value)
+      orderData.amount = checkPriceByName(request.terreno)+(servicePrice(selectedAlmacenamiento))+((servicePrice("Pase Kinder") * event.target.value));
 
     } else {
       setInput5Disabled(true);
@@ -313,7 +316,7 @@ const renderSpinner = () => {
     setSelectedSUM(event.target.value);
     
     orderData.sumPrice = servicePrice("Pase SUM");
-    orderData.amount = checkPriceByName(request.terreno)+((servicePrice("Pase Kinder") * selectedGuarderia))+((servicePrice("Pase SUM") * selectedGuarderia));
+    orderData.amount = checkPriceByName(request.terreno)+(servicePrice(selectedAlmacenamiento))+((servicePrice("Pase Kinder") * selectedGuarderia))+((servicePrice("Pase SUM") * event.target.value));
     if (event.target.value != '') {
       setInput6Disabled(false);
  
