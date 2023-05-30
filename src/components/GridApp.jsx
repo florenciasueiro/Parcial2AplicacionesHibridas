@@ -111,6 +111,18 @@ export function CardGrid2({ handleClick }) {
     editar(usuario);
   };
 
+  
+  let nombreApellido=[];
+  const handleNameChange = (e,pos) =>{
+    nombreApellido[pos]=e;
+    console.log(nombreApellido);  
+  }
+
+  const btnNameClick = ()=>{
+    usuario.name=nombreApellido[0] +" "+ nombreApellido[1] 
+    editar(usuario)
+  }
+
   const cardData = [
     {
       id: 4,
@@ -119,14 +131,14 @@ export function CardGrid2({ handleClick }) {
         <span>
           {usuario.name}<br/>
         </span>),
-        contenido:(<form>
-        <input type="text" id="nombre" name="nombre" placeholder="Modificar nombre"/>
-        {/* <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Modificar segundo nombre"/> */}
-        <input type="text" id="apellido" name="apellido" placeholder="Modificar apellido"/>
-    </form>),
+
+          inputs: [
+            { placeholder: 'Nombre', type: 'text', change: handleNameChange},
+            { placeholder: 'Apellido', type: 'text',change: handleNameChange, button: 'Guardar cambios',onClick: btnNameClick}
+          ],
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faIdCard} />,
-      button: 'Guardar cambios',
+      // button: 'Guardar cambios',
     },
     {
       id: 5,

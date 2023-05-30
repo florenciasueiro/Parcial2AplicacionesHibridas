@@ -23,7 +23,7 @@ import React, { useState, useRef } from 'react';
       } else {
         console.log(usuario);
         return (
-          <Link Link to="/profile">{usuario.name}</Link>
+          <Link Link to="/profile">{usuario.name.split(" ")[0]}</Link>
         );
       }
     };
