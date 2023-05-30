@@ -87,6 +87,7 @@ export function CardGrid({ handleClick }) {
 
 export function CardGrid2({ handleClick }) {
   const [genero, setGenero] = useState(""); // Estado para almacenar el valor seleccionado
+  const [mobile, setMobile] = useState(""); // Estado para almacenar el valor seleccionado
   const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
@@ -101,6 +102,15 @@ export function CardGrid2({ handleClick }) {
     usuario.genero = genero;
     editar(usuario);
   };
+  const handleTelefonoChange = (e,i) => {
+    setMobile(e);
+    console.log("Mobile", e) // Actualiza el estado con el valor seleccionado
+  };
+  const handleTelefonoClick = () => { 
+    usuario.mobile = mobile;
+    editar(usuario);
+  };
+
   const cardData = [
     {
       id: 4,
@@ -155,9 +165,10 @@ export function CardGrid2({ handleClick }) {
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
-        { placeholder: 'Añadir nuevo teléfono', type: 'text'},
+        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange},
       ],
-      button: 'Añadir',
+      button: 'Aceptar cambios',
+      change: handleTelefonoClick,
     },
     {
       id: 9,
