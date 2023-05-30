@@ -21,7 +21,7 @@ import React, { useState, useRef } from 'react';
           <p>Login</p>
         );
       } else {
-        console.log("usuario");
+        console.log(usuario);
         return (
           <Link Link to="/profile">{usuario.name}</Link>
         );
@@ -106,7 +106,8 @@ import React, { useState, useRef } from 'react';
             <button 
             className={NavbarCSS.btn}
             onMouseEnter={showLoginDropdown}
-            onClick= { ()=> { contactos(usuario.email, usuario.password) } }
+            onClick={() => { usuario && contactos(usuario.email, usuario.password) }}
+
             >
 
               {displayName()}

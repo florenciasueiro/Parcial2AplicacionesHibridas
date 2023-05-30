@@ -6,7 +6,7 @@ import PerfilCSS from '../css/Perfil.module.css';
 
 
 function ModalCardPerfil({ card, isOpen, onClose }) {
-  console.log(card.contenido)
+  
   return (
     <Modal
       isOpen={isOpen}

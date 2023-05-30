@@ -87,6 +87,9 @@ export function CardGrid({ handleClick }) {
 export function CardGrid2({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  const unixTimestamp = usuario.fechaNac;
+  const date = new Date(unixTimestamp * 1000); // Multiplicamos por 1000 para convertirlo a milisegundos
+  const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   const cardData = [
     {
       id: 4,
@@ -107,8 +110,13 @@ export function CardGrid2({ handleClick }) {
     {
       id: 5,
       title: 'Cumpleaños',
-      description: "Modificar fecha de nacimiento",
-      button: 'Guardar cambios',
+      description:(
+        <span style={{ textAlign: 'center' }}>
+          {formattedDate}<br/>
+          <span>Modificar fecha de nacimiento</span>
+        </span>
+      ),
+      // button: 'Guardar cambios',
       card: <BirthdayCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendar} />
