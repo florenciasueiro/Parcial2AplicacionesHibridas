@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
@@ -66,7 +66,8 @@ export function CardGrid({ handleClick }) {
       description: 'Descripción de la tarjeta 3',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faKey} />,
-      button: 'Enviar codigo de autenticacion'
+      button: 'Enviar codigo de autenticacion',
+      
       // No se especifican inputs para esta tarjeta
     },
   ];
@@ -85,11 +86,21 @@ export function CardGrid({ handleClick }) {
 
 
 export function CardGrid2({ handleClick }) {
+  const [genero, setGenero] = useState(""); // Estado para almacenar el valor seleccionado
+  const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const unixTimestamp = usuario.fechaNac;
   const date = new Date(unixTimestamp * 1000); // Multiplicamos por 1000 para convertirlo a milisegundos
   const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  const handleGeneroChange = (event) => {
+    setGenero(event.target.value);
+    console.log("genero", event.target.value) // Actualiza el estado con el valor seleccionado
+  };
+  const handleGeneroClick = () => { 
+    usuario.genero = genero;
+    editar(usuario);
+  };
   const cardData = [
     {
       id: 4,
@@ -163,18 +174,21 @@ export function CardGrid2({ handleClick }) {
     {
       id: 10,
       title: 'Género',
-      description: 'Descripción de la tarjeta 1',
+      description: `Modificar genero actual:`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
       contenido:   (<form>
       <label for="genero">Género:</label>
-      <select id="genero" name="genero">
+      <select id="genero" name="genero" value={usuario.genero} onChange={handleGeneroChange}>
         <option value="masculino">Masculino</option>
         <option value="femenino">Femenino</option>
         <option value="no-binario">No binario</option>
         <option value="prefiero-no-mencionarlo">Prefiero no mencionarlo</option>
       </select>
+      
     </form>),
+    button: 'Guardar cambios',
+    change: handleGeneroClick,
     },
   ];
   return (

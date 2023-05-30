@@ -51,7 +51,7 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
         </div>
       ))}
         <div>{card.contenido}</div>
-        <button>{card.button}</button>
+        <button onClick={card.change}>{card.button}</button>
 
 
           </div>
