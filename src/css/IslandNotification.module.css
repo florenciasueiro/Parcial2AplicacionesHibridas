@@ -1,0 +1,7 @@
+.notificationContainer{
+    top: 10px;
+    position: relative;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+}

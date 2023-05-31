@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
   import Login from './Login';
   import Contactos from "../Service/APIlogin";
   import NavbarBlackCSS from '../css/NavbarBlack.module.css';
-  // import DinamicShop from './DinamicShop';
+  import IslandNotification from './IslandNotification';
   import useContactos from '../Service/APIlogin'
   function Navbar() {
     const contactos = useContactos();
@@ -133,6 +133,7 @@ import React, { useState, useRef } from 'react';
           </div>
         )} */}
       </div>
+      <IslandNotification />
     </div>
   );
   }
