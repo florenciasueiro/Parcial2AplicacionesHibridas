@@ -261,12 +261,18 @@ const renderSpinner = () => {
 
 
   
-  
+  const calculateAmount = (terreno, almacenamiento, guarderia, sum) => {
+    const terrenoPrice = terreno ? checkPriceByName(terreno) : 0;
+    const almacenamientoPrice = almacenamiento ? servicePrice(almacenamiento) : 0;
+    const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
+    const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
+    return terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice;
+  };
   
   
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
-    orderData.amount = checkPriceByName(event.target.value)
+    orderData.amount = calculateAmount(event.target.value, selectedAlmacenamiento, selectedGuarderia, selectedSUM);
       if (event.target.value !== '') {
         setInput2Disabled(false);
         
@@ -300,7 +306,7 @@ const renderSpinner = () => {
       if (event.target.value !== '') {
         setInput4Disabled(false);
         
-        orderData.amount = checkPriceByName(request.terreno)+servicePrice(event.target.value);
+        orderData.amount = calculateAmount(selectedTerreno, event.target.value, selectedGuarderia, selectedSUM);
         orderData.storagePrice = servicePrice(event.target.value);
       } else {
         setInput4Disabled(true);
@@ -322,8 +328,7 @@ const renderSpinner = () => {
       console.log("servicePrice('Pase Kinder')",servicePrice("Pase Kinder"))
       console.log("servicePrice(selectedAlmacenamiento)",servicePrice(selectedAlmacenamiento))
       console.log("selectedGuarderia",event.target.value)
-      orderData.amount = checkPriceByName(request.terreno)+(servicePrice(selectedAlmacenamiento))+((servicePrice("Pase Kinder") * event.target.value));
-
+      orderData.amount = calculateAmount(selectedTerreno, selectedAlmacenamiento, event.target.value, selectedSUM);
     } else {
       setInput5Disabled(true);
     }
@@ -337,7 +342,7 @@ const renderSpinner = () => {
     setSelectedSUM(event.target.value);
     
     orderData.sumPrice = servicePrice("Pase SUM");
-    orderData.amount = checkPriceByName(request.terreno)+(servicePrice(selectedAlmacenamiento))+((servicePrice("Pase Kinder") * selectedGuarderia))+((servicePrice("Pase SUM") * event.target.value));
+    orderData.amount = calculateAmount(selectedTerreno, selectedAlmacenamiento, selectedGuarderia, event.target.value);
     if (event.target.value !== '') {
       setInput6Disabled(false);
  
