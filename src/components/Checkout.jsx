@@ -74,7 +74,18 @@ const Checkout = ({ onClick }) => {
                 <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
                   {/* <h3>Cart</h3> */}
                   {showLoged ? (
-                    <p>Debes iniciar sesión para comprar.</p>
+                    <div>
+                    <span className={InputCSS["text-white"]}>Debes iniciar sesión para comprar.</span>
+                    <button
+                        className={InputCSS.test}
+                        onClick={onClick}
+                        id={InputCSS["checkout-btn-disabled"]}
+                        disabled='true'
+                      >
+                        Checkout
+                      </button>
+
+                    </div>
                   ) : (
                     <div className={InputCSS["summaryGroup"]}>
                       <div className={InputCSS["summary-item"]}>
@@ -99,6 +110,8 @@ const Checkout = ({ onClick }) => {
                       </div>
                     </div>
                   )}
+                  
+
                 </div>
               </div>
             </div>
