@@ -9,7 +9,7 @@ function BirthdayCard() {
   const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  let datosIngresados=[];
+  
   const fechaActual = new Date();
 
   const handleFechaNacimientoChange = (date) => {

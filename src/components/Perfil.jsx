@@ -1,7 +1,7 @@
 import React from 'react';
 import PerfilCSS from '../css/Perfil.module.css';
 import Avatar from '@mui/material/Avatar';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Perfil(props) {
   const usuarioJson = sessionStorage.getItem('user');

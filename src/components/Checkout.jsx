@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
 
 const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
+  // const [isVisible, setIsVisible] = useState(true);
   const [status, setStatus] = useState(null);
   const { preferenceId, isLoading: disabled, orderData, setOrderData } = React.useContext(Context);
-  const shoppingCartClass = classnames('shopping-cart dark', {
-    'shopping-cart--hidden': !isVisible,
-  });
+  // const shoppingCartClass = classnames('shopping-cart dark', {
+  //   'shopping-cart--hidden': !isVisible,
+  // });
   let message = '';
 
-  useEffect(() => {
-    if (preferenceId) setIsVisible(false);
-  }, [preferenceId]);
+  // useEffect(() => {
+  //   if (preferenceId) setIsVisible(false);
+  // }, [preferenceId]);
 
-  const updatePrice = (event) => {
-    const quantity = event.target.value;
-    const amount = parseInt(orderData.price) * parseInt(quantity);
-    setOrderData({ ...orderData, quantity, amount });
-  };
+  // const updatePrice = (event) => {
+  //   const quantity = event.target.value;
+  //   const amount = parseInt(orderData.price) * parseInt(quantity);
+  //   setOrderData({ ...orderData, quantity, amount });
+  // };
 
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;

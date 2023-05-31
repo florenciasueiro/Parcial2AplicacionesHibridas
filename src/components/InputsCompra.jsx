@@ -234,9 +234,9 @@ const renderSpinner = () => {
 
 
 
-  const handleSelectPago = (event) => {
-    setSelectedPago(event.target.value);
-  };
+  // const handleSelectPago = (event) => {
+  //   setSelectedPago(event.target.value);
+  // };
 
 
   
@@ -246,7 +246,7 @@ const renderSpinner = () => {
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
     orderData.amount = checkPriceByName(event.target.value)
-      if (event.target.value != '') {
+      if (event.target.value !== '') {
         setInput2Disabled(false);
         
         
@@ -262,7 +262,7 @@ const renderSpinner = () => {
     const handleSelectCard = (event) => {
       setSelectedCard(event.target.value);
       
-      if (event.target.value != '') {
+      if (event.target.value !== '') {
         setInput3Disabled(false);
       } else {
         setInput3Disabled(true);
@@ -276,7 +276,7 @@ const renderSpinner = () => {
   
     const handleSelectAlmacenamiento = (event) => {
       setSelectedAlmacenamiento(event.target.value);
-      if (event.target.value != '') {
+      if (event.target.value !== '') {
         setInput4Disabled(false);
         
         orderData.amount = checkPriceByName(request.terreno)+servicePrice(event.target.value);
@@ -294,7 +294,7 @@ const renderSpinner = () => {
     const handleSelectGuarderia = (event) => {
       setSelectedGuarderia(event.target.value);
   
-    if (event.target.value != '') {
+    if (event.target.value !== '') {
       setInput5Disabled(false);
       
       orderData.guarderiaPrice = servicePrice("Pase Kinder");
@@ -317,7 +317,7 @@ const renderSpinner = () => {
     
     orderData.sumPrice = servicePrice("Pase SUM");
     orderData.amount = checkPriceByName(request.terreno)+(servicePrice(selectedAlmacenamiento))+((servicePrice("Pase Kinder") * selectedGuarderia))+((servicePrice("Pase SUM") * event.target.value));
-    if (event.target.value != '') {
+    if (event.target.value !== '') {
       setInput6Disabled(false);
  
     } else {
@@ -586,7 +586,7 @@ if(cargaron){
             type="radio" 
             value="F1" 
             checked={selectedTerreno === 'Lote 1'} 
-            // onChange={handleSelectTerreno}
+            readOnly
             
             />
           F1 
@@ -596,7 +596,7 @@ if(cargaron){
         type="radio" 
         value="F2" 
         checked={selectedTerreno === 'Lote 2'} 
-        // onChange={handleSelectTerreno}
+        readOnly
          
         />
         F2
@@ -606,7 +606,7 @@ if(cargaron){
         type="radio" 
         value="F3" 
         checked={selectedTerreno === 'Lote 3'} 
-        // onChange={handleSelectTerreno}
+        readOnly
         
         />
         F3 
@@ -616,7 +616,7 @@ if(cargaron){
         type="radio" 
         value="F4" 
         checked={selectedTerreno === 'Lote 4'} 
-        // onChange={handleSelectTerreno} 
+        readOnly
         
         />
         F4 
@@ -626,7 +626,7 @@ if(cargaron){
         type="radio" 
         value="F5" 
         checked={selectedTerreno === 'Lote 5'} 
-        // onChange={handleSelectTerreno} 
+        readOnly 
         
         />
         F5 
@@ -636,7 +636,7 @@ if(cargaron){
         type="radio" 
         value="F6" 
         checked={selectedTerreno === 'Lote 6'} 
-        // onChange={handleSelectTerreno}
+        readOnly
          
         />
         F6 
@@ -646,39 +646,39 @@ if(cargaron){
         type="radio" 
         value="F7" 
         checked={selectedTerreno === 'Lote 7'} 
-        // onChange={handleSelectTerreno} 
+        readOnly 
         
         />
         F7 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 8' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="F8" checked={selectedTerreno === 'Lote 8'} 
-        // onChange={handleSelectTerreno}  
+        readOnly  
         />
         F8 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 9' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F9" checked={selectedTerreno === 'Lote 9'} /**onChange={handleSelectTerreno} **/ />
+        <span><input type="radio" value="F9" checked={selectedTerreno === 'Lote 9'} readOnly />
         F9 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 10' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F10" checked={selectedTerreno === 'Lote 10'} /**onChange={handleSelectTerreno} **/  />
+        <span><input type="radio" value="F10" checked={selectedTerreno === 'Lote 10'} readOnly  />
         F10 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 11' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F11" checked={selectedTerreno === 'Lote 11'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F11" checked={selectedTerreno === 'Lote 11'} readOnly  />
         F11 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 12' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F12" checked={selectedTerreno === 'Lote 12'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F12" checked={selectedTerreno === 'Lote 12'} readOnly   />
         F12 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 13' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} readOnly   />
         F13 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 13' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} readOnly   />
         F13 
       </span></label>
       <br/>

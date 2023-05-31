@@ -8,11 +8,11 @@ import AddressCard from './CountryCard';
 import LanguageCard from './LenguageCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faKey, faIdCard, faCalendar, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-//npm install @fortawesome/free-solid-svg-icons
-import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
+// //npm install @fortawesome/free-solid-svg-icons
+// import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 
 
-import PDFViewer from '../components/PDFViewer';
+// import PDFViewer from '../components/PDFViewer';
 
 
 export function CardGrid({ handleClick }) {
@@ -28,10 +28,10 @@ export function CardGrid({ handleClick }) {
     console.log(datosIngresados);  
   }
   const btnClick = ()=>{
-    if(datosIngresados[0]!=usuario.password){
+    if(datosIngresados[0]!==usuario.password){
       alert("esa no es la contraseña actual");
     }
-    else if(datosIngresados[1]!=datosIngresados[2]){
+    else if(datosIngresados[1]!==datosIngresados[2]){
     alert("repetir contraseña y nueva contraseña deben ser iguales")
   }else{
     usuario.password=datosIngresados[2];

@@ -23,7 +23,7 @@ import React, { useState, useRef } from 'react';
       } else {
         console.log(usuario);
         return (
-          <Link Link to="/profile">{usuario.name.split(" ")[0]}</Link>
+          <Link link="true" to="/profile">{usuario.name.split(" ")[0]}</Link>
         );
       }
     };
@@ -40,13 +40,13 @@ import React, { useState, useRef } from 'react';
     };
 
     const [showLogin, setShowLogin] = useState(false);
-    const [isDropdownHovered, setIsDropdownHovered] = useState(false);
+    // const [isDropdownHovered, setIsDropdownHovered] = useState(false);
     const [isLoginHovered, setIsLoginHovered] = useState(false);
     const loginRef = useRef(null);
 
-    const toggleLogin = () => {
-      setShowLogin(!showLogin);
-    };
+    // const toggleLogin = () => {
+    //   setShowLogin(!showLogin);
+    // };
 
     const showLoginDropdown = () => {
       setShowLogin(true);
@@ -60,9 +60,9 @@ import React, { useState, useRef } from 'react';
       });
     };
 
-    const handleDropdownMouseEnter = () => {
-      setIsDropdownHovered(true);
-    };
+    // const handleDropdownMouseEnter = () => {
+    //   setIsDropdownHovered(true);
+    // };
 
     const handleDropdownMouseLeave = () => {
       setTimeout(() => {
@@ -71,25 +71,25 @@ import React, { useState, useRef } from 'react';
     };
     
 
-    const handleLoginMouseEnter = () => {
-      setIsLoginHovered(true);
-    };
+    // const handleLoginMouseEnter = () => {
+    //   setIsLoginHovered(true);
+    // };s
 
 
-    const handleLoginMouseLeave = () => {
-      if (!isLoginHovered) {
-        setTimeout(() => {
-          setShowLogin(false);
-        }, 600); // Tiempo adicional antes de cerrar el login (2 segundos)
-      }
-    };
+    // const handleLoginMouseLeave = () => {
+    //   if (!isLoginHovered) {
+    //     setTimeout(() => {
+    //       setShowLogin(false);
+    //     }, 600); // Tiempo adicional antes de cerrar el login (2 segundos)
+    //   }
+    // };
 
     return (
       <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarBlackCSS.Navbarcontainer : ''}`}>
         <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarBlackCSS.navbarcontainer : ''}`}>
           <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarBlackCSS.box : ''}`}>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-              <NavLink onClick={hideLoginDropdown} exact to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}>
+              <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}>
                 <img src={isShopPage ? "/img/LogoBlanco.png" : "/img/LogoNegro.png"} alt="" />
               </NavLink>
             </li>
@@ -100,7 +100,7 @@ import React, { useState, useRef } from 'react';
               <NavLink onClick={hideLoginDropdown} to="/eventos">Eventos</NavLink>
             </li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-              <NavLink onClick={hideLoginDropdown} exact to="/shop">Store</NavLink>
+              <NavLink onClick={hideLoginDropdown} exact="true" to="/shop">Store</NavLink>
             </li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
             <button 
