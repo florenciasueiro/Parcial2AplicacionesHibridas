@@ -133,6 +133,11 @@ import React, { useState, useRef } from 'react';
             {<DinamicShop />}
           </div>
         )} */}
+        {/* {isShopPage && (
+          <div>
+            {<DinamicShop />}
+          </div>
+        )} */}
       </div>
     </div>
   );
