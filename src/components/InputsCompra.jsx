@@ -35,7 +35,7 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 
 //Test user 2  dor TTEST65297
 
-export default function RadioInputs() {
+export default function RadioInputs({seleccion}) {
 
 //MERCADO PAGO 
   const [preferenceId, setPreferenceId] = useState(null);
@@ -146,7 +146,10 @@ useEffect(
   }, [selectedGuarderia]);
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
-
+useEffect(()=>{
+  seleccion(orderData);
+  console.log('se deberia estar mandando')
+},[orderData, setOrderData,selectedTerreno, selectedCard, selectedAlmacenamiento, selectedGuarderia,selectedSUM]);
 
 //
 const productos = useProducto();
@@ -350,7 +353,7 @@ const renderSpinner = () => {
       setInput6Disabled(true);
     }
   };
-  
+  //manda para afuera el order data
 
 
 if(cargaron){
