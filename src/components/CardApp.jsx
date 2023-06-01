@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
-import { Background } from './Background';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+// import { Background } from './Background';
 import PerfilCSS from '../css/Perfil.module.css';
 import { Link } from 'react-router-dom';
 import ModalCardInicio from './ModalPerfil';

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ResumenCSS from '../css/Resumen.module.css';
-import Payment from './Payment';
+// import Payment from './Payment';
 
 const Resumen = () => {
   const [productos, setProductos] = useState([]);
   const compra = sessionStorage.getItem('compra');
-  const compraJson = compra ? JSON.parse(compra) : {};
+  // const compraJson = compra ? JSON.parse(compra) : {};
   useEffect(() => {
     if (sessionStorage.getItem('compra')) {
       const compraJson = JSON.parse(sessionStorage.getItem('compra'));

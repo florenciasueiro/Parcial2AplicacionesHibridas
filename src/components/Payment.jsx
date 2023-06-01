@@ -41,7 +41,7 @@ const Payment = () => {
           <div className={InputCSS.products}>
             <h2 className={InputCSS.title}>Resumen</h2>
             <div className={InputCSS.item}>
-              <span className={InputCSS.price} id={InputCSS["summary-price"]}>Neto: ${orderData.price}</span>
+              <span className={InputCSS.price} id={InputCSS["summary-price"]}>Precio Neto del Lote: ${orderData.price}</span>
               <p className={InputCSS["item-name"]}>
                 Lote: <span id={InputCSS["summary-quantity"]}>{orderData.description}</span>
               </p>
@@ -60,7 +60,7 @@ const Payment = () => {
             </div>
             <div className={InputCSS.total}>
               Total:
-              <span className={InputCSS.price} id={InputCSS["summary-total"]}>${orderData.amount * 1.23}</span>
+              <span className={InputCSS.price} id={InputCSS["summary-total"]}>${orderData.amount * 1.23} IVA incluido</span>
             </div>
           </div>
           <div className={InputCSS["payment-details"]}>

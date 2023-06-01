@@ -116,13 +116,34 @@ useEffect(() => {
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
-useEffect(() => {cardRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedTerreno]);
+useEffect(
+  () => {
+    if(!(selectedTerreno==='')){
+    console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
+  cardRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+}, [selectedTerreno,input2Disabled]);
 
-useEffect(() => {almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedCard]);
+useEffect(
+  () => {
+    if(!(selectedCard==='')){
+  almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+}, [selectedCard]);
 
-useEffect(() => {guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedAlmacenamiento]);
+useEffect(
+  () => {
+    if(!(selectedAlmacenamiento==='')){
+    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedAlmacenamiento]);
 
-useEffect(() => {sumRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedGuarderia]);
+useEffect(
+  () => {
+    if(!(selectedGuarderia==='')){
+    sumRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedGuarderia]);
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
 
@@ -234,19 +255,25 @@ const renderSpinner = () => {
 
 
 
-  const handleSelectPago = (event) => {
-    setSelectedPago(event.target.value);
+  // const handleSelectPago = (event) => {
+  //   setSelectedPago(event.target.value);
+  // };
+
+
+  
+  const calculateAmount = (terreno, almacenamiento, guarderia, sum) => {
+    const terrenoPrice = terreno ? checkPriceByName(terreno) : 0;
+    const almacenamientoPrice = almacenamiento ? servicePrice(almacenamiento) : 0;
+    const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
+    const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
+    return terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice;
   };
-
-
-  
-  
   
   
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
-    orderData.amount = checkPriceByName(event.target.value)
-      if (event.target.value != '') {
+    orderData.amount = calculateAmount(event.target.value, selectedAlmacenamiento, selectedGuarderia, selectedSUM);
+      if (event.target.value !== '') {
         setInput2Disabled(false);
         
         
@@ -262,7 +289,7 @@ const renderSpinner = () => {
     const handleSelectCard = (event) => {
       setSelectedCard(event.target.value);
       
-      if (event.target.value != '') {
+      if (event.target.value !== '') {
         setInput3Disabled(false);
       } else {
         setInput3Disabled(true);
@@ -276,10 +303,10 @@ const renderSpinner = () => {
   
     const handleSelectAlmacenamiento = (event) => {
       setSelectedAlmacenamiento(event.target.value);
-      if (event.target.value != '') {
+      if (event.target.value !== '') {
         setInput4Disabled(false);
         
-        orderData.amount = checkPriceByName(request.terreno)+servicePrice(event.target.value);
+        orderData.amount = calculateAmount(selectedTerreno, event.target.value, selectedGuarderia, selectedSUM);
         orderData.storagePrice = servicePrice(event.target.value);
       } else {
         setInput4Disabled(true);
@@ -294,12 +321,14 @@ const renderSpinner = () => {
     const handleSelectGuarderia = (event) => {
       setSelectedGuarderia(event.target.value);
   
-    if (event.target.value != '') {
+    if (event.target.value !== '') {
       setInput5Disabled(false);
       
       orderData.guarderiaPrice = servicePrice("Pase Kinder");
-      orderData.amount = checkPriceByName(request.terreno)+((servicePrice("Pase Kinder") * selectedGuarderia));
-
+      console.log("servicePrice('Pase Kinder')",servicePrice("Pase Kinder"))
+      console.log("servicePrice(selectedAlmacenamiento)",servicePrice(selectedAlmacenamiento))
+      console.log("selectedGuarderia",event.target.value)
+      orderData.amount = calculateAmount(selectedTerreno, selectedAlmacenamiento, event.target.value, selectedSUM);
     } else {
       setInput5Disabled(true);
     }
@@ -313,8 +342,8 @@ const renderSpinner = () => {
     setSelectedSUM(event.target.value);
     
     orderData.sumPrice = servicePrice("Pase SUM");
-    orderData.amount = checkPriceByName(request.terreno)+((servicePrice("Pase Kinder") * selectedGuarderia))+((servicePrice("Pase SUM") * selectedGuarderia));
-    if (event.target.value != '') {
+    orderData.amount = calculateAmount(selectedTerreno, selectedAlmacenamiento, selectedGuarderia, event.target.value);
+    if (event.target.value !== '') {
       setInput6Disabled(false);
  
     } else {
@@ -583,7 +612,7 @@ if(cargaron){
             type="radio" 
             value="F1" 
             checked={selectedTerreno === 'Lote 1'} 
-            // onChange={handleSelectTerreno}
+            readOnly
             
             />
           F1 
@@ -593,7 +622,7 @@ if(cargaron){
         type="radio" 
         value="F2" 
         checked={selectedTerreno === 'Lote 2'} 
-        // onChange={handleSelectTerreno}
+        readOnly
          
         />
         F2
@@ -603,7 +632,7 @@ if(cargaron){
         type="radio" 
         value="F3" 
         checked={selectedTerreno === 'Lote 3'} 
-        // onChange={handleSelectTerreno}
+        readOnly
         
         />
         F3 
@@ -613,7 +642,7 @@ if(cargaron){
         type="radio" 
         value="F4" 
         checked={selectedTerreno === 'Lote 4'} 
-        // onChange={handleSelectTerreno} 
+        readOnly
         
         />
         F4 
@@ -623,7 +652,7 @@ if(cargaron){
         type="radio" 
         value="F5" 
         checked={selectedTerreno === 'Lote 5'} 
-        // onChange={handleSelectTerreno} 
+        readOnly 
         
         />
         F5 
@@ -633,7 +662,7 @@ if(cargaron){
         type="radio" 
         value="F6" 
         checked={selectedTerreno === 'Lote 6'} 
-        // onChange={handleSelectTerreno}
+        readOnly
          
         />
         F6 
@@ -643,39 +672,39 @@ if(cargaron){
         type="radio" 
         value="F7" 
         checked={selectedTerreno === 'Lote 7'} 
-        // onChange={handleSelectTerreno} 
+        readOnly 
         
         />
         F7 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 8' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="F8" checked={selectedTerreno === 'Lote 8'} 
-        // onChange={handleSelectTerreno}  
+        readOnly  
         />
         F8 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 9' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F9" checked={selectedTerreno === 'Lote 9'} /**onChange={handleSelectTerreno} **/ />
+        <span><input type="radio" value="F9" checked={selectedTerreno === 'Lote 9'} readOnly />
         F9 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 10' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F10" checked={selectedTerreno === 'Lote 10'} /**onChange={handleSelectTerreno} **/  />
+        <span><input type="radio" value="F10" checked={selectedTerreno === 'Lote 10'} readOnly  />
         F10 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 11' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F11" checked={selectedTerreno === 'Lote 11'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F11" checked={selectedTerreno === 'Lote 11'} readOnly  />
         F11 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 12' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F12" checked={selectedTerreno === 'Lote 12'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F12" checked={selectedTerreno === 'Lote 12'} readOnly   />
         F12 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 13' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} readOnly   />
         F13 
       </span></label>
       <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 13' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} /**onChange={handleSelectTerreno} **/   />
+        <span><input type="radio" value="F13" checked={selectedTerreno === 'Lote 13'} readOnly   />
         F13 
       </span></label>
       <br/>

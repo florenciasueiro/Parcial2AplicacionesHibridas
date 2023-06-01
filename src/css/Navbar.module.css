@@ -12,7 +12,6 @@
   top: 20px;
   position: fixed;
   border-radius: 50px;
-  box-shadow: 0 0 20px 5px rgba(0,0,0,0.1);
 }
 
 .box{
@@ -21,6 +20,7 @@
   border-radius: 50px;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 20px 5px rgba(0,0,0,0.1);
     
 }
 .menuItem{

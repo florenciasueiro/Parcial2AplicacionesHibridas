@@ -18,8 +18,8 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [showError, setShowError]= useState(false);
   const contactos = useContactos();
-  const [emailLabel, setEmailLabel] = useState('');
-  const [passwordLabel, setPasswordLabel] = useState('');
+  // const [emailLabel, setEmailLabel] = useState('');
+  // const [passwordLabel, setPasswordLabel] = useState('');
 
 
   const handleSubmit = (event) => {
@@ -34,10 +34,10 @@ export default function SignIn() {
   };
 
 
-  const handleLogout = () => {
-    sessionStorage.clear();
-    window.location.reload();
-  }
+  // const handleLogout = () => {
+  //   sessionStorage.clear();
+  //   window.location.reload();
+  // }
 
   if (!usuario) {
     return (

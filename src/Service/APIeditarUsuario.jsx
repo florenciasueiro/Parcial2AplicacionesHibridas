@@ -12,6 +12,12 @@ export default function useEditarUsuario() {
           });
           if (response.status > 200 || response.status <= 300) {
             console.log(response.status)
+            const data = await response.json();
+            console.log("se ejecuto editUser");
+            console.log(data);
+            sessionStorage.setItem("user", JSON.stringify(data));
+            window.location.reload();
+            
                 if(response.status === 201){
                     
                     return response.status;

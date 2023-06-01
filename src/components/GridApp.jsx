@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
@@ -8,11 +8,11 @@ import AddressCard from './CountryCard';
 import LanguageCard from './LenguageCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faKey, faIdCard, faCalendar, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-//npm install @fortawesome/free-solid-svg-icons
-import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
+// //npm install @fortawesome/free-solid-svg-icons
+// import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 
 
-import PDFViewer from '../components/PDFViewer';
+// import PDFViewer from '../components/PDFViewer';
 
 
 export function CardGrid({ handleClick }) {
@@ -28,10 +28,10 @@ export function CardGrid({ handleClick }) {
     console.log(datosIngresados);  
   }
   const btnClick = ()=>{
-    if(datosIngresados[0]!=usuario.password){
+    if(datosIngresados[0]!==usuario.password){
       alert("esa no es la contraseña actual");
     }
-    else if(datosIngresados[1]!=datosIngresados[2]){
+    else if(datosIngresados[1]!==datosIngresados[2]){
     alert("repetir contraseña y nueva contraseña deben ser iguales")
   }else{
     usuario.password=datosIngresados[2];
@@ -66,7 +66,8 @@ export function CardGrid({ handleClick }) {
       description: 'Descripción de la tarjeta 3',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faKey} />,
-      button: 'Enviar codigo de autenticacion'
+      button: 'Enviar codigo de autenticacion',
+      
       // No se especifican inputs para esta tarjeta
     },
   ];
@@ -85,8 +86,43 @@ export function CardGrid({ handleClick }) {
 
 
 export function CardGrid2({ handleClick }) {
+  const [genero, setGenero] = useState(""); // Estado para almacenar el valor seleccionado
+  const [mobile, setMobile] = useState(""); // Estado para almacenar el valor seleccionado
+  const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  const unixTimestamp = usuario.fechaNac;
+  const date = new Date(unixTimestamp * 1000); // Multiplicamos por 1000 para convertirlo a milisegundos
+  const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  const handleGeneroChange = (event) => {
+    setGenero(event.target.value);
+    console.log("genero", event.target.value) // Actualiza el estado con el valor seleccionado
+  };
+  const handleGeneroClick = () => { 
+    usuario.genero = genero;
+    editar(usuario);
+  };
+  const handleTelefonoChange = (e,i) => {
+    setMobile(e);
+    console.log("Mobile", e) // Actualiza el estado con el valor seleccionado
+  };
+  const handleTelefonoClick = () => { 
+    usuario.mobile = mobile;
+    editar(usuario);
+  };
+
+  
+  let nombreApellido=[];
+  const handleNameChange = (e,pos) =>{
+    nombreApellido[pos]=e;
+    console.log(nombreApellido);  
+  }
+
+  const btnNameClick = ()=>{
+    usuario.name=nombreApellido[0] +" "+ nombreApellido[1] 
+    editar(usuario)
+  }
+
   const cardData = [
     {
       id: 4,
@@ -95,20 +131,25 @@ export function CardGrid2({ handleClick }) {
         <span>
           {usuario.name}<br/>
         </span>),
-        contenido:(<form>
-        <input type="text" id="nombre" name="nombre" placeholder="Modificar nombre"/>
-        <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Modificar segundo nombre"/>
-        <input type="text" id="apellido" name="apellido" placeholder="Modificar apellido"/>
-    </form>),
+
+          inputs: [
+            { placeholder: 'Nombre', type: 'text', change: handleNameChange},
+            { placeholder: 'Apellido', type: 'text',change: handleNameChange, button: 'Guardar cambios',onClick: btnNameClick}
+          ],
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faIdCard} />,
-      button: 'Guardar cambios',
+      // button: 'Guardar cambios',
     },
     {
       id: 5,
       title: 'Cumpleaños',
-      description: "Mdificar fecha de nacimiento",
-      button: 'Guardar cambios',
+      description:(
+        <span style={{ textAlign: 'center' }}>
+          {formattedDate}<br/>
+          <span>Modificar fecha de nacimiento</span>
+        </span>
+      ),
+      // button: 'Guardar cambios',
       card: <BirthdayCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendar} />
@@ -136,9 +177,10 @@ export function CardGrid2({ handleClick }) {
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
-        { placeholder: 'Añadir nuevo teléfono', type: 'text'},
+        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange},
       ],
-      button: 'Añadir',
+      button: 'Aceptar cambios',
+      change: handleTelefonoClick,
     },
     {
       id: 9,
@@ -155,18 +197,21 @@ export function CardGrid2({ handleClick }) {
     {
       id: 10,
       title: 'Género',
-      description: 'Descripción de la tarjeta 1',
+      description: `Modificar genero actual:`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
       contenido:   (<form>
       <label for="genero">Género:</label>
-      <select id="genero" name="genero">
+      <select id="genero" name="genero" value={usuario.genero} onChange={handleGeneroChange}>
         <option value="masculino">Masculino</option>
         <option value="femenino">Femenino</option>
         <option value="no-binario">No binario</option>
         <option value="prefiero-no-mencionarlo">Prefiero no mencionarlo</option>
       </select>
+      
     </form>),
+    button: 'Guardar cambios',
+    change: handleGeneroClick,
     },
   ];
   return (

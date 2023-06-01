@@ -1,0 +1,23 @@
+.notificationContainer{
+    top: 10px;
+    position: relative;
+    height: 0px;
+    display: flex;
+    justify-content: center;
+    width: -webkit-fill-available;
+    background-color: red;
+    border-radius: 10px;
+    transition: all 0.2s ease-out;
+}
+
+input:checked ~ .notificationContainerOpen{
+    top: 10px;
+    position: relative;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    width: -webkit-fill-available;
+    background-color: red;
+    border-radius: 10px;
+    transition: all 0.2s ease-out;
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React  from 'react';
 import FeedbackCSS from '../css/Feedback.module.css';
 import { BackgroundQuarters } from '../components/Background';
 

@@ -1,10 +1,10 @@
-  import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
   import { Link, NavLink, useLocation } from 'react-router-dom';
   import NavbarCSS from '../css/Navbar.module.css';
   import Login from './Login';
   import Contactos from "../Service/APIlogin";
   import NavbarBlackCSS from '../css/NavbarBlack.module.css';
-  // import DinamicShop from './DinamicShop';
+  import IslandNotification from './IslandNotification';
   import useContactos from '../Service/APIlogin'
   function Navbar() {
     const contactos = useContactos();
@@ -21,9 +21,9 @@
           <p>Login</p>
         );
       } else {
-        console.log("usuario");
+        console.log(usuario);
         return (
-          <Link Link to="/profile">{usuario.name}</Link>
+          <Link link="true" to="/profile">{usuario.name.split(" ")[0]}</Link>
         );
       }
     };
@@ -40,13 +40,13 @@
     };
 
     const [showLogin, setShowLogin] = useState(false);
-    const [isDropdownHovered, setIsDropdownHovered] = useState(false);
+    // const [isDropdownHovered, setIsDropdownHovered] = useState(false);
     const [isLoginHovered, setIsLoginHovered] = useState(false);
     const loginRef = useRef(null);
 
-    const toggleLogin = () => {
-      setShowLogin(!showLogin);
-    };
+    // const toggleLogin = () => {
+    //   setShowLogin(!showLogin);
+    // };
 
     const showLoginDropdown = () => {
       setShowLogin(true);
@@ -60,9 +60,9 @@
       });
     };
 
-    const handleDropdownMouseEnter = () => {
-      setIsDropdownHovered(true);
-    };
+    // const handleDropdownMouseEnter = () => {
+    //   setIsDropdownHovered(true);
+    // };
 
     const handleDropdownMouseLeave = () => {
       setTimeout(() => {
@@ -71,25 +71,25 @@
     };
     
 
-    const handleLoginMouseEnter = () => {
-      setIsLoginHovered(true);
-    };
+    // const handleLoginMouseEnter = () => {
+    //   setIsLoginHovered(true);
+    // };s
 
 
-    const handleLoginMouseLeave = () => {
-      if (!isLoginHovered) {
-        setTimeout(() => {
-          setShowLogin(false);
-        }, 600); // Tiempo adicional antes de cerrar el login (2 segundos)
-      }
-    };
+    // const handleLoginMouseLeave = () => {
+    //   if (!isLoginHovered) {
+    //     setTimeout(() => {
+    //       setShowLogin(false);
+    //     }, 600); // Tiempo adicional antes de cerrar el login (2 segundos)
+    //   }
+    // };
 
     return (
       <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarBlackCSS.Navbarcontainer : ''}`}>
         <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarBlackCSS.navbarcontainer : ''}`}>
           <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarBlackCSS.box : ''}`}>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-              <NavLink onClick={hideLoginDropdown} exact to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}>
+              <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}>
                 <img src={isShopPage ? "/img/LogoBlanco.png" : "/img/LogoNegro.png"} alt="" />
               </NavLink>
             </li>
@@ -100,13 +100,14 @@
               <NavLink onClick={hideLoginDropdown} to="/eventos">Eventos</NavLink>
             </li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-              <NavLink onClick={hideLoginDropdown} exact to="/shop">Store</NavLink>
+              <NavLink onClick={hideLoginDropdown} exact="true" to="/shop">Store</NavLink>
             </li>
             <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
             <button 
             className={NavbarCSS.btn}
             onMouseEnter={showLoginDropdown}
-            onClick= { ()=> { contactos(usuario.email, usuario.password) } }
+            onClick={() => { usuario && contactos(usuario.email, usuario.password) }}
+
             >
 
               {displayName()}
@@ -126,6 +127,12 @@
             </div>
           </div>
         </ul>
+        <IslandNotification />
+        {/* {isShopPage && (
+          <div>
+            {<DinamicShop />}
+          </div>
+        )} */}
         {/* {isShopPage && (
           <div>
             {<DinamicShop />}

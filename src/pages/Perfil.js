@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProfileInfo from '../components/Perfil';
-import { CardGrid, CardGrid2, CardGrid3, CardGrid4, CardGrid5, CardGrid6, CardGrid7, CardGrid8 } from '../components/GridApp';
+import { CardGrid, CardGrid2, CardGrid3, CardGrid4, CardGrid5, CardGrid6, CardGrid7, /*CardGrid8*/ } from '../components/GridApp';
 import PerfilCSS from '../css/Perfil.module.css';
 
 function ProfilePage() {
@@ -22,7 +22,7 @@ function ProfilePage() {
       <div className={PerfilCSS.rightSection}>
         <div className={PerfilCSS.text}>
           <h1>{activeSection}</h1>
-          <p>Hola, esto es un texto nformativo de ejemplo</p>
+          <p>Aqui se encuentra la informacion relacionada a {activeSection}</p>
         </div>
         {activeSection === 'Inicio de Sesion' && <CardGrid />}  
         {activeSection === 'Informacion personal' && <CardGrid2 />}

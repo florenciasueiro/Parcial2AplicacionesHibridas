@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackgroundRegistro } from  '../components/Background';
+// import { BackgroundRegistro } from  '../components/Background';
 import Registro from '../components/Registro';
 import RegistroCSS from '../css/Registro.module.css'
 
