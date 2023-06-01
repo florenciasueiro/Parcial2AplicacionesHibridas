@@ -127,13 +127,13 @@ import React, { useState, useRef } from 'react';
             </div>
           </div>
         </ul>
+        <IslandNotification />
         {/* {isShopPage && (
           <div>
             {<DinamicShop />}
           </div>
         )} */}
       </div>
-      <IslandNotification />
     </div>
   );
   }
