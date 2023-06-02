@@ -475,7 +475,8 @@ export function CardGrid9({ handleClick }) {
   const cardData = [
     {
       id: 28,
-      title: 'Mision y vision',
+      icon: "img/LogoBlanco.png",
+      title: 'Card',
       pie:'Descripción de la tarjeta 1',
       description: 'Descripción de la tarjeta 2',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -495,7 +496,8 @@ export function CardGrid10({ handleClick }) {
   const cardData = [
     {
       id: 29,
-      title: 'Eventos',
+      icon: "img/LogoBlanco.png",
+      title: 'ID',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
       link: "/eventos",
@@ -513,8 +515,9 @@ export function CardGrid10({ handleClick }) {
 export function CardGrid11({ handleClick }) {
   const cardData = [
     {
-      id: 29,
-      title: 'Evento',
+      id: 30,
+      title: 'Sobre Asset',
+
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
       link: "/eventos",
@@ -531,3 +534,23 @@ export function CardGrid11({ handleClick }) {
 }
 
 export default CardGrid;
+export function CardGrid12({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Soporte',
+      description: 'Descripción de la tarjeta 1',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/eventos",
+    },
+
+  ];
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardInicio className={PerfilCSS.cardInicio} key={card.id} card={card} />
+      ))}
+    </div>
+  );
+}
