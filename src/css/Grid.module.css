@@ -8,8 +8,6 @@
       margin: 30px auto;
     }
 
-
-    
     .tarjeta:nth-child(1) {
       grid-column: 1 / span 2; /* Ocupa la primera columna */
       grid-row: 1 / span 2; /* Ocupa tres fila */
@@ -141,4 +139,18 @@
 
 .closeButton:hover {
   background-color: #555;
+}
+
+
+
+.cardImg{
+  width: 100%;
+  border-radius: 30px;
+}
+.h1{
+  display: flex;
+  position: absolute;
+  padding: 10px;
+  color: white;
+
 }

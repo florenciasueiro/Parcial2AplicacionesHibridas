@@ -67,7 +67,7 @@ function Navbar() {
       setPlayAnimation(true);
       setTimeout(() => {
         setPlayAnimation(false);
-      }, 600000000);
+      }, 3000);
     }
   }, []);
 

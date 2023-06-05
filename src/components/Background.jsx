@@ -21,6 +21,7 @@ export function BackgroundRegistro() {
 export function BackgroundQuarters() {
   return (
     <div className={bgCSS.contenedor}>
+      <div className={bgCSS.black}></div>
       <video className={bgCSS.video} src={videobg} autoPlay loop muted/>
     </div>
   );
