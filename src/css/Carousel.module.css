@@ -50,3 +50,9 @@
   .h1{
     margin: 1.5rem 6rem;
   }
+  .span{
+    color: orange;
+    display: flex;
+    margin: 3px;
+    font-size: 0.8rem;
+  }

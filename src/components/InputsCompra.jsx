@@ -362,7 +362,7 @@ if(cargaron){
     <div>
       <div>
         <p>
-          <b>Terreno.</b> ¿Cuál es el mejor para su familia?
+          <b className={InputCSS.b}>Terreno.</b> ¿Cuál es el mejor para su familia?
         </p><p className={InputCSS['icono']}>?</p>
         <div className={InputCSS['radioInputs']}>
           <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
@@ -467,7 +467,7 @@ if(cargaron){
 
 
         <div className={InputCSS['ref']} ref={cardRef}>
-        <p><b>Asset Card.</b> Cuántas personas viven con usted?</p>
+        <p><b className={InputCSS.b}>Asset Card.</b> Cuántas personas viven con usted?</p>
         <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedCard === '1' ? InputCSS.selected : ''}`}>
           <span><input 
@@ -495,7 +495,7 @@ if(cargaron){
       </div>
 
         <div className={InputCSS['ref']} ref={almacenamientoRef}>
-        <p><b>Almacenamiento.</b> ¿Cuánto espacio necesitará para almacenar sus cosas?</p>
+        <p><b className={InputCSS.b}>Almacenamiento.</b> ¿Cuánto espacio necesitará para almacenar sus cosas?</p>
         <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento S' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="Almacenamiento S" checked={selectedAlmacenamiento === 'Almacenamiento S'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled} />
@@ -515,7 +515,7 @@ if(cargaron){
 
 
       <div className={InputCSS['ref']} ref={guarderiaRef}>
-      <p><b> Guardería.</b> ¿Cuál es el plan que mejor se adapta a ti?</p>
+      <p><b className={InputCSS.b}> Guardería.</b> ¿Cuál es el plan que mejor se adapta a ti?</p>
       <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '0' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="0" checked={selectedGuarderia === '0'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
@@ -542,7 +542,7 @@ if(cargaron){
       </div>
 
       <div className={InputCSS['ref']} ref={sumRef}>
-      <p><b> SUM.</b> Reservá el espacio para lo que tu quieras.</p>
+      <p><b className={InputCSS.b}> SUM.</b> Reservá el espacio para lo que tu quieras.</p>
       <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedSUM === '0' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="0" checked={selectedSUM === '0'} onChange={handleSelectSUM} disabled={input5Disabled}/>
@@ -565,7 +565,7 @@ if(cargaron){
       </div>
 
       {/* <div className={InputCSS['ref']} ref={pagoRef}>
-      <p><b> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
+      <p><b className={InputCSS.b}> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="1" checked={selectedPago === '1'} onChange={handleSelectPago} disabled={input6Disabled}/>
@@ -606,8 +606,8 @@ if(cargaron){
   return(
     <div>
     <div>
-      <p>
-        <b>Terreno.</b> ¿Cuál es el mejor para su familia?
+      <p className={In.textContainer}>
+  <b className={CACSS.text}>Terreno.</b> ¿Cuál es el mejor para su familia?
       </p>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
@@ -717,7 +717,7 @@ if(cargaron){
 
 
       <div className={InputCSS['ref']} ref={cardRef}>
-      <p><b>Asset Card.</b> Cuántas personas viven con usted?</p>
+      <p><b className={InputCSS.b}>Asset Card.</b> Cuántas personas viven con usted?</p>
       <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedCard === '1' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="1" checked={selectedCard === '1'} /**onChange={handleSelectCard}**/ disabled={input2Disabled}/>
@@ -744,7 +744,7 @@ if(cargaron){
     </div>
 
       <div className={InputCSS['ref']} ref={almacenamientoRef}>
-      <p><b>Almacenamiento.</b> ¿Cuánto espacio necesitará para almacenar sus cosas?</p>
+      <p><b className={InputCSS.b}>Almacenamiento.</b> ¿Cuánto espacio necesitará para almacenar sus cosas?</p>
       <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Pequeño' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="Pequeño" checked={selectedAlmacenamiento === 'Pequeño'} /**onChange={handleSelectAlmacenamiento}**/ disabled={input3Disabled} />
@@ -764,7 +764,7 @@ if(cargaron){
 
 
     <div className={InputCSS['ref']} ref={guarderiaRef}>
-    <p><b> Guardería.</b> ¿Cuál es el plan que mejor se adapta a ti?</p>
+    <p><b className={InputCSS.b}> Guardería.</b> ¿Cuál es el plan que mejor se adapta a ti?</p>
     <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '6' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="6" checked={selectedGuarderia === '6'} /**onChange={handleSelectGuarderia}**/ disabled={input4Disabled}/>
@@ -783,7 +783,7 @@ if(cargaron){
     </div>
 
     <div className={InputCSS['ref']} ref={sumRef}>
-    <p><b> SUM.</b> Reservá el espacio para lo que tu quieras.</p>
+    <p><b className={InputCSS.b}> SUM.</b> Reservá el espacio para lo que tu quieras.</p>
     <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="6" checked={selectedSUM === '6'} /**onChange={handleSelectSUM}**/ disabled={input5Disabled}/>
@@ -802,7 +802,7 @@ if(cargaron){
     </div>
 
     <div className={InputCSS['ref']} ref={pagoRef}>
-    <p><b> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
+    <p><b className={InputCSS.b}> Opciones de pago.</b> Seleccione el que funcione para usted.</p>
     <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="1" checked={selectedPago === '1'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>

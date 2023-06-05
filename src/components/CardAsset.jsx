@@ -24,6 +24,7 @@ const CardAsset = ({ card, cardData }) => {
         <div className={CACSS.icon}>
           <button className={CACSS.btn} onClick={handleButtonClick}>
             <FontAwesomeIcon icon={faPlus} />
+            <p className={CACSS.registerText}>{card.text}</p>
           </button>
         </div>
         <div className={CACSS.title}>

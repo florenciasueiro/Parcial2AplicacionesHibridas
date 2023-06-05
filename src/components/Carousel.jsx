@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../css/Carousel.module.css';
+import CarouselCSS from '../css/Carousel.module.css';
 import image1 from '../img/image1.png';
 import image2 from '../img/image2.png';
 import image3 from '../img/image3.png';
@@ -42,26 +42,27 @@ const Carousel = () => {
 
   return (
     <div>
-      <div className={styles.h1}>
-        <h1>Producto</h1>
+      <div className={CarouselCSS.h1}>
+        <span className={CarouselCSS.span}>Nuevo</span>
+        <h1>Quarters Family 1</h1>
       </div>
-    <div className={styles.carousel}>
-      <div className={styles.carouselImages} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+    <div className={CarouselCSS.carousel}>
+      <div className={CarouselCSS.carouselImages} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <img
             key={index}
-            className={`${styles.carouselImage} ${
-              index === currentIndex ? styles.active : ''
+            className={`${CarouselCSS.carouselImage} ${
+              index === currentIndex ? CarouselCSS.active : ''
             }`}
             src={image}
             alt=""
           />
         ))}
       </div>
-      <button className={`${styles.carouselButton} ${styles.previous}`} onClick={previousSlide}>
+      <button className={`${CarouselCSS.carouselButton} ${CarouselCSS.previous}`} onClick={previousSlide}>
         <i className="fas fa-chevron-left"></i>
       </button>
-      <button className={`${styles.carouselButton} ${styles.next}`} onClick={nextSlide}>
+      <button className={`${CarouselCSS.carouselButton} ${CarouselCSS.next}`} onClick={nextSlide}>
         <i className="fas fa-chevron-right"></i>
       </button>
       {/* {console.log(currentIndex)} */}

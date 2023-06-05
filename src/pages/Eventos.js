@@ -8,7 +8,7 @@ function Eventos() {
   return (
     <div className={InicioCSS.inicio}>
       <a href="/quarters" className={InicioCSS.background}>
-      <div className={InicioCSS.text}>
+      <div className={InicioCSS.textEvents}>
         <div className={InicioCSS.logoP}>
           <img className={InicioCSS.img} src={"/img/LogoBlanco.png"}/>
           <p className={InicioCSS.p}>Events</p>

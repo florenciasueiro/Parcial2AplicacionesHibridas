@@ -610,3 +610,9 @@ span[title]:hover:after {
   color: white;
   
 }
+
+.b{
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}

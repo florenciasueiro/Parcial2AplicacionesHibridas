@@ -59,12 +59,14 @@
 }
 
 .text{
-  display: block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   z-index: 10;
   width: 100vw;
   color: white;
-  top: 55vh;
+  top: 75vh;
   font-size: 30px;
 }
 
@@ -118,4 +120,16 @@
 .pEvent{
   font-size: 37px;
   color: #C0C0C0;
+}
+
+.textEvents{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  color: white;
+  top: 50vh;
+  font-size: 30px;
 }
