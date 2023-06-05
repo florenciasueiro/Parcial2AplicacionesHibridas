@@ -1,14 +1,13 @@
 .container {
     position: absolute;
     top: 0px;
-
     width: -webkit-fill-available;
     display: flex;
     justify-content: center;
     transition: height 0.2s ease-out;
     overflow: hidden;
-
     display: flex;
+    align-items: center;
     justify-content: center;
     border-radius: 20px;
     transition: all 0.2s ease-out;
@@ -27,7 +26,7 @@
     transition: transform 1s ease-out;
     transform: translateY(-100%);
     width: -webkit-fill-available;
-
+    text-align: center;
   }
   
   .playAnimation {
