@@ -1,29 +1,30 @@
 import React from 'react';
-//import logo from './logo.svg';
 import InicioCSS from '../css/Inicio.module.css';
-import CardEvent from '../components/CardEvent';
-//import Login from './components/Login';
-import { Background, } from '../components/Background';
-import {CardGrid11} from '../components/GridApp';
+import Cards from '../components/Cards';
+import {CardGrid26} from '../components/GridApp';
 import { BackgroundQuarters } from  '../components/Background';
 
-
-
-function Inicio() {
+function Eventos() {
   return (
     <div className={InicioCSS.inicio}>
-      <h1 className={InicioCSS.titulo}>Asset Event</h1>
-      <>
-      <BackgroundQuarters className={InicioCSS.background}/>
-      </>
+      <a href="/quarters" className={InicioCSS.background}>
+      <div className={InicioCSS.text}>
+        <div className={InicioCSS.logoP}>
+          <img className={InicioCSS.img} src={"/img/LogoBlanco.png"}/>
+          <p className={InicioCSS.p}>Events</p>
+        </div>
+        <p className={InicioCSS.pEvent}>Hogar de eventos especiales que anuncian lo último en productos, servicios y más.</p>
+        <button className={InicioCSS.button}>Registrarse</button>
+      </div>
+        <BackgroundQuarters />
+      </a>  
 
-      <div className={InicioCSS.cards}>
-        <>
-        <CardGrid11/>
-        </>
+      <div>
+        <CardGrid26/>
       </div>
     </div>
   );
 }
-export default Inicio;
-//xd
+
+export default Eventos;
+

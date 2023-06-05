@@ -59,14 +59,12 @@
 }
 
 .text{
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   position: absolute;
   z-index: 10;
   width: 100vw;
   color: white;
-  top: 75vh;
+  top: 55vh;
   font-size: 30px;
 }
 
@@ -102,4 +100,22 @@
 .p{
   margin: 20px;
   font-weight: 500;
+}
+
+.logoP{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button{
+  background-color: #0071e3;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  margin: 20px auto;
+  border: none;
+}
+.pEvent{
+  font-size: 37px;
+  color: #C0C0C0;
 }

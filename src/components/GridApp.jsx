@@ -7,9 +7,13 @@ import BirthdayCard from './BirthdayCard';
 import AddressCard from './CountryCard';
 import LanguageCard from './LenguageCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faKey, faIdCard, faCalendar, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faKey, faIdCard, faCalendar, faPlus, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 // //npm install @fortawesome/free-solid-svg-icons
 // import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
+import CardAsset from './CardAsset'; // Importa el componente CardAsset
+import ProductGrid from './ProductGrid';
+import { red } from '@mui/material/colors';
+
 
 
 // import PDFViewer from '../components/PDFViewer';
@@ -475,7 +479,8 @@ export function CardGrid9({ handleClick }) {
   const cardData = [
     {
       id: 28,
-      icon: "img/LogoBlanco.png",
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
       title: 'Card',
       pie:'Descripción de la tarjeta 1',
       description: 'Descripción de la tarjeta 2',
@@ -496,7 +501,8 @@ export function CardGrid10({ handleClick }) {
   const cardData = [
     {
       id: 29,
-      icon: "img/LogoBlanco.png",
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
       title: 'ID',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -516,11 +522,13 @@ export function CardGrid11({ handleClick }) {
   const cardData = [
     {
       id: 30,
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
       title: 'Sobre Asset',
 
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
-      link: "/eventos",
+      link: "/sobreasset",
     },
 
   ];
@@ -528,29 +536,357 @@ export function CardGrid11({ handleClick }) {
     <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
       {cardData.map((card) => (
         <CardInicio className={PerfilCSS.cardInicio} key={card.id} card={card} />
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid12({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
+      title: 'Soporte',
+      description: 'Descripción de la tarjeta 1',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/sobreasset",
+    },
+    
+  ];
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardInicio className={PerfilCSS.cardInicio} key={card.id} card={card} />
+        ))}
+    </div>
+  );
+}
+
+
+// Sobre Asset cards
+
+export function CardGrid13({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
+      title: 'Nuestro propósito',
+      subtitle: 'Es simple. Eso es Asset.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/sobreasset",
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardAsset key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid14({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
+      title: 'Nuestros valores',
+      subtitle: 'Compromiso desde el primer día.',
+      description: 'En Asset, nos enorgullece ser una empresa que se esfuerza por crear productos y servicios que brinden una experiencia de vida única. Nuestros valores fundamentales definen quiénes somos y guían cada decisión que tomamos. Nos emociona que nos acompañes en este viaje.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/sobreasset",
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardAsset key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid15({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/sobreasset",
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardAsset key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+// Fin de Asset cards
+
+//Product Grid Cards
+
+export function CardGrid16({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid17({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid18({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid19({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid20({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid21({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid22({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid23({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid24({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+export function CardGrid25({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      icon: "img/LogoBlanco.png",
+      title: 'Nuestra política empresarial',
+      subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
+      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div onClick={handleClick}>
+      {cardData.map((card) => (
+        <ProductGrid key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
+      ))}
+    </div>
+  );
+}
+
+//card eventos
+
+export function CardGrid26({ handleClick }) {
+  const cardData = [
+    {
+      id: 31,
+      logo: "img/LogoBlanco.png",
+      icon: <FontAwesomeIcon icon={faPlus}/>,
+      text: 'Registrarse',
+      title: 'Quarters',
+      subtitle: 'Descubre un lugar donde diseño, seguridad y confort se fusionan para crear una experiencia única perfecta para tu familia.',
+      description: 'En Asset, nos enorgullece ser una empresa que se esfuerza por crear productos y servicios que brinden una experiencia de vida única. Nuestros valores fundamentales definen quiénes somos y guían cada decisión que tomamos. Nos emociona que nos acompañes en este viaje.',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      link: "/sobreasset",
+    },
+    // Agrega más objetos cardData según sea necesario
+  ];
+
+  return (
+    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+      {cardData.map((card) => (
+        <CardAsset key={card.id} card={card} /> // Pasa cada objeto card como prop al componente CardAsset
       ))}
     </div>
   );
 }
 
 export default CardGrid;
-export function CardGrid12({ handleClick }) {
-  const cardData = [
-    {
-      id: 31,
-      icon: "img/LogoBlanco.png",
-      title: 'Soporte',
-      description: 'Descripción de la tarjeta 1',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
-      link: "/eventos",
-    },
-
-  ];
-  return (
-    <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
-      {cardData.map((card) => (
-        <CardInicio className={PerfilCSS.cardInicio} key={card.id} card={card} />
-      ))}
-    </div>
-  );
-}

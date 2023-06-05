@@ -29,3 +29,11 @@
     width: 100%;
     object-fit: cover;
 }
+
+.black{
+    width: 100vw;
+    height: 90vh;
+    background: linear-gradient(to top, #000000 0%, #ffffff00 100%);
+    /* background-color: rgba(0,0,0,0.7); */
+    position: absolute;
+}

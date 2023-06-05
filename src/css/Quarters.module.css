@@ -3,19 +3,35 @@
     z-index: 10;
     justify-content: center;
     align-items: center;
-    margin-top: 65vh;
+    margin-top: 55vh;
     width: 100vw;
     color: white;
   }
-  .text h1, .text p, .link{
+  .text h1, .p{
     display: flex;
     width: 75vw;
     margin: auto;
     justify-content: center;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none;  
   }
 
   .link{
-    color: #0071e3;
+    background-color: #0071e3;
+    color: white;
+    display: flex;
+    padding: 10px 15px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 20px auto;
+  }
+
+  .text h1{
+    font-size: 55px;
+  }
+    .p{
+    font-size: 37px;
+    color: #C0C0C0;
   }

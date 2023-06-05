@@ -19,7 +19,7 @@ function Inicio() {
         <CardGrid9/>
         <CardGrid10/>
         <CardGrid11/>
-        <CardGrid12/>
+        <CardGrid12/>   
       </div>
     </div>
   );
