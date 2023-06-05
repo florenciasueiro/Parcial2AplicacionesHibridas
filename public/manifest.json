@@ -1,6 +1,17 @@
 {
   "short_name": "Asset",
   "name": "Asset",
+  "description": "Esta es la aplicación multiplataforma de Asset, donde puedes comprar y gestionar todo lo relacionado a tu vivienda",
+  "developer": [
+    {
+      "name": "Francisco Ghisoni",
+      "url": "https://github.com/franGhisoni"
+    },
+    {
+      "name": "Florencia Sueiro",
+      "url": "https://github.com/OtroAlien"
+    }
+  ],
   "icons": [
     {
       "src": "LogoBlanco.ico",
