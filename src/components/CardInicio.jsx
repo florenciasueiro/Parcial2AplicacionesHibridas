@@ -19,14 +19,15 @@ function CardInicio({ card, cardData }) {
   return (
     <>
       <Link className={PerfilCSS.link} to={card.link}>
-  <div className={PerfilCSS.cardInicio} onClick={handleOpenModal}>
-    <img className={PerfilCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />
-    <div className={PerfilCSS.cardBodyInicio}>
-      <h3>{card.title}</h3>
-      <p>{card.description}</p>
-    </div>
-  </div>
-</Link>
+        <div className={PerfilCSS.cardInicio} onClick={handleOpenModal}>
+          <div className={PerfilCSS.cardBodyInicio}>
+            {card.icon && <img className={PerfilCSS.cardIcon} src={card.icon} alt="Logo" />}
+            <h1 className={PerfilCSS.h1}>{card.title}</h1>
+            {/* <p>{card.description}</p> */}
+          </div>
+          <img className={PerfilCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />
+        </div>
+      </Link>
 
       <ModalCardInicio card={card} isOpen={isModalOpen} onClose={handleCloseModal} />
     </>

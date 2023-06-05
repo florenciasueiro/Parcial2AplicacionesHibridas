@@ -43,14 +43,15 @@
 }
 
 .cards{
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  grid-gap: 20px;
-  margin: 20px auto;
+  grid-gap: 15px;
+  margin: 15px 15px;
   position: relative;
   z-index: 0;
-  width: 60vw;
+  /* width: 60vw;*/
 }
 
 .App{
@@ -58,12 +59,14 @@
 }
 
 .text{
-  display: block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   z-index: 10;
   width: 100vw;
   color: white;
-  top: 30vh;
+  top: 75vh;
   font-size: 30px;
 }
 
@@ -92,3 +95,11 @@
   text-decoration: none;
 }
 
+.img{
+  width: 2rem;
+}
+
+.p{
+  margin: 20px;
+  font-weight: 500;
+}
