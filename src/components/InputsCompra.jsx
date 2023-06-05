@@ -607,7 +607,7 @@ if(cargaron){
     <div>
     <div>
       <p className={In.textContainer}>
-  <b className={CACSS.text}>Terreno.</b> ¿Cuál es el mejor para su familia?
+  <b className={InputCSS.text}>Terreno.</b> ¿Cuál es el mejor para su familia?
       </p>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
