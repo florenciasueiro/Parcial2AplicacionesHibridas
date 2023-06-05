@@ -83,6 +83,7 @@ function Navbar() {
   
   useEffect(() => {
     const compraJson = sessionStorage.getItem('compra');
+    console.log(compraJson);
     const compraCounter = Number(sessionStorage.getItem('compraCounter'));
     console.log(compraCounter);
     if (compraJson && compraCounter === 0) {
@@ -93,7 +94,8 @@ function Navbar() {
         setMessage(`TU COMPRA ESTÁ APROBADA `);
         postVenta(compra);
         console.log(compra);
-    
+        sessionStorage.setItem('compraCounter',0)
+        sessionStorage.setItem('compra',null)
       } else if (status === 'failure') {
         setMessage('TU COMPRA ESTÁ RECHAZADA');
       } else if (status === 'pending') {
