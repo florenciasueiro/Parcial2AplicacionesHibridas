@@ -82,7 +82,7 @@ const Checkout = ({ onClick }) => {
                         id={InputCSS["checkout-btn"]}
                         disabled={disabled}
                       >
-                        Checkout
+                        Comprar
                       </button>
                     </div>
                   )}
