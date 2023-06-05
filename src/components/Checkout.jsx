@@ -31,23 +31,7 @@ const Checkout = ({ onClick }) => {
     else setShowLoged(true);
   }, [usuario]);
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const statusParam = urlParams.get('status');
-    if (statusParam) {
-      setStatus(statusParam);
-    }
-  }, []);
 
-  useEffect(() => {
-    if (status === 'approved') {
-      message = 'TU COMPRA ESTÁ APROBADA';
-    } else if (status === 'failure') {
-      message = 'TU COMPRA ESTÁ RECHAZADA';
-    } else if (status === 'pending') {
-      message = 'TU COMPRA ESTÁ EN PROCESO';
-    }
-  }, [status]);
 
   return (
     <div className={`${InputCSS['bodyCheckout']}`}>
@@ -102,14 +86,7 @@ const Checkout = ({ onClick }) => {
                       </button>
                     </div>
                   )}
-                  {status && (
-                    <div>
-                      <div className={InputCSS["summary-item"]}>
-                        <span className={InputCSS["text"]}>{message}</span>
-                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount}</span>
-                      </div>
-                    </div>
-                  )}
+                  
                   
 
                 </div>
