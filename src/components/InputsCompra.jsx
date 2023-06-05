@@ -606,7 +606,7 @@ if(cargaron){
   return(
     <div>
     <div>
-      <p className={In.textContainer}>
+      <p className={InputCSS.textContainer}>
   <b className={InputCSS.text}>Terreno.</b> ¿Cuál es el mejor para su familia?
       </p>
       <div className={InputCSS['radioInputs']}>
