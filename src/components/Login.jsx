@@ -22,16 +22,14 @@ export default function SignIn() {
   // const [passwordLabel, setPasswordLabel] = useState('');
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    contactos(email, password);
+    const response = await contactos(email, password);
 
-    if (!usuario || Object.keys(usuario).length === 0) {
-      setTimeout(() => {
-        setShowError(true);
-      }, 2000);
-    }
+    if (!response.success) {
+      setShowError(true);
   };
+}
 
 
   // const handleLogout = () => {

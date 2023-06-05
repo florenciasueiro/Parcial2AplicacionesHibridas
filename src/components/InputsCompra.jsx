@@ -219,7 +219,7 @@ const handleClick = () => {
   setIsLoading(true);
 
   // postVenta();
-  fetch("http://localhost:8080/create_preference", {
+  fetch("https://asset-api-node.onrender.com/create_preference", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
