@@ -17,7 +17,7 @@ const FacturaPDFComponent = ({ id }) => {
     const fetchPdf = async () => {
       try {
         const response = await fetch(
-          `https://asset-api-node.onrender.com/v1/getFacturaPDF?id=${id}`,
+          `https://restapinode-production.up.railway.app/v1/getFacturaPDF?id=${id}`,
           {
             headers: {
               'Cache-Control': 'no-cache'
