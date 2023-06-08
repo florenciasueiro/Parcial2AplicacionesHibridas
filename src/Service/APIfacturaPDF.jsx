@@ -6,7 +6,7 @@ const APIComponent = ({ id, setPdf }) => {
       try {
         
         const response = await fetch(
-          `https://asset-api-node.onrender.com/v1/getFacturaPDF?id=${id}`
+          `https://restapinode-production.up.railway.app/v1/getFacturaPDF?id=${id}`
         );
         if (!response.ok) {
           throw new Error(

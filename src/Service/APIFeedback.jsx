@@ -9,7 +9,7 @@ export default function useFeedback(){
 
             try {
 
-                const response = await fetch(`https://asset-api-node.onrender.com/feedback`);
+                const response = await fetch(`https://restapinode-production.up.railway.app/feedback`);
                 
                 if (!response.ok){
                     

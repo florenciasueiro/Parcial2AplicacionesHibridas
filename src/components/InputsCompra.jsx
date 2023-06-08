@@ -232,7 +232,7 @@ const handleClick = () => {
   setIsLoading(true);
 
   // postVenta();
-  fetch("https://asset-api-node.onrender.com/create_preference", {
+  fetch("https://restapinode-production.up.railway.app/create_preference", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
