@@ -239,7 +239,7 @@ const handleClick = () => {
   setIsLoading(true);
 
   // postVenta();
-  fetch("https://restapinode-production.up.railway.app/create_preference", {
+  fetch("http://localhost:8080/create_preference", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
