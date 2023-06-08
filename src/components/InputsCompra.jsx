@@ -227,6 +227,8 @@ const servicePrice =  (name) => {
 }
 
 
+//esto es solo para hacer un commit
+
 orderData.price = checkPriceByName(request.terreno);
 //MERCADO PAGO
   sessionStorage.setItem("compra", JSON.stringify(orderData));
