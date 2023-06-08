@@ -182,6 +182,7 @@ useEffect(() => {
   cargar();
   
 }, [servicios,productos]);
+}, [servicios,productos]);
 
 
 
@@ -215,8 +216,18 @@ function checkPriceByName(name) {
 }
 const servicePrice =  (name) => {
   console.log("servicePrice dice",servicios)
+const servicePrice =  (name) => {
+  console.log("servicePrice dice",servicios)
   const serv = servicios.find(item => item.name === name);
   
+  if (serv && serv.price) {
+    return serv.price;
+  }
+  
+  // Si no se encuentra el servicio o no tiene un precio válido, puedes devolver un valor predeterminado o lanzar un error, según tus necesidades.
+  // Por ejemplo:
+  throw new Error('No se encontró el servicio o no tiene un precio válido');
+}
   if (serv && serv.price) {
     return serv.price;
   }
@@ -285,6 +296,7 @@ const renderSpinner = () => {
   const calculateAmount = (terreno, almacenamiento, guarderia, sum, cw) => {
     const terrenoPrice = terreno ? checkPriceByName(terreno) : 0;
     const almacenamientoPrice = almacenamiento ? servicePrice(almacenamiento) : 0;
+    console.log(almacenamiento)
     console.log(almacenamiento)
     const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
     const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
