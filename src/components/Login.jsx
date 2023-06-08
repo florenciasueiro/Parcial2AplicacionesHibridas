@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useContactos from '../Service/APIlogin'
 import LoginCSS from '../css/Login.module.css';
-
+import { SpinnerCircular } from 'spinners-react';
 export default function SignIn() {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
@@ -13,7 +13,8 @@ export default function SignIn() {
   // if(usuario!=null || !usuario==[]){
   // console.log(usuario[0].name)}
 
-
+  
+  const [isLoading, setIsLoading] = useState(false);
   const [email,setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showError, setShowError]= useState(false);
@@ -23,14 +24,26 @@ export default function SignIn() {
 
 
   const handleSubmit = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     const response = await contactos(email, password);
+    setIsLoading(false);
 
-    if (!response.success) {
+    if (!response) {
       setShowError(true);
   };
 }
 
+const renderSpinner = () => {
+  if (isLoading) {
+    return (
+      <div className={LoginCSS["spinner-wrapper"]}>
+        <SpinnerCircular color='#003de3' />
+      </div>
+    );
+  }
+  return null;
+};
 
   // const handleLogout = () => {
   //   sessionStorage.clear();
@@ -44,7 +57,7 @@ export default function SignIn() {
         {showError && <p>Email o contraseña inválidos.</p>}
         <form className={LoginCSS.form} onSubmit={handleSubmit}>
           <div className={LoginCSS.inputContainer}>
-            
+          {renderSpinner()}
             <input className={LoginCSS.input}
               type="email"
               id="email"

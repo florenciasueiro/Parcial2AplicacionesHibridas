@@ -215,8 +215,11 @@ function checkPriceByName(name) {
 }
 const servicePrice = (name) => {
   
+  console.log(servicios);
+  console.log(servicios.map(item => item.name));
 
-  const serv = servicios.find(item => item.name === name);
+  const serv = servicios.find(item => item.name.toLowerCase() === name.toLowerCase());
+
   
   return serv.price;
 }
@@ -282,7 +285,7 @@ const renderSpinner = () => {
     const almacenamientoPrice = almacenamiento ? servicePrice(almacenamiento) : 0;
     const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
     const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
-    const cwPrice = cw ? servicePrice("Pase Coworking") * cw : 0;
+    const cwPrice = cw ? servicePrice("Pase CoWorking") * cw : 0;
     return terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice;
   };
   
