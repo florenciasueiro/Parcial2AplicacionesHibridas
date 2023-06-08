@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  height: 2200px;
+  height: 3163px;
 }
 
 .carousel {
@@ -23,11 +23,11 @@
 }
 
 .inputs {
-  padding: 1rem;
   width: 30vw;
   max-height: 340px;
   top: 90px;
   position: relative;
+  padding-right: 1rem;
 }
 
 .faq{

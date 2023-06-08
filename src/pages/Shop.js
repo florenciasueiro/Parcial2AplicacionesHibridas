@@ -45,7 +45,6 @@ function Shop() {
         <FAQ/>
       </div>
       
-
     </div>
   );
 }

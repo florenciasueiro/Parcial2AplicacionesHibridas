@@ -20,17 +20,39 @@ function Quarters() {
       <BackgroundQuarters className={QuartersCSS.background}/>
       </>
       <div className={GridCSS.grilla}>
-        <CardGrid16 className={GridCSS.tarjeta} />
-        <CardGrid17 className={GridCSS.tarjeta} />
-        <CardGrid18 className={GridCSS.tarjeta} />
-        <CardGrid19 className={GridCSS.tarjeta} />
-        <CardGrid20 className={GridCSS.tarjeta} />
-        <CardGrid21 className={GridCSS.tarjeta} />
-        <CardGrid22 className={GridCSS.tarjeta} />
-        <CardGrid23 className={GridCSS.tarjeta} />
-        <CardGrid24 className={GridCSS.tarjeta} />
-        <CardGrid25 className={GridCSS.tarjeta} />
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta1}`}>
+          <CardGrid16/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta2}`}>
+          <CardGrid17/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta3}`}>
+          <CardGrid18/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta4}`}>
+          <CardGrid19/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta5}`}>
+          <CardGrid20/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta6}`}>
+          <CardGrid21/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta7}`}>
+          <CardGrid22/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta8}`}>
+          <CardGrid23/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta9}`}>
+          <CardGrid24/>
+        </div>
+        <div className={`${GridCSS.tarjetas} ${GridCSS.tarjeta10}`}>
+          <CardGrid25/>
+        </div>
       </div>
+
+
       </React.Fragment>
     </div>
   );

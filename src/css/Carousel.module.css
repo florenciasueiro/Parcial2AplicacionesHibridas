@@ -3,7 +3,7 @@
     overflow: hidden;
     width: 90%;
     margin: 0 auto;
-    border-radius: 20px;
+    border-radius: 5px;
   }
   
   .carouselImages {
@@ -16,7 +16,7 @@
     height: 100%;
     object-fit: cover;
     transition: opacity 0.5s ease-in-out;
-    border-radius: 20px;
+    border-radius: 10px;
   }
   
   .active { 

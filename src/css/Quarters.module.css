@@ -3,7 +3,7 @@
     z-index: 10;
     justify-content: center;
     align-items: center;
-    margin-top: 55vh;
+    margin-top: 65vh;
     width: 100vw;
     color: white;
   }
@@ -29,9 +29,9 @@
   }
 
   .text h1{
-    font-size: 55px;
+    font-size: 35px;
   }
     .p{
-    font-size: 37px;
+    font-size: 27px;
     color: #C0C0C0;
   }

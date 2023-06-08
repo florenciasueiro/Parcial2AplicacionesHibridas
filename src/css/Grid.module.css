@@ -1,65 +1,56 @@
-  .grilla {
-      width: 60vw;
-      display: grid;
-      grid-template-columns: 40% 20% 40%; /* Tres columnas iguales */
-      grid-template-rows: repeat(4, 1fr);
-      grid-gap: 20px; /* Espacio entre las tarjetas */
-      justify-content: center;
-      margin: 30px auto;
-    }
+.grilla {
+  width: 60vw;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 15px;
+  justify-content: center;
+  margin: 30px auto;
+}
 
-    .tarjeta:nth-child(1) {
-      grid-column: 1 / span 2; /* Ocupa la primera columna */
-      grid-row: 1 / span 2; /* Ocupa tres fila */
+.tarjetas {
+  box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+  border-radius: 15px;
+  text-decoration: none;
+  position: relative;
+  z-index: 20;
+}
 
-    }
-    
-    .tarjeta:nth-child(2) {
-      grid-column: 3 / span 1; /* Ocupa 1 columna */
-      grid-row: 1 / span 1; /* Ocupa dos filas */
+.tarjeta1 {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
 
-    }
-    
-    .tarjeta:nth-child(3) {
-      grid-column: 3 / span 1; /* Ocupa la segunda columna */
-      grid-row: 2 / span 1; /* Ocupa la tercera fila */
+.tarjeta2 {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+}
 
-    }
+.tarjeta3 {
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+}
 
-    .tarjeta:nth-child(4) {
-      grid-column: 1 / span 1; /* Ocupa la segunda columna */
-      grid-row: 3 / span 1; /* Ocupa la tercera fila */
+.tarjeta4 { 
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
 
-    }
+.tarjeta5 {
+  grid-column: 2 / span 2;
+  grid-row: 3 / span 1;
+}
 
-    .tarjeta:nth-child(5) {
-      grid-column: 2 / span 2; /* Ocupa la segunda columna */
-      grid-row: 3 / span 1; /* Ocupa la tercera fila */
+.tarjeta6 {
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 1;
+} 
 
-    }
+.tarjeta7 {
+  grid-column: 3 / span 1;
+  grid-row: 4 / span 1;
+}
 
-    .tarjeta:nth-child(6) {
-      grid-column: 1 / span 2; /* Ocupa la segunda columna */
-      grid-row: 4 / span 1; /* Ocupa la tercera fila */
-
-    }
-
-    .tarjeta:nth-child(7) {
-      grid-column: 3 / span 1; /* Ocupa la segunda columna */
-      grid-row: 4 / span 1; /* Ocupa la tercera fila */
-
-    }
-
-
-    /* Agrega estilos para las tarjetas */
-    .tarjeta {
-      box-shadow: 2px 4px 12px rgba(0,0,0,.08);
-      border-radius: 15px;
-      text-decoration: none;
-      position: relative; /* Agregar esta propiedad para establecer el contexto de posicionamiento */
-      z-index: 20;
-    }
-    
     .contenido{
       display: block;
       color: white;
@@ -145,7 +136,9 @@
 
 .cardImg{
   width: 100%;
-  border-radius: 30px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
 }
 .h1{
   display: flex;
@@ -153,4 +146,26 @@
   padding: 10px;
   color: white;
 
+}
+.cardBodyInicio{
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.tarjeta, .link, .card{
+  height: 100%;
+}
+
+
+
+.black{
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: linear-gradient(to top, #000000 0%, #ffffff00 100%);
+  /* background-color: rgba(0,0,0,0.7); */
+  position: absolute;
 }

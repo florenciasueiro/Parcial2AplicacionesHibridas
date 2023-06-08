@@ -16,6 +16,7 @@ function ProductGrid({ card, cardData }) {
 
   return (
     <div className={GridCSS.tarjeta}>
+      <div className={GridCSS.black}></div>
       <Link className={GridCSS.link} to={card.link}>
         <div className={GridCSS.card} onClick={handleOpenModal}>
           <div className={GridCSS.cardBodyInicio}>
