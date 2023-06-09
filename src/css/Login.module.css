@@ -117,6 +117,7 @@
   width: -webkit-fill-available;
   margin: 10px;
   padding: 10px;
+  cursor: pointer;
 }
 
  
@@ -149,4 +150,10 @@
 }
 input[type="checkbox"]:checked{
   background-color: black;
+}
+
+
+.link{
+  padding: 10px;
+  color: #0645AD;
 }

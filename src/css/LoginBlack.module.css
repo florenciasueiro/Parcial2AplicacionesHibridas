@@ -1,54 +1,163 @@
 .container{
-    margin: auto;
-    padding: 10px;
-    color: white;
-    
- }
- .statusMessages{
-    color:red;
- }
-
- .h1{
-   color: white;
- }
- 
- /* .input{
-    border: 1px solid white;
-    border-radius: 8px;
-    background-color: black;
-    color: white;
- } */
- 
- .fieldset {
-    border-color: darkgray!important;
-    border-radius: 8px!important;
-    
-  }
- /* .centeredContainer {
-   display: flex;
-   justify-content: center;
-   align-items: center;
- } */
- .fieldset input {
-    padding: 8.5px!important;
-    
-  }
- .textfield{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
- }
-
- .btn{
-   display: flex;
-   justify-content: center;
-   align-items: center;
    margin: auto;
-   background-color: white;
-   border-radius: 10px;
-   color: black;
-   width: -webkit-fill-available;
-   margin: 10px;
    padding: 10px;
-   border: none;
+   
+}
+.statusMessages{
+   color:red;
+}
+
+.loginContainer{
+  top: 10px;
+  position: relative;
+  margin: 35px 0px;
+}
+.link{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form{
+}
+
+.centeredContainer{
+  display: flex;
+  justify-content: center;
+}
+.p{
+   color: white;
+}
+
+
+
+ .inputContainer {
+  position: relative;
+  margin: 1rem auto;
+}
+
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.2s ease-out;
+}
+
+.input {
+  width: -webkit-fill-available;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  font-size: 1rem;
+  transition: all 0.2s ease-out;
+  margin: 0.5rem;
+} 
+
+
+
+
+
+.inputContainer .input{
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.6s;
+  background-color: transparent;
+}
+
+  .inputContainer .span{
+    position: absolute;
+    left: 0;
+    padding: 19px;
+    font-size: 1rem;
+    color: white;
+    pointer-events: none;
+    transition: 0.6s;
+    background-color: transparent;
+}
+
+.inputContainer .input:valid ~ .span,
+.inputContainer .input:focus ~ .span{
+    color: white;
+    transform: translateX(10px) translateY(0px);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0 10px;
+    background-color: black;
+}
+
+.inputContainer .input:valid,
+.inputContainer .input:focus{
+    border: 2px solid white;
+
+}
+
+
+.centeredContainer p{
+  color: white;
+}
+
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  color: white;
+  width: -webkit-fill-available;
+  margin: 10px;
+  padding: 10px;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+ 
+ .h1{
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
  }
+
+ .checkbox{
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem;
+  align-items: center;
+  color: white;
+ }
+ .inputcb{
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+ }
+
+ input[type="checkbox"]{
+	width: 1.5em;
+	height: 1.5em;
+	margin-right: 0.65rem;
+}
+input[type="checkbox"]:checked{
+  background-color: white;
+}
+
+
+.link{
+   padding: 10px;
+   color: #4d90ff;
+}

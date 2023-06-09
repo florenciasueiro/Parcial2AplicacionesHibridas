@@ -398,6 +398,9 @@ const renderSpinner = () => {
   let itemGrilla1;
   let itemGrilla2;
   let itemGrilla3;
+  let itemGrilla4;
+  let itemGrilla5;
+  let itemGrilla6;
   switch (selectedTerreno) {
     case 'Lote 1':
       itemGrilla1 = '13,00 x 25,50';
@@ -476,7 +479,28 @@ const renderSpinner = () => {
       break;
   }
 
-
+  switch (selectedAlmacenamiento) {
+    case 'Almacenamiento S':
+      itemGrilla4 = '50cm';
+      itemGrilla5 = '45cm';
+      itemGrilla6 = '50cm';
+      break;
+    case 'Almacenamiento M':
+      itemGrilla4 = '90cm';
+      itemGrilla5 = '45cm';
+      itemGrilla6 = '50cm';
+      break;
+    case 'Almacenamiento L':
+      itemGrilla4 = '0cm';
+      itemGrilla5 = '0cm';
+      itemGrilla6 = '0cm';
+      break;
+      default:
+        itemGrilla4 = '20cm';
+        itemGrilla5 = '25cm';
+        itemGrilla6 = '20cm';
+        break;
+    }
 if(cargaron){
 
   return (
@@ -695,9 +719,9 @@ if(cargaron){
           </div>
 
           <div className={InputCSS.grilla}>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>40 cm.</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>45 cm.</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>50 cm.</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla4}</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla5}</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla6}</div>
             <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Alto</div>
             <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Ancho</div>
             <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Profundidad</div>

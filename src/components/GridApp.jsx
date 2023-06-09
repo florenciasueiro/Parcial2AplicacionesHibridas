@@ -647,7 +647,7 @@ export function CardGrid16({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Diseñado para marcar la diferencia.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -669,7 +669,7 @@ export function CardGrid17({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Simplificando tu día a día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -691,7 +691,7 @@ export function CardGrid18({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Pedir online sin preocupaciones',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -713,7 +713,7 @@ export function CardGrid19({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Mantenerse conectado sin interrupciones, todo el día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -735,7 +735,7 @@ export function CardGrid20({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Relajarse Rejuvenecer Reconectarse.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -757,7 +757,7 @@ export function CardGrid21({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'La tranquilidad de tu familia es nuestra prioridad.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -779,7 +779,7 @@ export function CardGrid22({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Inspirado a través del movimiento.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -801,7 +801,7 @@ export function CardGrid23({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Ambiente seguro para crecer.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -823,7 +823,7 @@ export function CardGrid24({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Impulsa tu creatividad',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -845,7 +845,7 @@ export function CardGrid25({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Nuestra política empresarial',
+      title: 'Disfrutar de momento inolvidables, Juntos.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
