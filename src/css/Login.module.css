@@ -10,7 +10,7 @@
 .loginContainer{
   top: 10px;
   position: relative;
-  margin: 20px 0px;
+  margin: 35px 0px;
 }
 .link{
   display: flex;
@@ -65,11 +65,12 @@
 
 .inputContainer .input{
   padding: 10px;
-  border: 2px solid #7f8fa6;
+  border: 2px solid black;
   border-radius: 5px;
   outline: none;
   font-size: 1rem;
   transition: 0.6s;
+  background-color: transparent;
 }
 
   .inputContainer .span{
@@ -77,9 +78,10 @@
     left: 0;
     padding: 19px;
     font-size: 1rem;
-    color: #7f8fa6;
+    color: black;
     pointer-events: none;
     transition: 0.6s;
+    background-color: transparent;
 }
 
 .inputContainer .input:valid ~ .span,
@@ -89,17 +91,19 @@
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0 10px;
+    background-color: white;
 }
 
 .inputContainer .input:valid,
 .inputContainer .input:focus{
-    color: #3742fa;
     border: 2px solid black;
 
 }
 
 
-
+.centeredContainer p{
+  color: black;
+}
 
 
 .btn{
@@ -120,9 +124,9 @@
   margin: 10px;
   display: flex;
   justify-content: center;
-  color: black;
   font-size: 1.5rem;
   font-weight: 500;
+  color: black;
  }
 
  .checkbox{
@@ -130,6 +134,7 @@
   justify-content: flex-start;
   margin: 0.5rem;
   align-items: center;
+  color: black;
  }
  .inputcb{
   display: flex;

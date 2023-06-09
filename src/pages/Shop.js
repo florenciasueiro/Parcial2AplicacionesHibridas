@@ -25,16 +25,16 @@ function Shop() {
           <Inputs seleccion={handleSeleccionUpdate}/>
         </div>
       </div>
-      <div>
+      {/* <div>
         <h1>Que incluye mi compra?</h1>
         <Resumen seleccion={seleccion} />
-        {/* por algun motivo extraño al pasarle el prop de seleccion a resumen este
+         por algun motivo extraño al pasarle el prop de seleccion a resumen este
         se pasa correctametne solo la primera vez y no se actualiza cada vez que la seleccion 
         cambia asi que como nadie nos obliga a usar ese componete...
-        mejor escrbiimos aca el resumen total es un codigo cortito 👌😎👍 */}
+        mejor escrbiimos aca el resumen total es un codigo cortito 👌😎👍 
         <span> mi compra incluye {JSON.stringify(seleccion)} </span>
         <br/>
-      </div>
+      </div> */}
       <div className={ShopCSS.comparative}>
         <div>
           {/* <Comparative/> */}

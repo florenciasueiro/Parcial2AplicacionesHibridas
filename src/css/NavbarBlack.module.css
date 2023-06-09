@@ -59,8 +59,7 @@
   
   .wrapper {
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(20px);
+    background: black;
     position: absolute;
     top: 0;
     left: 0;

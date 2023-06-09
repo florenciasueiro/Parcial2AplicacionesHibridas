@@ -1,10 +1,15 @@
 .container{
     margin: auto;
     padding: 10px;
+    color: white;
     
  }
  .statusMessages{
     color:red;
+ }
+
+ .h1{
+   color: white;
  }
  
  /* .input{
@@ -32,4 +37,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+ }
+
+ .btn{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   background-color: white;
+   border-radius: 10px;
+   color: black;
+   width: -webkit-fill-available;
+   margin: 10px;
+   padding: 10px;
+   border: none;
  }

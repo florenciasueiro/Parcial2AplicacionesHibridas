@@ -79,7 +79,7 @@ export default function SignIn() {
             </Link>
           </div>
           <div className={LoginCSS.centeredContainer}>
-            <p style={{ color: 'black' }}>¿No tienes cuenta? ‎</p>
+            <p>¿No tienes cuenta? ‎</p>
             <Link style={{ color: '#0645AD' }} to="/registro">
               Regístrate
             </Link>

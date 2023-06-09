@@ -8,6 +8,7 @@ import Checkout from "./Checkout";
 
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
+import { Info1, Info2, Info3, Info4, Info5, Info6 } from './MoreInfo';
 
 //credencial de prueba test user 1
 initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
@@ -121,41 +122,41 @@ useEffect(() => {
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
-useEffect(
-  () => {
-    if(!(selectedTerreno==='')){
-    console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
-  cardRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-}, [selectedTerreno,input2Disabled]);
+// useEffect(
+//   () => {
+//     if(!(selectedTerreno==='')){
+//     console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
+//   cardRef.current.scrollIntoView({ behavior: 'smooth' });
+//   }
+// }, [selectedTerreno,input2Disabled]);
 
-useEffect(
-  () => {
-    if(!(selectedCard==='')){
-  almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-}, [selectedCard]);
+// useEffect(
+//   () => {
+//     if(!(selectedCard==='')){
+//   almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+// }, [selectedCard]);
 
-useEffect(
-  () => {
-    if(!(selectedAlmacenamiento==='')){
-    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [selectedAlmacenamiento]);
+// useEffect(
+//   () => {
+//     if(!(selectedAlmacenamiento==='')){
+//     guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   }, [selectedAlmacenamiento]);
 
-useEffect(
-  () => {
-    if(!(selectedGuarderia==='')){
-    sumRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [selectedGuarderia]);
+// useEffect(
+//   () => {
+//     if(!(selectedGuarderia==='')){
+//     sumRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   }, [selectedGuarderia]);
 
-  useEffect(
-    () => {
-      if(!(selectedSUM==='')){
-      cwRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, [selectedSUM]);
+//   useEffect(
+//     () => {
+//       if(!(selectedSUM==='')){
+//       cwRef.current.scrollIntoView({ behavior: 'smooth' });
+//       }
+//     }, [selectedSUM]);
 
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
@@ -393,15 +394,129 @@ const renderSpinner = () => {
   //manda para afuera el order data
 
 
+
+  let itemGrilla1;
+  let itemGrilla2;
+  let itemGrilla3;
+  switch (selectedTerreno) {
+    case 'Lote 1':
+      itemGrilla1 = '13,00 x 25,50';
+      itemGrilla2 = '13,00 x 25,50';
+      itemGrilla3 = '13,00 x 25,50';
+      break;
+    case 'Lote 2':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 2':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 3':
+      itemGrilla1 = '13,00 x 25,50';
+      itemGrilla2 = '13,00 x 25,50';
+      itemGrilla3 = '13,00 x 25,50';
+      break;
+    case 'Lote 4':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 5':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 6':
+      itemGrilla1 = '13,00 x 25,50';
+      itemGrilla2 = '13,00 x 25,50';
+      itemGrilla3 = '13,00 x 25,50';
+      break;
+    case 'Lote 7':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 8':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 9':
+      itemGrilla1 = '13,00 x 25,50';
+      itemGrilla2 = '13,00 x 25,50';
+      itemGrilla3 = '13,00 x 25,50';
+      break;
+    case 'Lote 10':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 11':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 12':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    case 'Lote 13':
+      itemGrilla1 = '15,00 x 27,50';
+      itemGrilla2 = '15,00 x 27,50';
+      itemGrilla3 = '15,00 x 27,50';
+      break;
+    default:
+      itemGrilla1 = '11,00m x 24,50m';
+      itemGrilla2 = '11,00m x 24,50m';
+      itemGrilla3 = '11,00m x 24,50m';
+      break;
+  }
+
+
 if(cargaron){
 
   return (
     <div>
       <div>
         <div>
-          <b className={InputCSS.b}>Terreno.</b> <p className={InputCSS.p}> ¿Cuál es el mejor para su familia?</p>
+          <b className={InputCSS.b}>Terreno.</b>
+          <p className={InputCSS.p}> ¿Cuál es el mejor para su familia?</p>
+          <div className={InputCSS.moreInfo}>
+            <Info1/>
+          </div>
+        </div>
+
+        
+        <div className={InputCSS.container}>
+          <div className={InputCSS.tabs}>
+            <input type="radio" id="radio1" name="tabs" defaultChecked />
+            <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
+            <input type="radio" id="radio2" name="tabs" />
+            <label htmlFor="radio2" className={InputCSS.tab}>Financiado 70%/30%</label>
+            <input type="radio" id="radio3" name="tabs" />
+            <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
+            <span className={InputCSS.glider}></span>
+          </div>
         </div>
         {/* <div className={InputCSS['icono']}>?</div> */}
+
+
+
+        <div className={InputCSS.grilla}>
+        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla1}</div>
+        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla2}</div>
+        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla3}</div>
+        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Ancho x Largo</div>
+        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Superficie terreno</div>
+        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Construcción vivienda</div>
+      </div>
+
+
+
 
         <div className={InputCSS['radioInputs']}>
           <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
@@ -509,7 +624,11 @@ if(cargaron){
   <div>
     <b className={InputCSS.b}>Asset Card.</b>
     <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p>
+    <div className={InputCSS.moreInfo}>
+      <Info2/>
+    </div>
   </div>
+
   <div>
     <p className={InputCSS['pCantidad']}>Cantidad de Asset cards</p>
   </div>
@@ -568,7 +687,23 @@ if(cargaron){
 
 
         <div className={InputCSS['ref']} ref={almacenamientoRef}>
-        <div><b className={InputCSS.b}>Almacenamiento.</b> <p className={InputCSS.p}>¿Cuánto espacio es el adecuado?</p></div>
+        <div>
+          <b className={InputCSS.b}>Almacenamiento.</b>
+          <p className={InputCSS.p}>¿Cuánto espacio es el adecuado?</p>
+          <div className={InputCSS.moreInfo}>
+            <Info3/>
+          </div>
+
+          <div className={InputCSS.grilla}>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>40 cm.</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>45 cm.</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>50 cm.</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Alto</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Ancho</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Profundidad</div>
+          </div>
+
+        </div>
         <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento S' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="Almacenamiento S" checked={selectedAlmacenamiento === 'Almacenamiento S'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled} />
@@ -588,7 +723,13 @@ if(cargaron){
 
 
       <div className={InputCSS['ref']} ref={guarderiaRef}>
-      <div><b className={InputCSS.b}> Sector de cuidado infantil.</b> <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p></div>
+      <div>
+        <b className={InputCSS.b}> Sector de cuidado infantil.</b>
+        <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p>
+        <div className={InputCSS.moreInfo}>
+            <Info4/>
+          </div>
+      </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '1' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="1" checked={selectedGuarderia === '1'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
@@ -615,7 +756,13 @@ if(cargaron){
       </div>
 
       <div className={InputCSS['ref']} ref={sumRef}>
-      <div><b className={InputCSS.b}> SUM</b> <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p></div>
+      <div>
+        <b className={InputCSS.b}> SUM</b>
+        <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p>
+        <div className={InputCSS.moreInfo}>
+            <Info5/>
+          </div>
+      </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="6" checked={selectedSUM === '6'} onChange={handleSelectSUM} disabled={input5Disabled}/>
@@ -638,7 +785,13 @@ if(cargaron){
       </div>
 
       <div className={InputCSS['ref']} ref={cwRef}>
-      <div><b className={InputCSS.b}> Coworking</b> <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p></div>
+      <div>
+        <b className={InputCSS.b}> Coworking</b>
+        <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
+        <div className={InputCSS.moreInfo}>
+          <Info6/>
+        </div>
+      </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedCW === '3' ? InputCSS.selected : ''}`}>
           <span><input type="radio" value="3" checked={selectedCW === '3'} onChange={handleSelectCW} disabled={input6Disabled}/>
