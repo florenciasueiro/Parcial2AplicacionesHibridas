@@ -118,7 +118,7 @@ function Navbar() {
     } else {
       console.log(usuario);
       return (
-        <Link link="true" to="/profile">{usuario.name.split(" ")[0]}</Link>
+        <NavLink  to="/profile">{usuario.name.split(" ")[0]}</NavLink>
       );
     }
   };
