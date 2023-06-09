@@ -27,7 +27,7 @@ export default function useContactos(){
       console.log("se ejecuto holded");
       
       sessionStorage.setItem("user", JSON.stringify(data));
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       
       
