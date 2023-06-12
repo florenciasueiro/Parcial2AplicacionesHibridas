@@ -4,26 +4,32 @@ import useContactos from '../Service/APIlogin';
 import LoginCSS from '../css/Login.module.css';
 import LoginBlackCSS from '../css/LoginBlack.module.css'
 import { SpinnerCircular } from 'spinners-react';
+
+
+
 export default function SignIn() {
+
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+
   const location = useLocation();
   const isShopPage = location.pathname === '/shop';
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
 
  
-
+  
+  const contactos = useContactos();
   // if(usuario!=null || !usuario==[]){
   // console.log(usuario[0].name)}
 
   
-  const [isLoading, setIsLoading] = useState(false);
  
-  const contactos = useContactos();
 
   const handleSubmit = async (event) => {
     setIsLoading(true);
@@ -33,9 +39,10 @@ export default function SignIn() {
 
     if (!response) {
       setShowError(true);
-    }
+    };
   };
-}
+
+
 
 const renderSpinner = () => {
   if (isLoading) {
@@ -54,13 +61,19 @@ const renderSpinner = () => {
   // }
 
   if (!usuario) {
+
     return (
+
       <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginBlackCSS.loginContainer : ''}`}>
+
         <h1 className={`${LoginCSS.h1} ${isShopPage ? LoginBlackCSS.h1 : ''}`}>Iniciar Sesión</h1>
+
         {showError && <p>Email o contraseña inválidos.</p>}
+
         <form className={`${LoginCSS.form} ${isShopPage ? LoginBlackCSS.form : ''}`} onSubmit={handleSubmit}>
           <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginBlackCSS.inputContainer : ''}`}>
-          {renderSpinner()}<input
+          {renderSpinner()}
+          <input
               className={`${LoginCSS.input} ${isShopPage ? LoginBlackCSS.input : ''}`}
               type="email"
               id="email"

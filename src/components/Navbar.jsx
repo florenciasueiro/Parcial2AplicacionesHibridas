@@ -193,6 +193,8 @@ function Navbar() {
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} exact="true" to="/shop">Store</NavLink>
           </li>
+
+
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
             <button
               className={NavbarCSS.btn}
@@ -202,7 +204,9 @@ function Navbar() {
               {displayName()}
             </button>
           </li>
+
         </ul>
+        
         <div
           id="loginDropdown"
           className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarBlackCSS.wrapper} ${showLogin ? NavbarBlackCSS.show : ''}` : ''} ${
