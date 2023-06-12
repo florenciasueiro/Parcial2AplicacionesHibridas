@@ -42,7 +42,7 @@ export default function SignIn() {
             />
             <span className={`${LoginCSS.span} ${isShopPage ? LoginBlackCSS.span : ''}`}>E-mail *</span>
           </div>
-          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginBlackCSS.loginContainer : ''}`}>
+          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginBlackCSS.inputContainer : ''}`}>
             <input
               className={`${LoginCSS.input} ${isShopPage ? LoginBlackCSS.input : ''}`}
               type="password"
@@ -68,7 +68,7 @@ export default function SignIn() {
           </div>
           <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginBlackCSS.centeredContainer : ''}`}>
             <p className={`${LoginCSS.p} ${isShopPage ? LoginBlackCSS.p : ''}`}>¿No tienes cuenta? ‎</p>
-            <Link style={{ color: '#0645AD' }} to="/registro">
+            <Link className={`${LoginCSS.linkR} ${isShopPage ? LoginBlackCSS.linkR : ''}`}  to="/registro">
               Regístrate
             </Link>
           </div>
