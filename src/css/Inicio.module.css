@@ -64,7 +64,7 @@
   align-items: center;
   position: absolute;
   z-index: 10;
-  width: 100vw;
+  width: 100%;
   color: white;
   top: 75vh;
   font-size: 30px;
@@ -128,7 +128,7 @@
   align-items: center;
   position: absolute;
   z-index: 10;
-  width: 100vw;
+  width: 100%;
   color: white;
   top: 50vh;
   font-size: 30px;

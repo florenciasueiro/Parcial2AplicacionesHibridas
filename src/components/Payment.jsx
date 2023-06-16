@@ -9,7 +9,7 @@ const Payment = () => {
   
   const { preferenceId } = React.useContext(Context);
   const [isReady, setIsReady] = React.useState(false);
-  const paymentClass = classnames('payment-form dark', {
+  const paymentClass = classnames('', {
     'payment-form--hidden': !isReady,
   });
   const compra = sessionStorage.getItem("compra");
@@ -33,12 +33,12 @@ const Payment = () => {
   return (
     <div className={paymentClass}>
       <div className={InputCSS.container}>
-        <div className={InputCSS["block-heading"]}>
+        {/* <div className={InputCSS["block-heading"]}>
           <h2>Checkout Payment</h2>
           <p>Este pago se gestiona por medio de MercadoPago</p>
-        </div>
+        </div> */}
         <div className={InputCSS["form-payment"]}>
-          <div className={InputCSS.products}>
+          {/* <div className={InputCSS.products}>
             <h2 className={InputCSS.title}>Resumen</h2>
             <div className={InputCSS.item}>
               <span className={InputCSS.price} id={InputCSS["summary-price"]}>Precio Neto del Lote: ${orderData.price}</span>
@@ -62,7 +62,7 @@ const Payment = () => {
               Total:
               <span className={InputCSS.price} id={InputCSS["summary-total"]}>${orderData.amount * 1.23} IVA incluido</span>
             </div>
-          </div>
+          </div> */}
           <div className={InputCSS["payment-details"]}>
             <div className={`${InputCSS["form-group"]} ${InputCSS["col-sm-12"]}`}>
               {renderCheckoutButton()}

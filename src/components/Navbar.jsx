@@ -5,7 +5,7 @@ import Login from './Login';
 import Contactos from "../Service/APIlogin";
 import NavbarBlackCSS from '../css/NavbarBlack.module.css';
 import IslandNotification from './IslandNotification';
-import useContactos from '../Service/APIlogin'
+import useContactos from '../Service/APIlogin';
 
 const postVenta = async (venta) => {
   try {
@@ -67,7 +67,7 @@ console.error(error.status);
 
 const urlParams = new URLSearchParams(window.location.search);
 const status = Object.fromEntries(urlParams).status;
-console.log(Object.fromEntries(urlParams))
+console.log(Object.fromEntries(urlParams));
 
 function Navbar() {
   const contactos = useContactos();
@@ -78,9 +78,6 @@ function Navbar() {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
-
- 
-  
   useEffect(() => {
     const compraJson = sessionStorage.getItem('compra');
     console.log(compraJson);
@@ -122,7 +119,6 @@ function Navbar() {
       );
     }
   };
- 
 
   const handleLogin = (email, password) => {
     Contactos(email, password);
@@ -138,7 +134,13 @@ function Navbar() {
   const [playAnimation, setPlayAnimation] = useState(false);
   const [message, setMessage] = useState('');
   const loginRef = useRef(null);
- 
+
+  const handleMouseEnter = () => {
+    if (!usuario || Object.keys(usuario).length === 0) {
+      showLoginDropdown();
+    }
+  };
+
   const showLoginDropdown = () => {
     setShowLogin(true);
   };
@@ -154,7 +156,7 @@ function Navbar() {
   const handleDropdownMouseLeave = () => {
     setTimeout(() => {
       setShowLogin(false);
-    }, 6000); // Retrasar la ocultación del login en 600 milisegundos (0.6 segundos)
+    }, 1000); // Retrasar la ocultación del login en 600 milisegundos (0.6 segundos)
   };
 
   useEffect(() => {
@@ -170,7 +172,6 @@ function Navbar() {
       }, 3000);
     }
   }, []); 
-
 
 
 
@@ -196,7 +197,7 @@ function Navbar() {
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
             <button
               className={NavbarCSS.btn}
-              onMouseEnter={showLoginDropdown}
+              onMouseEnter={handleMouseEnter} // Selecciona el evento onMouseEnter condicionalmente
               onClick={() => { usuario && contactos(usuario.email, usuario.password) }}
             >
               {displayName()}
@@ -209,12 +210,12 @@ function Navbar() {
             showLogin ? NavbarCSS.show : ''
           }`}
           onMouseLeave={handleDropdownMouseLeave}
-          >
+        >
           <div onMouseLeave={handleDropdownMouseLeave} className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
             <Login Contactos={handleLogin} />
           </div>
         </div>
-          {<IslandNotification playAnimation={playAnimation} message={message} />}
+        {<IslandNotification playAnimation={playAnimation} message={message} />}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import classnames from 'classnames';
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
+import Payment from "./Payment";
 
 const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged] = useState(false);
@@ -88,8 +89,8 @@ const Checkout = ({ onClick }) => {
                   )}
                   
                   
-
                 </div>
+                  <Payment />
               </div>
             </div>
           </div>

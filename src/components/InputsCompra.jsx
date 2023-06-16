@@ -3,7 +3,7 @@ import InputCSS from '../css/Inputs.module.css';
 import useProducto from '../Service/APIproducto';
 import useServicio from '../Service/APIservicio';
 import { initMercadoPago } from "@mercadopago/sdk-react";
-import Payment from "./Payment";
+
 import Checkout from "./Checkout";
 
 import InternalProvider from "../Service/ContextProvider";
@@ -122,41 +122,41 @@ useEffect(() => {
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
-// useEffect(
-//   () => {
-//     if(!(selectedTerreno==='')){
-//     console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
-//   cardRef.current.scrollIntoView({ behavior: 'smooth' });
-//   }
-// }, [selectedTerreno,input2Disabled]);
+useEffect(
+  () => {
+    if(!(selectedTerreno==='')){
+    console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
+  cardRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+}, [selectedTerreno,input2Disabled]);
 
-// useEffect(
-//   () => {
-//     if(!(selectedCard==='')){
-//   almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
-//     }
-// }, [selectedCard]);
+useEffect(
+  () => {
+    if(!(selectedCard==='')){
+  almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+}, [selectedCard]);
 
-// useEffect(
-//   () => {
-//     if(!(selectedAlmacenamiento==='')){
-//     guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
-//     }
-//   }, [selectedAlmacenamiento]);
+useEffect(
+  () => {
+    if(!(selectedAlmacenamiento==='')){
+    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedAlmacenamiento]);
 
-// useEffect(
-//   () => {
-//     if(!(selectedGuarderia==='')){
-//     sumRef.current.scrollIntoView({ behavior: 'smooth' });
-//     }
-//   }, [selectedGuarderia]);
+useEffect(
+  () => {
+    if(!(selectedGuarderia==='')){
+    sumRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedGuarderia]);
 
-//   useEffect(
-//     () => {
-//       if(!(selectedSUM==='')){
-//       cwRef.current.scrollIntoView({ behavior: 'smooth' });
-//       }
-//     }, [selectedSUM]);
+  useEffect(
+    () => {
+      if(!(selectedSUM==='')){
+      cwRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, [selectedSUM]);
 
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
@@ -513,7 +513,6 @@ if(cargaron){
             <Info1/>
           </div>
         </div>
-
         
         <div className={InputCSS.container}>
           <div className={InputCSS.tabs}>
@@ -528,8 +527,6 @@ if(cargaron){
         </div>
         {/* <div className={InputCSS['icono']}>?</div> */}
 
-
-
         <div className={InputCSS.grilla}>
         <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla1}</div>
         <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla2}</div>
@@ -539,11 +536,7 @@ if(cargaron){
         <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Construcción vivienda</div>
       </div>
 
-
-
-
-        <div className={InputCSS['radioInputs']}>
-          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
+      <div className={InputCSS['radioInputs']} style={{ maxHeight: '265px', overflowY: 'auto' }}>          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
             <span><input
               type="radio" 
               value="Lote 1"
@@ -860,10 +853,8 @@ if(cargaron){
             {/* mercado pago */}
             <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
       <main>
-        {renderSpinner()}
-        <Checkout onClick={handleClick} description />
-
-        <Payment />
+        {/* {renderSpinner()} */}
+        <Checkout onClick={handleClick} description/>
       </main>
       
     </InternalProvider>

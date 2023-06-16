@@ -33,3 +33,39 @@
     transform: translateY(0);
   }
   
+
+  .text{
+    color: black;
+  }
+
+  .textBlack{
+    color: white;
+  }
+
+  .containerBlack {
+    position: absolute;
+    top: 0px;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    transition: height 0.2s ease-out;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transition: all 0.2s ease-out;
+    z-index: -1;
+  }
+  
+  .notificationBlack {
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    /* padding: 10px; */
+    transition: transform 1s ease-out;
+    transform: translateY(-100%);
+    width: -webkit-fill-available;
+    text-align: center;
+  }
+  
