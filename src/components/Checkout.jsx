@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import classnames from 'classnames';
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
-
+import numeral from 'numeral';
 const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged] = useState(false);
   // const [isVisible, setIsVisible] = useState(true);
@@ -74,10 +74,10 @@ const Checkout = ({ onClick }) => {
                     <div className={InputCSS["summaryGroup"]}>
                       <div className={InputCSS["summary-item"]}>
                         <span className={InputCSS["text"]}>Subtotal USD$</span>
-                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount/dolarValue} + IVA</span>
+                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(numeral(orderData.amount/dolarValue)).format('0,0.00')} + IVA</span>
                         
                         <span className={InputCSS["text"]}>Subtotal ARS$</span>
-                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount} + IVA</span>
+                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{numeral(orderData.amount).format('0.0,00')} + IVA</span>
                       </div>
                       <button
                         className={InputCSS.test}

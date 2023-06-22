@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Wallet } from "@mercadopago/sdk-react";
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
+import numeral from 'numeral';
 
 const Payment = () => {
   
@@ -60,7 +61,7 @@ const Payment = () => {
             </div>
             <div className={InputCSS.total}>
               Total:
-              <span className={InputCSS.price} id={InputCSS["summary-total"]}>${orderData.amount * 1.21} IVA incluido</span>
+              <span className={InputCSS.price} id={InputCSS["summary-total"]}>${numeral((orderData.amount * 1.21).toFixed(2)).format('0.0,00')} IVA incluido</span>
             </div>
           </div>
           <div className={InputCSS["payment-details"]}>

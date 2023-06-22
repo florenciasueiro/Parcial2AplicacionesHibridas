@@ -31,6 +31,7 @@
     "mdb-react-ui-kit": "^6.0.0",
     "mercadopago": "^0.0.6",
     "next": "^13.3.0",
+    "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-cool-onclickoutside": "^1.7.0",
     "react-datepicker": "^4.11.0",
