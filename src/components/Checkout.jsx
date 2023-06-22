@@ -7,7 +7,7 @@ const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged] = useState(false);
   // const [isVisible, setIsVisible] = useState(true);
   const [status, setStatus] = useState(null);
-  const { preferenceId, isLoading: disabled, orderData, setOrderData } = React.useContext(Context);
+  const { preferenceId, isLoading: disabled, orderData, setOrderData, dolarValue } = React.useContext(Context);
   // const shoppingCartClass = classnames('shopping-cart dark', {
   //   'shopping-cart--hidden': !isVisible,
   // });
@@ -73,7 +73,10 @@ const Checkout = ({ onClick }) => {
                   ) : (
                     <div className={InputCSS["summaryGroup"]}>
                       <div className={InputCSS["summary-item"]}>
-                        <span className={InputCSS["text"]}>Subtotal $</span>
+                        <span className={InputCSS["text"]}>Subtotal USD$</span>
+                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount/dolarValue} + IVA</span>
+                        
+                        <span className={InputCSS["text"]}>Subtotal ARS$</span>
                         <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount} + IVA</span>
                       </div>
                       <button

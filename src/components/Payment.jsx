@@ -60,7 +60,7 @@ const Payment = () => {
             </div>
             <div className={InputCSS.total}>
               Total:
-              <span className={InputCSS.price} id={InputCSS["summary-total"]}>${orderData.amount * 1.23} IVA incluido</span>
+              <span className={InputCSS.price} id={InputCSS["summary-total"]}>${orderData.amount * 1.21} IVA incluido</span>
             </div>
           </div>
           <div className={InputCSS["payment-details"]}>
