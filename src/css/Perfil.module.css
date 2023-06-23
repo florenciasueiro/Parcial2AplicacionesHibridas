@@ -270,7 +270,7 @@
   .icono{
     display: flex;
     justify-content: center;
-    color: red;
+    /* color: red; */
   }
 
   .titulo{
@@ -300,15 +300,6 @@
     color: red;
   }
 
-
-
-  .quince {
-    color: red;
-    background-color: red;
-  }
-  .card15{
-    color: red!important;
-  }
 
   .h1{
     font-weight: 500;

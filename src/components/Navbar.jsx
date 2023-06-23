@@ -177,24 +177,24 @@ function Navbar() {
 
 
   return (
-    <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarBlackCSS.Navbarcontainer : ''}`}>
-      <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarBlackCSS.navbarcontainer : ''}`}>
-        <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarBlackCSS.box : ''}`}>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-            <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}>
-              <img src={isShopPage ? "/img/LogoBlanco.png" : "/img/LogoNegro.png"} alt="" />
+    <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarCSS.Navbarcontainer : ''}`}>
+      <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarCSS.navbarcontainer : ''}`}>
+        <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarCSS.box : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
+            <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarCSS.logo : ''}`}>
+              <img src={"/img/LogoNegro.png"} alt="" />
             </NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} to="/quarters">Quarters</NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} to="/eventos">Eventos</NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} exact="true" to="/shop">Store</NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <button
               className={NavbarCSS.btn}
               onMouseEnter={handleMouseEnter} // Selecciona el evento onMouseEnter condicionalmente
@@ -206,12 +206,12 @@ function Navbar() {
         </ul>
         <div
           id="loginDropdown"
-          className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarBlackCSS.wrapper} ${showLogin ? NavbarBlackCSS.show : ''}` : ''} ${
+          className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarCSS.wrapper} ${showLogin ? NavbarCSS.show : ''}` : ''} ${
             showLogin ? NavbarCSS.show : ''
           }`}
           onMouseLeave={handleDropdownMouseLeave}
         >
-          <div onMouseLeave={handleDropdownMouseLeave} className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
+          <div onMouseLeave={handleDropdownMouseLeave} className={`${NavbarCSS.login} ${isShopPage ? NavbarCSS.login : ''}`}>
             <Login Contactos={handleLogin} />
           </div>
         </div>
