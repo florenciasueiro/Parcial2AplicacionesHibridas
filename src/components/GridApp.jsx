@@ -13,8 +13,8 @@ import { faLock, faKey, faIdCard, faCalendar, faPlus, faShapes,faHouseLaptop, fa
 import CardAsset from './CardAsset'; // Importa el componente CardAsset
 import ProductGrid from './ProductGrid';
 import  {Context} from '../context/notification-context'
+import {suscrbirUsuario} from '../Service/APIfunnel'
 
-import { red } from '@mui/material/colors';
 
 
 
@@ -883,7 +883,11 @@ export function CardGrid26({ handleClick }) {
       
     }
     else{
-      // suscrbirUsuario(usuario);
+      suscrbirUsuario({
+        usuario: usuario,
+        funnelID: "648b8d0d0f58893d050bd744",
+        stageID:"648b8d0d0f58893d050bd73f"});
+
       window.location.replace('https://www.eventbrite.com/e/asset-event-tickets-662052696437');
     }
   }

@@ -6,6 +6,7 @@ import Contactos from "../Service/APIlogin";
 import NavbarBlackCSS from '../css/NavbarBlack.module.css';
 import IslandNotification from './IslandNotification';
 import useContactos from '../Service/APIlogin';
+import {suscrbirUsuario} from '../Service/APIfunnel'
 
 const postVenta = async (venta) => {
   try {
@@ -90,6 +91,8 @@ function Navbar() {
         // message = 'TU COMPRA ESTÁ APROBADA';
         setMessage(`TU COMPRA ESTÁ APROBADA `);
         postVenta(compra);
+        suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
+
         console.log(compra);
         sessionStorage.setItem('compraCounter',0)
         sessionStorage.setItem('compra',null)
