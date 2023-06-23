@@ -13,7 +13,7 @@
    
 }
 .statusMessages{
-   color:red;
+   color:#c0c0c0;
 }
 
 .loginContainer{
@@ -109,6 +109,17 @@
 
 }
 
+.inputContainer .input.filled ~ .span,
+.inputContainer .input.filled:focus ~ .span {
+  color: black;
+  transform: translateX(10px) translateY(0px);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0 10px;
+  background-color: white;
+}
+
+
 
 .centeredContainer p{
   color: black;
@@ -165,4 +176,39 @@ input[type="checkbox"]:checked{
 .link{
   padding: 10px;
   color: #0645AD;
+}
+
+.linkR{
+  color: #0645AD;
+}
+
+
+.shakeInput {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+
+.textfield{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: black;
 }

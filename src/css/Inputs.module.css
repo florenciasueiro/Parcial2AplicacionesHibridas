@@ -743,11 +743,11 @@ span[title]:hover:after {
 }
 
 .tabs {
-	display: flex;
-	position: relative;
-	background-color: #E8E8EC;
-	padding: 0.75rem;
-	border-radius: 99px;
+  display: flex;
+  position: relative;
+  background-color: #E8E8EC;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 .tabs * {
@@ -809,11 +809,11 @@ input[id="radio3"]:checked ~ .glider {
 .glider {
 	position: absolute;
 	display: flex;
-	height: 40px;
+	height: 36px;
 	width: 100px;
 	background-color: white;
 	z-index: 1;
-	border-radius: 99px;
+	border-radius: 2px;
 	transition: 0.25s ease-out;
 }
 

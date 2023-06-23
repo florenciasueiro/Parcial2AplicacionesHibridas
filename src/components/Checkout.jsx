@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
 import numeral from 'numeral';
+import Payment from "./Payment";
+
 const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged] = useState(false);
   // const [isVisible, setIsVisible] = useState(true);
@@ -91,8 +93,8 @@ const Checkout = ({ onClick }) => {
                   )}
                   
                   
-
                 </div>
+                  <Payment />
               </div>
             </div>
           </div>

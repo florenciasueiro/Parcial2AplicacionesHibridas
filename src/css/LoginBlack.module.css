@@ -47,7 +47,7 @@
   top: 1rem;
   left: 1rem;
   font-size: 1rem;
-  color: #666;
+  color: white;
   transition: all 0.2s ease-out;
 }
 
@@ -94,6 +94,7 @@
     font-weight: 600;
     padding: 0 10px;
     background-color: black;
+    border-radius: 5px;
 }
 
 .inputContainer .input:valid,
@@ -161,3 +162,27 @@ input[type="checkbox"]:checked{
    padding: 10px;
    color: #4d90ff;
 }
+
+
+.linkR{
+  color: #4d90ff;
+}
+
+
+
+.input{
+  color: white;
+}
+
+.inputContainer .input.filled ~ .span,
+.inputContainer .input.filled:focus ~ .span {
+  color: black;
+  transform: translateX(10px) translateY(0px);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0 10px;
+  background-color: white;
+  
+}
+
+

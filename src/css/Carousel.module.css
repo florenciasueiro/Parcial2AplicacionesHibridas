@@ -1,7 +1,7 @@
 .carousel {
     position: relative;
     overflow: hidden;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     border-radius: 5px;
   }
@@ -48,7 +48,8 @@
   }
   
   .h1{
-    margin: 1.5rem 6rem;
+    width: 95%;
+    margin: 1rem auto;
   }
   .span{
     color: orange;

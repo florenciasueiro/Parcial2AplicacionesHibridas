@@ -5,7 +5,7 @@ import Login from './Login';
 import Contactos from "../Service/APIlogin";
 import NavbarBlackCSS from '../css/NavbarBlack.module.css';
 import IslandNotification from './IslandNotification';
-import useContactos from '../Service/APIlogin'
+import useContactos from '../Service/APIlogin';
 
 const postVenta = async (venta) => {
   try {
@@ -67,7 +67,7 @@ console.error(error.status);
 
 const urlParams = new URLSearchParams(window.location.search);
 const status = Object.fromEntries(urlParams).status;
-console.log(Object.fromEntries(urlParams))
+console.log(Object.fromEntries(urlParams));
 
 function Navbar() {
   const contactos = useContactos();
@@ -78,9 +78,6 @@ function Navbar() {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
-
- 
-  
   useEffect(() => {
     const compraJson = sessionStorage.getItem('compra');
     console.log(compraJson);
@@ -122,7 +119,6 @@ function Navbar() {
       );
     }
   };
- 
 
   const handleLogin = (email, password) => {
     Contactos(email, password);
@@ -138,7 +134,13 @@ function Navbar() {
   const [playAnimation, setPlayAnimation] = useState(false);
   const [message, setMessage] = useState('');
   const loginRef = useRef(null);
- 
+
+  const handleMouseEnter = () => {
+    if (!usuario || Object.keys(usuario).length === 0) {
+      showLoginDropdown();
+    }
+  };
+
   const showLoginDropdown = () => {
     setShowLogin(true);
   };
@@ -154,7 +156,7 @@ function Navbar() {
   const handleDropdownMouseLeave = () => {
     setTimeout(() => {
       setShowLogin(false);
-    }, 6000); // Retrasar la ocultación del login en 600 milisegundos (0.6 segundos)
+    }, 1000); // Retrasar la ocultación del login en 600 milisegundos (0.6 segundos)
   };
 
   useEffect(() => {
@@ -174,31 +176,28 @@ function Navbar() {
 
 
 
-
   return (
-    <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarBlackCSS.Navbarcontainer : ''}`}>
-      <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarBlackCSS.navbarcontainer : ''}`}>
-        <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarBlackCSS.box : ''}`}>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
-            <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarBlackCSS.logo : ''}`}>
-              <img src={isShopPage ? "/img/LogoBlanco.png" : "/img/LogoNegro.png"} alt="" />
+    <div className={`${NavbarCSS.Navbarcontainer} ${isShopPage ? NavbarCSS.Navbarcontainer : ''}`}>
+      <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarCSS.navbarcontainer : ''}`}>
+        <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarCSS.box : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
+            <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarCSS.logo : ''}`}>
+              <img src={"/img/LogoNegro.png"} alt="" />
             </NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} to="/quarters">Quarters</NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} to="/eventos">Eventos</NavLink>
           </li>
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} exact="true" to="/shop">Store</NavLink>
           </li>
-
-
-          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarBlackCSS.menuItem : ''}`}>
+          <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <button
               className={NavbarCSS.btn}
-              onMouseEnter={showLoginDropdown}
+              onMouseEnter={handleMouseEnter} // Selecciona el evento onMouseEnter condicionalmente
               onClick={() => { usuario && contactos(usuario.email, usuario.password) }}
             >
               {displayName()}
@@ -209,16 +208,16 @@ function Navbar() {
         
         <div
           id="loginDropdown"
-          className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarBlackCSS.wrapper} ${showLogin ? NavbarBlackCSS.show : ''}` : ''} ${
+          className={`${NavbarCSS.wrapper} ${isShopPage ? `${NavbarCSS.wrapper} ${showLogin ? NavbarCSS.show : ''}` : ''} ${
             showLogin ? NavbarCSS.show : ''
           }`}
           onMouseLeave={handleDropdownMouseLeave}
-          >
-          <div onMouseLeave={handleDropdownMouseLeave} className={`${NavbarCSS.login} ${isShopPage ? NavbarBlackCSS.login : ''}`}>
+        >
+          <div onMouseLeave={handleDropdownMouseLeave} className={`${NavbarCSS.login} ${isShopPage ? NavbarCSS.login : ''}`}>
             <Login Contactos={handleLogin} />
           </div>
         </div>
-          {<IslandNotification playAnimation={playAnimation} message={message} />}
+        {<IslandNotification playAnimation={playAnimation} message={message} />}
       </div>
     </div>
   );

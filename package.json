@@ -41,6 +41,7 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
     "react-sdk-mercadopago": "^1.1.1",
+    "react-spinners": "^0.13.8",
     "react-yup": "^1.24.1",
     "resize-observer-polyfill": "^1.5.1",
     "serve": "^14.2.0",
