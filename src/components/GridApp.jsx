@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
@@ -12,7 +12,10 @@ import { faLock, faKey, faIdCard, faCalendar, faPlus, faShapes,faHouseLaptop, fa
 // import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 import CardAsset from './CardAsset'; // Importa el componente CardAsset
 import ProductGrid from './ProductGrid';
+import  {Context} from '../context/notification-context'
+
 import { red } from '@mui/material/colors';
+
 
 
 
@@ -865,17 +868,40 @@ export function CardGrid25({ handleClick }) {
 //card eventos
 
 export function CardGrid26({ handleClick }) {
+    const usuarioJson = sessionStorage.getItem('user');
+    const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+   
+    const {playAnimation, notificar} = useContext(Context);
+
+
+
+  const btnCheckUserClick = () => {
+    console.log('click');
+    if(!usuario){
+      notificar('Para poder acceder primero debes registrate')
+
+      
+    }
+    else{
+      // suscrbirUsuario(usuario);
+      window.location.replace('https://www.eventbrite.com/e/asset-event-tickets-662052696437');
+    }
+  }
   const cardData = [
     {
       id: 31,
       logo: "img/LogoBlanco.png",
       icon: <FontAwesomeIcon icon={faPlus}/>,
-      text: 'Registrarse',
+      
       title: 'Quarters',
       subtitle: 'Descubre un lugar donde diseño, seguridad y confort se fusionan para crear una experiencia única perfecta para tu familia.',
       description: 'En Asset, nos enorgullece ser una empresa que se esfuerza por crear productos y servicios que brinden una experiencia de vida única. Nuestros valores fundamentales definen quiénes somos y guían cada decisión que tomamos. Nos emociona que nos acompañes en este viaje.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
       link: "/sobreasset",
+       buttons: [
+            
+            { button: 'Registrate' ,onClick: btnCheckUserClick}
+          ],
     },
     // Agrega más objetos cardData según sea necesario
   ];

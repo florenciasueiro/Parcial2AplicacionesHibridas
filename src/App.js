@@ -1,11 +1,11 @@
-import React from 'react';
+import React ,{ useState, useEffect, useMemo} from 'react';
 import './App.css';
 import Base from './pages/Base.js';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer.jsx';
 import InicioCSS from './css/Inicio.module.css';
-
+import NotificationContext from './context/notification-context'
 // import DinamicShop from './components/DinamicShop';
 
 function App() {
@@ -17,10 +17,35 @@ function App() {
   // if (location.pathname === '/base') {
   //   navbarClass = InicioCSS.navbarBase;
   // }
+  const [notification, setNotification] = useState(null);
+  const [playAnimation, setPlayAnimation] = useState(false);
+  const test= "context test"
+  const notificar = (mensaje) => {
+    setNotification(mensaje);
+    // alert(mensaje)
+  };
+  useEffect(() => {
+      
+    if(notification){
+      setPlayAnimation(true);
+      
+      
+      setTimeout(() => {
+        setPlayAnimation(false);
+        setNotification('');
+        
+      }, 3000);
+    }
+  }, [notification]);
+  
+  const contextValue = useMemo(() => {
+    return { playAnimation, notificar, notification };
+  }, [playAnimation, notificar, notification]);
   
 
   return (
-    <BrowserRouter>
+    <NotificationContext context={contextValue}>
+      <BrowserRouter>
       <div className={InicioCSS.App}>
         <header className={InicioCSS.inicioHeader}>
           <Navbar/>
@@ -35,6 +60,7 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
+      </NotificationContext>
   );
 }
 

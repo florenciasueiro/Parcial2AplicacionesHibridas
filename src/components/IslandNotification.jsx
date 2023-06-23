@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import IslandNotificationCSS from '../css/IslandNotification.module.css';
-
-function IslandNotification({ playAnimation, message }) {
-
+import  {Context} from '../context/notification-context'
+function IslandNotification({message }) {
+  const {playAnimation, notificar, notification} = useContext(Context);
+  
+  // useEffect(()=> { alert('test')},[playAnimation])
 
   return (
     <div className={`${IslandNotificationCSS.container} ${playAnimation ? IslandNotificationCSS.show : ''}`}>
       <div style={{textAlign:"center"}}className={`${IslandNotificationCSS.notification} ${playAnimation ? IslandNotificationCSS.playAnimation : ''}`}>
         <br/>
         <br/>
-        <h3 style={{color:"black"}}>{message}</h3>
+        <h3 style={{color:"black"}}>{message}{notification}</h3>
         <br/>
       </div>
     </div>
