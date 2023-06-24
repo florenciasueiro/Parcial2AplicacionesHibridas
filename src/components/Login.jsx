@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useContactos from '../Service/APIlogin';
 import LoginCSS from '../css/Login.module.css';
-import LoginBlackCSS from '../css/LoginBlack.module.css'
+// import LoginCSS from '../css/LoginBlack.module.css'
 import { SpinnerCircular } from 'spinners-react';
 
 
@@ -64,17 +64,17 @@ const renderSpinner = () => {
 
     return (
 
-      <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginBlackCSS.loginContainer : ''}`}>
+      <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginCSS.loginContainer : ''}`}>
 
-        <h1 className={`${LoginCSS.h1} ${isShopPage ? LoginBlackCSS.h1 : ''}`}>Iniciar Sesión</h1>
+        <h1 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.h1 : ''}`}>Iniciar Sesión</h1>
 
         {showError && <p>Email o contraseña inválidos.</p>}
 
-        <form className={`${LoginCSS.form} ${isShopPage ? LoginBlackCSS.form : ''}`} onSubmit={handleSubmit}>
-          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginBlackCSS.inputContainer : ''}`}>
+        <form className={`${LoginCSS.form} ${isShopPage ? LoginCSS.form : ''}`} onSubmit={handleSubmit}>
+          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.inputContainer : ''}`}>
           {renderSpinner()}
           <input
-              className={`${LoginCSS.input} ${isShopPage ? LoginBlackCSS.input : ''}`}
+              className={`${LoginCSS.input} ${isShopPage ? LoginCSS.input : ''}`}
               type="email"
               id="email"
               name="email"
@@ -82,11 +82,11 @@ const renderSpinner = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <span className={`${LoginCSS.span} ${isShopPage ? LoginBlackCSS.span : ''}`}>E-mail *</span>
+            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.span : ''}`}>E-mail *</span>
           </div>
-          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginBlackCSS.inputContainer : ''}`}>
+          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.inputContainer : ''}`}>
             <input
-              className={`${LoginCSS.input} ${isShopPage ? LoginBlackCSS.input : ''}`}
+              className={`${LoginCSS.input} ${isShopPage ? LoginCSS.input : ''}`}
               type="password"
               id="password"
               name="password"
@@ -94,23 +94,23 @@ const renderSpinner = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <span className={`${LoginCSS.span} ${isShopPage ? LoginBlackCSS.span : ''}`}>Password *</span>
+            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.span : ''}`}>Password *</span>
           </div>
-          <div>
-            <label className={`${LoginCSS.checkbox} ${isShopPage ? LoginBlackCSS.checkbox : ''}`}>
-              <input className={`${LoginCSS.inputcb} ${isShopPage ? LoginBlackCSS.inputcb : ''}`} type="checkbox" value="remember" />
+          {/* <div>
+            <label className={`${LoginCSS.checkbox} ${isShopPage ? LoginCSS.checkbox : ''}`}>
+              <input className={`${LoginCSS.inputcb} ${isShopPage ? LoginCSS.inputcb : ''}`} type="checkbox" value="remember" />
               Recuérdame
             </label>
-          </div>
-          <button className={`${LoginCSS.btn} ${isShopPage ? LoginBlackCSS.btn : ''}`} type="submit">INICIAR SESIÓN</button>
-          <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginBlackCSS.centeredContainer : ''}`}>
-            <Link className={`${LoginCSS.link} ${isShopPage ? LoginBlackCSS.link : ''}`} align="center" href="#" variant="body2">
+          </div> */}
+          <button className={`${LoginCSS.btn} ${isShopPage ? LoginCSS.btn : ''}`} type="submit">INICIAR SESIÓN</button>
+          {/* <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginCSS.centeredContainer : ''}`}>
+            <Link className={`${LoginCSS.link} ${isShopPage ? LoginCSS.link : ''}`} align="center" href="#" variant="body2">
               ¿Olvidaste tu contraseña?
             </Link>
-          </div>
-          <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginBlackCSS.centeredContainer : ''}`}>
-            <p className={`${LoginCSS.p} ${isShopPage ? LoginBlackCSS.p : ''}`}>¿No tienes cuenta? ‎</p>
-            <Link className={`${LoginCSS.linkR} ${isShopPage ? LoginBlackCSS.linkR : ''}`}  to="/registro">
+          </div> */}
+          <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginCSS.centeredContainer : ''}`}>
+            <p className={`${LoginCSS.p} ${isShopPage ? LoginCSS.p : ''}`}>¿No tienes cuenta? ‎</p>
+            <Link className={`${LoginCSS.linkR} ${isShopPage ? LoginCSS.linkR : ''}`}  to="/registro">
               Regístrate
             </Link>
           </div>
@@ -119,7 +119,7 @@ const renderSpinner = () => {
     );
   } else {
     return (
-      <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginBlackCSS.loginContainer : ''}`}>
+      <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.loginContainer : ''}`}>
         {/* <form onSubmit={handleLogout}>
           <div className={`${LoginCSS.loginContainer}`}>
             <Link className={`${LoginCSS.link}`} to="/profile">

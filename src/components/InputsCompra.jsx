@@ -560,7 +560,6 @@ if(cargaron){
       type="radio" 
       id="radio1" 
       name="tabs"
-      checked={selectedFinanciation === 1}
       onChange={() => handleSelectFinanciation(1)}
     />
     <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
@@ -568,7 +567,6 @@ if(cargaron){
       type="radio" 
       id="radio2" 
       name="tabs"
-      checked={selectedFinanciation === 1.3}
       onChange={() => handleSelectFinanciation(1.1917)}
     />
     <label htmlFor="radio2" className={InputCSS.tab}>Financiado 70%/30%</label>
@@ -576,7 +574,6 @@ if(cargaron){
       type="radio" 
       id="radio3" 
       name="tabs" 
-      checked={selectedFinanciation === 2}
       onChange={() => handleSelectFinanciation(1.1917)}
     />
     <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
