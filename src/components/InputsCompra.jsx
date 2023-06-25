@@ -155,12 +155,12 @@ useEffect(() => {
 //   }
 // }, [selectedTerreno,input2Disabled]);
 
-// useEffect(
-//   () => {
-//     if(!(selectedCard==='')){
-//   almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
-//     }
-// }, [selectedCard]);
+useEffect(
+  () => {
+    if(!(selectedCard==='')){
+  almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+}, [selectedCard]);
 
 // useEffect(
 //   () => {
@@ -169,19 +169,19 @@ useEffect(() => {
 //     }
 //   }, [selectedAlmacenamiento]);
 
-// useEffect(
-//   () => {
-//     if(!(selectedGuarderia==='')){
-//     sumRef.current.scrollIntoView({ behavior: 'smooth' });
-//     }
-//   }, [selectedGuarderia]);
+useEffect(
+  () => {
+    if(!(selectedGuarderia==='')){
+    sumRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedGuarderia]);
 
-//   useEffect(
-//     () => {
-//       if(!(selectedSUM==='')){
-//       cwRef.current.scrollIntoView({ behavior: 'smooth' });
-//       }
-//     }, [selectedSUM]);
+  useEffect(
+    () => {
+      if(!(selectedSUM==='')){
+      cwRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, [selectedSUM]);
 
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
