@@ -902,7 +902,7 @@ export function CardGrid26({ handleClick }) {
       description: 'En Asset, nos enorgullece ser una empresa que se esfuerza por crear productos y servicios que brinden una experiencia de vida única. Nuestros valores fundamentales definen quiénes somos y guían cada decisión que tomamos. Nos emociona que nos acompañes en este viaje.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
       link: "/sobreasset",
-       buttons: [
+      buttons: [
             
             { button: 'Registrate' ,onClick: btnCheckUserClick}
           ],

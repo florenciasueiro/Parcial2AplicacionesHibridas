@@ -250,17 +250,17 @@ const servicePrice = (name2find) => {
   if (serv && serv.price) {
     return serv.price;
   }else{
-    alert('xd');
+    // alert('xd');
     return 0;
   }
   
-  // Si no se encuentra el servicio o no tiene un precio válido, puedes devolver un valor predeterminado o lanzar un error, según tus necesidades.
+  
   // Por ejemplo:
   throw new Error('No se encontró el servicio o no tiene un precio válido');
 }
 
 
-//esto es solo para hacer un commit
+
 
 orderData.price = checkPriceByName(request.terreno);
 //MERCADO PAGO
@@ -307,28 +307,33 @@ const renderSpinner = () => {
 
 //FIN MERCADO PAGO
 
- 
 
 
 
-  // const handleSelectPago = (event) => {
-  //   setSelectedPago(event.target.value);
-  // };
 
-
-  
+orderData.dolarValue = dolarValue;
+  //IMPORTANTE!!!!!!!!
+  //ESTA FUNCION ES LA QUE DEFINE CUANTO SE VA A FACTURAR, EN PESOS!!, multiplica por .05 por que es el 5% de la reserva
+  //por ahora no hace el return de los servicios pero es copiar lo que dice el console log aun que cw da problemas
   const calculateAmount = (financiation, terreno, almacenamiento, guarderia, sum, cw) => {
     const terrenoPrice = terreno ? checkPriceByName(terreno) : 0;
     const almacenamientoPrice = almacenamiento ? servicePrice(almacenamiento) : 0;
-    console.log(almacenamiento)
+    // console.log(almacenamiento)
     
     const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
     const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
     const cwPrice = cw ? servicePrice("Pase CoWorking") * cw : 0;
     
-    console.log( (terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice)* parseFloat(financiation) );
-    return (((terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice)* parseFloat(financiation)*dolarValue).toFixed(2));
+    // console.log( (terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice)* parseFloat(financiation) );
+    return (((terrenoPrice)* parseFloat(financiation)*dolarValue).toFixed(2)*0.05);
   };
+
+//FIN DE LO IMPORTANTE!!!!!!!
+
+
+
+
+
 
   const handleSelectFinanciation = (value) => {
     setSelectedFinanciation(value);
@@ -560,6 +565,7 @@ if(cargaron){
       type="radio" 
       id="radio1" 
       name="tabs"
+      
       onChange={() => handleSelectFinanciation(1)}
     />
     <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
@@ -567,6 +573,7 @@ if(cargaron){
       type="radio" 
       id="radio2" 
       name="tabs"
+      
       onChange={() => handleSelectFinanciation(1.1917)}
     />
     <label htmlFor="radio2" className={InputCSS.tab}>Financiado 70%/30%</label>
@@ -574,6 +581,7 @@ if(cargaron){
       type="radio" 
       id="radio3" 
       name="tabs" 
+      
       onChange={() => handleSelectFinanciation(1.1917)}
     />
     <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
@@ -945,7 +953,7 @@ if(cargaron){
         value="F2" 
         checked={selectedTerreno === 'Lote 2'} 
         readOnly
-         
+        
         />
         F 2
       </span></label>
