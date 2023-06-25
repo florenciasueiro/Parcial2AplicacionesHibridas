@@ -26,7 +26,7 @@ const Payment = () => {
 
     return (
       <Wallet 
-        initialization={{ preferenceId: preferenceId, redirectMode: 'self' }}
+        initialization={{ preferenceId: preferenceId, redirectMode: 'blank' }}
         onReady={handleOnReady} />
     );
   }

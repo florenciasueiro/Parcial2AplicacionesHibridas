@@ -11,7 +11,7 @@ function IslandNotification({message }) {
       <div className={`${IslandNotificationCSS.notification}  ${playAnimation ? IslandNotificationCSS.playAnimation : ''}`}>
         <br/>
         <br/>
-        <h3 style={{color:"black"}}>{notification}</h3>
+        <span style={{color:"black"}}>{notification}</span>
         <br/>
       </div>
     </div>

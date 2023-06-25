@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import NavbarCSS from '../css/Navbar.module.css';
 import Login from './Login';
@@ -7,6 +7,8 @@ import NavbarBlackCSS from '../css/NavbarBlack.module.css';
 import IslandNotification from './IslandNotification';
 import useContactos from '../Service/APIlogin';
 import {suscrbirUsuario} from '../Service/APIfunnel'
+import  {Context} from '../context/notification-context'
+
 
 const postVenta = async (venta) => {
   try {
@@ -78,33 +80,35 @@ function Navbar() {
   const compra = compraJson ? JSON.parse(compraJson) : null;
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  const {activar, playAnimation, notificar} = useContext(Context);
 
   useEffect(() => {
     const compraJson = sessionStorage.getItem('compra');
     console.log(compraJson);
     const compraCounter = Number(sessionStorage.getItem('compraCounter'));
     console.log(compraCounter);
-    if (compraJson && compraCounter === 0) {
-      setPlayAnimation(true);
-      sessionStorage.setItem('compraCounter', '1');
+    if (compraJson) {
+      
+      activar(true);
       if (status === 'approved' && compra) {
-        // message = 'TU COMPRA ESTÁ APROBADA';
-        setMessage(`TU COMPRA ESTÁ APROBADA `);
+        
+        notificar(<div><span>Tu compra esta aprobada</span></div>)
         postVenta(compra);
         suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
 
         console.log(compra);
-        sessionStorage.setItem('compraCounter',0)
+        
+        
         sessionStorage.setItem('compra',null)
       } else if (status === 'failure') {
-        setMessage('TU COMPRA ESTÁ RECHAZADA');
+        notificar(<div><span>Tu compra fue rechazada</span></div>)
       } else if (status === 'pending') {
-        setMessage('TU COMPRA ESTÁ EN PROCESO');
+        notificar(<div><span>Tu compra se encuentra pendiente</span></div>)
       }
-      
       setTimeout(() => {
-        setPlayAnimation(false);
+        activar(false);
       }, 3000);
+      
     }
   }, []); 
 
@@ -133,9 +137,9 @@ function Navbar() {
   };
 
   const [showLogin, setShowLogin] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-  const [playAnimation, setPlayAnimation] = useState(false);
-  const [message, setMessage] = useState('');
+  // const [showNotification, setShowNotification] = useState(false);
+  // const [playAnimation, setPlayAnimation] = useState(false);
+  // const [message, setMessage] = useState('');
   const loginRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -167,12 +171,14 @@ function Navbar() {
     const welcomeCounter = Number(sessionStorage.getItem('welcomeCounter'));
     
     if (usuarioJson && welcomeCounter === 0) {
-      setPlayAnimation(true);
+      activar(true);
       sessionStorage.setItem('welcomeCounter', '1');
-      setMessage('Bienvenido');
+
+      notificar(<div><span>Bienvenido</span></div>)
       setTimeout(() => {
-        setPlayAnimation(false);
+        activar(false);
       }, 3000);
+   
     }
   }, []); 
 
@@ -220,7 +226,7 @@ function Navbar() {
             <Login Contactos={handleLogin} />
           </div>
         </div>
-        {<IslandNotification playAnimation={playAnimation} message={message} />}
+        {<IslandNotification />}
       </div>
     </div>
   );

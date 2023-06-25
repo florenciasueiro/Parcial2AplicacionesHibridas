@@ -24,23 +24,26 @@ function App() {
     setNotification(mensaje);
     // alert(mensaje)
   };
-  useEffect(() => {
+  const activar = (valor) => {
+    setPlayAnimation(valor);
+  }
+  // useEffect(() => {
       
-    if(notification){
-      setPlayAnimation(true);
+  //   if(notification){
+  //     setPlayAnimation(true);
       
       
-      setTimeout(() => {
-        setPlayAnimation(false);
-        setNotification('');
+  //     setTimeout(() => {
+  //       setPlayAnimation(false);
+  //       setNotification('');
         
-      }, 3000);
-    }
-  }, [notification]);
+  //     }, 3000);
+  //   }
+  // }, [notification]);
   
   const contextValue = useMemo(() => {
-    return { playAnimation, notificar, notification };
-  }, [playAnimation, notificar, notification]);
+    return {activar, playAnimation, notificar, notification };
+  }, [activar,playAnimation, notificar, notification]);
   
 
   return (
