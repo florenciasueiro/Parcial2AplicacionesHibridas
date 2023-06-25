@@ -57,17 +57,16 @@ function AddressCard() {
     <div>
       <h2>Dirección de Facturacion</h2>
       <div>
-      <label>
-  Dirección actual: {usuario.address.address
-    ? usuario.address.address
-    : usuario.address.address_components[1]
-      ? usuario.address.address_components[1].long_name + ' ' + usuario.address.address_components[0].long_name
-      : "No has cargado una dirección aún"}
-</label>
-
-        {/* <input type="text" value={address} onChange={handleAddressChange} /> */}
-        <PlacesAutocomplete onSelectCoordinates={handleSelectCoordinates} />
+        <label>
+          Dirección actual: {usuario.address && usuario.address.address
+            ? usuario.address.address
+            : usuario.address?.address_components?.[1]
+              ? usuario.address.address_components[1].long_name + ' ' + usuario.address.address_components[0].long_name
+              : "No has cargado una dirección aún"}
+        </label>
       </div>
+      {/* <input type="text" value={address} onChange={handleAddressChange} /> */}
+      <PlacesAutocomplete onSelectCoordinates={handleSelectCoordinates} />
       {/* <div>
         <label>País de Residencia:</label>
         <select value={country} onChange={handleCountryChange}>
@@ -79,6 +78,7 @@ function AddressCard() {
       </div> */}
     </div>
   );
+  
 }
 
 export default AddressCard;
