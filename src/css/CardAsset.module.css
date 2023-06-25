@@ -82,6 +82,7 @@
   .img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
   .btn{
@@ -119,3 +120,8 @@
     left: 70px; /* Ajusta el margen según sea necesario */
   }
   
+  h2{
+    
+    font-weight: 400;
+
+  }

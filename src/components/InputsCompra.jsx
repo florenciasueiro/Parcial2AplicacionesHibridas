@@ -147,13 +147,13 @@ useEffect(() => {
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
-useEffect(
-  () => {
-    if(!(selectedTerreno==='')){
-    console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
-  cardRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-}, [selectedTerreno,input2Disabled]);
+// useEffect(
+//   () => {
+//     if(!(selectedTerreno==='')){
+//     console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
+//   cardRef.current.scrollIntoView({ behavior: 'smooth' });
+//   }
+// }, [selectedTerreno,input2Disabled]);
 
 useEffect(
   () => {
@@ -162,12 +162,12 @@ useEffect(
     }
 }, [selectedCard]);
 
-useEffect(
-  () => {
-    if(!(selectedAlmacenamiento==='')){
-    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [selectedAlmacenamiento]);
+// useEffect(
+//   () => {
+//     if(!(selectedAlmacenamiento==='')){
+//     guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   }, [selectedAlmacenamiento]);
 
 useEffect(
   () => {

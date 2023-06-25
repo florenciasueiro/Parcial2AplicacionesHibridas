@@ -45,6 +45,7 @@
 .cards{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   justify-content: center;
   align-items: center;
   grid-gap: 15px;
@@ -118,7 +119,7 @@
   border: none;
 }
 .pEvent{
-  font-size: 37px;
+  font-size: 27px;
   color: #C0C0C0;
 }
 
@@ -130,7 +131,7 @@
   z-index: 10;
   width: 100%;
   color: white;
-  top: 50vh;
+  top: 60vh;
   font-size: 30px;
 }
 
