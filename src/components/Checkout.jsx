@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 // import classnames from 'classnames';
 import { Context } from "../Service/ContextProvider";
 import InputCSS from '../css/Inputs.module.css';
 import numeral from 'numeral';
 import Payment from "./Payment";
+import  {Context as NotificationContext} from '../context/notification-context'
+
 
 const Checkout = ({ onClick }) => {
   const [showLoged, setShowLoged] = useState(false);
   // const [isVisible, setIsVisible] = useState(true);
   const [status, setStatus] = useState(null);
   const { preferenceId, isLoading: disabled, orderData, setOrderData, dolarValue } = React.useContext(Context);
+  const {activar, playAnimation, notificar} = useContext(NotificationContext);
+  
   // const shoppingCartClass = classnames('shopping-cart dark', {
   //   'shopping-cart--hidden': !isVisible,
   // });
@@ -32,9 +36,22 @@ const Checkout = ({ onClick }) => {
     if (usuario) setShowLoged(false);
     else setShowLoged(true);
   }, [usuario]);
+  
+  // useEffect(() => {
+    
+  //     activar(true);
+      
+
+  //     notificar(<div style={{paddingBottom: 200}}><span>Bienvenido</span></div>)
+  //     setTimeout(() => {
+  //       activar(false);
+  //     }, 3000);
+   
+    
+  // }, []); 
 
 
-
+  
   return (
     <div className={`${InputCSS['bodyCheckout']}`}>
       {/* <section className={shoppingCartClass}> */}
