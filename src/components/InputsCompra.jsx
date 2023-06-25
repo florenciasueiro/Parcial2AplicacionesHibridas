@@ -147,41 +147,41 @@ useEffect(() => {
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
 
-useEffect(
-  () => {
-    if(!(selectedTerreno==='')){
-    console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
-  cardRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-}, [selectedTerreno,input2Disabled]);
+// useEffect(
+//   () => {
+//     if(!(selectedTerreno==='')){
+//     console.log('useEffect terreno','selectedTerreno:', selectedTerreno)
+//   cardRef.current.scrollIntoView({ behavior: 'smooth' });
+//   }
+// }, [selectedTerreno,input2Disabled]);
 
-useEffect(
-  () => {
-    if(!(selectedCard==='')){
-  almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-}, [selectedCard]);
+// useEffect(
+//   () => {
+//     if(!(selectedCard==='')){
+//   almacenamientoRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+// }, [selectedCard]);
 
-useEffect(
-  () => {
-    if(!(selectedAlmacenamiento==='')){
-    guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [selectedAlmacenamiento]);
+// useEffect(
+//   () => {
+//     if(!(selectedAlmacenamiento==='')){
+//     guarderiaRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   }, [selectedAlmacenamiento]);
 
-useEffect(
-  () => {
-    if(!(selectedGuarderia==='')){
-    sumRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [selectedGuarderia]);
+// useEffect(
+//   () => {
+//     if(!(selectedGuarderia==='')){
+//     sumRef.current.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   }, [selectedGuarderia]);
 
-  useEffect(
-    () => {
-      if(!(selectedSUM==='')){
-      cwRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, [selectedSUM]);
+//   useEffect(
+//     () => {
+//       if(!(selectedSUM==='')){
+//       cwRef.current.scrollIntoView({ behavior: 'smooth' });
+//       }
+//     }, [selectedSUM]);
 
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);

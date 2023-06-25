@@ -487,7 +487,7 @@ export function CardGrid9({ handleClick }) {
       title: 'Card',
       pie:'Descripción de la tarjeta 1',
       description: 'Descripción de la tarjeta 2',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687714451/2244_zgkbmv.jpg',
 
     },
 
@@ -530,7 +530,7 @@ export function CardGrid11({ handleClick }) {
       title: 'Sobre Asset',
 
       description: 'Descripción de la tarjeta 1',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687714295/MicrosoftTeams-image_biu2dz.png',
       link: "/sobreasset",
     },
 
@@ -900,7 +900,7 @@ export function CardGrid26({ handleClick }) {
       title: 'Quarters',
       subtitle: 'Descubre un lugar donde diseño, seguridad y confort se fusionan para crear una experiencia única perfecta para tu familia.',
       description: 'En Asset, nos enorgullece ser una empresa que se esfuerza por crear productos y servicios que brinden una experiencia de vida única. Nuestros valores fundamentales definen quiénes somos y guían cada decisión que tomamos. Nos emociona que nos acompañes en este viaje.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687716368/MicrosoftTeams-image_1_asfpbu.png',
       link: "/sobreasset",
        buttons: [
             
