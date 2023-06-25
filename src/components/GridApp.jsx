@@ -282,6 +282,7 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  
  
 
   const generarListaFacturas = () => {
@@ -294,7 +295,17 @@ export function CardGrid5({ handleClick }) {
     ));
   };
 
+const pagarCuota = () => {
+  console.log(usuario.facturas)
+  return usuario.facturas.map((facturaId) => (
+    <li key={facturaId}>
+      <a href={`/factura?id=${facturaId}`}>
+        Pagar Cuota de producto {facturaId}
+      </a>
+    </li>
+  ));
 
+}
 
   const cardData = [
     {
@@ -313,14 +324,15 @@ export function CardGrid5({ handleClick }) {
     {
       id: 16,
       title: 'Pagos',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Hacer nuevos pagos',
       imageUrl: 'https://via.placeholder.com/150',
+      contenido: pagarCuota(),
       icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
     },
     {
       id: 17,
-      title: 'Facturas',
-      description: 'Descripción de la tarjeta 2',
+      title: 'Recibos',
+      description: 'Todos tus recibos de pagos',
       imageUrl: 'https://via.placeholder.com/150',
       contenido: generarListaFacturas(),
       icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
