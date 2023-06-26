@@ -30,7 +30,7 @@ function Inicio() {
         funnelID: "641c5f375ba494fd3803b591",
         stageID:"641c5f375ba494fd3803b592"});
       activar(true);
-        notificar('Un asesor comercial se pondra en contacto contigo a la brevedad ')
+        notificar(<div><span>Un asesor comercial se pondra en contacto contigo a la brevedad</span></div>)
         setTimeout(() => {
           activar(false);
         }, 3000);
