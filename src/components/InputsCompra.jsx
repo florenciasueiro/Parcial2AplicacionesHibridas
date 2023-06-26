@@ -565,7 +565,6 @@ if(cargaron){
       type="radio" 
       id="radio1" 
       name="tabs"
-      
       onChange={() => handleSelectFinanciation(1)}
     />
     <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
