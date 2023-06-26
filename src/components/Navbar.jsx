@@ -89,8 +89,8 @@ function Navbar() {
     console.log(compraCounter);
     if (compraJson) {
       
-      activar(true);
       if (status === 'approved' && compra) {
+        activar(true);
         
         notificar(<div><span>Tu compra esta aprobada</span></div>)
         postVenta(compra);
