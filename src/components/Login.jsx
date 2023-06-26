@@ -68,7 +68,7 @@ const renderSpinner = () => {
 
         <h1 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.h1 : ''}`}>Iniciar Sesión</h1>
 
-        {showError && <p>Email o contraseña inválidos.</p>}
+        {showError && <p className={LoginCSS.error}>Email o contraseña inválidos.</p>}
 
         <form className={`${LoginCSS.form} ${isShopPage ? LoginCSS.form : ''}`} onSubmit={handleSubmit}>
           <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.inputContainer : ''}`}>
