@@ -23,6 +23,7 @@
     "assert": "^2.0.0",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.1.2",
     "force": "^0.0.3",
     "formik": "^2.2.9",

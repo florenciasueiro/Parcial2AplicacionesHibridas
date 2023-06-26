@@ -1,21 +1,23 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext,useEffect} from 'react';
 import Card from './CardApp';
 import CardInicio from './CardInicio';
 import PerfilCSS from '../css/Perfil.module.css';
 import useEditarUsuario from '../Service/APIeditarUsuario'
+import useFacturaInfo from '../Service/APIfacturaInfo'
 import BirthdayCard from './BirthdayCard';
 import AddressCard from './CountryCard';
 import LanguageCard from './LenguageCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faKey, faIdCard, faCalendar, faPlus, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-// //npm install @fortawesome/free-solid-svg-icons
-// import { faPhoneArrowUpRight } from '@fortawesome/free-solid-svg-icons';
-import CardAsset from './CardAsset'; // Importa el componente CardAsset
+import {useDolar }    from '../Service/APIdolar';
+import CardAsset from './CardAsset'; 
 import ProductGrid from './ProductGrid';
 import  {Context} from '../context/notification-context'
 import {suscrbirUsuario} from '../Service/APIfunnel'
-
-
+import { format } from 'date-fns';
+import { initMercadoPago } from "@mercadopago/sdk-react";
+import InternalProvider from "../Service/ContextProvider";
+import { SpinnerCircular } from 'spinners-react';
 
 
 
@@ -282,8 +284,51 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  const facturaInfo = useFacturaInfo(usuario.facturas[0]);
+  const [productName, setProductName] = useState(null);
+  const [showFacturaInfo, setShowFacturaInfo] = useState(false);
+  const [selectedFacturaId, setSelectedFacturaId] = useState(null);
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderData, setOrderData] = useState({
+    amount: 0,
+    description: ''
+  });
+  const valorDolar = useDolar();
+  const [dolarValue, setDolarValue] = useState(null);
   
- 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const value = await valorDolar;
+        setDolarValue(await value);
+        
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+    
+  }, [valorDolar]);
+  
+
+
+  useEffect(() => {
+    if (facturaInfo && facturaInfo.info && facturaInfo.info.products[0]) {
+      setProductName(facturaInfo.info.products[0].name);
+    }
+  }, [facturaInfo]);
+
+  const toggleFacturaInfo = (facturaId) => {
+    if (selectedFacturaId === facturaId) {
+      setSelectedFacturaId(null);
+      setShowFacturaInfo(false);
+    } else {
+      setSelectedFacturaId(facturaId);
+      setShowFacturaInfo(true);
+    }
+  };
 
   const generarListaFacturas = () => {
     return usuario.facturas.map((facturaId) => (
@@ -295,17 +340,88 @@ export function CardGrid5({ handleClick }) {
     ));
   };
 
-const pagarCuota = () => {
-  console.log(usuario.facturas)
-  return usuario.facturas.map((facturaId) => (
-    <li key={facturaId}>
-      <a href={`/factura?id=${facturaId}`}>
-        Pagar Cuota de producto {facturaId}
-      </a>
-    </li>
-  ));
+  const calcularMontoCuota = (tipoFinanciacion, montoTotal) => {
+    let montoCuota = 0;
+    
+    if (tipoFinanciacion === '0') {
+      montoCuota = montoTotal- (montoTotal * 0.05);
+    } else if (tipoFinanciacion === '70/30') {
+      const monto30Porciento = montoTotal * 0.3;
+      montoCuota = (montoTotal - monto30Porciento) / 11;
+    } else if (tipoFinanciacion === '100%') {
+      const monto5Porciento = montoTotal * 0.05;
+      montoCuota = (montoTotal - monto5Porciento) / 12;
+    }
+    
+    return montoCuota;
+  };
 
+const preference = () => {
+  fetch("http://localhost:8080/payment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(orderData),
+  }).then((response) => {
+    return response.json();
+  }).then((preference) => {
+    setPreferenceId(preference.id);
+  }).catch((error) => {
+    console.error(error);
+  }).finally(() => {
+    setIsLoading(false);
+  });
 }
+
+  const pagarCuota = () => {
+    if (productName) {
+
+      setIsLoading(true);
+      orderData.description=`Cuota N: ${parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}`
+      orderData.amount= (calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue)))*0.79
+      preference();
+
+  
+
+      return (
+    <ul>
+      {usuario.facturas.map((facturaId) => (
+        <li key={facturaId}>
+          <button onClick={() => toggleFacturaInfo(facturaId)}>
+            Pagar Cuota de producto {productName}
+          </button>
+          {showFacturaInfo && selectedFacturaId === facturaId && (
+            <div>
+              {/* Mostrar la información de la factura */}
+              <h3>Información de la factura</h3>
+              <p>Número de factura: {facturaInfo.info.id}</p>
+              <p>Fecha de emisión: {format(new Date(facturaInfo.info.date*1000),'dd/MM/yyyy')}</p>
+              <p>Fecha de vencimiento: {format(new Date(facturaInfo.info.date*1000),'dd/MM/yyyy')}</p>
+              <p>Financiacion: {facturaInfo.info.customFields[0].value}</p>
+              <p>Total a pagar: USD${facturaInfo.info.total}</p>
+              <p>Cuota N: {parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}</p>
+              <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.info.customFields[0].value,facturaInfo.info.total)}</p>
+              <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue))}</p>
+              {/* ...otros datos relevantes de la factura */}
+              <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
+      <main>
+        {/* {renderSpinner()} */}
+        <Checkout onClick={handleClick} description/>
+        <Payment />
+      </main>
+      
+    </InternalProvider>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+    } else {
+      return null; // Otra opción es mostrar un mensaje de carga mientras se obtiene la información
+    }
+  };
 
   const cardData = [
     {
@@ -367,13 +483,9 @@ const pagarCuota = () => {
       description: producto,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faBox} />
-    }
+    }));
     
-    ));
-
-    cardData.unshift(productCard);
-
-
+    cardData.unshift(...productCard);
   }
 
   return (
@@ -381,9 +493,13 @@ const pagarCuota = () => {
       {cardData.map((card) => (
         <Card className={PerfilCSS.card} key={card.id} card={card} />
       ))}
+
+      {/* Renderizar la sección de "Pagos" */}
+      {pagarCuota()}
     </div>
   );
 }
+
 
 
 export function CardGrid6({ handleClick }) {
