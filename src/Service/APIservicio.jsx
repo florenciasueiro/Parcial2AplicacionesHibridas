@@ -20,10 +20,5 @@ export default function useServicio() {
 
     fetchServicios();
   }, []);
-
-  
-    
- 
-
   return servicios;
 }
