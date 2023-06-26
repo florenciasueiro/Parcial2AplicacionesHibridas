@@ -448,7 +448,7 @@ const preference = () => {
       title: 'Pagos',
       description: 'Hacer nuevos pagos',
       imageUrl: 'https://via.placeholder.com/150',
-      contenido: pagarCuota(),
+      contenido: pagarCuota,
       icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
     },
     {
