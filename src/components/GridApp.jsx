@@ -302,7 +302,11 @@ export function CardGrid5({ handleClick }) {
     const fetchData = async () => {
       try {
         const value = await valorDolar;
-        setDolarValue(await value);
+        if(value){setDolarValue(await value);
+        }else{
+          setDolarValue(492)
+        }
+        
         
       } catch (error) {
         console.error(error);
