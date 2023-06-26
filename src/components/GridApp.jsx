@@ -15,10 +15,11 @@ import ProductGrid from './ProductGrid';
 import  {Context} from '../context/notification-context'
 import {suscrbirUsuario} from '../Service/APIfunnel'
 import { format } from 'date-fns';
+import Payment from "./Payment";
 import { initMercadoPago } from "@mercadopago/sdk-react";
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
-
+import Checkout from "./Checkout";
 
 
 // import PDFViewer from '../components/PDFViewer';
@@ -327,6 +328,10 @@ export function CardGrid5({ handleClick }) {
     } else {
       setSelectedFacturaId(facturaId);
       setShowFacturaInfo(true);
+      setIsLoading(true);
+      orderData.description=`Cuota N: ${parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}`
+      orderData.amount= (calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue)))*0.79
+      preference();
     }
   };
 
@@ -377,10 +382,7 @@ const preference = () => {
   const pagarCuota = () => {
     if (productName) {
 
-      setIsLoading(true);
-      orderData.description=`Cuota N: ${parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}`
-      orderData.amount= (calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue)))*0.79
-      preference();
+      
 
   
 
