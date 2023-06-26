@@ -8,7 +8,7 @@ export function useDolar() {
     useEffect(() => {
         const fetchCotizaciones = async () => {
             try {
-                const response = await axios.get('http://restapinode-production.up.railway.app/v1/getDolar');
+                const response = await axios.get('https://restapinode-production.up.railway.app/v1/getDolar');
 
                 const data = await response;
 
