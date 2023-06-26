@@ -1010,7 +1010,7 @@ export function CardGrid26({ handleClick }) {
     console.log('click');
     if(!usuario){
       activar(true);
-      notificar('Para poder acceder primero debes registrate')
+      notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
       setTimeout(() => {
         activar(false);
       }, 3000);
