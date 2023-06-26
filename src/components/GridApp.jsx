@@ -683,7 +683,7 @@ export function CardGrid12({ handleClick }) {
       title: 'Soporte',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
-      link: "/sobreasset",
+      
     },
     
   ];
@@ -1001,15 +1001,19 @@ export function CardGrid26({ handleClick }) {
     const usuarioJson = sessionStorage.getItem('user');
     const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
    
-    const {playAnimation, notificar} = useContext(Context);
+    const {activar, playAnimation, notificar} = useContext(Context);
+
 
 
 
   const btnCheckUserClick = () => {
     console.log('click');
     if(!usuario){
+      activar(true);
       notificar('Para poder acceder primero debes registrate')
-
+      setTimeout(() => {
+        activar(false);
+      }, 3000);
       
     }
     else{

@@ -1,11 +1,42 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import InicioCSS from '../css/Inicio.module.css';
 import Cards from '../components/Cards';
 import {CardGrid9, CardGrid10, CardGrid11, CardGrid12} from '../components/GridApp';
 import { BackgroundQuarters } from  '../components/Background';
 import { Link } from 'react-router-dom';
+import  {Context} from '../context/notification-context'
+import {suscrbirUsuario} from '../Service/APIfunnel'
 
 function Inicio() {
+  const {activar, playAnimation, notificar} = useContext(Context);
+
+ 
+
+  const handleClick = () => { 
+    const usuarioJson = sessionStorage.getItem('user');
+    const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+    if(!usuario){
+      
+      activar(true);
+      notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
+      setTimeout(() => {
+        activar(false);
+      }, 3000);
+      
+    }
+    else{
+      suscrbirUsuario({
+        usuario: usuario,
+        funnelID: "641c5f375ba494fd3803b591",
+        stageID:"641c5f375ba494fd3803b592"});
+      activar(true);
+        notificar('Un asesor comercial se pondra en contacto contigo a la brevedad ')
+        setTimeout(() => {
+          activar(false);
+        }, 3000);
+  }
+}
+
   return (
     <div className={InicioCSS.inicio}>
       <Link to="/quarters" className={InicioCSS.background}>
@@ -20,7 +51,7 @@ function Inicio() {
         <CardGrid9/>
         <CardGrid10/>
         <CardGrid11/>
-        <CardGrid12/>   
+        <CardGrid12 handleClick={handleClick}/>   
       </div>
     </div>
   );
