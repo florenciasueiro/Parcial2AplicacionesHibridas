@@ -212,3 +212,9 @@ input:-webkit-autofill:focus {
 input:-webkit-autofill {
   -webkit-text-fill-color: black;
 }
+
+.error{
+  color: red;
+  justify-content: center;
+  display: flex;
+}

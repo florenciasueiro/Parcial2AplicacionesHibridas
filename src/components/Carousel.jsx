@@ -8,7 +8,7 @@ import image3 from '../img/image3.png';
 const images = [
   image1,
   image2,
-  image3
+  image3,
 ];
 
 const Carousel = () => {
