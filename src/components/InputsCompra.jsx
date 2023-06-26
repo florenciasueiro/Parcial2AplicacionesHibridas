@@ -272,7 +272,7 @@ const handleClick = () => {
   setIsLoading(true);
 
   // postVenta();
-  fetch("http://localhost:8080/payment", {
+  fetch("http://restapinode-production.up.railway.app/payment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
