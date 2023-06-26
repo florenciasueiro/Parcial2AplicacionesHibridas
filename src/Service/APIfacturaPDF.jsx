@@ -15,7 +15,7 @@ const APIComponent = ({ id, setPdf }) => {
         }
 
         if (response.status === 304) {
-          // Manejar la respuesta 304
+          
           const clonedResponse = response.clone();
           const text = await clonedResponse.text();
           const base64 = btoa(text);
