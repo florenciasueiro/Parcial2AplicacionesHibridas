@@ -26,7 +26,7 @@ function Inicio() {
       usuario: usuario,
       funnelID: "641c5f375ba494fd3803b591",
       stageID:"641c5f375ba494fd3803b592"});
-    activar(true);
+   
   }
   const handleClick = () => { 
     if(!usuario){

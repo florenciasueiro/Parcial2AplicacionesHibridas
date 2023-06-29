@@ -13,7 +13,7 @@ import { SpinnerCircular } from 'spinners-react';
 import { Info1, Info2, Info3, Info4, Info5, Info6 } from './MoreInfo';
 
 //credencial de prueba test user 1
-initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
+initMercadoPago("APP_USR-cea272c1-a889-4a00-8d37-6f86ba43adb1");
 // credenciales de prueba:
 // ASSET (it@asset)
 // credencial  public key:  "TEST-026812a7-4811-43d1-8f09-8207c13823a5"
