@@ -52,7 +52,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 1,
       title: 'Asset ID',
-      description: `Tu Asset ID es: ${usuario.id}`,
+      description: `Tu Asset ID es: ${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
 
@@ -60,7 +60,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 2,
       title: 'Contraseña',
-      description: `Contraseña: ${usuario.password}`, 
+      description: `Cambiar contraseña`, 
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
@@ -70,16 +70,16 @@ export function CardGrid({ handleClick }) {
         { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, button: 'Cambiar',onClick: btnClick}
       ],
     },
-    {
-      id: 3,
-      title: 'Seguridad de la cuenta',
-      description: 'Descripción de la tarjeta 3',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faKey} />,
-      button: 'Enviar codigo de autenticacion',
+    // {
+    //   id: 3,
+    //   title: 'Seguridad de la cuenta',
+    //   description: 'Descripción de la tarjeta 3',
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faKey} />,
+    //   button: 'Enviar codigo de autenticacion',
       
-      // No se especifican inputs para esta tarjeta
-    },
+    //   // No se especifican inputs para esta tarjeta
+    // },
   ];
 
   return (
@@ -106,7 +106,7 @@ export function CardGrid2({ handleClick }) {
   const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   const handleGeneroChange = (event) => {
     setGenero(event.target.value);
-    console.log("genero", event.target.value) // Actualiza el estado con el valor seleccionado
+    // alert(event.target.value) // Actualiza el estado con el valor seleccionado
   };
   const handleGeneroClick = () => { 
     usuario.genero = genero;
@@ -166,8 +166,8 @@ export function CardGrid2({ handleClick }) {
     },    
     {
       id: 6,
-      title: 'País',
-      description: '',
+      title: 'Direccion',
+      description:` Dirección: ${usuario.address.address}`,
       card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
@@ -175,7 +175,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 7,
       title: 'Idioma',
-      description: '',
+      description: `Idioma: ${usuario.lang}`,
       card: <LanguageCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLanguage} />
@@ -207,7 +207,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 10,
       title: 'Género',
-      description: `Modificar genero actual:`,
+      description: `Género actual:${usuario.genero}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
       contenido:   (<form>
@@ -434,12 +434,12 @@ const preference = () => {
   };
 
   const cardData = [
-    {
-      id: 14,
-      title: 'Productos enlazados',
-      description: usuario.productos,
-      imageUrl: 'https://via.placeholder.com/150',
-    },
+    // {
+    //   id: 14,
+    //   title: 'Productos enlazados',
+    //   description: usuario.productos,
+    //   imageUrl: 'https://via.placeholder.com/150',
+    // },
     {
       id: 'quince',
       title: 'Agregar producto',
@@ -473,14 +473,14 @@ const preference = () => {
     {
       id: 19,
       title: 'Mantenimiento',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faGears} />,
     },
     {
       id: 20,
       title: 'Documentacion',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faFolderOpen} />,
     }
