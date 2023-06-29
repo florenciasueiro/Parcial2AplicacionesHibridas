@@ -285,7 +285,6 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  const facturaInfo = useFacturaInfo(usuario.facturas[0]);
   const [productName, setProductName] = useState(null);
   const [showFacturaInfo, setShowFacturaInfo] = useState(false);
   const [selectedFacturaId, setSelectedFacturaId] = useState(null);
@@ -297,6 +296,10 @@ export function CardGrid5({ handleClick }) {
   });
   const valorDolar = useDolar();
   const [dolarValue, setDolarValue] = useState(null);
+ let facturaInfo = usuario.facturas[0];
+
+
+
   
   useEffect(() => {
     const fetchData = async () => {
@@ -304,6 +307,7 @@ export function CardGrid5({ handleClick }) {
         const value = await valorDolar;
         if(value){setDolarValue(await value);
         }else{
+          console.log('error en bcra, usando valor dolar auxiliar')
           setDolarValue(492)
         }
         
@@ -320,7 +324,7 @@ export function CardGrid5({ handleClick }) {
 
 
   useEffect(() => {
-    if (facturaInfo && facturaInfo.info && facturaInfo.info.products[0]) {
+    if (facturaInfo && facturaInfo.info && facturaInfo.info.products) {
       setProductName(facturaInfo.info.products[0].name);
     }
   }, [facturaInfo]);
@@ -366,7 +370,7 @@ export function CardGrid5({ handleClick }) {
   };
 
 const preference = () => {
-  fetch("https://restapinode-production.up.railway.app/payment", {
+  fetch("http://localhost:8080/payment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -399,7 +403,7 @@ const preference = () => {
           </button>
           {showFacturaInfo && selectedFacturaId === facturaId && (
             <div>
-              {/* Mostrar la información de la factura */}
+              
               <h3>Información de la factura</h3>
               <p>Número de factura: {facturaInfo.info.id}</p>
               <p>Fecha de emisión: {format(new Date(facturaInfo.info.date*1000),'dd/MM/yyyy')}</p>
@@ -409,11 +413,11 @@ const preference = () => {
               <p>Cuota N: {parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}</p>
               <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.info.customFields[0].value,facturaInfo.info.total)}</p>
               <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue))}</p>
-              {/* ...otros datos relevantes de la factura */}
+              
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
       <main>
         {/* {renderSpinner()} */}
-        <Checkout onClick={handleClick} description/>
+        {/* <Checkout onClick={handleClick} description/> */}
         <Payment />
       </main>
       
@@ -425,7 +429,7 @@ const preference = () => {
     </ul>
   );
     } else {
-      return null; // Otra opción es mostrar un mensaje de carga mientras se obtiene la información
+      return(<div><span>Aun no tienes pagos pendientes</span></div>);
     }
   };
 
@@ -448,7 +452,7 @@ const preference = () => {
       title: 'Pagos',
       description: 'Hacer nuevos pagos',
       imageUrl: 'https://via.placeholder.com/150',
-      contenido: pagarCuota,
+      contenido: pagarCuota(),
       icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
     },
     {
@@ -499,9 +503,6 @@ const preference = () => {
       {cardData.map((card) => (
         <Card className={PerfilCSS.card} key={card.id} card={card} />
       ))}
-
-      {/* Renderizar la sección de "Pagos" */}
-      {pagarCuota()}
     </div>
   );
 }
