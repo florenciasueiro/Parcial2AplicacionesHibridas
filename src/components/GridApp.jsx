@@ -370,7 +370,7 @@ export function CardGrid5({ handleClick }) {
   };
 
 const preference = () => {
-  fetch("http://localhost:8080/payment", {
+  fetch("https://restapinode-production.up.railway.app/payment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
