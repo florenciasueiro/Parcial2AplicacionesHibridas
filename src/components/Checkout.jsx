@@ -93,10 +93,12 @@ const Checkout = ({ onClick }) => {
                     <div className={InputCSS["summaryGroup"]}>
                       <div className={InputCSS["summary-item"]}>
                         <span className={InputCSS["text"]}>Subtotal USD$</span>
-                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(numeral(orderData.amount/dolarValue)).format('0,0.00')} + IVA</span>
+                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+ + IVA</span>
                         
                         <span className={InputCSS["text"]}>Subtotal ARS$</span>
-                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{numeral(orderData.amount).format('0.0,00')} + IVA</span>
+                        <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+ + IVA</span>
                       </div>
                       <button
                         className={InputCSS.test}

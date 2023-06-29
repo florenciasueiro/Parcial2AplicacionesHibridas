@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 export default function useEditarUsuario() {
     const user = useCallback(async (usuario) => {
         try {
-          const response = await fetch(`https://restapinode-production.up.railway.app/v1/updateUser`, {
+          const response = await fetch(`http://localhost:8080/v1/updateUser`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

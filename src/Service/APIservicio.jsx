@@ -6,7 +6,7 @@ export default function useServicio() {
   useEffect(() => {
     const fetchServicios = async () => {
       try {
-        const response = await fetch('https://restapinode-production.up.railway.app/v1/getallServicio');
+        const response = await fetch('http://localhost:8080/v1/getallServicio');
         if (!response.ok) {
           throw new Error(`Network response was not ok (${response.status})`);
         }

@@ -18,7 +18,7 @@ function Inicio() {
 
   const postVenta = async (venta) => {
   try {
-    const response = await fetch(`https://restapinode-production.up.railway.app/v1/venta`, {
+    const response = await fetch(`http://localhost:8080/v1/venta`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
