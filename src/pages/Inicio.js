@@ -9,12 +9,26 @@ import {suscrbirUsuario} from '../Service/APIfunnel'
 
 function Inicio() {
   const {activar, playAnimation, notificar} = useContext(Context);
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
  
-
+  const suscribir = () => {
+    activar(false)
+    setTimeout(() => {
+      activar(true);
+      notificar(<div><span>Un asesor comercial se pondra en contacto contigo a la brevedad</span></div>)
+      setTimeout(() => {
+          activar(false);
+        }, 3000);
+    }, 750);
+    suscrbirUsuario({
+      usuario: usuario,
+      funnelID: "641c5f375ba494fd3803b591",
+      stageID:"641c5f375ba494fd3803b592"});
+    activar(true);
+  }
   const handleClick = () => { 
-    const usuarioJson = sessionStorage.getItem('user');
-    const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
     if(!usuario){
       
       activar(true);
@@ -25,15 +39,11 @@ function Inicio() {
       
     }
     else{
-      suscrbirUsuario({
-        usuario: usuario,
-        funnelID: "641c5f375ba494fd3803b591",
-        stageID:"641c5f375ba494fd3803b592"});
       activar(true);
-        notificar(<div><span>Un asesor comercial se pondra en contacto contigo a la brevedad</span></div>)
-        setTimeout(() => {
-          activar(false);
-        }, 3000);
+      notificar(<div><span>Quieres que un asesor se contacte contigo? <button onClick={suscribir}>Si quiero</button></span></div>)
+
+
+
   }
 }
 
