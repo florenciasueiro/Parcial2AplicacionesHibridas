@@ -58,8 +58,8 @@ function Inicio() {
       </Link>  
 
       <div className={InicioCSS.cards}>
-        <CardGrid9/>
-        <CardGrid10/>
+        {/* <CardGrid9/>
+        <CardGrid10/> esta tiene que llevar el video del telefono despues */}
         <CardGrid11/>
         <CardGrid12 handleClick={handleClick}/>   
       </div>
