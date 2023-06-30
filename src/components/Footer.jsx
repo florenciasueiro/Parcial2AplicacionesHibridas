@@ -1,15 +1,58 @@
-import React from 'react';
+import React , {useContext} from 'react';
 // import FacebookIcon from '@mui/icons-material/Facebook';
 // import TwitterIcon from '@mui/icons-material/Twitter';
 // import InstagramIcon from '@mui/icons-material/Instagram';
 // import YouTubeIcon from '@mui/icons-material/YouTube';
 import FooterCSS from '../css/Footer.module.css';
 import { Link } from 'react-router-dom';
+import  {Context} from '../context/notification-context'
+import {suscrbirUsuario} from '../Service/APIfunnel'
 
 
 
 function Footer() {
   const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  const {activar, playAnimation, notificar} = useContext(Context);
+  
+  const suscribir = () => {
+    activar(false)
+    setTimeout(() => {
+      activar(true);
+      notificar(<div><span>Un asesor comercial se pondra en contacto contigo a la brevedad</span></div>)
+      setTimeout(() => {
+          activar(false);
+        }, 3000);
+    }, 750);
+    suscrbirUsuario({
+      usuario: usuario,
+      funnelID: "641c5f375ba494fd3803b591",
+      stageID:"641c5f375ba494fd3803b592"});
+    
+  }
+  const soporte = () => { 
+    if(!usuario){
+      
+      activar(true);
+      notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
+      setTimeout(() => {
+        activar(false);
+      }, 3000);
+      
+    }
+    else{
+      activar(true);
+      notificar(<div><span>Quieres que un asesor se contacte contigo? <button onClick={suscribir}>Si quiero</button></span></div>)
+      setTimeout(() => {
+        activar(false);
+      }, 15000);
+
+
+  }
+}
+
+
+
   return (
     <footer className={FooterCSS.footerBox}>
       <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
@@ -62,9 +105,9 @@ function Footer() {
             Registrarse | ‎
           </Link>
         )}
-        <Link className={FooterCSS.linkText} to='/soporte'>
+        <button className={FooterCSS.linkText} onClick={soporte}>
           Soporte ‎
-        </Link>
+        </button>
       </div>
     </div>
 

@@ -52,7 +52,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 1,
       title: 'Asset ID',
-      description: `Tu Asset ID es: ${usuario.id}`,
+      description: `Tu Asset ID es: ${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
 
@@ -60,7 +60,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 2,
       title: 'Contraseña',
-      description: `Contraseña: ${usuario.password}`, 
+      description: `Cambiar contraseña`, 
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLock} />,
       class: "",
@@ -70,16 +70,16 @@ export function CardGrid({ handleClick }) {
         { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, button: 'Cambiar',onClick: btnClick}
       ],
     },
-    {
-      id: 3,
-      title: 'Seguridad de la cuenta',
-      description: 'Descripción de la tarjeta 3',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faKey} />,
-      button: 'Enviar codigo de autenticacion',
+    // {
+    //   id: 3,
+    //   title: 'Seguridad de la cuenta',
+    //   description: 'Descripción de la tarjeta 3',
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faKey} />,
+    //   button: 'Enviar codigo de autenticacion',
       
-      // No se especifican inputs para esta tarjeta
-    },
+    //   // No se especifican inputs para esta tarjeta
+    // },
   ];
 
   return (
@@ -106,7 +106,7 @@ export function CardGrid2({ handleClick }) {
   const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   const handleGeneroChange = (event) => {
     setGenero(event.target.value);
-    console.log("genero", event.target.value) // Actualiza el estado con el valor seleccionado
+    // alert(event.target.value) // Actualiza el estado con el valor seleccionado
   };
   const handleGeneroClick = () => { 
     usuario.genero = genero;
@@ -166,8 +166,8 @@ export function CardGrid2({ handleClick }) {
     },    
     {
       id: 6,
-      title: 'País',
-      description: '',
+      title: 'Direccion',
+      description:` Dirección: ${usuario.address.address}`,
       card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
@@ -175,7 +175,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 7,
       title: 'Idioma',
-      description: '',
+      description: `Idioma: ${usuario.lang}`,
       card: <LanguageCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLanguage} />
@@ -207,7 +207,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 10,
       title: 'Género',
-      description: `Modificar genero actual:`,
+      description: `Género actual:${usuario.genero}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
       contenido:   (<form>
@@ -285,7 +285,6 @@ export function CardGrid4({ handleClick }) {
 export function CardGrid5({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  const facturaInfo = useFacturaInfo(usuario.facturas[0]);
   const [productName, setProductName] = useState(null);
   const [showFacturaInfo, setShowFacturaInfo] = useState(false);
   const [selectedFacturaId, setSelectedFacturaId] = useState(null);
@@ -297,12 +296,21 @@ export function CardGrid5({ handleClick }) {
   });
   const valorDolar = useDolar();
   const [dolarValue, setDolarValue] = useState(null);
+ let facturaInfo = usuario.facturas[0];
+
+
+
   
   useEffect(() => {
     const fetchData = async () => {
       try {
         const value = await valorDolar;
-        setDolarValue(await value);
+        if(value){setDolarValue(await value);
+        }else{
+          console.log('error en bcra, usando valor dolar auxiliar')
+          setDolarValue(492)
+        }
+        
         
       } catch (error) {
         console.error(error);
@@ -316,7 +324,7 @@ export function CardGrid5({ handleClick }) {
 
 
   useEffect(() => {
-    if (facturaInfo && facturaInfo.info && facturaInfo.info.products[0]) {
+    if (facturaInfo && facturaInfo.info && facturaInfo.info.products) {
       setProductName(facturaInfo.info.products[0].name);
     }
   }, [facturaInfo]);
@@ -395,7 +403,7 @@ const preference = () => {
           </button>
           {showFacturaInfo && selectedFacturaId === facturaId && (
             <div>
-              {/* Mostrar la información de la factura */}
+              
               <h3>Información de la factura</h3>
               <p>Número de factura: {facturaInfo.info.id}</p>
               <p>Fecha de emisión: {format(new Date(facturaInfo.info.date*1000),'dd/MM/yyyy')}</p>
@@ -405,11 +413,11 @@ const preference = () => {
               <p>Cuota N: {parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}</p>
               <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.info.customFields[0].value,facturaInfo.info.total)}</p>
               <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue))}</p>
-              {/* ...otros datos relevantes de la factura */}
+              
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
       <main>
         {/* {renderSpinner()} */}
-        <Checkout onClick={handleClick} description/>
+        {/* <Checkout onClick={handleClick} description/> */}
         <Payment />
       </main>
       
@@ -421,17 +429,17 @@ const preference = () => {
     </ul>
   );
     } else {
-      return null; // Otra opción es mostrar un mensaje de carga mientras se obtiene la información
+      return(<div><span>Aun no tienes pagos pendientes</span></div>);
     }
   };
 
   const cardData = [
-    {
-      id: 14,
-      title: 'Productos enlazados',
-      description: usuario.productos,
-      imageUrl: 'https://via.placeholder.com/150',
-    },
+    // {
+    //   id: 14,
+    //   title: 'Productos enlazados',
+    //   description: usuario.productos,
+    //   imageUrl: 'https://via.placeholder.com/150',
+    // },
     {
       id: 'quince',
       title: 'Agregar producto',
@@ -465,14 +473,14 @@ const preference = () => {
     {
       id: 19,
       title: 'Mantenimiento',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faGears} />,
     },
     {
       id: 20,
       title: 'Documentacion',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faFolderOpen} />,
     }
@@ -495,9 +503,6 @@ const preference = () => {
       {cardData.map((card) => (
         <Card className={PerfilCSS.card} key={card.id} card={card} />
       ))}
-
-      {/* Renderizar la sección de "Pagos" */}
-      {pagarCuota()}
     </div>
   );
 }

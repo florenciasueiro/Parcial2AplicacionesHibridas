@@ -15,6 +15,7 @@ export function useDolar() {
                 setCotizacion(await data.data.price);
                 // alert(JSON.stringify(data.data.price));
             }catch (error){
+                setCotizacion(491)
                 console.error('There was a problem with the fetch operation:', error);
 
             }

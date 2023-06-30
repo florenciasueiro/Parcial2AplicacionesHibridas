@@ -3,7 +3,7 @@ import useEditarUsuario from '../Service/APIeditarUsuario'
 
 function LanguageCard({ onLanguageSelect }) {
   const [language, setLanguage] = useState('');
-  const languages = ['English', 'Español']; // Lista de idiomas
+  const languages = ['English', 'Español','Português']; // Lista de idiomas
   const editar =useEditarUsuario();
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
@@ -18,8 +18,10 @@ function LanguageCard({ onLanguageSelect }) {
   const handleClick = () => {
     if(language==='English'){
       usuario.lang= 'en'
-    }else{
+    }else if(language==='Español'){
       usuario.lang= 'es'
+    }else{
+      usuario.lang='pt'
     }
     
     editar(usuario);
