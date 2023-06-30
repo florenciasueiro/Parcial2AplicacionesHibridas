@@ -694,7 +694,7 @@ export function CardGrid12({ handleClick }) {
         ))}
     </div>
   );
-}
+} 
 
 
 // Sobre Asset cards

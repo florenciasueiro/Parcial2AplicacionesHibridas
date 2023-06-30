@@ -9,7 +9,7 @@ import Checkout from "./Checkout";
 
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
-import { Info1, Info2, Info3, Info4, Info5, Info6 } from './MoreInfo';
+// import { Info1, Info2, Info3, Info4, Info5, Info6 } from './MoreInfo';
 
 //credencial de prueba test user 1
 initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
@@ -554,9 +554,9 @@ if(cargaron){
         <div>
           <b className={InputCSS.b}>Terreno.</b>
           <p className={InputCSS.p}> ¿Cuál es el mejor para su familia?</p>
-          <div className={InputCSS.moreInfo}>
+          {/* <div className={InputCSS.moreInfo}>
             <Info1/>
-          </div>
+          </div> */}
         </div>
         
 <div className={InputCSS.container}>
@@ -703,9 +703,9 @@ if(cargaron){
   <div>
     <b className={InputCSS.b}>Asset Card.</b>
     <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p>
-    <div className={InputCSS.moreInfo}>
+    {/* <div className={InputCSS.moreInfo}>
       <Info2/>
-    </div>
+    </div> */}
   </div>
 
   <div>
@@ -769,9 +769,9 @@ if(cargaron){
         <div>
           <b className={InputCSS.b}>Almacenamiento.</b>
           <p className={InputCSS.p}>¿Cuánto espacio es el adecuado?</p>
-          <div className={InputCSS.moreInfo}>
+          {/* <div className={InputCSS.moreInfo}>
             <Info3/>
-          </div>
+          </div> */}
 
           <div className={InputCSS.grilla}>
             <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla4}</div>
@@ -805,9 +805,9 @@ if(cargaron){
       <div>
         <b className={InputCSS.b}> Sector de cuidado infantil.</b>
         <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p>
-        <div className={InputCSS.moreInfo}>
+        {/* <div className={InputCSS.moreInfo}>
             <Info4/>
-          </div>
+          </div> */}
       </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '1' ? InputCSS.selected : ''}`}>
@@ -838,9 +838,9 @@ if(cargaron){
       <div>
         <b className={InputCSS.b}> SUM</b>
         <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p>
-        <div className={InputCSS.moreInfo}>
+        {/* <div className={InputCSS.moreInfo}>
             <Info5/>
-          </div>
+          </div> */}
       </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
@@ -867,9 +867,9 @@ if(cargaron){
       <div>
         <b className={InputCSS.b}> Coworking</b>
         <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
-        <div className={InputCSS.moreInfo}>
+        {/* <div className={InputCSS.moreInfo}>
           <Info6/>
-        </div>
+        </div> */}
       </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedCW === '3' ? InputCSS.selected : ''}`}>
