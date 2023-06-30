@@ -560,7 +560,7 @@ if(cargaron){
           <b className={InputCSS.b}>Terreno.</b>
           <p className={InputCSS.p}> ¿Cuál es el mejor para su familia?</p>
           <div className={InputCSS.moreInfo}>
-            <Info1/>
+            {/* <Info1/> */}
           </div>
         </div>
         
@@ -709,7 +709,7 @@ if(cargaron){
     <b className={InputCSS.b}>Asset Card.</b>
     <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p>
     <div className={InputCSS.moreInfo}>
-      <Info2/>
+      {/* <Info2/> */}
     </div>
   </div>
 
@@ -775,7 +775,7 @@ if(cargaron){
           <b className={InputCSS.b}>Almacenamiento.</b>
           <p className={InputCSS.p}>¿Cuánto espacio es el adecuado?</p>
           <div className={InputCSS.moreInfo}>
-            <Info3/>
+            {/* <Info3/> */}
           </div>
 
           <div className={InputCSS.grilla}>
@@ -811,7 +811,7 @@ if(cargaron){
         <b className={InputCSS.b}> Sala de juegos.</b>
         <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p>
         <div className={InputCSS.moreInfo}>
-            <Info4/>
+            {/* <Info4/> */}
           </div>
       </div>
       <div className={InputCSS['radioInputs']}>
@@ -844,7 +844,7 @@ if(cargaron){
         <b className={InputCSS.b}> SUM</b>
         <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p>
         <div className={InputCSS.moreInfo}>
-            <Info5/>
+            {/* <Info5/> */}
           </div>
       </div>
       <div className={InputCSS['radioInputs']}>
@@ -873,7 +873,7 @@ if(cargaron){
         <b className={InputCSS.b}> Coworking</b>
         <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
         <div className={InputCSS.moreInfo}>
-          <Info6/>
+          {/* <Info6/> */}
         </div>
       </div>
       <div className={InputCSS['radioInputs']}>
