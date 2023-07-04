@@ -24,10 +24,28 @@ const Payment = () => {
   const renderCheckoutButton = () => {
     if (!preferenceId) return null;
 
+
+ 
+ 
+
     return (
       <Wallet 
-        initialization={{ preferenceId: preferenceId, redirectMode: 'blank' }}
-        onReady={handleOnReady} />
+        initialization={{ preferenceId: preferenceId, redirectMode: 'blank'}}
+        customization = {
+          {
+          visual: {
+            buttonBackground: 'black',
+            borderRadius: '16px',
+          },
+          texts: {
+            action: 'pay',
+            valueProp: 'security_safety'
+          }
+        }
+      }
+        onReady={handleOnReady} 
+        
+        />
     );
   }
 

@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer.jsx';
 import InicioCSS from './css/Inicio.module.css';
 import NotificationContext from './context/notification-context'
+import InternalProvider from "./Service/ContextProvider";
+
 // import DinamicShop from './components/DinamicShop';
 
 function App() {
@@ -19,6 +21,27 @@ function App() {
   // }
   const [notification, setNotification] = useState(null);
   const [playAnimation, setPlayAnimation] = useState(false);
+    const [preferenceId, setPreferenceId] = useState(null);
+    const [dolarValue, setDolarValue] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderData, setOrderData] = useState(
+    { 
+    quantity: "1", 
+    price: "0", 
+    amount: 0, 
+    description: "Terreno",
+    cards: 0, 
+    storage:1, 
+    guarderia:0, 
+    sum:0,
+    cw:0, 
+    user: {}, 
+    sku:"",
+    storagePrice:0,
+    guarderiaPrice:0,
+    sumPrice:0,
+    cwPrice:0,
+  });
   const test= "context test"
   const notificar = (mensaje) => {
     setNotification(mensaje);
@@ -40,13 +63,14 @@ function App() {
   //     }, 3000);
   //   }
   // }, [notification]);
-  
+  const payContext = useMemo(()=> { return {preferenceId,setPreferenceId,isLoading,setIsLoading,orderData,setOrderData,dolarValue,setDolarValue}},[preferenceId,setPreferenceId, isLoading,setIsLoading,orderData,setOrderData,dolarValue,setDolarValue])
   const contextValue = useMemo(() => {
     return {activar, playAnimation, notificar, notification };
   }, [activar,playAnimation, notificar, notification]);
   
 
   return (
+    <InternalProvider context={payContext}>
     <NotificationContext context={contextValue}>
       <BrowserRouter>
       <div className={InicioCSS.App}>
@@ -64,6 +88,7 @@ function App() {
       </div>
     </BrowserRouter>
       </NotificationContext>
+      </InternalProvider>
   );
 }
 

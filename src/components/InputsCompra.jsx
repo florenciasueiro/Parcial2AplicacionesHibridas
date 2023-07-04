@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import InputCSS from '../css/Inputs.module.css';
 import useProducto from '../Service/APIproducto';
 import useServicio from '../Service/APIservicio';
 import {useDolar }    from '../Service/APIdolar';
 import { initMercadoPago } from "@mercadopago/sdk-react";
 import numeral from 'numeral';
-
 import Checkout from "./Checkout";
-
-import InternalProvider from "../Service/ContextProvider";
+import {Context} from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
-// import { Info1, Info2, Info3, Info4, Info5, Info6 } from './MoreInfo';
+
+import Payment from "./Payment";
+import  {Context as NotificationContext} from '../context/notification-context'
 
 //credencial de prueba test user 1
 initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
@@ -39,55 +39,61 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 //Test user 2  dor TTEST65297
 
 export default function RadioInputs({seleccion}) {
-
-  const valorDolar = useDolar();
-  const [dolarValue, setDolarValue] = useState(null);
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const value = await valorDolar;
-        if(value){setDolarValue(await value);
-        }else{
-          setDolarValue(492)
-        }
-        
-        
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //MERCADO PAGO 
+  const { preferenceId,setPreferenceId, orderData, setOrderData, dolarValue, setDolarValue } = React.useContext(Context);
+  const [showLoged, setShowLoged] = useState(false);
+  const {activar, playAnimation, notificar} = useContext(NotificationContext);
+  const refA = useRef(null);
 
-    fetchData();
+
+  
+    const valorDolar = useDolar();
+    // const [dolarValue, setDolarValue] = useState(null);
     
-  }, [valorDolar]);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const value = await valorDolar;
+          if(value){setDolarValue(await value);
+          }else{
+            setDolarValue(492)
+          }
+          
+          
+        } catch (error) {
+          console.error(error);
+        }
+      };
   
-
-  useEffect(() => {
-    console.log(dolarValue);
-  }, [dolarValue]);
-
-//MERCADO PAGO 
-  const [preferenceId, setPreferenceId] = useState(null);
+      fetchData();
+      
+    }, [valorDolar]);
+    
+  
+    useEffect(() => {
+      console.log(dolarValue);
+    }, [dolarValue]);
+  // const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState(
-    { 
-    quantity: "1", 
-    price: "0", 
-    amount: 0, 
-    description: "Terreno",
-    cards: 0, 
-    storage:1, 
-    guarderia:0, 
-    sum:0,
-    cw:0, 
-    user: {}, 
-    sku:"",
-    storagePrice:0,
-    guarderiaPrice:0,
-    sumPrice:0,
-    cwPrice:0,
-  });
+  // const [orderData, setOrderData] = useState(
+  //   { 
+  //   quantity: "1", 
+  //   price: "0", 
+  //   amount: 0, 
+  //   description: "Terreno",
+  //   cards: 0, 
+  //   storage:1, 
+  //   guarderia:0, 
+  //   sum:0,
+  //   cw:0, 
+  //   user: {}, 
+  //   sku:"",
+  //   storagePrice:0,
+  //   guarderiaPrice:0,
+  //   sumPrice:0,
+  //   cwPrice:0,
+  // });
 //FIN DE MERCADO PAGO
   
   const [input2Disabled, setInput2Disabled] = useState(true );
@@ -213,6 +219,72 @@ useEffect(() => {
   cargar();
   
 }, [servicios,productos]);
+
+  useEffect(() => {
+    if (usuario) setShowLoged(false);
+    else setShowLoged(true);
+  }, [usuario]);
+
+
+
+  useEffect(() => {
+    if(orderData.description){    
+      // console.log(refA.current)
+      // console.log(refA.current.offsetHeight)
+      activar(true);
+      // notificar(<div style={{height: refA.current.offsetHeight}}></div>);}
+      // setIsLoading(true);
+      notificar(
+      
+        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]}>
+        <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
+          {/* <h3>Cart</h3> */}
+          {showLoged ? (
+            <div>
+            <span className={InputCSS["text-white"]}>Debes iniciar sesión para comprar.</span>
+            <button
+                className={InputCSS.test}
+                onClick={onClick}
+                id={InputCSS["checkout-btn-disabled"]}
+                disabled='true'
+              >
+                Checkout
+              </button>
+
+            </div>
+          ) : (
+            <div className={InputCSS["summaryGroup"]}>
+{renderSpinner()}
+              <div className={InputCSS["summary-item"]}>
+                <span className={InputCSS["text"]}>Subtotal USD$</span>
+                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
++ IVA</span>
+                
+                <span className={InputCSS["text"]}>Subtotal ARS$</span>
+                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
++ IVA</span>
+              </div>
+              {/* <button
+                className={InputCSS.test}
+                onClick={onClick}
+                id={InputCSS["checkout-btn"]}
+                disabled={disabled}
+                >
+                Comprar
+              </button> */}
+            </div>
+          )}
+          
+          
+        </div>
+          <Payment />
+      </div>
+                    );}
+
+      // setTimeout(() => {
+      //   activar(false);
+      // }, 3000);
+  }, [orderData.amount, refA, isLoading]); 
 
 
 
@@ -434,6 +506,8 @@ orderData.dolarValue = dolarValue;
     
     orderData.cwPrice = servicePrice("Pase CoWorking");
     orderData.amount = calculateAmount(selectedFinanciation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, event.target.value);
+    // setIsLoading(true);
+    handleClick();
     if (event.target.value !== '') {
       setInput7Disabled(false);
  
@@ -918,13 +992,13 @@ if(cargaron){
 
       </div> */}
             {/* mercado pago */}
-            <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
+            {/* <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}> */}
       <main>
         {/* {renderSpinner()} */}
-        <Checkout onClick={handleClick} description/>
+        {/* <Checkout onClick={handleClick} description/> */}
       </main>
       
-    </InternalProvider>
+    {/* </InternalProvider> */}
     {/* fin mercado pago */}
     </div>
     
