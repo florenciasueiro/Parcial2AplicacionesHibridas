@@ -604,8 +604,15 @@ span[title]:hover:after {
   margin-top: 3px;
   padding:8px;
 }
-.text-white{
-  color: white;
+.textContainer{
+  display: flex;
+}
+.textNotification{
+  color: black;
+  width: 100%;
+  padding:10px;
+  margin:10px;
+  align-self: center;
   
 }
 

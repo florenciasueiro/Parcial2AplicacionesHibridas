@@ -240,16 +240,16 @@ useEffect(() => {
         <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
           {/* <h3>Cart</h3> */}
           {showLoged ? (
-            <div>
-            <span className={InputCSS["text-white"]}>Debes iniciar sesión para comprar.</span>
-            <button
+            <div className={InputCSS["textContainer"]}>
+            <span className={InputCSS["textNotification"]}>Debes iniciar sesión para comprar.</span>
+            {/* <button
                 className={InputCSS.test}
                 onClick={onClick}
                 id={InputCSS["checkout-btn-disabled"]}
                 disabled='true'
               >
                 Checkout
-              </button>
+              </button> */}
 
             </div>
           ) : (
