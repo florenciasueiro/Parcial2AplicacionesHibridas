@@ -529,6 +529,9 @@ orderData.dolarValue = dolarValue;
   let itemGrilla4;
   let itemGrilla5;
   let itemGrilla6;
+  let itemGrilla7;
+  let itemGrilla8;
+  let itemGrilla9;
   switch (selectedTerreno) {
     case 'Lote 1':
       itemGrilla1 = '13,00 x 25,50';
@@ -629,6 +632,31 @@ orderData.dolarValue = dolarValue;
         itemGrilla6 = '20cm';
         break;
     }
+
+  switch (selectedFinanciation) {
+    case 'contado':
+      itemGrilla7 = 'opcion1';
+      itemGrilla8 = 'opcion2';
+      itemGrilla9 = 'opcion3';
+      break;
+    case 'financiado7030':
+      itemGrilla7 = 'opcion4';
+      itemGrilla8 = 'opcion5';
+      itemGrilla9 = 'opcion6';
+      break;
+    case 'financiado100':
+      itemGrilla7 = 'opcion7';
+      itemGrilla8 = 'opcion8';
+      itemGrilla9 = 'opcion9';
+      break;
+      default:
+        itemGrilla7 = 'opcion11';
+        itemGrilla8 = 'opcion12';
+        itemGrilla9 = 'opcion13';
+        break;
+    }
+
+
 if(cargaron){
 
   return (
@@ -641,45 +669,16 @@ if(cargaron){
             <Info1/>
           </div> */}
         </div>
-        
-<div className={InputCSS.container}>
-  <div className={InputCSS.tabs}>
-    <input 
-      type="radio" 
-      id="radio1" 
-      name="tabs"
-      onChange={() => handleSelectFinanciation(1)}
-    />
-    <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
-    <input 
-      type="radio" 
-      id="radio2" 
-      name="tabs"
-      
-      onChange={() => handleSelectFinanciation(1.1917)}
-    />
-    <label htmlFor="radio2" className={InputCSS.tab}>Financiado 70%/30%</label>
-    <input 
-      type="radio" 
-      id="radio3" 
-      name="tabs" 
-      
-      onChange={() => handleSelectFinanciation(1.1917)}
-    />
-    <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
-    <span className={InputCSS.glider}></span>
-  </div>
-</div>
         {/* <div className={InputCSS['icono']}>?</div> */}
 
         <div className={InputCSS.grilla}>
-        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla1}</div>
-        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla2}</div>
-        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla3}</div>
-        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Ancho x Largo</div>
-        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Superficie terreno</div>
-        <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Construcción vivienda</div>
-      </div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla1}</div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla2}</div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla3}</div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Ancho x Largo</div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Superficie terreno</div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Construcción vivienda</div>
+        </div>
 
       <div className={InputCSS['radioInputs']} style={{ maxHeight: '265px', overflowY: 'auto' }}>          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
             <span><input
@@ -948,7 +947,7 @@ if(cargaron){
 
       <div className={InputCSS['ref']} ref={cwRef}>
       <div>
-        <b className={InputCSS.b}> Coworking</b>
+        <b className={InputCSS.b}>Coworking</b>
         <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
         {/* <div className={InputCSS.moreInfo}>
           <Info6/>
@@ -974,6 +973,65 @@ if(cargaron){
         <br/>
       </div>
       </div>
+
+
+
+      <div className={InputCSS['ref']} ref={cwRef}>
+      <div>
+        <b className={InputCSS.b}>Financiación</b>
+        <p className={InputCSS.p}>Selecciona el mejor para ti.</p>
+        {/* <div className={InputCSS.moreInfo}>
+          <Info6/>
+        </div> */}
+      </div>
+        <div className={InputCSS.container}>
+          <div className={InputCSS.tabs}>
+            <input 
+              type="radio" 
+              id="radio1" 
+              name="tabs"
+              onChange={() => handleSelectFinanciation(1)}
+            />
+            <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
+            <input 
+              type="radio" 
+              id="radio2" 
+              name="tabs"
+              
+              onChange={() => handleSelectFinanciation(1.1917)}
+            />
+            <label htmlFor="radio2" className={InputCSS.tab} >Financiado 70%/30%</label>
+            <input 
+              type="radio" 
+              id="radio3"   
+              name="tabs" 
+              
+              onChange={() => handleSelectFinanciation(1.1917)}
+            />
+            <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
+            <span className={InputCSS.glider}></span>
+          </div>
+        </div>
+          <div className={InputCSS.grilla}>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
+            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
 
       {/* <div className={InputCSS['ref']} ref={pagoRef}>
       <div><b className={InputCSS.b}> Opciones de pago.</b> Seleccione el que funcione para usted.</div>
