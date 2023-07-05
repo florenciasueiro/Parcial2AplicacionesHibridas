@@ -342,7 +342,12 @@ export function CardGrid5({ handleClick }) {
       preference();
     }
   };
-
+//lo anoto para no olvidarme como se me ocurrio resolverlo
+//basicamente es asi, las facturas no las tocamos mas por que ya funcionan y es el core economico del sistema, asi que lo que podemos hacer es que en esta funcion en vez de mostrar facturas
+//mostar pedidos de compra con el nombre cambiado a Recibo X, entonces, como esto no impacta al stock, siempre puedo generar un recibo por el monto que pago el cliente, sumarlo a la factura como ya esta pasando, 
+//pero aca, en vez de ver la factura, verias este pedido de compra, para esto nececito que usuarioDTO venga aparte de con la lista de facturas ( que ahora vienen no solo le id, sino toda la factura)
+//que tenga una lista de IDs de pedidos de compra (factura x), y mostarlas aca, para hacer que el mostrador funcione habria que modificar esta funcion para que el href tambien agregue algo asi como ?doctype=buynote o algo asi para hacer
+//a la funicon mas Generica y que pueda manejar tanto facturas como otro tipo de documentos (habria que agregar en el back que busque ese param) y walla!, problema del recibo unico solucionado y sin modificar el core :_) soy tan bueno dios.
   const generarListaFacturas = () => {
     return usuario.facturas.map((facturaId) => (
       <li key={facturaId}>
