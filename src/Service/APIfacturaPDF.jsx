@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-const APIComponent = ({ id, setPdf }) => {
+const APIComponent = ({ id, setPdf, docType }) => {
   useEffect(() => {
     const fetchPdf = async () => {
       try {
-        
+        console.log(id, docType);
         const response = await fetch(
-          `http://localhost:8080/v1/getFacturaPDF?id=${id}`
+          `http://localhost:8080/v1/getFacturaPDF?id=${id}&docType=${docType}`
         );
         if (!response.ok) {
           throw new Error(
@@ -25,10 +25,11 @@ const APIComponent = ({ id, setPdf }) => {
           const data = await response.json();
           const base64 = data.data; // Asumiendo que data ya contiene el código base64 del PDF
           console.log(data.data)
+          console.log("por dios haceme caso computadora")
           setPdf(base64);
         }
       } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
+        console.error("There was a problem with the fetch operation: ", error);
       }
     };
 

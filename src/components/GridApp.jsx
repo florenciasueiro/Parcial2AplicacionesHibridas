@@ -349,10 +349,10 @@ export function CardGrid5({ handleClick }) {
 //que tenga una lista de IDs de pedidos de compra (factura x), y mostarlas aca, para hacer que el mostrador funcione habria que modificar esta funcion para que el href tambien agregue algo asi como ?doctype=buynote o algo asi para hacer
 //a la funicon mas Generica y que pueda manejar tanto facturas como otro tipo de documentos (habria que agregar en el back que busque ese param) y walla!, problema del recibo unico solucionado y sin modificar el core :_) soy tan bueno dios.
   const generarListaFacturas = () => {
-    return usuario.facturas.map((facturaId) => (
-      <li key={facturaId}>
-        <a href={`/factura?id=${facturaId}`}>
-          Factura {facturaId}
+    return usuario.ordenesCompra.map((orden) => (
+      <li key={orden.id}>
+        <a href={`/factura?id=${orden.id}&doctype=purchaseorder`}>
+          Recibo {orden.id}
         </a>
       </li>
     ));
