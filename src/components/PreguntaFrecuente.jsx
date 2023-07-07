@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FAQCSS from '../css/PreguntasFrecuentes.module.css';
 
-const PreguntaFrecuente = ({ pregunta, respuesta }) => {
+const PreguntaFrecuente = ({ pregunta, respuesta, handleLogic }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
@@ -18,6 +18,7 @@ const PreguntaFrecuente = ({ pregunta, respuesta }) => {
       {visible && (
         <div className={FAQCSS.faqAnswer}>
           {respuesta}
+          
         </div>
       )}
     </div>

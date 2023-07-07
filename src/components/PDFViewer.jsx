@@ -10,14 +10,15 @@ const PDFViewer = ({ pdfBase64 }) => {
   );
 };
 
-const FacturaPDFComponent = ({ id }) => {
+const FacturaPDFComponent = ({ id, doctype }) => {
   const [pdf, setPdf] = useState('');
 
   useEffect(() => {
     const fetchPdf = async () => {
       try {
+        console.log(id,doctype)
         const response = await fetch(
-          `https://restapinode-production.up.railway.app/v1/getFacturaPDF?id=${id}`,
+          `https://restapinode-production.up.railway.app/v1/getFacturaPDF?id=${id}&doctype=${doctype}`,
           {
             headers: {
               'Cache-Control': 'no-cache'

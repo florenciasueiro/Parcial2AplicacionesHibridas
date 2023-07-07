@@ -7,12 +7,9 @@ function IslandNotification({message }) {
   // useEffect(()=> { alert('test')},[playAnimation])
 
   return (
-    <div className={`${IslandNotificationCSS.container}  ${playAnimation ? IslandNotificationCSS.show : ''}`}>
+    <div className={`${IslandNotificationCSS.container}  ${IslandNotificationCSS.show}`}>
       <div className={`${IslandNotificationCSS.notification}  ${playAnimation ? IslandNotificationCSS.playAnimation : ''}`}>
-        <br/>
-        <br/>
-        <span style={{color:"black"}}>{notification}</span>
-        <br/>
+        <span className={IslandNotificationCSS.contenido}>{notification}</span>
       </div>
     </div>
   );

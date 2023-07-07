@@ -109,10 +109,10 @@ body {
 
 .shoppingCart .contentShow {
   /* box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075); */
-  background-color: white;
+  /* background-color: white; */
   /* background-color: rgba(0, 0, 0, 0.6); */
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  /* -webkit-backdrop-filter: blur(10px); */
+  /* backdrop-filter: blur(10px); */
   border-radius: 20px;
   padding: 40px 10px 10px 10px;
   left: calc(50vw - 146px);
@@ -124,6 +124,7 @@ body {
   opacity: 1;
   height: max-content;
   transition: all 300ms ease-in-out;
+  
 }
 
 .shoppingCart .content{
@@ -205,6 +206,7 @@ body {
 .summaryGroup{
   display: block;
   color: black;
+ 
 }
 
 .shoppingCart .summaryShow {
@@ -602,8 +604,15 @@ span[title]:hover:after {
   margin-top: 3px;
   padding:8px;
 }
-.text-white{
-  color: white;
+.textContainer{
+  display: flex;
+}
+.textNotification{
+  color: black;
+  width: 100%;
+  padding:10px;
+  margin:10px;
+  align-self: center;
   
 }
 
@@ -730,13 +739,13 @@ span[title]:hover:after {
 
 
 
-* 
-
 .container {
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
+  width: 100%;
+  padding: 10px;
 }
 
 .tabs {
@@ -745,6 +754,8 @@ span[title]:hover:after {
   background-color: #E8E8EC;
   padding: 0.3rem;
   border-radius: 5px;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .tabs * {
@@ -792,33 +803,27 @@ input[type="radio"]:checked + label > .notification {
 }
 
 input[id="radio1"]:checked ~ .glider {
-	transform: translateX(0);
+	transform: translateX(-107%);
 }
 
 input[id="radio2"]:checked ~ .glider {
-	transform: translateX(100%);
+	transform: translateX(0%);
 }
 
 input[id="radio3"]:checked ~ .glider {
-	transform: translateX(200%);
+	transform: translateX(107%);
 }
 
 .glider {
 	position: absolute;
 	display: flex;
 	height: 36px;
-	width: 100px;
+	width: 110px;
 	background-color: white;
 	z-index: 1;
 	border-radius: 2px;
 	transition: 0.25s ease-out;
 }
-
-@media (max-width: 700px) {
-	.tabs {
-		transform: scale(0.6);
-	}
-} 
 
 
 

@@ -26,7 +26,7 @@ function Inicio() {
       usuario: usuario,
       funnelID: "641c5f375ba494fd3803b591",
       stageID:"641c5f375ba494fd3803b592"});
-   
+    
   }
   const handleClick = () => { 
     if(!usuario){
@@ -58,8 +58,8 @@ function Inicio() {
       </Link>  
 
       <div className={InicioCSS.cards}>
-        <CardGrid9/>
-        <CardGrid10/>
+        {/* <CardGrid9/>
+        <CardGrid10/> esta tiene que llevar el video del telefono despues */}
         <CardGrid11/>
         <CardGrid12 handleClick={handleClick}/>   
       </div>
