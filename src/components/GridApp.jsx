@@ -318,7 +318,7 @@ export function CardGrid5({ handleClick }) {
     };
 
     fetchData();
-    
+    //test
   }, [valorDolar]);
   
 
