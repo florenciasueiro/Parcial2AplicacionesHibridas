@@ -10,14 +10,15 @@ const PDFViewer = ({ pdfBase64 }) => {
   );
 };
 
-const FacturaPDFComponent = ({ id }) => {
+const FacturaPDFComponent = ({ id, doctype }) => {
   const [pdf, setPdf] = useState('');
 
   useEffect(() => {
     const fetchPdf = async () => {
       try {
+        console.log(id,doctype)
         const response = await fetch(
-          `http://localhost:8080/v1/getFacturaPDF?id=${id}`,
+          `http://localhost:8080/v1/getFacturaPDF?id=${id}&doctype=${doctype}`,
           {
             headers: {
               'Cache-Control': 'no-cache'

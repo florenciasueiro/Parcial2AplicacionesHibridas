@@ -22,7 +22,7 @@ function FacturaPage() {
 
 
   return (
-    <PDFViewer data={id} docType={Object.fromEntries(urlParams).doctype}/>
+    <PDFViewer id={id} doctype={docType}/>
   );
 }
 
