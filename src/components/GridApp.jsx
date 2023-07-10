@@ -167,7 +167,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 6,
       title: 'Direccion',
-      description:` Dirección: ${usuario.address.address}`,
+      description:`${usuario.address.address}`,
       card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
@@ -175,7 +175,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 7,
       title: 'Idioma',
-      description: `Idioma: ${usuario.lang}`,
+      description: `${usuario.lang}`,
       card: <LanguageCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLanguage} />
@@ -183,7 +183,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 8,
       title: 'Teléfono',
-      description: `telefono: ${usuario.mobile}`,
+      description: `${usuario.mobile}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
@@ -207,7 +207,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 10,
       title: 'Género',
-      description: `Género actual:${usuario.genero}`,
+      description: `${usuario.genero}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
       contenido:   (<form>
