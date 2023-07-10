@@ -856,3 +856,8 @@ input[id="radio3"]:checked ~ .glider {
   font-size: 12px;
   align-items: baseline;
 }
+
+
+.transparency50 {
+  opacity: 0.5;
+}
