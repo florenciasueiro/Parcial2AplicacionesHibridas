@@ -191,7 +191,7 @@ function Navbar() {
         <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarCSS.box : ''}`}>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarCSS.logo : ''}`}>
-              <img src={"/img/LogoNegro.png"} alt="" />
+              <img src={"/img/LogoNegro.png"} alt="Logo asset" />
             </NavLink>
           </li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>

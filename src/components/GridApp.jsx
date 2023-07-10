@@ -67,7 +67,7 @@ export function CardGrid({ handleClick }) {
       inputs: [
         { placeholder: 'Contraseña actual', type: 'password', change: handleChange},
         { placeholder: 'Nueva contraseña', type: 'password', change: handleChange },
-        { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, button: 'Cambiar',onClick: btnClick}
+        { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, className: 'boton', button: 'Cambiar',onClick: btnClick}
       ],
     },
     // {
