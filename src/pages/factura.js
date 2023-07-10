@@ -13,14 +13,16 @@ function FacturaPage() {
 
   const urlParams = new URLSearchParams(window.location.search);
   const id = Object.fromEntries(urlParams).id;
+  const docType = Object.fromEntries(urlParams).doctype;
   console.log(Object.fromEntries(urlParams))
+  console.log(Object.fromEntries(urlParams).doctype)
   let message = '';
 
 
 
 
   return (
-    <PDFViewer id={id}/>
+    <PDFViewer id={id} doctype={docType}/>
   );
 }
 

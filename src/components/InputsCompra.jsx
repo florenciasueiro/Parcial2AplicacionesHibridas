@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
+
 import InputCSS from '../css/Inputs.module.css';
 import useProducto from '../Service/APIproducto';
 import useServicio from '../Service/APIservicio';
@@ -225,7 +226,7 @@ useEffect(() => {
     else setShowLoged(true);
   }, [usuario]);
 
-
+  
 
   useEffect(() => {
     if(orderData.description){    
@@ -280,6 +281,9 @@ useEffect(() => {
           <Payment />
       </div>
                     );}
+                    else{
+                      activar(false)
+                    }
 
       // setTimeout(() => {
       //   activar(false);

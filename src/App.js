@@ -1,4 +1,5 @@
 import React ,{ useState, useEffect, useMemo} from 'react';
+
 import './App.css';
 import Base from './pages/Base.js';
 import { BrowserRouter } from 'react-router-dom';
@@ -67,6 +68,28 @@ function App() {
   const contextValue = useMemo(() => {
     return {activar, playAnimation, notificar, notification };
   }, [activar,playAnimation, notificar, notification]);
+
+
+  
+    // useEffect(() => {
+    //   const handleLocationChange = () => {
+    //     const currentPath = window.location.pathname;
+    //     // Realiza las acciones necesarias con la ubicación actual
+    //     alert('La ubicación ha cambiado:', currentPath);
+    //   };
+  
+    //   // Agrega un event listener para detectar cambios en la ubicación
+    //   window.addEventListener('popstate', handleLocationChange);
+  
+    //   // Limpia el event listener cuando el componente se desmonte
+    //   return () => {
+    //     window.removeEventListener('popstate', handleLocationChange);
+    //   };
+    // }, [BrowserRouter,Base,Footer]);
+
+
+
+
   
 
   return (

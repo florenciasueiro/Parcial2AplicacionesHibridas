@@ -324,30 +324,36 @@ export function CardGrid5({ handleClick }) {
 
 
   useEffect(() => {
-    if (facturaInfo && facturaInfo.info && facturaInfo.info.products) {
-      setProductName(facturaInfo.info.products[0].name);
+    console.log(facturaInfo)
+    if (facturaInfo && facturaInfo.products) {
+      setProductName(facturaInfo.products[0].name);
     }
   }, [facturaInfo]);
 
-  const toggleFacturaInfo = (facturaId) => {
-    if (selectedFacturaId === facturaId) {
-      setSelectedFacturaId(null);
-      setShowFacturaInfo(false);
-    } else {
+  const toggleFacturaInfo = async (facturaId) => {
+    // if (selectedFacturaId !== facturaId) {
+    //   setSelectedFacturaId(null);
+    //   setShowFacturaInfo(false);
+    // } else {
       setSelectedFacturaId(facturaId);
-      setShowFacturaInfo(true);
       setIsLoading(true);
-      orderData.description=`Cuota N: ${parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}`
-      orderData.amount= (calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue)))*0.79
-      preference();
-    }
+      orderData.description=`Cuota N: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`
+      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))*0.79
+      await preference();
+      setShowFacturaInfo(true);
+    // }
   };
-
+//lo anoto para no olvidarme como se me ocurrio resolverlo
+//basicamente es asi, las facturas no las tocamos mas por que ya funcionan y es el core economico del sistema, asi que lo que podemos hacer es que en esta funcion en vez de mostrar facturas
+//mostar pedidos de compra con el nombre cambiado a Recibo X, entonces, como esto no impacta al stock, siempre puedo generar un recibo por el monto que pago el cliente, sumarlo a la factura como ya esta pasando, 
+//pero aca, en vez de ver la factura, verias este pedido de compra, para esto nececito que usuarioDTO venga aparte de con la lista de facturas ( que ahora vienen no solo le id, sino toda la factura)
+//que tenga una lista de IDs de pedidos de compra (factura x), y mostarlas aca, para hacer que el mostrador funcione habria que modificar esta funcion para que el href tambien agregue algo asi como ?doctype=buynote o algo asi para hacer
+//a la funicon mas Generica y que pueda manejar tanto facturas como otro tipo de documentos (habria que agregar en el back que busque ese param) y walla!, problema del recibo unico solucionado y sin modificar el core :_) soy tan bueno dios.
   const generarListaFacturas = () => {
-    return usuario.facturas.map((facturaId) => (
-      <li key={facturaId}>
-        <a href={`/factura?id=${facturaId}`}>
-          Factura {facturaId}
+    return usuario.ordenesCompra.map((orden) => (
+      <li key={orden.id}>
+        <a href={`/factura?id=${orden.id}&doctype=purchaseorder`}>
+          Recibo {orden.docNumber}
         </a>
       </li>
     ));
@@ -388,6 +394,7 @@ const preference = () => {
 }
 
   const pagarCuota = () => {
+
     if (productName) {
 
       
@@ -401,18 +408,18 @@ const preference = () => {
           <button onClick={() => toggleFacturaInfo(facturaId)}>
             Pagar Cuota de producto {productName}
           </button>
-          {showFacturaInfo && selectedFacturaId === facturaId && (
+          {showFacturaInfo && (
             <div>
               
               <h3>Información de la factura</h3>
-              <p>Número de factura: {facturaInfo.info.id}</p>
-              <p>Fecha de emisión: {format(new Date(facturaInfo.info.date*1000),'dd/MM/yyyy')}</p>
-              <p>Fecha de vencimiento: {format(new Date(facturaInfo.info.date*1000),'dd/MM/yyyy')}</p>
-              <p>Financiacion: {facturaInfo.info.customFields[0].value}</p>
-              <p>Total a pagar: USD${facturaInfo.info.total}</p>
-              <p>Cuota N: {parseInt(facturaInfo.info.customFields[1].value.charAt(0))+1}</p>
-              <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.info.customFields[0].value,facturaInfo.info.total)}</p>
-              <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.info.customFields[0].value),(facturaInfo.info.total*dolarValue))}</p>
+              <p>Número de factura: {facturaInfo.docNumber}</p>
+              <p>Fecha de emisión: {format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</p>
+              <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
+              <p>Financiacion: {facturaInfo.customFields[0].value}</p>
+              <p>Total a pagar: USD${facturaInfo.total}</p>
+              <p>Cuota N: {parseInt(facturaInfo.customFields[1].value.charAt(0))+1}</p>
+              <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
+              <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
               
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
       <main>
