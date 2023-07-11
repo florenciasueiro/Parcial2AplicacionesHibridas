@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import useEditarUsuario from '../Service/APIeditarUsuario'
+import PerfilCSS from '../css/Perfil.module.css';
+
 
 function BirthdayCard() {
   const [fechaNacimiento, setFechaNacimiento] = useState(null);
@@ -21,8 +23,8 @@ function BirthdayCard() {
   }
 
   return (
-    <div>
-      <h2>Seleccionar Fecha de Nacimiento</h2>
+    <div className={PerfilCSS.cumple}>
+      {/* <h2>Seleccionar Fecha de Nacimiento</h2> */}
       <DatePicker
         selected={fechaNacimiento}
         onChange={handleFechaNacimientoChange}
@@ -33,7 +35,7 @@ function BirthdayCard() {
         scrollableYearDropdown
         placeholderText="Seleccionar fecha de nacimiento"
       />
-      <button onClick={handleClick}>Guardar Cambios</button>
+      <button className={PerfilCSS.boton} onClick={handleClick}>Cambiar</button>
     </div>
   );
 }

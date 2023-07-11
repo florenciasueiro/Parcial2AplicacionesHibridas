@@ -52,7 +52,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 1,
       title: 'Asset ID',
-      description: `Tu Asset ID es: ${usuario.email}`,
+      description: `${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
 
@@ -144,11 +144,11 @@ export function CardGrid2({ handleClick }) {
 
           inputs: [
             { placeholder: 'Nombre', type: 'text', change: handleNameChange},
-            { placeholder: 'Apellido', type: 'text',change: handleNameChange, button: 'Guardar cambios',onClick: btnNameClick}
+            { placeholder: 'Apellido', type: 'text',change: handleNameChange, button: 'Cambiar',onClick: btnNameClick}
           ],
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faIdCard} />,
-      // button: 'Guardar cambios',
+      // button: 'Cambiar',
     },
     {
       id: 5,
@@ -156,10 +156,9 @@ export function CardGrid2({ handleClick }) {
       description:(
         <span style={{ textAlign: 'center' }}>
           {formattedDate}<br/>
-          <span>Modificar fecha de nacimiento</span>
         </span>
       ),
-      // button: 'Guardar cambios',
+      // button: 'Cambiar',
       card: <BirthdayCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendar} />
@@ -167,7 +166,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 6,
       title: 'Direccion',
-      description:` Dirección: ${usuario.address.address}`,
+      description:`${usuario.address.address}`,
       card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
@@ -175,7 +174,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 7,
       title: 'Idioma',
-      description: `Idioma: ${usuario.lang}`,
+      description: `${usuario.lang}`,
       card: <LanguageCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLanguage} />
@@ -183,7 +182,7 @@ export function CardGrid2({ handleClick }) {
     {
       id: 8,
       title: 'Teléfono',
-      description: `telefono: ${usuario.mobile}`,
+      description: `${usuario.mobile}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
@@ -202,25 +201,24 @@ export function CardGrid2({ handleClick }) {
         <input type="text" id="email" name="email" placeholder="Modificar emal"/>
         <input type="text" id="email" name="segundoNombre" placeholder="Añadir nuevo email"/>
     </form>),
-    button: 'Guardar cambios',
+    button: 'Cambiar',
     },
     {
       id: 10,
       title: 'Género',
-      description: `Género actual:${usuario.genero}`,
+      description: `${usuario.genero}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
       contenido:   (<form>
       <label for="genero">Género:</label>
       <select id="genero" name="genero" value={usuario.genero} onChange={handleGeneroChange}>
-        <option value="masculino">Masculino</option>
-        <option value="femenino">Femenino</option>
-        <option value="no-binario">No binario</option>
-        <option value="prefiero-no-mencionarlo">Prefiero no mencionarlo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="No binario">No binario</option>
+        <option value="Prefiero no mencionarlo">Prefiero no mencionarlo</option>
       </select>
-      
     </form>),
-    button: 'Guardar cambios',
+    button: 'Cambiar',
     change: handleGeneroClick,
     },
   ];
