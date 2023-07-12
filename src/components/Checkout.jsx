@@ -45,9 +45,10 @@ const Checkout = ({ onClick }) => {
       activar(true);
       // notificar(<div style={{height: refA.current.offsetHeight}}></div>);}
       notificar(
-      
-        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]}>
-        <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
+        
+        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"] + " " + InputCSS["conjunto"]} style={{ width: '100%' }}>
+
+        <div style={{ width: '100%' }} className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
           {/* <h3>Cart</h3> */}
           {showLoged ? (
             <div>
@@ -64,14 +65,19 @@ const Checkout = ({ onClick }) => {
             </div>
           ) : (
             <div className={InputCSS["summaryGroup"]}>
+              
+              
+
               <div className={InputCSS["summary-item"]}>
                 <span className={InputCSS["text"]}>Subtotal USD$</span>
-                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-+ IVA</span>
+                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>
+                  {(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  + IVA</span>
                 
                 <span className={InputCSS["text"]}>Subtotal ARS$</span>
-                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-+ IVA</span>
+                <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>
+                  {orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  + IVA</span>
               </div>
               <button
                 className={InputCSS.test}

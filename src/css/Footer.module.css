@@ -61,8 +61,12 @@ ul{
     
 }
 .linkText{
+    background-color: transparent;
+    border: none;
     color: #0645AD  ;
     text-decoration: none;
+    cursor: pointer;
+    font-size: 11px;
 }
 
 .groupLink{

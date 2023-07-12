@@ -92,7 +92,7 @@ function Navbar() {
       if (status === 'approved' && compra) {
         activar(true);
         
-        notificar(<div><span>Tu compra esta aprobada</span></div>)
+        notificar(<div><span>Tu pago esta aprobado</span></div>)
         postVenta(compra);
         suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
 
@@ -101,9 +101,9 @@ function Navbar() {
         
         sessionStorage.setItem('compra',null)
       } else if (status === 'failure') {
-        notificar(<div><span>Tu compra fue rechazada</span></div>)
+        notificar(<div><span>Tu pago fue rechazado</span></div>)
       } else if (status === 'pending') {
-        notificar(<div><span>Tu compra se encuentra pendiente</span></div>)
+        notificar(<div><span>Tu pago se encuentra pendiente</span></div>)
       }
       setTimeout(() => {
         activar(false);
@@ -174,7 +174,7 @@ function Navbar() {
       activar(true);
       sessionStorage.setItem('welcomeCounter', '1');
 
-      notificar(<div><span>Bienvenido</span></div>)
+      notificar(<div className={`${NavbarCSS.NotificationContainer}`}><span>Bienvenido</span></div>)
       setTimeout(() => {
         activar(false);
       }, 3000);
@@ -191,7 +191,7 @@ function Navbar() {
         <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarCSS.box : ''}`}>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarCSS.logo : ''}`}>
-              <img src={"/img/LogoNegro.png"} alt="" />
+              <img src={"/img/LogoNegro.png"} alt="Logo asset" />
             </NavLink>
           </li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>

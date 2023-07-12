@@ -12,6 +12,7 @@ import { SpinnerCircular } from 'spinners-react';
 
 import Payment from "./Payment";
 import  {Context as NotificationContext} from '../context/notification-context'
+import { OpacityOutlined } from '@mui/icons-material';
 
 //credencial de prueba test user 1
 initMercadoPago("APP_USR-cea272c1-a889-4a00-8d37-6f86ba43adb1");
@@ -116,7 +117,7 @@ export default function RadioInputs({seleccion}) {
 
   const urlParams = new URLSearchParams(window.location.search);
   const status = Object.fromEntries(urlParams).status;
-  console.log("params del link:",Object.fromEntries(urlParams))
+  // console.log("params del link:",Object.fromEntries(urlParams))
   
 
   
@@ -126,6 +127,7 @@ export default function RadioInputs({seleccion}) {
   const sumRef            = useRef(null);
   const pagoRef           = useRef(null);
   const cwRef             = useRef(null);
+  const FinanciationRef   = useRef(null);
 
   const request = {
     terreno         : selectedTerreno,
@@ -148,13 +150,13 @@ const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 orderData.user = usuario;
 
-useEffect(() => {
-  const logOrderData = async () => {
-    console.log("orderData:", await orderData);
-  };
+// useEffect(() => {
+//   const logOrderData = async () => {
+//     console.log("orderData:", await orderData);
+//   };
 
-  logOrderData();
-}, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
+//   logOrderData();
+// }, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
 
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
@@ -166,6 +168,14 @@ useEffect(() => {
 //   cardRef.current.scrollIntoView({ behavior: 'smooth' });
 //   }
 // }, [selectedTerreno,input2Disabled]);
+
+useEffect(
+  () => {
+    
+  window.scrollTo({top: 0, behavior: 'smooth' });
+    
+}, []);
+
 
 useEffect(
   () => {
@@ -195,11 +205,17 @@ useEffect(
       }
     }, [selectedSUM]);
 
+    useEffect(
+      () => {
+        if(!(selectedCW==='')){
+        FinanciationRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, [selectedCW]);
 
 // useEffect(() => {pagoRef.current.scrollIntoView({ behavior: 'smooth' });}, [selectedSUM]);
 useEffect(()=>{
   seleccion(orderData);
-  console.log('se deberia estar mandando')
+  // console.log('se deberia estar mandando')
 },[orderData, setOrderData,selectedTerreno, selectedCard, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW]);
 
 //
@@ -216,7 +232,7 @@ useEffect(() => {
       
     }
   }
-  console.log("servicios:", servicios);
+  // console.log("servicios:", servicios);
   cargar();
   
 }, [servicios,productos]);
@@ -237,9 +253,11 @@ useEffect(() => {
       // setIsLoading(true);
       notificar(
       
-        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]}>
+        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]} style={{ width: '100%', paddingBottom: '5px'}}>
         <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
-          {/* <h3>Cart</h3> */}
+        <span className={InputCSS.raya}></span>
+        <p>Costo de reserva</p>
+        <span className={InputCSS.raya}></span>
           {showLoged ? (
             <div className={InputCSS["textContainer"]}>
             <span className={InputCSS["textNotification"]}>Debes iniciar sesión para comprar.</span>
@@ -322,11 +340,11 @@ function checkPriceByName(name) {
 }
 const servicePrice = (name2find) => {
   
-  console.log(servicios);
-  console.log(servicios.map(item => item.name));
+  // console.log(servicios);
+  // console.log(servicios.map(item => item.name));
 
   const serv = servicios.find(item => item.name.toLowerCase() === name2find.toLowerCase());
-  console.log(servicios.find(item => item.name.toLowerCase() === name2find.toLowerCase()))
+  // console.log(servicios.find(item => item.name.toLowerCase() === name2find.toLowerCase()))
   
   if (serv && serv.price) {
     return serv.price;
@@ -350,6 +368,8 @@ orderData.price = checkPriceByName(request.terreno);
 const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
+  orderData.backURL="feedback"
+  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa"
   setIsLoading(true);
 
   // postVenta();
@@ -416,13 +436,8 @@ orderData.dolarValue = dolarValue;
 
 
 
-  const handleSelectFinanciation = (value) => {
-    setSelectedFinanciation(value);
-    console.log(value)
-    orderData.amount = calculateAmount(value, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
-  }
-  
-  
+
+
   const handleSelectTerreno = (event) => {
     setSelectedTerreno(event.target.value);
     orderData.amount = calculateAmount(selectedFinanciation, event.target.value, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
@@ -474,23 +489,23 @@ orderData.dolarValue = dolarValue;
     const handleSelectGuarderia = (event) => {
       setSelectedGuarderia(event.target.value);
   
-    if (event.target.value !== '') {
-      setInput5Disabled(false);
-      
-      orderData.guarderiaPrice = servicePrice("Pase Kinder");
-      console.log("servicePrice('Pase Kinder')",servicePrice("Pase Kinder"))
-      console.log("servicePrice(selectedAlmacenamiento)",servicePrice(selectedAlmacenamiento))
-      console.log("selectedGuarderia",event.target.value)
-      orderData.amount = calculateAmount( selectedFinanciation, selectedTerreno, selectedAlmacenamiento, event.target.value, selectedSUM, selectedCW);
-    } else {
-      setInput5Disabled(true);
-    }
-  };
-  
-  
-  
-  
-  
+      if (event.target.value !== '') {
+        setInput5Disabled(false);
+        
+        orderData.guarderiaPrice = servicePrice("Pase Kinder");
+        console.log("servicePrice('Pase Kinder')",servicePrice("Pase Kinder"))
+        console.log("servicePrice(selectedAlmacenamiento)",servicePrice(selectedAlmacenamiento))
+        console.log("selectedGuarderia",event.target.value)
+        orderData.amount = calculateAmount( selectedFinanciation, selectedTerreno, selectedAlmacenamiento, event.target.value, selectedSUM, selectedCW);
+      } else {
+        setInput5Disabled(true);
+      }
+    };
+    
+    
+    
+    
+    
   const handleSelectSUM = async(event) => {
     setSelectedSUM(event.target.value);
     
@@ -504,23 +519,34 @@ orderData.dolarValue = dolarValue;
     }
   };
 
-
+  
   const handleSelectCW = (event) => {
     setSelectedCW(event.target.value);
     
     orderData.cwPrice = servicePrice("Pase CoWorking");
     orderData.amount = calculateAmount(selectedFinanciation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, event.target.value);
     // setIsLoading(true);
-    handleClick();
     if (event.target.value !== '') {
       setInput7Disabled(false);
- 
+      
     } else {
       setInput7Disabled(true);
     }
   };
   //manda para afuera el order data
-
+  
+  const handleSelectFinanciation = (value) => {
+    handleClick();
+    setSelectedFinanciation(value);
+    console.log(value)
+    orderData.amount = calculateAmount(value, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+  }
+  //Para corregir:
+  // ahora si el cliente llegua hasta financiacion y luego cambia algo ese algo no se va a impactar en mercado pago
+  // para solucionarlo se puede hacer varias cosas 
+  // 1: se puede agregar handleClick() en calculateAmount, pero esto haria que el boton de mercado pago aparezca desde la primera 
+  //2: 1 pero corroborando que solo lo ejecute una vez qeu todo tenga un valor disitinto al inicial 
+  //3: bueno claramente eso es lo mas facil deberias hacerlo ahora pajerito
 
 
   let itemGrilla1;
@@ -635,19 +661,19 @@ orderData.dolarValue = dolarValue;
 
   switch (selectedFinanciation) {
     case 'contado':
-      itemGrilla7 = 'opcion1';
-      itemGrilla8 = 'opcion2';
-      itemGrilla9 = 'opcion3';
+      itemGrilla7 = 'contado opcion1';
+      itemGrilla8 = 'contado opcion2';
+      itemGrilla9 = 'contado opcion3';
       break;
     case 'financiado7030':
-      itemGrilla7 = 'opcion4';
-      itemGrilla8 = 'opcion5';
-      itemGrilla9 = 'opcion6';
+      itemGrilla7 = 'financiado7030opcion4';
+      itemGrilla8 = 'financiado7030 opcion5';
+      itemGrilla9 = 'financiado7030 opcion6';
       break;
     case 'financiado100':
-      itemGrilla7 = 'opcion7';
-      itemGrilla8 = 'opcion8';
-      itemGrilla9 = 'opcion9';
+      itemGrilla7 = 'financiado100 opcion7';
+      itemGrilla8 = 'financiado100 opcion8';
+      itemGrilla9 = 'financiado100 opcion9';
       break;
       default:
         itemGrilla7 = 'opcion11';
@@ -657,10 +683,14 @@ orderData.dolarValue = dolarValue;
     }
 
 
+    
+    // className={selectedTerreno? "" : InputCSS.transparency50}
+
 if(cargaron){
 
   return (
-    <div>
+    
+    <div >
       <div>
         <div>
           <b className={InputCSS.b}>Terreno.</b>
@@ -671,7 +701,7 @@ if(cargaron){
         </div>
         {/* <div className={InputCSS['icono']}>?</div> */}
 
-        <div className={InputCSS.grilla}>
+        <div className={InputCSS.grilla}> 
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla1}</div>
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla2}</div>
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla3}</div>
@@ -778,295 +808,256 @@ if(cargaron){
         <br/>
         
       </div>
+      </div>
+      <div className={selectedTerreno?        "" : InputCSS.transparency50}>
+      <div className={`${InputCSS['ref']}`} ref={cardRef}>
+        <div>
+          <b className={InputCSS.b}>Asset Card.</b>
+          <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p>
+          {/* <div className={InputCSS.moreInfo}>
+          <Info2/>
+          </div> */}
         </div>
 
-
-        <div className={InputCSS['ref']} ref={cardRef}>
-  <div>
-    <b className={InputCSS.b}>Asset Card.</b>
-    <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p>
-    {/* <div className={InputCSS.moreInfo}>
-      <Info2/>
-    </div> */}
-  </div>
-
-  <div>
-    <p className={InputCSS['pCantidad']}>Cantidad de Asset cards</p>
-  </div>
-  <div className={InputCSS['radioInputsCard']}>
-    <label className={`${InputCSS['radioInputCard']} ${selectedCard === '1' ? InputCSS.selected : ''}`}>
-      <span>
-        <input
-          type="radio"
-          value="1"
-          checked={selectedCard === '1'}
-          onChange={handleSelectCard}
-          disabled={input2Disabled}
-        />
-        <div className={InputCSS.circle}>1</div>
-      </span>
-    </label>
-    <label className={`${InputCSS['radioInputCard']} ${selectedCard === '2' ? InputCSS.selected : ''}`}>
-      <span>
-        <input
-          type="radio"
-          value="2"
-          checked={selectedCard === '2'}
-          onChange={handleSelectCard}
-          disabled={input2Disabled}
-        />
-        <div className={InputCSS.circle}>2</div>
-      </span>
-    </label>
-    <label className={`${InputCSS['radioInputCard']} ${selectedCard === '3' ? InputCSS.selected : ''}`}>
-      <span>
-        <input
-          type="radio"
-          value="3"
-          checked={selectedCard === '3'}
-          onChange={handleSelectCard}
-          disabled={input2Disabled}
-        />
-        <div className={InputCSS.circle}>3</div>
-      </span>
-    </label>
-    <label className={`${InputCSS['radioInputCard']} ${selectedCard === '4' ? InputCSS.selected : ''}`}>
-      <span>
-        <input
-          type="radio"
-          value="4"
-          checked={selectedCard === '4'}
-          onChange={handleSelectCard}
-          disabled={input2Disabled}
-        />
-        <div className={InputCSS.circle}>4</div>
-      </span>
-    </label>
-    <br />
-  </div>
-</div>
-
-
-        <div className={InputCSS['ref']} ref={almacenamientoRef}>
+        <div>
+          <p className={InputCSS['pCantidad']}>Cantidad de Asset cards</p>
+        </div>
+        <div className={InputCSS['radioInputsCard']}>
+          <label className={`${InputCSS['radioInputCard']} ${selectedCard === '1' ? InputCSS.selected : ''}`}>
+            <span>
+              <input
+                type="radio"
+                value="1"
+                checked={selectedCard === '1'}
+                onChange={handleSelectCard}
+                disabled={input2Disabled}
+              />
+              <div className={InputCSS.circle}>1</div>
+            </span>
+          </label>
+          <label className={`${InputCSS['radioInputCard']} ${selectedCard === '2' ? InputCSS.selected : ''}`}>
+            <span>
+              <input
+                type="radio"
+                value="2"
+                checked={selectedCard === '2'}
+                onChange={handleSelectCard}
+                disabled={input2Disabled}
+                />
+              <div className={InputCSS.circle}>2</div>
+            </span>
+          </label>
+          <label className={`${InputCSS['radioInputCard']} ${selectedCard === '3' ? InputCSS.selected : ''}`}>
+            <span>
+              <input
+                type="radio"
+                value="3"
+                checked={selectedCard === '3'}
+                onChange={handleSelectCard}
+                disabled={input2Disabled}
+                />
+              <div className={InputCSS.circle}>3</div>
+            </span>
+          </label>
+          <label className={`${InputCSS['radioInputCard']} ${selectedCard === '4' ? InputCSS.selected : ''}`}>
+            <span>
+              <input
+                type="radio"
+                value="4"
+                checked={selectedCard === '4'}
+                onChange={handleSelectCard}
+                disabled={input2Disabled}
+              />
+              <div className={InputCSS.circle}>4</div>
+            </span>
+          </label>
+          <br />
+        </div> 
+      </div>
+      </div>
+      <div className={selectedCard?           "" : InputCSS.transparency50}>
+      <div className={InputCSS['ref']} ref={almacenamientoRef}>
         <div>
           <b className={InputCSS.b}>Almacenamiento.</b>
           <p className={InputCSS.p}>¿Cuánto espacio es el adecuado?</p>
+            {/* <div className={InputCSS.moreInfo}>
+              <Info3/>
+            </div> */}
+
+            <div className={InputCSS.grilla}>
+              <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla4}</div>
+              <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla5}</div>
+              <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla6}</div>
+              <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Alto</div>
+              <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Ancho</div>
+              <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Profundidad</div>
+            </div>
+
+        </div>
+          <div className={InputCSS['radioInputs']}>
+          <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento S' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="Almacenamiento S" checked={selectedAlmacenamiento === 'Almacenamiento S'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled} />
+              Pequeño
+          </span>
+          {/* <span className={InputCSS['precio']}>No disponible</span> */}
+          </label>
+          <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento M' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="Almacenamiento M" checked={selectedAlmacenamiento === 'Almacenamiento M'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
+            Mediano
+          </span>
+          {/* <span className={InputCSS['precio']}>No disponible</span> */}
+          </label>
+          <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento L' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="Almacenamiento L" checked={selectedAlmacenamiento === 'Almacenamiento L'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
+            Grande
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <br/>
+        </div>
+      </div>
+      </div>
+      <div className={selectedAlmacenamiento? "" : InputCSS.transparency50}>
+      <div className={InputCSS['ref']} ref={guarderiaRef}>
+        <div>
+          <b className={InputCSS.b}> Sala de juegos.</b>
+          <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p>
           {/* <div className={InputCSS.moreInfo}>
-            <Info3/>
-          </div> */}
-
-          <div className={InputCSS.grilla}>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla4}</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla5}</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla6}</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Alto</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Ancho</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Profundidad</div>
-          </div>
-
+              <Info4/>
+            </div> */}
         </div>
         <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento S' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="Almacenamiento S" checked={selectedAlmacenamiento === 'Almacenamiento S'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled} />
-            Pequeño
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento M' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="Almacenamiento M" checked={selectedAlmacenamiento === 'Almacenamiento M'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
-          Mediano
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Almacenamiento L' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="Almacenamiento L" checked={selectedAlmacenamiento === 'Almacenamiento L'} onChange={handleSelectAlmacenamiento} disabled={input3Disabled}/>
-          Grande
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <br/>
+          <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '1' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="1" checked={selectedGuarderia === '1'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+            1 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '3' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="3" checked={selectedGuarderia === '3'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+            3 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '6' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="6" checked={selectedGuarderia === '6'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+            6 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '12' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="12" checked={selectedGuarderia === '12'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+            12 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '0' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="0" checked={selectedGuarderia === '0'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
+            Ninguno
+          </span></label>
+          <br/>
+        </div>
       </div>
       </div>
-
-
-      <div className={InputCSS['ref']} ref={guarderiaRef}>
-      <div>
-        <b className={InputCSS.b}> Sala de juegos.</b>
-        <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p>
-        {/* <div className={InputCSS.moreInfo}>
-            <Info4/>
-          </div> */}
-      </div>
-      <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '1' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="1" checked={selectedGuarderia === '1'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          1 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '3' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="3" checked={selectedGuarderia === '3'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          3 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '6' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="6" checked={selectedGuarderia === '6'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          6 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '12' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="12" checked={selectedGuarderia === '12'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          12 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedGuarderia === '0' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="0" checked={selectedGuarderia === '0'} onChange={handleSelectGuarderia} disabled={input4Disabled}/>
-          Ninguno
-        </span></label>
-        <br/>
-      </div>
-      </div>
-
+      <div className={selectedGuarderia?      "" : InputCSS.transparency50}>
       <div className={InputCSS['ref']} ref={sumRef}>
-      <div>
-        <b className={InputCSS.b}> SUM</b>
-        <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p>
-        {/* <div className={InputCSS.moreInfo}>
-            <Info5/>
-          </div> */}
-      </div>
-      <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="6" checked={selectedSUM === '6'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-          6 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedSUM === '12' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="12" checked={selectedSUM === '12'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-          12 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedSUM === '24' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="24" checked={selectedSUM === '24'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-          24 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedSUM === '0' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="0" checked={selectedSUM === '0'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-          Ninguno
-        </span></label>
-        <br/>
-      </div>
-      </div>
-
-      <div className={InputCSS['ref']} ref={cwRef}>
-      <div>
-        <b className={InputCSS.b}>Coworking</b>
-        <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
-        {/* <div className={InputCSS.moreInfo}>
-          <Info6/>
-        </div> */}
-      </div>
-      <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedCW === '3' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="3" checked={selectedCW === '3'} onChange={handleSelectCW} disabled={input6Disabled}/>
-          3 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedCW === '6' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="6" checked={selectedCW === '6'} onChange={handleSelectCW} disabled={input6Disabled}/>
-          6 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedCW === '12' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="12" checked={selectedCW === '12'} onChange={handleSelectCW} disabled={input6Disabled}/>
-          12 Meses
-        </span><span className={InputCSS['precio']}>No disponible</span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedCW === '0' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="0" checked={selectedCW === '0'} onChange={handleSelectCW} disabled={input6Disabled}/>
-          Ninguno
-        </span></label>
-        <br/>
+        <div>
+          <b className={InputCSS.b}> SUM</b>
+          <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p>
+          {/* <div className={InputCSS.moreInfo}>
+              <Info5/>
+            </div> */}
+        </div>
+        <div className={InputCSS['radioInputs']}>
+          <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="6" checked={selectedSUM === '6'} onChange={handleSelectSUM} disabled={input5Disabled}/>
+            6 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedSUM === '12' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="12" checked={selectedSUM === '12'} onChange={handleSelectSUM} disabled={input5Disabled}/>
+            12 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedSUM === '24' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="24" checked={selectedSUM === '24'} onChange={handleSelectSUM} disabled={input5Disabled}/>
+            24 Meses
+          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+        <label className={`${InputCSS['radioInput']} ${selectedSUM === '0' ? InputCSS.selected : ''}`}>
+            <span><input type="radio" value="0" checked={selectedSUM === '0'} onChange={handleSelectSUM} disabled={input5Disabled}/>
+            Ninguno
+          </span></label>
+          <br/>
+        </div>
       </div>
       </div>
-
-
-
-      <div className={InputCSS['ref']} ref={cwRef}>
-      <div>
-        <b className={InputCSS.b}>Financiación</b>
-        <p className={InputCSS.p}>Selecciona el mejor para ti.</p>
-        {/* <div className={InputCSS.moreInfo}>
-          <Info6/>
-        </div> */}
-      </div>
-        <div className={InputCSS.container}>
-          <div className={InputCSS.tabs}>
-            <input 
-              type="radio" 
-              id="radio1" 
-              name="tabs"
-              onChange={() => handleSelectFinanciation(1)}
-            />
-            <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
-            <input 
-              type="radio" 
-              id="radio2" 
-              name="tabs"
-              
-              onChange={() => handleSelectFinanciation(1.1917)}
-            />
-            <label htmlFor="radio2" className={InputCSS.tab} >Financiado 70%/30%</label>
-            <input 
-              type="radio" 
-              id="radio3"   
-              name="tabs" 
-              
-              onChange={() => handleSelectFinanciation(1.1917)}
-            />
-            <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
-            <span className={InputCSS.glider}></span>
+      <div className={selectedSUM?            "" : InputCSS.transparency50}>
+        <div className={InputCSS['ref']} ref={cwRef}>
+          <div>
+            <b className={InputCSS.b}>Coworking</b>
+            <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
+            {/* <div className={InputCSS.moreInfo}>
+              <Info6/>
+            </div> */}
+          </div>
+          <div className={InputCSS['radioInputs']}>
+            <label className={`${InputCSS['radioInput']} ${selectedCW === '3' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="3" checked={selectedCW === '3'} onChange={handleSelectCW} disabled={input6Disabled}/>
+              3 Meses
+            </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+            <label className={`${InputCSS['radioInput']} ${selectedCW === '6' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="6" checked={selectedCW === '6'} onChange={handleSelectCW} disabled={input6Disabled}/>
+              6 Meses
+            </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+            <label className={`${InputCSS['radioInput']} ${selectedCW === '12' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="12" checked={selectedCW === '12'} onChange={handleSelectCW} disabled={input6Disabled}/>
+              12 Meses
+            </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedCW === '0' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="0" checked={selectedCW === '0'} onChange={handleSelectCW} disabled={input6Disabled}/>
+              Ninguno
+            </span></label>
+            <br/>
           </div>
         </div>
-          <div className={InputCSS.grilla}>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
-            <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+      </div>
+      <div className={selectedCW?             "" : InputCSS.transparency50}>
+        <div className={InputCSS['ref']} ref={FinanciationRef}>
+          <div>
+            <b className={InputCSS.b}>Financiación</b>
+            <p className={InputCSS.p}>Selecciona el mejor para ti.</p>
+            {/* <div className={InputCSS.moreInfo}>
+              <Info6/>
+            </div> */}
           </div>
+            <div className={InputCSS.containers}>
+              <div className={InputCSS.tabs}>
+                <input 
+                  type="radio" 
+                  id="radio1" 
+                  name="tabs"
+                  onChange={() => handleSelectFinanciation(1)}
+                />
+                <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
+                <input 
+                  type="radio" 
+                  id="radio2" 
+                  name="tabs"
+                  
+                  onChange={() => handleSelectFinanciation(1.1917)}
+                />
+                <label htmlFor="radio2" className={InputCSS.tab} >Financiado 70%/30%</label>
+                <input 
+                  type="radio" 
+                  id="radio3"   
+                  name="tabs" 
+                  
+                  onChange={() => handleSelectFinanciation(1.1917)}
+                />
+                <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
+                <span className={InputCSS.glider}></span>
+              </div>
+            </div>
+              <div className={InputCSS.grilla}>
+                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
+                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
+                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
+                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
+                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
+                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+              </div>
+        </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* <div className={InputCSS['ref']} ref={pagoRef}>
-      <div><b className={InputCSS.b}> Opciones de pago.</b> Seleccione el que funcione para usted.</div>
-      <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="1" checked={selectedPago === '1'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          1 cuota
-        </span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="6" checked={selectedPago === '6'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          6 cuotas
-        </span></label>
-        <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
-          <span><input type="radio" value="12" checked={selectedPago === '12'} onChange={handleSelectPago} disabled={input6Disabled}/>
-          12 cuotas
-        </span></label>
-        <br/>
-        
-      </div>
-
-      </div> */}
-            {/* mercado pago */}
-            {/* <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}> */}
-      <main>
-        {/* {renderSpinner()} */}
-        {/* <Checkout onClick={handleClick} description/> */}
-      </main>
-      
-    {/* </InternalProvider> */}
-    {/* fin mercado pago */}
     </div>
     
-
-
-
   );
 }else{
 

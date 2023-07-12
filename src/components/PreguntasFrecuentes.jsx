@@ -2,6 +2,9 @@ import React , {useContext} from 'react';
 import PreguntaFrecuente from './PreguntaFrecuente';
 import  {Context} from '../context/notification-context'
 import {suscrbirUsuario} from '../Service/APIfunnel'
+import IslandNotificationCSS from '../css/IslandNotification.module.css';
+
+
 const PreguntasFrecuentes = () => {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
@@ -26,7 +29,7 @@ const PreguntasFrecuentes = () => {
     if(!usuario){
       
       activar(true);
-      notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
+      notificar(<div><span className={IslandNotificationCSS.contenido}>Para poder acceder primero debes registrate</span></div>)
       setTimeout(() => {
         activar(false);
       }, 3000);
@@ -34,12 +37,15 @@ const PreguntasFrecuentes = () => {
     }
     else{
       activar(true);
-      notificar(<div><span>Quieres que un asesor se contacte contigo? <button onClick={suscribir}>Si quiero</button></span></div>)
+      notificar(<div className={IslandNotificationCSS.div}>
+        <span className={IslandNotificationCSS.raya}></span>
+        <span className={IslandNotificationCSS.consulta}>¿Quieres que un asesor se contacte contigo?
+        <button className={IslandNotificationCSS.boton} onClick={suscribir}>Si quiero</button>
+        </span>
+        </div>)
       setTimeout(() => {
         activar(false);
       }, 15000);
-
-
   }
 }
 
@@ -49,7 +55,6 @@ const PreguntasFrecuentes = () => {
         pregunta="¿Cómo puedo realizar una reserva online?" 
         respuesta={`Accediendo al siguiente link, vas a poder 
         realizar el paso a paso para realizar una reserva online: soporte.`}
-        
         />
         
       <PreguntaFrecuente 

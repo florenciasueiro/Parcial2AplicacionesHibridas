@@ -35,7 +35,7 @@ export function CardGrid({ handleClick }) {
   //2=pass nueva repetida
   const handleChange = (e,pos) =>{
     datosIngresados[pos]=e;
-    console.log(datosIngresados);  
+    // console.log(datosIngresados);  
   }
   const btnClick = ()=>{
     if(datosIngresados[0]!==usuario.password){
@@ -52,7 +52,7 @@ export function CardGrid({ handleClick }) {
     {
       id: 1,
       title: 'Asset ID',
-      description: `Tu Asset ID es: ${usuario.email}`,
+      description: `${usuario.email}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faUser} />,
 
@@ -67,7 +67,7 @@ export function CardGrid({ handleClick }) {
       inputs: [
         { placeholder: 'Contraseña actual', type: 'password', change: handleChange},
         { placeholder: 'Nueva contraseña', type: 'password', change: handleChange },
-        { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, button: 'Cambiar',onClick: btnClick}
+        { placeholder: 'Repetir contraseña', type: 'password',change: handleChange, className: 'boton', button: 'Cambiar',onClick: btnClick}
       ],
     },
     // {
@@ -114,7 +114,7 @@ export function CardGrid2({ handleClick }) {
   };
   const handleTelefonoChange = (e,i) => {
     setMobile(e);
-    console.log("Mobile", e) // Actualiza el estado con el valor seleccionado
+    // console.log("Mobile", e) // Actualiza el estado con el valor seleccionado
   };
   const handleTelefonoClick = () => { 
     usuario.mobile = mobile;
@@ -125,7 +125,7 @@ export function CardGrid2({ handleClick }) {
   let nombreApellido=[];
   const handleNameChange = (e,pos) =>{
     nombreApellido[pos]=e;
-    console.log(nombreApellido);  
+    // console.log(nombreApellido);  
   }
 
   const btnNameClick = ()=>{
@@ -144,11 +144,11 @@ export function CardGrid2({ handleClick }) {
 
           inputs: [
             { placeholder: 'Nombre', type: 'text', change: handleNameChange},
-            { placeholder: 'Apellido', type: 'text',change: handleNameChange, button: 'Guardar cambios',onClick: btnNameClick}
+            { placeholder: 'Apellido', type: 'text',change: handleNameChange, button: 'Cambiar',onClick: btnNameClick}
           ],
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faIdCard} />,
-      // button: 'Guardar cambios',
+      // button: 'Cambiar',
     },
     {
       id: 5,
@@ -156,10 +156,9 @@ export function CardGrid2({ handleClick }) {
       description:(
         <span style={{ textAlign: 'center' }}>
           {formattedDate}<br/>
-          <span>Modificar fecha de nacimiento</span>
         </span>
       ),
-      // button: 'Guardar cambios',
+      // button: 'Cambiar',
       card: <BirthdayCard />,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendar} />
@@ -202,7 +201,7 @@ export function CardGrid2({ handleClick }) {
         <input type="text" id="email" name="email" placeholder="Modificar emal"/>
         <input type="text" id="email" name="segundoNombre" placeholder="Añadir nuevo email"/>
     </form>),
-    button: 'Guardar cambios',
+    button: 'Cambiar',
     },
     {
       id: 10,
@@ -213,14 +212,13 @@ export function CardGrid2({ handleClick }) {
       contenido:   (<form>
       <label for="genero">Género:</label>
       <select id="genero" name="genero" value={usuario.genero} onChange={handleGeneroChange}>
-        <option value="masculino">Masculino</option>
-        <option value="femenino">Femenino</option>
-        <option value="no-binario">No binario</option>
-        <option value="prefiero-no-mencionarlo">Prefiero no mencionarlo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="No binario">No binario</option>
+        <option value="Prefiero no mencionarlo">Prefiero no mencionarlo</option>
       </select>
-      
     </form>),
-    button: 'Guardar cambios',
+    button: 'Cambiar',
     change: handleGeneroClick,
     },
   ];
@@ -450,13 +448,13 @@ const preference = () => {
     //   description: usuario.productos,
     //   imageUrl: 'https://via.placeholder.com/150',
     // },
-    {
-      id: 'quince',
-      title: 'Agregar producto',
-      className: 'card1',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faCirclePlus} />
-    },
+    // {
+    //   id: 'quince',
+    //   title: 'Agregar producto',
+    //   className: 'card1',
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faCirclePlus} />
+    // },
     {
       id: 16,
       title: 'Pagos',
@@ -468,7 +466,7 @@ const preference = () => {
     {
       id: 17,
       title: 'Recibos',
-      description: 'Todos tus recibos de pagos',
+      description: 'Todos tus recibos de pagos.',
       imageUrl: 'https://via.placeholder.com/150',
       contenido: generarListaFacturas(),
       icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
@@ -476,7 +474,8 @@ const preference = () => {
     {
       id: 18,
       title: 'Resúmenes',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Próximamente estará disponible. ',
+      // description: 'Todos tus resúmenes de pagos. ',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faFileLines} />,
     },
@@ -500,7 +499,7 @@ const preference = () => {
     const productCard = usuario.productos.map((producto, index) => ({
       id: index + 1,
       title: producto,
-      description: producto,
+      // description: producto,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faBox} />
     }));
@@ -522,7 +521,7 @@ const preference = () => {
 export function CardGrid6({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  console.log(usuario)
+  // console.log(usuario)
 
 
   const displayPASS = (serv)=>{ //esta funcion toma como argumento el nombre generico del serivico (sea pase o individual) y busca en la coleccion de servicios del usuario si hay alguno que en el nombre incluya el argumento y despues pregunta si tiene pase
@@ -573,14 +572,14 @@ export function CardGrid7({ handleClick }) {
     {
       id: 23,
       title: 'Reservas de servicios',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendarCheck} />,
     },
     {
       id: 24,
       title: 'Reservas de mantenimiento',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendarCheck} />,
 
@@ -588,7 +587,7 @@ export function CardGrid7({ handleClick }) {
     {
       id: 26,
       title: 'Reservas de llamadas',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       // icon: <FontAwesomeIcon icon={faPhoneArrowUpRight} />,
     },
@@ -609,7 +608,7 @@ export function CardGrid8({ handleClick }) {
     {
       id: 27,
       title: 'Todavía no se qué poner acá bien.',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
     },
 
@@ -1022,7 +1021,7 @@ export function CardGrid26({ handleClick }) {
 
 
   const btnCheckUserClick = () => {
-    console.log('click');
+    // console.log('click');
     if(!usuario){
       activar(true);
       notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
