@@ -237,9 +237,11 @@ useEffect(() => {
       // setIsLoading(true);
       notificar(
       
-        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]}>
+        <div className={InputCSS["col-md-12"] + " " + InputCSS["col-lg-4"]} style={{ width: '100%', paddingBottom: '5px'}}>
         <div className={orderData.description ? InputCSS.summaryShow : InputCSS.summary}>
-          {/* <h3>Cart</h3> */}
+        <span className={InputCSS.raya}></span>
+        <p>Costo de reserva</p>
+        <span className={InputCSS.raya}></span>
           {showLoged ? (
             <div className={InputCSS["textContainer"]}>
             <span className={InputCSS["textNotification"]}>Debes iniciar sesión para comprar.</span>
@@ -993,7 +995,7 @@ if(cargaron){
           <Info6/>
         </div> */}
       </div>
-        <div className={InputCSS.container}>
+        <div className={InputCSS.containers}>
           <div className={InputCSS.tabs}>
             <input 
               type="radio" 

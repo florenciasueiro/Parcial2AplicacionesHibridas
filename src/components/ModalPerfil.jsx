@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { CSSTransition } from 'react-transition-group';
 import PerfilCSS from '../css/Perfil.module.css';
@@ -6,7 +6,10 @@ import PerfilCSS from '../css/Perfil.module.css';
 
 
 function ModalCardPerfil({ card, isOpen, onClose }) {
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+
   return (
     <Modal
       isOpen={isOpen}
@@ -19,6 +22,7 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
         className={PerfilCSS.modalTransition}
         unmountOnExit>
         <div className={PerfilCSS.modalCardContainer} style={{ width: '100%', paddingTop: '15px' }}>
+
           <div className={PerfilCSS.modalCardHeader}>
             <h2 className={PerfilCSS.icono}>{card.icon}</h2>
             <h3 className={PerfilCSS.titulo}>{card.title}</h3>

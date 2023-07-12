@@ -196,6 +196,7 @@
   .btn{
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
   .alto{
     height: calc(100vh - 30.4px);
@@ -339,4 +340,12 @@
     height: 100%;
     width: 100%;
     padding-top: 15px;
+  }
+
+
+  .cumple{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }

@@ -51,7 +51,7 @@ const Payment = () => {
 
   return (
     <div className={paymentClass}>
-      <div className={InputCSS.container}>
+      <div className={InputCSS.containerWallet}>
         {/* <div className={InputCSS["block-heading"]}>
           <h2>Checkout Payment</h2>
           <p>Este pago se gestiona por medio de MercadoPago</p>

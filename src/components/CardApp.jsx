@@ -11,7 +11,13 @@ function Card({ card, cardData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    if (card.id !== 1){
+      
+    
+
       setIsModalOpen(true);
+    }
+
   };
   
   const handleCloseModal = () => {
