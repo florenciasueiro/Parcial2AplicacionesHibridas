@@ -49,6 +49,9 @@ function Inicio() {
         <button className={IslandNotificationCSS.boton} onClick={suscribir}>Si quiero</button>
         </span>
         </div>)
+        setTimeout(() => {
+          activar(false);
+        }, 15000);
   }
 }
 

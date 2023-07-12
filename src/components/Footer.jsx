@@ -7,6 +7,8 @@ import FooterCSS from '../css/Footer.module.css';
 import { Link } from 'react-router-dom';
 import  {Context} from '../context/notification-context'
 import {suscrbirUsuario} from '../Service/APIfunnel'
+import IslandNotificationCSS from '../css/IslandNotification.module.css';
+
 
 
 
@@ -34,7 +36,7 @@ function Footer() {
     if(!usuario){
       
       activar(true);
-      notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
+      notificar(<div><span className={IslandNotificationCSS.contenido}>Para poder acceder primero debes registrate</span></div>)
       setTimeout(() => {
         activar(false);
       }, 3000);
@@ -42,12 +44,15 @@ function Footer() {
     }
     else{
       activar(true);
-      notificar(<div><span>Quieres que un asesor se contacte contigo? <button onClick={suscribir}>Si quiero</button></span></div>)
-      setTimeout(() => {
-        activar(false);
-      }, 15000);
-
-
+      notificar(<div className={IslandNotificationCSS.div}>
+        <span className={IslandNotificationCSS.raya}></span>
+        <span className={IslandNotificationCSS.consulta}>¿Quieres que un asesor se contacte contigo?
+        <button className={IslandNotificationCSS.boton} onClick={suscribir}>Si quiero</button>
+        </span>
+        </div>)
+        setTimeout(() => {
+          activar(false);
+        }, 15000);
   }
 }
 
@@ -115,4 +120,3 @@ function Footer() {
   );
 }
 export default Footer
-//holis
