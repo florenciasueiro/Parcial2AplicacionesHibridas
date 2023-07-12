@@ -11,11 +11,22 @@ function Card({ card, cardData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-    if (card.id !== 1){
-      
-    
-
+    if (card.id !== 1   &&
+        card.id !== 9   && 
+        card.id !== 18  &&
+        card.id !== 19  &&
+        card.id !== 20  &&
+        card.id !== 21  &&
+        card.id !== 22  &&
+        card.id !== 999 && 
+        card.id !== 23  &&
+        card.id !== 24  &&
+        card.id !== 26  &&
+        card.id !== 27  
+        ){
       setIsModalOpen(true);
+    }else{
+      setIsModalOpen(false);
     }
 
   };

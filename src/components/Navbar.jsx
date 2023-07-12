@@ -93,7 +93,7 @@ function Navbar() {
         activar(true);
         
         notificar(<div><span>Tu pago esta aprobado</span></div>)
-        // postVenta(compra);
+        postVenta(compra);
         suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
 
         console.log(compra);

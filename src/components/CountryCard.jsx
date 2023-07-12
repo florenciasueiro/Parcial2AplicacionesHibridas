@@ -21,11 +21,11 @@ function AddressCard() {
 
   const handleSelectCoordinates = (selectedCoordinates) => {
     setCoordinates(selectedCoordinates);
-    console.log(selectedCoordinates);
+    // console.log(selectedCoordinates);
   
     getAddressFromCoordinates(selectedCoordinates.lat, selectedCoordinates.lng)
       .then((address) => {
-        console.log('Dirección:', JSON.stringify(address));
+        // console.log('Dirección:', JSON.stringify(address));
         usuario.address = address;
         editar(usuario);
       })
@@ -51,7 +51,7 @@ function AddressCard() {
       });
   }
   
-  console.log(usuario.address);
+  // console.log(usuario.address);
 
   return (
     <div>

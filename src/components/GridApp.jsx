@@ -35,7 +35,7 @@ export function CardGrid({ handleClick }) {
   //2=pass nueva repetida
   const handleChange = (e,pos) =>{
     datosIngresados[pos]=e;
-    console.log(datosIngresados);  
+    // console.log(datosIngresados);  
   }
   const btnClick = ()=>{
     if(datosIngresados[0]!==usuario.password){
@@ -114,7 +114,7 @@ export function CardGrid2({ handleClick }) {
   };
   const handleTelefonoChange = (e,i) => {
     setMobile(e);
-    console.log("Mobile", e) // Actualiza el estado con el valor seleccionado
+    // console.log("Mobile", e) // Actualiza el estado con el valor seleccionado
   };
   const handleTelefonoClick = () => { 
     usuario.mobile = mobile;
@@ -125,7 +125,7 @@ export function CardGrid2({ handleClick }) {
   let nombreApellido=[];
   const handleNameChange = (e,pos) =>{
     nombreApellido[pos]=e;
-    console.log(nombreApellido);  
+    // console.log(nombreApellido);  
   }
 
   const btnNameClick = ()=>{
@@ -445,13 +445,13 @@ const preference = () => {
     //   description: usuario.productos,
     //   imageUrl: 'https://via.placeholder.com/150',
     // },
-    {
-      id: 'quince',
-      title: 'Agregar producto',
-      className: 'card1',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faCirclePlus} />
-    },
+    // {
+    //   id: 'quince',
+    //   title: 'Agregar producto',
+    //   className: 'card1',
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faCirclePlus} />
+    // },
     {
       id: 16,
       title: 'Pagos',
@@ -463,7 +463,7 @@ const preference = () => {
     {
       id: 17,
       title: 'Recibos',
-      description: 'Todos tus recibos de pagos',
+      description: 'Todos tus recibos de pagos.',
       imageUrl: 'https://via.placeholder.com/150',
       contenido: generarListaFacturas(),
       icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
@@ -471,7 +471,8 @@ const preference = () => {
     {
       id: 18,
       title: 'Resúmenes',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Próximamente estará disponible. ',
+      // description: 'Todos tus resúmenes de pagos. ',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faFileLines} />,
     },
@@ -495,7 +496,7 @@ const preference = () => {
     const productCard = usuario.productos.map((producto, index) => ({
       id: index + 1,
       title: producto,
-      description: producto,
+      // description: producto,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faBox} />
     }));
@@ -517,7 +518,7 @@ const preference = () => {
 export function CardGrid6({ handleClick }) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  console.log(usuario)
+  // console.log(usuario)
 
 
   const displayPASS = (serv)=>{ //esta funcion toma como argumento el nombre generico del serivico (sea pase o individual) y busca en la coleccion de servicios del usuario si hay alguno que en el nombre incluya el argumento y despues pregunta si tiene pase
@@ -568,14 +569,14 @@ export function CardGrid7({ handleClick }) {
     {
       id: 23,
       title: 'Reservas de servicios',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendarCheck} />,
     },
     {
       id: 24,
       title: 'Reservas de mantenimiento',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faCalendarCheck} />,
 
@@ -583,7 +584,7 @@ export function CardGrid7({ handleClick }) {
     {
       id: 26,
       title: 'Reservas de llamadas',
-      description: 'Descripción de la tarjeta 2',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       // icon: <FontAwesomeIcon icon={faPhoneArrowUpRight} />,
     },
@@ -604,7 +605,7 @@ export function CardGrid8({ handleClick }) {
     {
       id: 27,
       title: 'Todavía no se qué poner acá bien.',
-      description: 'Descripción de la tarjeta 1',
+      description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
     },
 
@@ -1017,7 +1018,7 @@ export function CardGrid26({ handleClick }) {
 
 
   const btnCheckUserClick = () => {
-    console.log('click');
+    // console.log('click');
     if(!usuario){
       activar(true);
       notificar(<div><span>Para poder acceder primero debes registrate</span></div>)
