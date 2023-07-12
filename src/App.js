@@ -42,6 +42,7 @@ function App() {
     guarderiaPrice:0,
     sumPrice:0,
     cwPrice:0,
+    backURL: ""
   });
   const test= "context test"
   const notificar = (mensaje) => {

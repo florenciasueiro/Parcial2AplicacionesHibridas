@@ -352,6 +352,8 @@ orderData.price = checkPriceByName(request.terreno);
 const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
+  orderData.backURL="feedback"
+  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa"
   setIsLoading(true);
 
   // postVenta();
