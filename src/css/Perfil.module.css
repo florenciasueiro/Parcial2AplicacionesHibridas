@@ -24,6 +24,9 @@
     color: black;
     align-items: center;
   }
+  .card p{
+    font-size:15px;
+  }
   
   .cardInicio {
     background-color: white;

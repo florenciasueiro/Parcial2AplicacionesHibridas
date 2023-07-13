@@ -869,6 +869,8 @@ input[id="radio3"]:checked ~ .glider {
 
 .transparency50 {
   opacity: 0.5;
+  transition: 0.3s ease;
+  
 }
 
 
