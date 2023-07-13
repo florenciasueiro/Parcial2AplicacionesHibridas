@@ -72,3 +72,11 @@ ul{
 .groupLink{
     padding-right: 10px;
 }
+
+.soporte{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #1DA1F2;
+    font-weight: 600;
+}

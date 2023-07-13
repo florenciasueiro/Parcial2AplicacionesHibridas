@@ -46,7 +46,7 @@ function Inicio() {
       notificar(<div className={IslandNotificationCSS.div}>
         <span className={IslandNotificationCSS.raya}></span>
         <span className={IslandNotificationCSS.consulta}>¿Quieres que un asesor se contacte contigo?
-        <button className={IslandNotificationCSS.boton} onClick={suscribir}>Si quiero</button>
+        <button className={IslandNotificationCSS.boton} onClick={suscribir}>Sí, quiero</button>
         </span>
         </div>)
         setTimeout(() => {
