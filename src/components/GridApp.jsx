@@ -281,6 +281,7 @@ export function CardGrid4({ handleClick }) {
 }
 
 export function CardGrid5({ handleClick }) {
+
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const [productName, setProductName] = useState(null);
@@ -337,6 +338,7 @@ export function CardGrid5({ handleClick }) {
       setIsLoading(true);
       orderData.description=`Cuota N: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`
       orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))*0.79
+      orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
     // }
