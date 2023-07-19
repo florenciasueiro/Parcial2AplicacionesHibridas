@@ -111,9 +111,9 @@ export default function RadioInputs({seleccion}) {
   const [selectedCard,            setSelectedCard]            = useState('');
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
-  const [selectedPago,            setSelectedPago]            = useState('');
+  const [financiacionGrid,        setFinanciationGrid]        = useState('');
   const [selectedCW,              setSelectedCW]              = useState('');
-  const [selectedFinanciation,     setSelectedFinanciation]    = useState(parseFloat(1));
+  const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
 
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -534,16 +534,13 @@ orderData.dolarValue = dolarValue;
     }
   };
   
-  const handleSelectFinanciation = (value) => {
-    handleClick();
-    setSelectedFinanciation(value);
+  const handleSelectFinanciation = ({value}) => {
     console.log(value);
-    orderData.amount = calculateAmount(value, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
-    if (value != 1) {
-      setInput8Disabled(false);
-    } else {
-      setInput8Disabled(true);
-    }
+    handleClick();
+    setSelectedFinanciation(value[0]);
+    setFinanciationGrid(value[1])
+    orderData.amount = calculateAmount(value[0], selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+
   };
   
   //Para corregir:
@@ -664,7 +661,7 @@ orderData.dolarValue = dolarValue;
         break;
     }
 
-  switch (selectedFinanciation) {
+  switch (financiacionGrid) {
     case 'contado':
       itemGrilla7 = 'contado opcion1';
       itemGrilla8 = 'contado opcion2';
@@ -1030,7 +1027,8 @@ if(cargaron){
                     id="radio1" 
                     name="tabs"
                     value="contado"
-                    onChange={() => handleSelectFinanciation(1)}
+                    
+                    onChange={() => handleSelectFinanciation({financiation:1, grid :1})}
                     disabled={input8Disabled}
                   />
                   <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
@@ -1039,7 +1037,7 @@ if(cargaron){
                     id="radio2" 
                     name="tabs"
                     value="financiado7030"
-                    onChange={() => handleSelectFinanciation(1.1917)}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :1})}
                     disabled={input7Disabled}
 
                   />
@@ -1049,7 +1047,7 @@ if(cargaron){
                     id="radio3"   
                     name="tabs" 
                     value="financiado100"
-                    onChange={() => handleSelectFinanciation(1.1917)}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :1})}
                     disabled={input7Disabled}
 
                   />
@@ -1269,16 +1267,16 @@ if(cargaron){
     <div className={InputCSS['ref']} ref={pagoRef}>
     <div><b className={InputCSS.b}> Opciones de pago.</b> <p className={InputCSS.p}>Seleccione el que funcione para usted.</p></div>
     <div className={InputCSS['radioInputs']}>
-      <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="1" checked={selectedPago === '1'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
+      <label className={`${InputCSS['radioInput']} ${ InputCSS.selected}`}>
+        <span><input type="radio" value="1" /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
         1 cuota
       </span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="6" checked={selectedPago === '6'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
+      <label className={`${InputCSS['radioInput']} ${InputCSS.selected}`}>
+        <span><input type="radio" value="6"  /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
         6 cuotas
       </span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="12" checked={selectedPago === '12'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
+      <label className={`${InputCSS['radioInput']} ${ InputCSS.selected}`}>
+        <span><input type="radio" value="12" /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
         12 cuotas
       </span></label>
       <br/>
