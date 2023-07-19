@@ -59,7 +59,7 @@ export default function RadioInputs({seleccion}) {
           const value = await valorDolar;
           if(value){setDolarValue(await value);
           }else{
-            setDolarValue(492)
+            setDolarValue(510)
           }
           
           
@@ -276,11 +276,11 @@ useEffect(() => {
             <div className={InputCSS["summaryGroup"]}>
 {renderSpinner()}
               <div className={InputCSS["summary-item"]}>
-                <span className={InputCSS["text"]}>Subtotal USD$</span>
+                <span className={InputCSS["text"]}>Subtotal USD</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 + IVA</span>
                 
-                <span className={InputCSS["text"]}>Subtotal ARS$</span>
+                <span className={InputCSS["text"]}>Subtotal ARS</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 + IVA</span>
               </div>
@@ -370,7 +370,8 @@ const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
   orderData.backURL="feedback"
-  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa"
+  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa" 
+  orderData.tax = 0.21;
   setIsLoading(true);
 
   // postVenta();
@@ -425,7 +426,7 @@ orderData.dolarValue = dolarValue;
     const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
     const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
     const cwPrice = cw ? servicePrice("Pase CoWorking") * cw : 0;
-    
+    //if selected finaciation != 1 then handleClick() para que si cambia de terreno le cobre bien
     // console.log( (terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice)* parseFloat(financiation) );
     return (((terrenoPrice)* parseFloat(financiation)*dolarValue).toFixed(2)*0.05);
   };
@@ -535,10 +536,11 @@ orderData.dolarValue = dolarValue;
   };
   
   const handleSelectFinanciation = (value) => {
-    handleClick();
     setSelectedFinanciation(value);
+    orderData.financiation= value;
     console.log(value);
     orderData.amount = calculateAmount(value, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+    handleClick();
     if (value != 1) {
       setInput8Disabled(false);
     } else {
@@ -1030,7 +1032,8 @@ if(cargaron){
                     id="radio1" 
                     name="tabs"
                     onChange={() => handleSelectFinanciation(1)}
-                    disabled={input8Disabled}
+                    disabled={input7Disabled}
+                    // checked
                   />
                   <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
                   <input 
