@@ -1029,6 +1029,7 @@ if(cargaron){
                     type="radio" 
                     id="radio1" 
                     name="tabs"
+                    value="contado"
                     onChange={() => handleSelectFinanciation(1)}
                     disabled={input8Disabled}
                   />
@@ -1037,7 +1038,7 @@ if(cargaron){
                     type="radio" 
                     id="radio2" 
                     name="tabs"
-                    
+                    value="financiado7030"
                     onChange={() => handleSelectFinanciation(1.1917)}
                     disabled={input7Disabled}
 
@@ -1047,7 +1048,7 @@ if(cargaron){
                     type="radio" 
                     id="radio3"   
                     name="tabs" 
-                    
+                    value="financiado100"
                     onChange={() => handleSelectFinanciation(1.1917)}
                     disabled={input7Disabled}
 

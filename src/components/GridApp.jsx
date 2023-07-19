@@ -440,86 +440,88 @@ const preference = () => {
     }
   };
 
-  const cardData = [
-    // {
-    //   id: 14,
-    //   title: 'Productos enlazados',
-    //   description: usuario.productos,
-    //   imageUrl: 'https://via.placeholder.com/150',
-    // },
-    // {
-    //   id: 'quince',
-    //   title: 'Agregar producto',
-    //   className: 'card1',
-    //   imageUrl: 'https://via.placeholder.com/150',
-    //   icon: <FontAwesomeIcon icon={faCirclePlus} />
-    // },
-    {
-      id: 16,
-      title: 'Pagos',
-      description: 'Hacer nuevos pagos',
-      imageUrl: 'https://via.placeholder.com/150',
-      contenido: pagarCuota(),
-      icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
-    },
-    {
-      id: 17,
-      title: 'Recibos',
-      description: 'Todos tus recibos de pagos.',
-      imageUrl: 'https://via.placeholder.com/150',
-      contenido: generarListaFacturas(),
-      icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
-    },
-    {
-      id: 18,
-      title: 'Resúmenes',
-      description: 'Próximamente estará disponible. ',
-      // description: 'Todos tus resúmenes de pagos. ',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faFileLines} />,
-    },
-    {
-      id: 19,
-      title: 'Mantenimiento',
-      description: 'Próximamente estará disponible.',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faGears} />,
-    },
-    {
-      id: 20,
-      title: 'Documentacion',
-      description: 'Próximamente estará disponible.',
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faFolderOpen} />,
-    }
-  ];
+    const cardData = [
+      // {
+      //   id: 14,
+      //   title: 'Productos enlazados',
+      //   description: usuario.productos,
+      //   imageUrl: 'https://via.placeholder.com/150',
+      // },
+      {
+        id: 'quince',
+        title: 'Agregar producto',
+        className: 'card1',
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faCirclePlus} />,
+        link: "/shop",
+      },
 
-  if (usuario && usuario.productos && usuario.productos.length > 0) {
-    const productCard = usuario.productos.map((producto, index) => ({
-      id: index + 1,
-      title: producto,
-      // description: producto,
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faBox} />
-    }));
-    
-    cardData.unshift(...productCard);
+    ];
+
+    if (usuario && usuario.productos && usuario.productos.length > 0) {
+      const productCard = usuario.productos.map((producto, index) => ({
+        id: index + 1,
+        title: producto,
+        // description: producto,
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faBox} />
+      }),
+      {
+        id: 16,
+        title: 'Pagos',
+        description: 'Hacer nuevos pagos',
+        imageUrl: 'https://via.placeholder.com/150',
+        contenido: pagarCuota(),
+        icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
+      },
+      {
+        id: 17,
+        title: 'Recibos',
+        description: 'Todos tus recibos de pagos.',
+        imageUrl: 'https://via.placeholder.com/150',
+        contenido: generarListaFacturas(),
+        icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
+      },
+      {
+        id: 18,
+        title: 'Resúmenes',
+        description: 'Próximamente estará disponible. ',
+        // description: 'Todos tus resúmenes de pagos. ',
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faFileLines} />,
+      },
+      {
+        id: 19,
+        title: 'Mantenimiento',
+        description: 'Próximamente estará disponible.',
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faGears} />,
+      },
+      {
+        id: 20,
+        title: 'Documentacion',
+        description: 'Próximamente estará disponible.',
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faFolderOpen} />,
+      });
+      
+      cardData.unshift(...productCard);
+    }
+
+    return (
+      <div className={PerfilCSS.cardGrid} onClick={handleClick}>
+        {cardData.map((card) => (
+          <Card className={PerfilCSS.card} key={card.id} card={card} />
+        ))}
+      </div>
+    );
   }
 
-  return (
-    <div className={PerfilCSS.cardGrid} onClick={handleClick}>
-      {cardData.map((card) => (
-        <Card className={PerfilCSS.card} key={card.id} card={card} />
-      ))}
-    </div>
-  );
-}
 
 
-
-export function CardGrid6({ handleClick }) {
-  const usuarioJson = sessionStorage.getItem('user');
-  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  export function CardGrid6({ handleClick }) {
+    const usuarioJson = sessionStorage.getItem('user');
+    const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   // console.log(usuario)
 
 
