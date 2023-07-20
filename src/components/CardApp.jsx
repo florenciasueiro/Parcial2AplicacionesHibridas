@@ -42,7 +42,7 @@ function Card({ card, cardData }) {
         <>
       <Link to={card.link} className={PerfilCSS.card}>
         {/* <img src={card.imageUrl} alt="Imagen de la tarjeta" /> */}
-        <div className="card-body" onClick={handleOpenModal}>
+        <div className="card-body" onClick={card.onClick? card.onClick : handleOpenModal}>
           <h3>{card.title}</h3>
           <p>{card.description}</p>
         </div>
