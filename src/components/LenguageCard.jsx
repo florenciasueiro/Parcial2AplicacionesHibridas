@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import useEditarUsuario from '../Service/APIeditarUsuario'
+import useEditarUsuario from '../Service/APIeditarUsuario';
+import PerfilCSS from '../css/Perfil.module.css';
 
 function LanguageCard({ onLanguageSelect }) {
   const [language, setLanguage] = useState('');
@@ -28,10 +29,10 @@ function LanguageCard({ onLanguageSelect }) {
   }
 
   return (
-    <div>
-      <h2>Seleccionar Idioma</h2>
+    <div className={PerfilCSS.cumple}>
+      {/* <h2>Seleccionar Idioma</h2> */}
       <div>
-        <label>Idioma:</label>
+        {/* <label>Idioma:</label> */}
         <select value={language} onChange={handleLanguageChange}>
           <option value="">Seleccionar idioma</option>
           {languages.map((language, index) => (
@@ -39,7 +40,7 @@ function LanguageCard({ onLanguageSelect }) {
           ))}
         </select>
       </div>
-      <button onClick={handleClick}>Guardar Cambios</button>
+      <button className={PerfilCSS.boton} onClick={handleClick}>Cambiar</button>
     </div>
 
   );

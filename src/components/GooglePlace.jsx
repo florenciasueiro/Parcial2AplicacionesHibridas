@@ -75,7 +75,7 @@ const PlacesAutocomplete = ({onSelectCoordinates}) => {
         placeholder="Cambiar direccion"
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
-      {status === "OK" && <ul>{renderSuggestions()}</ul>}
+      {status === "OK" && <ul className={PerfilCSS.dirLista}>{renderSuggestions()}</ul>}
     </div>
   );
 };
