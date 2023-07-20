@@ -111,10 +111,10 @@ export default function RadioInputs({seleccion}) {
   const [selectedCard,            setSelectedCard]            = useState('');
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
-  const [financiacionGrid,        setFinanciationGrid]        = useState('');
+  const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
   const [selectedCW,              setSelectedCW]              = useState('');
   const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
-
+ 
 
   const urlParams = new URLSearchParams(window.location.search);
   const status = Object.fromEntries(urlParams).status;
@@ -528,6 +528,7 @@ orderData.dolarValue = dolarValue;
     orderData.cwPrice = servicePrice("Pase CoWorking");
     orderData.amount = calculateAmount(selectedFinanciation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, event.target.value);
     // setIsLoading(true);
+    handleClick();
     if (event.target.value !== '') {
       setInput7Disabled(false);
     } else {
@@ -536,7 +537,7 @@ orderData.dolarValue = dolarValue;
   };
   const handleSelectFinanciation = (value) => {
     console.log(value);
-    orderData.financiation= value.financiation;
+    orderData.financiation= value.grid;
     handleClick();
     setSelectedFinanciation(value.financiation);
     setFinanciationGrid(value.grid)
@@ -666,24 +667,24 @@ orderData.dolarValue = dolarValue;
 
   switch (financiacionGrid) {
     case 'contado':
-      itemGrilla7 = 'contado opcion1';
-      itemGrilla8 = 'contado opcion2';
-      itemGrilla9 = 'contado opcion3';
+      itemGrilla7 = 'el mas economico!';
+      itemGrilla8 = 'mas beneficios!';
+      itemGrilla9 = 'deberias usar este!';
       break;
-    case 'financiado7030':
-      itemGrilla7 = 'financiado7030opcion4';
-      itemGrilla8 = 'financiado7030 opcion5';
-      itemGrilla9 = 'financiado7030 opcion6';
+    case '70/30':
+      itemGrilla7 = 'el que se programo primero!';
+      itemGrilla8 = '12 cuotas donde pagas el 70% en 11 cuotas y el 25% restante en la ultima cuota';
+      itemGrilla9 = 'como los autos tiene un fee por financiacion';
       break;
-    case 'financiado100':
-      itemGrilla7 = 'financiado100 opcion7';
-      itemGrilla8 = 'financiado100 opcion8';
-      itemGrilla9 = 'financiado100 opcion9';
+    case '100%':
+      itemGrilla7 = '(╯‵□′)╯︵┻━┻12 cuotas iguales';
+      itemGrilla8 = '( ͡° ͜ʖ ͡°)  ✨ .  95/12 = 7.91 ';
+      itemGrilla9 = '༼ つ ◕_◕ ༽つobvio tiene un fee 👍ᓚᘏᗢ  ';
       break;
       default:
-        itemGrilla7 = 'opcion11';
-        itemGrilla8 = 'opcion12';
-        itemGrilla9 = 'opcion13';
+        itemGrilla7 = 'si estas viendo esto es que hiciste algo mal';
+        itemGrilla8 = 'soy una pagina web asi que no deberia hablar';
+        itemGrilla9 = 'BIP BOP 🤖 ';
         break;
     }
 
@@ -1030,7 +1031,7 @@ if(cargaron){
                     id="radio1" 
                     name="tabs"
                     value="contado"
-                    
+                    defaultChecked
                     onChange={() => handleSelectFinanciation({financiation:1, grid : 'contado'})}
                     disabled={input7Disabled}
                   />
@@ -1040,7 +1041,7 @@ if(cargaron){
                     id="radio2" 
                     name="tabs"
                     value="financiado7030"
-                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'financiado7030'})}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'70/30'})}
                     disabled={input7Disabled}
 
                   />
@@ -1050,7 +1051,7 @@ if(cargaron){
                     id="radio3"   
                     name="tabs" 
                     value="financiado100"
-                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'financiado100'})}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'100%'})}
                     disabled={input7Disabled}
 
                   />
