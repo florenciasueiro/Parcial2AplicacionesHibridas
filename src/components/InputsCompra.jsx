@@ -111,10 +111,10 @@ export default function RadioInputs({seleccion}) {
   const [selectedCard,            setSelectedCard]            = useState('');
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
-  const [financiacionGrid,        setFinanciationGrid]        = useState('');
+  const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
   const [selectedCW,              setSelectedCW]              = useState('');
   const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
-
+ 
 
   const urlParams = new URLSearchParams(window.location.search);
   const status = Object.fromEntries(urlParams).status;
@@ -528,6 +528,7 @@ orderData.dolarValue = dolarValue;
     orderData.cwPrice = servicePrice("Pase CoWorking");
     orderData.amount = calculateAmount(selectedFinanciation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, event.target.value);
     // setIsLoading(true);
+    handleClick();
     if (event.target.value !== '') {
       setInput7Disabled(false);
     } else {
@@ -676,8 +677,8 @@ orderData.dolarValue = dolarValue;
       itemGrilla9 = 'como los autos tiene un fee por financiacion';
       break;
     case '100%':
-      itemGrilla7 = '12 cuotas iguales';
-      itemGrilla8 = '95/12 = 7.91 ';
+      itemGrilla7 = '(╯‵□′)╯︵┻━┻12 cuotas iguales';
+      itemGrilla8 = '( ͡° ͜ʖ ͡°)  ✨ .  95/12 = 7.91 ';
       itemGrilla9 = '༼ つ ◕_◕ ༽つobvio tiene un fee 👍ᓚᘏᗢ  ';
       break;
       default:
@@ -1030,7 +1031,7 @@ if(cargaron){
                     id="radio1" 
                     name="tabs"
                     value="contado"
-                    
+                    defaultChecked
                     onChange={() => handleSelectFinanciation({financiation:1, grid : 'contado'})}
                     disabled={input7Disabled}
                   />
