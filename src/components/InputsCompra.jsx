@@ -59,7 +59,7 @@ export default function RadioInputs({seleccion}) {
           const value = await valorDolar;
           if(value){setDolarValue(await value);
           }else{
-            setDolarValue(492)
+            setDolarValue(510)
           }
           
           
@@ -151,13 +151,13 @@ const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 orderData.user = usuario;
 
-// useEffect(() => {
-//   const logOrderData = async () => {
-//     console.log("orderData:", await orderData);
-//   };
+useEffect(() => {
+  const logOrderData = async () => {
+    console.table("orderData:", await orderData);
+  };
 
-//   logOrderData();
-// }, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
+  logOrderData();
+}, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
 
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
@@ -276,11 +276,11 @@ useEffect(() => {
             <div className={InputCSS["summaryGroup"]}>
 {renderSpinner()}
               <div className={InputCSS["summary-item"]}>
-                <span className={InputCSS["text"]}>Subtotal USD$</span>
+                <span className={InputCSS["text"]}>Subtotal USD</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 + IVA</span>
                 
-                <span className={InputCSS["text"]}>Subtotal ARS$</span>
+                <span className={InputCSS["text"]}>Subtotal ARS</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 + IVA</span>
               </div>
@@ -370,7 +370,8 @@ const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
   orderData.backURL="feedback"
-  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa"
+  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa" 
+  orderData.tax = 0.21;
   setIsLoading(true);
 
   // postVenta();
@@ -425,7 +426,7 @@ orderData.dolarValue = dolarValue;
     const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
     const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
     const cwPrice = cw ? servicePrice("Pase CoWorking") * cw : 0;
-    
+    //if selected finaciation != 1 then handleClick() para que si cambia de terreno le cobre bien
     // console.log( (terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice)* parseFloat(financiation) );
     return (((terrenoPrice)* parseFloat(financiation)*dolarValue).toFixed(2)*0.05);
   };
@@ -533,15 +534,17 @@ orderData.dolarValue = dolarValue;
       setInput7Disabled(true);
     }
   };
-  
-  const handleSelectFinanciation = ({value}) => {
+  const handleSelectFinanciation = (value) => {
     console.log(value);
+    orderData.financiation= value.financiation;
     handleClick();
-    setSelectedFinanciation(value[0]);
-    setFinanciationGrid(value[1])
-    orderData.amount = calculateAmount(value[0], selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+    setSelectedFinanciation(value.financiation);
+    setFinanciationGrid(value.grid)
+    orderData.amount = calculateAmount(value.financiation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+    handleClick();
 
   };
+  
   
   //Para corregir:
   // ahora si el cliente llegua hasta financiacion y luego cambia algo ese algo no se va a impactar en mercado pago
@@ -1028,8 +1031,8 @@ if(cargaron){
                     name="tabs"
                     value="contado"
                     
-                    onChange={() => handleSelectFinanciation({financiation:1, grid :1})}
-                    disabled={input8Disabled}
+                    onChange={() => handleSelectFinanciation({financiation:1, grid : 'contado'})}
+                    disabled={input7Disabled}
                   />
                   <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
                   <input 
@@ -1037,7 +1040,7 @@ if(cargaron){
                     id="radio2" 
                     name="tabs"
                     value="financiado7030"
-                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :1})}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'financiado7030'})}
                     disabled={input7Disabled}
 
                   />
@@ -1047,7 +1050,7 @@ if(cargaron){
                     id="radio3"   
                     name="tabs" 
                     value="financiado100"
-                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :1})}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'financiado100'})}
                     disabled={input7Disabled}
 
                   />

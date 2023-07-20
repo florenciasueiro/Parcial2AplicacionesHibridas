@@ -307,7 +307,7 @@ export function CardGrid5({ handleClick }) {
         if(value){setDolarValue(await value);
         }else{
           console.log('error en bcra, usando valor dolar auxiliar')
-          setDolarValue(492)
+          setDolarValue(510)
         }
         
         
@@ -337,7 +337,7 @@ export function CardGrid5({ handleClick }) {
       setSelectedFacturaId(facturaId);
       setIsLoading(true);
       orderData.description=`Cuota N: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`
-      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))*0.79
+      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))
       orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
@@ -416,10 +416,10 @@ const preference = () => {
               <p>Fecha de emisión: {format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</p>
               <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
               <p>Financiacion: {facturaInfo.customFields[0].value}</p>
-              <p>Total a pagar: USD${facturaInfo.total}</p>
+              <p>Total a pagar: USD{facturaInfo.total}</p>
               <p>Cuota N: {parseInt(facturaInfo.customFields[1].value.charAt(0))+1}</p>
-              <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
-              <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
+              <p>Monto cuota: USD{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
+              <p>Monto cuota: ARS{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
               
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
       <main>
