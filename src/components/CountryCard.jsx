@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PlacesAutocomplete from './GooglePlace';
 import useEditarUsuario from '../Service/APIeditarUsuario'
+import PerfilCSS from '../css/Perfil.module.css'
 
 function AddressCard() {
   const [address, setAddress] = useState('');
@@ -54,11 +55,11 @@ function AddressCard() {
   // console.log(usuario.address);
 
   return (
-    <div>
-      <h2>Dirección de Facturacion</h2>
+    <div className={PerfilCSS.direccion}>
+      {/* <h2>Dirección de Facturacion</h2> */}
       <div>
         <label>
-          Dirección actual: {usuario.address && usuario.address.address
+          {usuario.address && usuario.address.address
             ? usuario.address.address
             : usuario.address?.address_components?.[1]
               ? usuario.address.address_components[1].long_name + ' ' + usuario.address.address_components[0].long_name

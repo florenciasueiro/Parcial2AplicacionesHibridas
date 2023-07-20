@@ -25,7 +25,7 @@ function BirthdayCard() {
   return (
     <div className={PerfilCSS.cumple}>
       {/* <h2>Seleccionar Fecha de Nacimiento</h2> */}
-      <DatePicker
+      <DatePicker className={PerfilCSS.cumpleInput}
         selected={fechaNacimiento}
         onChange={handleFechaNacimientoChange}
         dateFormat="dd/MM/yyyy"
