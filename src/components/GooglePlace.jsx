@@ -4,6 +4,8 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import PerfilCSS from '../css/Perfil.module.css'
+
 
 const PlacesAutocomplete = ({onSelectCoordinates}) => {
   const {
@@ -66,7 +68,7 @@ const PlacesAutocomplete = ({onSelectCoordinates}) => {
 
   return (
     <div ref={ref}>
-      <input
+      <input className={PerfilCSS.dirInput}
         value={value}
         onChange={handleInput}
         disabled={!ready}
