@@ -151,13 +151,13 @@ const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 orderData.user = usuario;
 
-// useEffect(() => {
-//   const logOrderData = async () => {
-//     console.log("orderData:", await orderData);
-//   };
+useEffect(() => {
+  const logOrderData = async () => {
+    console.table("orderData:", await orderData);
+  };
 
-//   logOrderData();
-// }, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
+  logOrderData();
+}, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
 
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
@@ -534,13 +534,13 @@ orderData.dolarValue = dolarValue;
       setInput7Disabled(true);
     }
   };
-  const handleSelectFinanciation = ({value}) => {
+  const handleSelectFinanciation = (value) => {
     console.log(value);
-    orderData.financiation= value[1];
+    orderData.financiation= value.financiation;
     handleClick();
-    setSelectedFinanciation(value[0]);
-    setFinanciationGrid(value[1])
-    orderData.amount = calculateAmount(value[0], selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+    setSelectedFinanciation(value.financiation);
+    setFinanciationGrid(value.grid)
+    orderData.amount = calculateAmount(value.financiation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
     handleClick();
 
   };
@@ -1031,8 +1031,8 @@ if(cargaron){
                     name="tabs"
                     value="contado"
                     
-                    onChange={() => handleSelectFinanciation({financiation:1, grid :1})}
-                    disabled={input8Disabled}
+                    onChange={() => handleSelectFinanciation({financiation:1, grid : 'contado'})}
+                    disabled={input7Disabled}
                   />
                   <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
                   <input 
@@ -1040,7 +1040,7 @@ if(cargaron){
                     id="radio2" 
                     name="tabs"
                     value="financiado7030"
-                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :1})}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'financiado7030'})}
                     disabled={input7Disabled}
 
                   />
@@ -1050,7 +1050,7 @@ if(cargaron){
                     id="radio3"   
                     name="tabs" 
                     value="financiado100"
-                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :1})}
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'financiado100'})}
                     disabled={input7Disabled}
 
                   />
