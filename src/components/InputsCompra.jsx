@@ -687,9 +687,6 @@ orderData.dolarValue = dolarValue;
         itemGrilla9 = 'defecto 3';
         break;
     }
-
-
-    
     // className={selectedTerreno? "" : InputCSS.transparency50}
 
 if(cargaron){

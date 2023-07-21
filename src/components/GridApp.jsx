@@ -188,7 +188,7 @@ export function CardGrid2({ handleClick }) {
       inputs: [
         { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange},
       ],
-      button: 'Aceptar cambios',
+      button: 'Cambiar',
       change: handleTelefonoClick,
     },
     {

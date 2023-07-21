@@ -21,7 +21,7 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
         timeout={300}
         className={PerfilCSS.modalTransition}
         unmountOnExit>
-        <div className={PerfilCSS.modalCardContainer} style={{ width: '100%', paddingTop: '15px' }}>
+        <div className={PerfilCSS.modalCardContainer} style={{ width: '100%', padding: '15px 0px' }}>
 
           <div className={PerfilCSS.modalCardHeader}>
             <h2 className={PerfilCSS.icono}>{card.icon}</h2>
@@ -55,8 +55,7 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
         </div>
       ))}
         <div>{card.contenido}</div>
-        <button onClick={card.change}>{card.button}</button>
-
+        <button className={PerfilCSS.boton} onClick={card.change}>{card.button}</button>
 
           </div>
         </div>

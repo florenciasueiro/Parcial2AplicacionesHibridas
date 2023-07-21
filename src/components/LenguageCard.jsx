@@ -42,7 +42,6 @@ function LanguageCard({ onLanguageSelect }) {
       </div>
       <button className={PerfilCSS.boton} onClick={handleClick}>Cambiar</button>
     </div>
-
   );
 }
 
