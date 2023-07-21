@@ -356,7 +356,7 @@ export function CardGridInfoProducto({handleClick}){
     const fetchData = async () => {
       try {
         const value = await valorDolar;
-        if(value){setDolarValue(await value);
+        if(value){setDolarValue(parseInt(await value));
         }else{
           console.log('error en bcra, usando valor dolar auxiliar')
           setDolarValue(510)
@@ -403,7 +403,7 @@ export function CardGridInfoProducto({handleClick}){
 //a la funicon mas Generica y que pueda manejar tanto facturas como otro tipo de documentos (habria que agregar en el back que busque ese param) y walla!, problema del recibo unico solucionado y sin modificar el core :_) soy tan bueno dios.
   const generarListaFacturas = () => {
     return usuario.ordenesCompra.map((orden) => (
-      <li key={orden.id}>
+      <li className={PerfilCSS.listaRecibo} key={orden.id}>
         <a href={`/factura?id=${orden.id}&doctype=purchaseorder`}>
           Recibo {orden.docNumber}
         </a>
@@ -425,7 +425,6 @@ export function CardGridInfoProducto({handleClick}){
       const monto5Porciento = montoTotal * 0.05;
       montoCuota = (montoTotal - monto5Porciento) / 12;
       console.log(facturaInfo.customFields[1].value)
-      setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
     }
     
     return montoCuota;
@@ -458,7 +457,7 @@ const preference = () => {
   
 
       return (
-    <ul>
+    <div className={PerfilCSS.pagar}>
       {usuario.facturas.map((facturaId) => (
         <li key={facturaId}>
           <button onClick={() => toggleFacturaInfo(facturaId)}>
@@ -466,30 +465,29 @@ const preference = () => {
           </button>
           {showFacturaInfo && (
             <div>
-              
               <h3>Información de la factura</h3>
-              <p>Número de factura: {facturaInfo.docNumber}</p>
-              <p>Fecha de emisión: {format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</p>
-              <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
-              <p>Financiacion: {facturaInfo.customFields[0].value}</p>
-              <p>Total a pagar: USD{facturaInfo.total}</p>
-              <p>Descripcion: Cuota {tipoCuotas}</p>
-              <p>Monto cuota: USD{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
-              <p>Monto cuota: ARS{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
-              
+                <p>Número de factura: {facturaInfo.docNumber}</p>
+                <p>Fecha de emisión: {format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</p>
+                <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
+                <p>Financiacion: {facturaInfo.customFields[0].value}</p>
+                <p>Total a pagar: USD{facturaInfo.total}</p>
+                <p>Descripcion: Cuota {tipoCuotas}</p>
+                <p>Monto cuota: USD{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
+                <p>Monto cuota: ARS{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
+                
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
-      <main>
-        {/* {renderSpinner()} */}
-        {/* <Checkout onClick={handleClick} description/> */}
-        <Payment />
-      </main>
-      
-    </InternalProvider>
+                <main>
+                  {/* {renderSpinner()} */}
+                  {/* <Checkout onClick={handleClick} description/> */}
+                  <Payment />
+                </main>
+                
+              </InternalProvider>
             </div>
           )}
         </li>
       ))}
-    </ul>
+    </div>
   );
     } else {
       return(<div><span>Aun no tienes pagos pendientes</span></div>);
@@ -501,7 +499,7 @@ const preference = () => {
     {
       id: 16,
       title: 'Pagos',
-      description: 'Hacer nuevos pagos',
+      description: 'Pagar cuotas',
       imageUrl: 'https://via.placeholder.com/150',
       contenido: pagarCuota(),
       icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,

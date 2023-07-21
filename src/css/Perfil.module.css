@@ -452,3 +452,38 @@
   display: flex;
   align-items: center;
 }
+.pagar{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.pagar button{
+  background-color: #E1E1E1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagar button:hover{
+  background-color: #ccc;
+}
+
+.listaRecibo{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  color: black;
+  text-decoration: none;
+}
+
+.listaRecibo a{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  color: #0071e3;
+  font-weight: 500;
+  text-decoration: none;
+  
+}
