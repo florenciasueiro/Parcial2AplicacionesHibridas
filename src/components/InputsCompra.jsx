@@ -19,7 +19,7 @@ initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
 // credenciales de prueba:
 // ASSET (it@asset)
 // credencial  public key:  "TEST-026812a7-4811-43d1-8f09-8207c13823a5"
-// credencial  Acces Token: TEST-6453243717102029-050120-8e42db516068f5814f7146cefe6696b4-1362723906
+// credencial  Acces Token: TEST-6453243717102029-050120-8e42db516068f5814f7146cefe6696b4-1362723906  
 
 // Produccion
 // public key: APP_USR-cea272c1-a889-4a00-8d37-6f86ba43adb1
@@ -57,7 +57,7 @@ export default function RadioInputs({seleccion}) {
       const fetchData = async () => {
         try {
           const value = await valorDolar;
-          if(value){setDolarValue(await value);
+          if(value){setDolarValue(parseInt(await value));
           }else{
             setDolarValue(510)
           }
