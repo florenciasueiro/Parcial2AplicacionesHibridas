@@ -40,12 +40,12 @@ function ModalCardPerfil({ card, isOpen, onClose }) {
           
             <div className={PerfilCSS.inputContainer}>
                 <input
-                 pattern="^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,}$" 
-                 className={PerfilCSS.input} 
-                 type={input.type} 
-                 placeholder={input.placeholder} 
-                 onChange={(e)=> input.change(e.target.value,index)}
-                 />
+                  pattern="^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,}$" 
+                  className={PerfilCSS.input} 
+                  type={input.type} 
+                  placeholder={input.placeholder} 
+                  onChange={(e)=> input.change(e.target.value,index)}
+                  />
                 <button 
                 className={PerfilCSS.boton}
                 onClick={input.onClick}

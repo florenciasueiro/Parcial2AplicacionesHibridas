@@ -186,10 +186,10 @@ export function CardGrid2({ handleClick }) {
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
-        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange},
+        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange, button: 'Aceptar cambios', onClick: handleTelefonoClick},
       ],
-      button: 'Aceptar cambios',
-      change: handleTelefonoClick,
+      // button: 'Aceptar cambios',
+      // change: handleTelefonoClick,
     },
     {
       id: 9,
@@ -201,7 +201,7 @@ export function CardGrid2({ handleClick }) {
         <input type="text" id="email" name="email" placeholder="Modificar emal"/>
         <input type="text" id="email" name="segundoNombre" placeholder="Añadir nuevo email"/>
     </form>),
-    button: 'Cambiar',
+      button: 'Cambiar',
     },
     {
       id: 10,
@@ -341,6 +341,7 @@ export function CardGridInfoProducto({handleClick}){
   const [selectedFacturaId, setSelectedFacturaId] = useState(null);
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [tipoCuotas,    setTipoCuotas] = useState("");
   const [orderData, setOrderData] = useState({
     amount: 0,
     description: ''
@@ -388,8 +389,8 @@ export function CardGridInfoProducto({handleClick}){
     // } else {
       setSelectedFacturaId(facturaId);
       setIsLoading(true);
-      orderData.description=`Cuota N: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`
       orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))
+      orderData.description=`Descripcion: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`  //antes aca iba Cuota N
       orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
@@ -414,14 +415,18 @@ export function CardGridInfoProducto({handleClick}){
   const calcularMontoCuota = (tipoFinanciacion, montoTotal) => {
     let montoCuota = 0;
     
-    if (tipoFinanciacion === '0') {
+    if (tipoFinanciacion === 'contado') {
       montoCuota = montoTotal- (montoTotal * 0.05);
+      setTipoCuotas("2/2");
     } else if (tipoFinanciacion === '70/30') {
       const monto30Porciento = montoTotal * 0.3;
       montoCuota = (montoTotal - monto30Porciento) / 11;
+      setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
     } else if (tipoFinanciacion === '100%') {
       const monto5Porciento = montoTotal * 0.05;
       montoCuota = (montoTotal - monto5Porciento) / 12;
+      console.log(facturaInfo.customFields[1].value)
+      setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
     }
     
     return montoCuota;
@@ -469,7 +474,7 @@ const preference = () => {
               <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
               <p>Financiacion: {facturaInfo.customFields[0].value}</p>
               <p>Total a pagar: USD{facturaInfo.total}</p>
-              <p>Cuota N: {parseInt(facturaInfo.customFields[1].value.charAt(0))+1}</p>
+              <p>Descripcion: Cuota {tipoCuotas}</p>
               <p>Monto cuota: USD{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
               <p>Monto cuota: ARS{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
               
@@ -491,6 +496,8 @@ const preference = () => {
       return(<div><span>Aun no tienes pagos pendientes</span></div>);
     }
   };
+  
+
   const cardData = [
     {
       id: 16,
