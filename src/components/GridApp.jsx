@@ -209,9 +209,8 @@ export function CardGrid2({ handleClick }) {
       description: `${usuario.genero}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
-      contenido:   (<form>
-      <label for="genero">Género:</label>
-      <select id="genero" name="genero" value={usuario.genero} onChange={handleGeneroChange}>
+      contenido:   (<form style={{ display: "flex", justifyContent: "center" }}>
+      <select id="genero" name="genero" onChange={handleGeneroChange}>
         <option value="Masculino">Masculino</option>
         <option value="Femenino">Femenino</option>
         <option value="No binario">No binario</option>
