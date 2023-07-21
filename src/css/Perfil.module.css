@@ -425,3 +425,30 @@
     background-color: #007bff;
     color: #fff;
   }
+
+/* Perfil.module.css */
+
+.botonVolver {
+  background-color: #E1E1E1;
+  border: none;
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  width: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  height: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7f8fa6;
+  margin-right: 10px;
+}
+
+.botonVolver:hover {
+  background-color: #ccc;
+}
+
+
+.text{
+  display: flex;
+  align-items: center;
+}

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ProfileInfo from '../components/Perfil';
 import { CardGrid, CardGrid2, CardGrid3, CardGrid4, CardGrid5, CardGrid6, CardGrid7, /*CardGrid8*/CardGridInfoProducto } from '../components/GridApp';
 import PerfilCSS from '../css/Perfil.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 function ProfilePage() {
   const [activeSection, setActiveSection] = useState('Inicio de Sesion');
@@ -27,9 +30,11 @@ function ProfilePage() {
           </div>
           <div className={PerfilCSS.rightSection}>
             <div className={PerfilCSS.text}>
-              {activeSection === 'Producto' && <button onClick={handleVolverClick}>Volver</button>}
-              <h1>{activeSection}</h1>
-              <p>Aqui se encuentra la informacion relacionada a {activeSection}</p>
+            {activeSection === 'Producto' && ( <button className={PerfilCSS.botonVolver} onClick={handleVolverClick}><FontAwesomeIcon icon={faChevronLeft} /></button>)}
+              <div>
+                <h1>{activeSection}</h1>
+                <p>Aqui se encuentra la informacion relacionada a {activeSection}</p>
+              </div>
             </div>
             {activeSection === 'Inicio de Sesion' && <CardGrid />}  
             {activeSection === 'Informacion personal' && <CardGrid2 />}
