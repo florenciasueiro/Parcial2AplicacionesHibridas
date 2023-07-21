@@ -57,7 +57,7 @@ function AddressCard() {
   return (
     <div className={PerfilCSS.direccion}>
       {/* <h2>Dirección de Facturacion</h2> */}
-      <div>
+      {/* <div>
         <label>
           {usuario.address && usuario.address.address
             ? usuario.address.address
@@ -65,7 +65,7 @@ function AddressCard() {
               ? usuario.address.address_components[1].long_name + ' ' + usuario.address.address_components[0].long_name
               : "No has cargado una dirección aún"}
         </label>
-      </div>
+      </div> */}
       {/* <input type="text" value={address} onChange={handleAddressChange} /> */}
       <PlacesAutocomplete onSelectCoordinates={handleSelectCoordinates} />
       {/* <div>

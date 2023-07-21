@@ -166,11 +166,11 @@ export function CardGrid2({ handleClick }) {
     {
       id: 6,
       title: 'Direccion',
-      description:`${usuario.address.address}`,
+      description: usuario.address.address ? usuario.address.address : 'Aun no has ingresado ninguna dirección',
       card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
-    },
+    },    
     {
       id: 7,
       title: 'Idioma',

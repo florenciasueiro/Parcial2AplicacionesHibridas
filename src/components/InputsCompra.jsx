@@ -667,29 +667,26 @@ orderData.dolarValue = dolarValue;
 
   switch (financiacionGrid) {
     case 'contado':
-      itemGrilla7 = 'el mas economico!';
-      itemGrilla8 = 'mas beneficios!';
-      itemGrilla9 = 'deberias usar este!';
+      itemGrilla7 = 'contado 1';
+      itemGrilla8 = 'contado 2';
+      itemGrilla9 = 'contado 3';
       break;
     case '70/30':
-      itemGrilla7 = 'el que se programo primero!';
-      itemGrilla8 = '12 cuotas donde pagas el 70% en 11 cuotas y el 25% restante en la ultima cuota';
-      itemGrilla9 = 'como los autos tiene un fee por financiacion';
+      itemGrilla7 = '70/30 primero';
+      itemGrilla8 = '70/30 segundo';
+      itemGrilla9 = '70/30 tercero';
       break;
     case '100%':
-      itemGrilla7 = '(╯‵□′)╯︵┻━┻12 cuotas iguales';
-      itemGrilla8 = '( ͡° ͜ʖ ͡°)  ✨ .  95/12 = 7.91 ';
-      itemGrilla9 = '༼ つ ◕_◕ ༽つobvio tiene un fee 👍ᓚᘏᗢ  ';
+      itemGrilla7 = '100 primero';
+      itemGrilla8 = '100 segundo';
+      itemGrilla9 = '100 tercero';
       break;
       default:
-        itemGrilla7 = 'si estas viendo esto es que hiciste algo mal';
-        itemGrilla8 = 'soy una pagina web asi que no deberia hablar';
-        itemGrilla9 = 'BIP BOP 🤖 ';
+        itemGrilla7 = 'deefecto 1';
+        itemGrilla8 = 'defecto 2';
+        itemGrilla9 = 'defecto 3';
         break;
     }
-
-
-    
     // className={selectedTerreno? "" : InputCSS.transparency50}
 
 if(cargaron){
