@@ -21,9 +21,29 @@
   grid-row: 1 / span 2;
 }
 
+.tarjeta1 h1{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
 .tarjeta2 {
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
+}
+
+.tarjeta2 h1{
+  font-size: 2rem;
+  text-align: center;
+  bottom: 20px;
+  margin-left: 10px;
+  display: block;
+}
+
+.tarjeta2 span{
+  font-size: 1.3rem;
+  text-align: center;
+  display: flex;
 }
 
 .tarjeta3 {
@@ -31,9 +51,38 @@
   grid-row: 2 / span 1;
 }
 
+.tarjeta3 h1{
+  display: block;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+  bottom: 20px;
+}
+
+.tarjeta3 span{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
 .tarjeta4 { 
   grid-column: 1 / span 1;
   grid-row: 3 / span 1;
+}
+
+.tarjeta4 h1{ 
+  color: #C0C0C0;
+  display: block;
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.tarjeta4 span{ 
+  color: white;
+  display: flex;
+  font-size: 2.5rem;
 }
 
 .tarjeta5 {
@@ -41,10 +90,36 @@
   grid-row: 3 / span 1;
 }
 
+.tarjeta5 h1{
+  font-size: 2rem;
+  display: inline-flex;
+}
+
+.tarjeta5 span{
+  display: flex;
+  color: #C0C0C0;
+}
+
+.res {
+  display: flex; /* Usa flexbox para alinear las palabras horizontalmente */
+  flex-direction: column; /* Coloca las palabras en columnas */
+  align-items: center; /* Centra horizontalmente el contenido */
+}
+
 .tarjeta6 {
   grid-column: 1 / span 1;
   grid-row: 4 / span 2;
 } 
+
+.tarjeta6 h1{
+  font-size: 2rem;
+  display: block;
+}
+
+.tarjeta6 span{
+  display: flex;
+}
+
 
 .tarjeta7 {
   grid-column: 2 / span 2;
@@ -183,4 +258,8 @@
   background: linear-gradient(to top, #000000 0%, #ffffff00 100%);
   /* background-color: rgba(0,0,0,0.7); */
   position: absolute;
+}
+
+.span{
+  color: #C0C0C0;
 }
