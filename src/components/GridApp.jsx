@@ -21,6 +21,7 @@ import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
 import Checkout from "./Checkout";
 import GridCSS from "../css/Grid.module.css"
+import { Background } from '@cloudinary/url-gen/qualifiers';
 
 
 // import PDFViewer from '../components/PDFViewer';
@@ -421,7 +422,7 @@ export function CardGridInfoProducto({handleClick}){
     } else if (tipoFinanciacion === '70/30') {
       const monto30Porciento = montoTotal * 0.3;
       montoCuota = (montoTotal - monto30Porciento) / 11;
-      setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
+      // setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
     } else if (tipoFinanciacion === '100%') {
       const monto5Porciento = montoTotal * 0.05;
       montoCuota = (montoTotal - monto5Porciento) / 12;
@@ -460,22 +461,43 @@ const preference = () => {
       return (
     <div className={PerfilCSS.pagar}>
       {usuario.facturas.map((facturaId) => (
-        <li key={facturaId}>
-          <button onClick={() => toggleFacturaInfo(facturaId)}>
+        <div key={facturaId}>
+          <button className={PerfilCSS.botonPago} onClick={() => toggleFacturaInfo(facturaId)}>
             Pagar Cuota de producto {productName}
           </button>
           {showFacturaInfo && (
-            <div>
-              <h3>Información de la factura</h3>
-                <p>Número de factura: {facturaInfo.docNumber}</p>
-                <p>Fecha de emisión: {format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</p>
-                <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
-                <p>Financiacion: {facturaInfo.customFields[0].value}</p>
-                <p>Total a pagar: USD{facturaInfo.total}</p>
-                <p>Descripcion: Cuota {tipoCuotas}</p>
-                <p>Monto cuota: USD{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
-                <p>Monto cuota: ARS{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
-                
+            <div className={PerfilCSS.divPago}>
+              <h1 className={PerfilCSS.h1Pago}>Información de la factura</h1>
+              <table className={PerfilCSS.tablePago}>
+                <thead>
+                  <tr>
+                    <th className={PerfilCSS.thPago}>N° de Factura:</th>
+                    <th className={PerfilCSS.thPago}>Emisión</th>
+                    <th className={PerfilCSS.thPago}>Vencimiento</th>
+                    <th className={PerfilCSS.thPago}>Financiacion</th>
+                    <th className={PerfilCSS.thPago}>Total en USD</th>
+                    <th className={PerfilCSS.thPago}>Descripcion</th>
+                    <th className={PerfilCSS.thPago}>Monto en USD</th>
+                    <th className={PerfilCSS.thPago}>Monto en ARS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={PerfilCSS.tdPago}>{facturaInfo.docNumber}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{facturaInfo.customFields[0].value}</td>
+                    <td className={PerfilCSS.tdPago}>{facturaInfo.total}</td>
+                    <td className={PerfilCSS.tdPago}>{tipoCuotas}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
                 <main>
                   {/* {renderSpinner()} */}
@@ -486,7 +508,7 @@ const preference = () => {
               </InternalProvider>
             </div>
           )}
-        </li>
+        </div>
       ))}
     </div>
   );
@@ -538,7 +560,6 @@ const preference = () => {
   ];
   return (
     <div className={PerfilCSS.cardGrid} onClick={handleClick}>
-  
       {cardData.map((card) => (
         <Card className={PerfilCSS.card} key={card.id} card={card} />
       ))}
