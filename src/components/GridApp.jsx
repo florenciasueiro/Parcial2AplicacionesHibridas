@@ -20,6 +20,7 @@ import { initMercadoPago } from "@mercadopago/sdk-react";
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
 import Checkout from "./Checkout";
+import GridCSS from "../css/Grid.module.css"
 
 
 // import PDFViewer from '../components/PDFViewer';
@@ -844,7 +845,8 @@ export function CardGrid17({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Simplificando tu día a día.',
+      title: 'Simplificando',
+      span: 'tu día a día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg',
@@ -866,7 +868,8 @@ export function CardGrid18({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Pedir online sin preocupaciones',
+      title: 'Pedir online',
+      span: 'sin preocupaciones.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/10_INTERIOR_SUM_BLUE_HOUR_4K_POS_gr3ozf.jpg',
@@ -888,7 +891,8 @@ export function CardGrid19({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Mantenerse conectado sin interrupciones, todo el día.',
+      title: 'Mantenerse conectado',
+      span: 'sin interrupciones, todo el día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/08_INTERIOR_SUM_4K_POS_io5hkb.jpg',
@@ -910,7 +914,11 @@ export function CardGrid20({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Relajarse Rejuvenecer Reconectarse.',
+      title:  <div>
+              <h1>  <span>Re</span>lajarse </h1>
+              <h1>  <span>Re</span>juvenecer </h1>
+              <h1>  <span>Re</span>conectarse. </h1>
+              </div>,
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/07_INTERIOR_GUARDERIA_4K_POS_w1ev6q.jpg',
@@ -932,7 +940,8 @@ export function CardGrid21({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'La tranquilidad de tu familia es nuestra prioridad.',
+      title: 'La tranquilidad de tu familia',
+      span: ' es nuestra prioridad.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/01_ACCESO_4K_POS_wurxql.jpg',
@@ -954,7 +963,8 @@ export function CardGrid22({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Inspirado a través del movimiento.',
+      title: 'Inspirado',
+      span: 'a través del movimiento.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751159/02_CONTROL_ACCESO_4K_POS_brydhw.jpg',
@@ -998,7 +1008,8 @@ export function CardGrid24({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Impulsa tu creatividad',
+      title: 'Impulsa',
+      span: 'tu creatividad',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -1020,7 +1031,8 @@ export function CardGrid25({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Disfrutar de momento inolvidables, Juntos.',
+      title: 'Disfrutar de momento inolvidables,',
+      span: ' Juntos.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',

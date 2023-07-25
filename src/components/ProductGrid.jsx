@@ -21,7 +21,10 @@ function ProductGrid({ card, cardData }) {
         <div className={GridCSS.card} onClick={handleOpenModal}>
           <div className={GridCSS.cardBodyInicio}>
             {/* {card.icon && <img className={GridCSS.cardIcon} src={card.icon} alt="Logo" />} */}
-            <h1 className={GridCSS.h1}>{card.title}</h1>
+            <h1 className={GridCSS.h1}>
+              {card.title}
+                <span className={GridCSS.span}>{card.span}</span>
+            </h1>
             {/* <p>{card.description}</p> */}
           </div>
           <img className={GridCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />

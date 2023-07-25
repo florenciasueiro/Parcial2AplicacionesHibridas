@@ -124,3 +124,25 @@
     font-weight: 400;
 
   }
+
+
+  @media (max-width: 768px) {
+    .card {
+      display: flex;
+      margin: 15px auto;
+      flex-direction: row;
+      width: 90vw;
+      height: 220px;
+      background-color: #f1f1f1;
+      border-radius: 30px;
+      overflow: hidden;
+    }
+    
+    .title{
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 0.6rem;
+    }
+  }
