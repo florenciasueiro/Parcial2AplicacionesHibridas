@@ -20,6 +20,7 @@ import { initMercadoPago } from "@mercadopago/sdk-react";
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
 import Checkout from "./Checkout";
+import GridCSS from "../css/Grid.module.css"
 
 
 // import PDFViewer from '../components/PDFViewer';
@@ -913,11 +914,11 @@ export function CardGrid20({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title:  <h1 className={GridCSS.res}>
-                <span>Re</span>lajarse
-                <span>Re</span>juvenecer
-                <span>Re</span>conectarse.
-              </h1>,
+      title:  <div>
+              <h1>  <span>Re</span>lajarse </h1>
+              <h1>  <span>Re</span>juvenecer </h1>
+              <h1>  <span>Re</span>conectarse. </h1>
+              </div>,
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/07_INTERIOR_GUARDERIA_4K_POS_w1ev6q.jpg',
@@ -1007,8 +1008,8 @@ export function CardGrid24({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'tu creatividad',
-      span: 'Impulsa',
+      title: 'Impulsa',
+      span: 'tu creatividad',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
