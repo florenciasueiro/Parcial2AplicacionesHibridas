@@ -37,3 +37,23 @@
     /* background-color: rgba(0,0,0,0.7); */
     position: absolute;
 }
+
+
+@media (max-width: 768px) {
+    .contenedor{
+        height: 50vh;
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        z-index: 0;
+        position: relative;
+    }
+    
+    .black{
+        width: 100%;
+        height: 50vh;
+        background: linear-gradient(to top, #000000 0%, #ffffff00 100%);
+        /* background-color: rgba(0,0,0,0.7); */
+        position: absolute;
+    }
+}
