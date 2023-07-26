@@ -59,7 +59,7 @@ export default function RadioInputs({seleccion}) {
           const value = await valorDolar;
           if(value){setDolarValue(parseInt(await value));
           }else{
-            setDolarValue(510)
+            setDolarValue(500)
           }
           
           

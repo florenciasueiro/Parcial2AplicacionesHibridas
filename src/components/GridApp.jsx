@@ -361,7 +361,7 @@ export function CardGridInfoProducto({handleClick}){
         if(value){setDolarValue(parseInt(await value));
         }else{
           console.log('error en bcra, usando valor dolar auxiliar')
-          setDolarValue(510)
+          setDolarValue(500)
         }
         
         
