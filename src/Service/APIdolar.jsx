@@ -8,14 +8,14 @@ export function useDolar() {
     useEffect(() => {
         const fetchCotizaciones = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/v2/getDolar');
+                const response = await axios.get('http://localhost:8080/v3/getDolar');
 
                 const data = await response;
-
+                console.log(data.data.price)
                 setCotizacion(await data.data.price);
                 // alert(JSON.stringify(data.data.price));
             }catch (error){
-                setCotizacion(520)
+                setCotizacion(500)
                 console.error('There was a problem with the fetch operation:', error);
 
             }

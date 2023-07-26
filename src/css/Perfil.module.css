@@ -455,7 +455,6 @@
 .pagar{
   display: flex;
   justify-content: center;
-  list-style: none;
 }
 
 .pagar button{
@@ -486,4 +485,32 @@
   font-weight: 500;
   text-decoration: none;
   
+}
+
+
+.h1Pago{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  font-size: 1.8rem;
+}
+
+.tablePago{
+  margin: 10px 20px;
+}
+
+.tdPago, .thPago{
+  padding: 5px;
+  max-width: 150px; /* Ajusta este valor según lo necesites */
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  overflow: hidden; /* Oculta cualquier contenido que no quepa */
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.botonPago{
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }

@@ -92,7 +92,7 @@
 
 .tarjeta5 h1{
   font-size: 2rem;
-  display: inline-flex;
+  display: flex;
 }
 
 .tarjeta5 span{
@@ -100,11 +100,7 @@
   color: #C0C0C0;
 }
 
-.res {
-  display: flex; /* Usa flexbox para alinear las palabras horizontalmente */
-  flex-direction: column; /* Coloca las palabras en columnas */
-  align-items: center; /* Centra horizontalmente el contenido */
-}
+
 
 .tarjeta6 {
   grid-column: 1 / span 1;
@@ -114,16 +110,34 @@
 .tarjeta6 h1{
   font-size: 2rem;
   display: block;
+  justify-content: center;
+  text-align: center;
 }
 
 .tarjeta6 span{
   display: flex;
+  font-size: 1.3rem;
+  justify-content: center;
 }
-
 
 .tarjeta7 {
   grid-column: 2 / span 2;
   grid-row: 4 / span 2;
+}
+
+.tarjeta7 h1{
+  display: block;
+  bottom: 30px;
+  right: 30px;
+  text-align: end;
+  font-size: 2rem;
+  
+}
+
+.tarjeta7 span{
+  display: flex;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .tarjeta8 {
@@ -131,14 +145,42 @@
   grid-row: 6 / span 1;
 }
 
+.tarjeta8 h1{
+  font-size: 2rem;
+}
+
 .tarjeta9 {
   grid-column: 3 / span 1;
   grid-row: 6 / span 1; 
 }
 
+.tarjeta9 h1{
+  display: block;
+  color: #C0C0C0;
+  font-size: 1.5rem;
+}
+
+.tarjeta9 span{
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+}
+
 .tarjeta10 {
   grid-column: 1 / span 3;
   grid-row: 7 / span 1;
+}
+
+.tarjeta10 h1{
+  display: block;
+  bottom: 25px;
+  color: #C0C0C0;
+  left: 25px;
+}
+
+.tarjeta10 span{
+  display: flex;
+  color: white;
 }
 
     .contenido{
