@@ -111,8 +111,8 @@ export default function RadioInputs({seleccion}) {
   const [selectedCard,            setSelectedCard]            = useState('');
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
-  const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
   const [selectedCW,              setSelectedCW]              = useState('');
+  const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
   const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
  
 
@@ -146,7 +146,7 @@ orderData.storage=request.almacenamiento;
 orderData.sum=request.sum;
 orderData.guarderia=request.guarderia;
 orderData.cw=request.cw;
-
+orderData.financiation= 'contado'
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 orderData.user = usuario;
@@ -397,6 +397,7 @@ const handleClick = () => {
 };
 
 const renderSpinner = () => {
+  console.log("orderData de renderSpiner",orderData);
   if (isLoading) {
     return (
       <div className={InputCSS["spinner-wrapper"]}>
@@ -522,15 +523,17 @@ orderData.dolarValue = dolarValue;
   };
 
   
-  const handleSelectCW = (event) => {
+  const handleSelectCW = async (event) => {
     setSelectedCW(event.target.value);
-    
+    orderData.financiation= financiacionGrid 
     orderData.cwPrice = servicePrice("Pase CoWorking");
     orderData.amount = calculateAmount(selectedFinanciation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, event.target.value);
     // setIsLoading(true);
-    handleClick();
+    await handleClick();
+    await handleClick();
     if (event.target.value !== '') {
       setInput7Disabled(false);
+      
     } else {
       setInput7Disabled(true);
     }
