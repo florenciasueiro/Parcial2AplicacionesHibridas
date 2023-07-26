@@ -913,7 +913,7 @@ export function CardGrid20({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title:  <h1 className={GridCSS.res}>
+      title:  <h1>
                 <span>Re</span>lajarse
                 <span>Re</span>juvenecer
                 <span>Re</span>conectarse.
