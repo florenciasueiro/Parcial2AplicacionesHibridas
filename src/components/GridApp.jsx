@@ -433,7 +433,7 @@ export function CardGridInfoProducto({handleClick}){
   };
 
 const preference = () => {
-  fetch("https://restapinode-production.up.railway.app/payment", {
+  fetch("https://restapinode-production-8fd5.up.railway.app/payment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

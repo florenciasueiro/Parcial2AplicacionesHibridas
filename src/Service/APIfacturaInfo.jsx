@@ -7,7 +7,7 @@ const useFacturaInfo = (id) => {
   // useEffect(() => {
     const fetchFactura = async () => {
       try {
-        const response = await axios.get(`https://restapinode-production.up.railway.app/v1/getDatosFactura?id=${id}`);
+        const response = await axios.get(`https://restapinode-production-8fd5.up.railway.app/v1/getDatosFactura?id=${id}`);
         const data = response.data;
         setDatosFactura(await data);
       } catch (error) {
