@@ -23,6 +23,6 @@ export function useDolar() {
         fetchCotizaciones();
     }, []);
 
-    return contizacion;
+    return contizacion;//
     
 }
