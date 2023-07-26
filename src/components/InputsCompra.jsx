@@ -19,7 +19,7 @@ initMercadoPago("APP_USR-cea272c1-a889-4a00-8d37-6f86ba43adb1");
 // credenciales de prueba:
 // ASSET (it@asset)
 // credencial  public key:  "TEST-026812a7-4811-43d1-8f09-8207c13823a5"
-// credencial  Acces Token: TEST-6453243717102029-050120-8e42db516068f5814f7146cefe6696b4-1362723906
+// credencial  Acces Token: TEST-6453243717102029-050120-8e42db516068f5814f7146cefe6696b4-1362723906  
 
 // Produccion
 // public key: APP_USR-cea272c1-a889-4a00-8d37-6f86ba43adb1
@@ -57,9 +57,9 @@ export default function RadioInputs({seleccion}) {
       const fetchData = async () => {
         try {
           const value = await valorDolar;
-          if(value){setDolarValue(await value);
+          if(value){setDolarValue(parseInt(await value));
           }else{
-            setDolarValue(492)
+            setDolarValue(510)
           }
           
           
@@ -104,16 +104,17 @@ export default function RadioInputs({seleccion}) {
   const [input5Disabled, setInput5Disabled] = useState(true );
   const [input6Disabled, setInput6Disabled] = useState(true ); 
   const [input7Disabled, setInput7Disabled] = useState(true ); 
+  const [input8Disabled, setInput8Disabled] = useState(true ); 
   const [cargaron,             setCargaron] = useState(false);
   const [selectedTerreno,         setSelectedTerreno]         = useState('');
   const [selectedAlmacenamiento,  setSelectedAlmacenamiento]  = useState('');
   const [selectedCard,            setSelectedCard]            = useState('');
   const [selectedGuarderia,       setSelectedGuarderia]       = useState('');
   const [selectedSUM,             setSelectedSUM]             = useState('');
-  const [selectedPago,            setSelectedPago]            = useState('');
   const [selectedCW,              setSelectedCW]              = useState('');
-  const [selectedFinanciation,     setSelectedFinanciation]    = useState(parseFloat(1));
-
+  const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
+  const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
+ 
 
   const urlParams = new URLSearchParams(window.location.search);
   const status = Object.fromEntries(urlParams).status;
@@ -145,18 +146,18 @@ orderData.storage=request.almacenamiento;
 orderData.sum=request.sum;
 orderData.guarderia=request.guarderia;
 orderData.cw=request.cw;
-
+orderData.financiation= 'contado'
 const usuarioJson = sessionStorage.getItem('user');
 const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 orderData.user = usuario;
 
-// useEffect(() => {
-//   const logOrderData = async () => {
-//     console.log("orderData:", await orderData);
-//   };
+useEffect(() => {
+  const logOrderData = async () => {
+    console.table("orderData:", await orderData);
+  };
 
-//   logOrderData();
-// }, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
+  logOrderData();
+}, [orderData,selectedTerreno,selectedCard,selectedAlmacenamiento,selectedGuarderia,selectedSUM, selectedCW]);
 
 
 //deberia hacer que productos tenga un useState y para que se ejecute cuando cambia la lista (reducir sto
@@ -275,11 +276,11 @@ useEffect(() => {
             <div className={InputCSS["summaryGroup"]}>
 {renderSpinner()}
               <div className={InputCSS["summary-item"]}>
-                <span className={InputCSS["text"]}>Subtotal USD$</span>
+                <span className={InputCSS["text"]}>Subtotal USD</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{(orderData.amount/dolarValue).toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 + IVA</span>
                 
-                <span className={InputCSS["text"]}>Subtotal ARS$</span>
+                <span className={InputCSS["text"]}>Subtotal ARS</span>
                 <span className={InputCSS["price"]} id={InputCSS["cart-total"]}>{orderData.amount.toLocaleString('es-AR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 + IVA</span>
               </div>
@@ -369,7 +370,8 @@ const handleClick = () => {
   orderData.sku=checkSKUByName(orderData.description);
   orderData.stock=checkStockByName(orderData.description);
   orderData.backURL="feedback"
-  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa"
+  orderData.transfer = "\a\a\a\a\a\a\\tatatatatataaaaaaaaaaaaa" 
+  orderData.tax = 0.21;
   setIsLoading(true);
 
   // postVenta();
@@ -395,6 +397,7 @@ const handleClick = () => {
 };
 
 const renderSpinner = () => {
+  console.log("orderData de renderSpiner",orderData);
   if (isLoading) {
     return (
       <div className={InputCSS["spinner-wrapper"]}>
@@ -424,7 +427,7 @@ orderData.dolarValue = dolarValue;
     const guarderiaPrice = guarderia ? servicePrice("Pase Kinder") * guarderia : 0;
     const sumPrice = sum ? servicePrice("Pase SUM") * sum : 0;
     const cwPrice = cw ? servicePrice("Pase CoWorking") * cw : 0;
-    
+    //if selected finaciation != 1 then handleClick() para que si cambia de terreno le cobre bien
     // console.log( (terrenoPrice + almacenamientoPrice + guarderiaPrice + sumPrice + cwPrice)* parseFloat(financiation) );
     return (((terrenoPrice)* parseFloat(financiation)*dolarValue).toFixed(2)*0.05);
   };
@@ -520,12 +523,14 @@ orderData.dolarValue = dolarValue;
   };
 
   
-  const handleSelectCW = (event) => {
+  const handleSelectCW = async (event) => {
     setSelectedCW(event.target.value);
-    
+    orderData.financiation= financiacionGrid 
     orderData.cwPrice = servicePrice("Pase CoWorking");
     orderData.amount = calculateAmount(selectedFinanciation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, event.target.value);
     // setIsLoading(true);
+    await handleClick();
+    await handleClick();
     if (event.target.value !== '') {
       setInput7Disabled(false);
       
@@ -533,14 +538,18 @@ orderData.dolarValue = dolarValue;
       setInput7Disabled(true);
     }
   };
-  //manda para afuera el order data
-  
   const handleSelectFinanciation = (value) => {
+    console.log(value);
+    orderData.financiation= value.grid;
     handleClick();
-    setSelectedFinanciation(value);
-    console.log(value)
-    orderData.amount = calculateAmount(value, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
-  }
+    setSelectedFinanciation(value.financiation);
+    setFinanciationGrid(value.grid)
+    orderData.amount = calculateAmount(value.financiation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+    handleClick();
+
+  };
+  
+  
   //Para corregir:
   // ahora si el cliente llegua hasta financiacion y luego cambia algo ese algo no se va a impactar en mercado pago
   // para solucionarlo se puede hacer varias cosas 
@@ -638,19 +647,19 @@ orderData.dolarValue = dolarValue;
 
   switch (selectedAlmacenamiento) {
     case 'Almacenamiento S':
-      itemGrilla4 = '50cm';
-      itemGrilla5 = '45cm';
-      itemGrilla6 = '50cm';
+      itemGrilla4 = '40cm';
+      itemGrilla5 = '40cm';
+      itemGrilla6 = '40cm';
       break;
     case 'Almacenamiento M':
-      itemGrilla4 = '90cm';
-      itemGrilla5 = '45cm';
-      itemGrilla6 = '50cm';
+      itemGrilla4 = '60cm';
+      itemGrilla5 = '40cm';
+      itemGrilla6 = '40cm';
       break;
     case 'Almacenamiento L':
-      itemGrilla4 = '0cm';
-      itemGrilla5 = '0cm';
-      itemGrilla6 = '0cm';
+      itemGrilla4 = '100cm';
+      itemGrilla5 = '40cm';
+      itemGrilla6 = '40cm';
       break;
       default:
         itemGrilla4 = '20cm';
@@ -659,31 +668,28 @@ orderData.dolarValue = dolarValue;
         break;
     }
 
-  switch (selectedFinanciation) {
+  switch (financiacionGrid) {
     case 'contado':
-      itemGrilla7 = 'contado opcion1';
-      itemGrilla8 = 'contado opcion2';
-      itemGrilla9 = 'contado opcion3';
+      itemGrilla7 = 'contado 1';
+      itemGrilla8 = 'contado 2';
+      itemGrilla9 = 'contado 3';
       break;
-    case 'financiado7030':
-      itemGrilla7 = 'financiado7030opcion4';
-      itemGrilla8 = 'financiado7030 opcion5';
-      itemGrilla9 = 'financiado7030 opcion6';
+    case '70/30':
+      itemGrilla7 = '70/30 primero';
+      itemGrilla8 = '70/30 segundo';
+      itemGrilla9 = '70/30 tercero';
       break;
-    case 'financiado100':
-      itemGrilla7 = 'financiado100 opcion7';
-      itemGrilla8 = 'financiado100 opcion8';
-      itemGrilla9 = 'financiado100 opcion9';
+    case '100%':
+      itemGrilla7 = '100 primero';
+      itemGrilla8 = '100 segundo';
+      itemGrilla9 = '100 tercero';
       break;
       default:
-        itemGrilla7 = 'opcion11';
-        itemGrilla8 = 'opcion12';
-        itemGrilla9 = 'opcion13';
+        itemGrilla7 = 'deefecto 1';
+        itemGrilla8 = 'defecto 2';
+        itemGrilla9 = 'defecto 3';
         break;
     }
-
-
-    
     // className={selectedTerreno? "" : InputCSS.transparency50}
 
 if(cargaron){
@@ -957,106 +963,113 @@ if(cargaron){
           {/* <div className={InputCSS.moreInfo}>
               <Info5/>
             </div> */}
-        </div>
-        <div className={InputCSS['radioInputs']}>
-          <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
-            <span><input type="radio" value="6" checked={selectedSUM === '6'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-            6 Meses
-          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
-          <label className={`${InputCSS['radioInput']} ${selectedSUM === '12' ? InputCSS.selected : ''}`}>
-            <span><input type="radio" value="12" checked={selectedSUM === '12'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-            12 Meses
-          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
-          <label className={`${InputCSS['radioInput']} ${selectedSUM === '24' ? InputCSS.selected : ''}`}>
-            <span><input type="radio" value="24" checked={selectedSUM === '24'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-            24 Meses
-          </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
-        <label className={`${InputCSS['radioInput']} ${selectedSUM === '0' ? InputCSS.selected : ''}`}>
-            <span><input type="radio" value="0" checked={selectedSUM === '0'} onChange={handleSelectSUM} disabled={input5Disabled}/>
-            Ninguno
-          </span></label>
-          <br/>
-        </div>
-      </div>
-      </div>
-      <div className={selectedSUM?            "" : InputCSS.transparency50}>
-        <div className={InputCSS['ref']} ref={cwRef}>
-          <div>
-            <b className={InputCSS.b}>Coworking</b>
-            <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
-            {/* <div className={InputCSS.moreInfo}>
-              <Info6/>
-            </div> */}
           </div>
           <div className={InputCSS['radioInputs']}>
-            <label className={`${InputCSS['radioInput']} ${selectedCW === '3' ? InputCSS.selected : ''}`}>
-              <span><input type="radio" value="3" checked={selectedCW === '3'} onChange={handleSelectCW} disabled={input6Disabled}/>
-              3 Meses
-            </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
-            <label className={`${InputCSS['radioInput']} ${selectedCW === '6' ? InputCSS.selected : ''}`}>
-              <span><input type="radio" value="6" checked={selectedCW === '6'} onChange={handleSelectCW} disabled={input6Disabled}/>
+            <label className={`${InputCSS['radioInput']} ${selectedSUM === '6' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="6" checked={selectedSUM === '6'} onChange={handleSelectSUM} disabled={input5Disabled}/>
               6 Meses
             </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
-            <label className={`${InputCSS['radioInput']} ${selectedCW === '12' ? InputCSS.selected : ''}`}>
-              <span><input type="radio" value="12" checked={selectedCW === '12'} onChange={handleSelectCW} disabled={input6Disabled}/>
+            <label className={`${InputCSS['radioInput']} ${selectedSUM === '12' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="12" checked={selectedSUM === '12'} onChange={handleSelectSUM} disabled={input5Disabled}/>
               12 Meses
             </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
-          <label className={`${InputCSS['radioInput']} ${selectedCW === '0' ? InputCSS.selected : ''}`}>
-              <span><input type="radio" value="0" checked={selectedCW === '0'} onChange={handleSelectCW} disabled={input6Disabled}/>
+            <label className={`${InputCSS['radioInput']} ${selectedSUM === '24' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="24" checked={selectedSUM === '24'} onChange={handleSelectSUM} disabled={input5Disabled}/>
+              24 Meses
+            </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+          <label className={`${InputCSS['radioInput']} ${selectedSUM === '0' ? InputCSS.selected : ''}`}>
+              <span><input type="radio" value="0" checked={selectedSUM === '0'} onChange={handleSelectSUM} disabled={input5Disabled}/>
               Ninguno
             </span></label>
             <br/>
           </div>
         </div>
-      </div>
-      <div className={selectedCW?             "" : InputCSS.transparency50}>
-        <div className={InputCSS['ref']} ref={FinanciationRef}>
-          <div>
-            <b className={InputCSS.b}>Financiación</b>
-            <p className={InputCSS.p}>Selecciona el mejor para ti.</p>
-            {/* <div className={InputCSS.moreInfo}>
-              <Info6/>
-            </div> */}
-          </div>
-            <div className={InputCSS.containers}>
-              <div className={InputCSS.tabs}>
-                <input 
-                  type="radio" 
-                  id="radio1" 
-                  name="tabs"
-                  onChange={() => handleSelectFinanciation(1)}
-                />
-                <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
-                <input 
-                  type="radio" 
-                  id="radio2" 
-                  name="tabs"
-                  
-                  onChange={() => handleSelectFinanciation(1.1917)}
-                />
-                <label htmlFor="radio2" className={InputCSS.tab} >Financiado 70%/30%</label>
-                <input 
-                  type="radio" 
-                  id="radio3"   
-                  name="tabs" 
-                  
-                  onChange={() => handleSelectFinanciation(1.1917)}
-                />
-                <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
-                <span className={InputCSS.glider}></span>
-              </div>
+        </div>
+        <div className={selectedSUM?            "" : InputCSS.transparency50}>
+          <div className={InputCSS['ref']} ref={cwRef}>
+            <div>
+              <b className={InputCSS.b}>Coworking</b>
+              <p className={InputCSS.p}>Reservá el espacio para lo que tú quieras.</p>
+              {/* <div className={InputCSS.moreInfo}>
+                <Info6/>
+              </div> */}
             </div>
-              <div className={InputCSS.grilla}>
-                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
-                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
-                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
-                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
-                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
-                <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+            <div className={InputCSS['radioInputs']}>
+              <label className={`${InputCSS['radioInput']} ${selectedCW === '3' ? InputCSS.selected : ''}`}>
+                <span><input type="radio" value="3" checked={selectedCW === '3'} onChange={handleSelectCW} disabled={input6Disabled}/>
+                3 Meses
+              </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+              <label className={`${InputCSS['radioInput']} ${selectedCW === '6' ? InputCSS.selected : ''}`}>
+                <span><input type="radio" value="6" checked={selectedCW === '6'} onChange={handleSelectCW} disabled={input6Disabled}/>
+                6 Meses
+              </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+              <label className={`${InputCSS['radioInput']} ${selectedCW === '12' ? InputCSS.selected : ''}`}>
+                <span><input type="radio" value="12" checked={selectedCW === '12'} onChange={handleSelectCW} disabled={input6Disabled}/>
+                12 Meses
+              </span>{/* <span className={InputCSS['precio']}>No disponible</span> */}</label>
+            <label className={`${InputCSS['radioInput']} ${selectedCW === '0' ? InputCSS.selected : ''}`}>
+                <span><input type="radio" value="0" checked={selectedCW === '0'} onChange={handleSelectCW} disabled={input6Disabled}/>
+                Ninguno
+              </span></label>
+              <br/>
+            </div>
+          </div>
+        </div>
+        <div className={selectedCW?             "" : InputCSS.transparency50}>
+          <div className={InputCSS['ref']} ref={FinanciationRef}>
+            <div>
+              <b className={InputCSS.b}>Financiación</b>
+              <p className={InputCSS.p}>Selecciona el mejor para ti.</p>
+              {/* <div className={InputCSS.moreInfo}>
+                <Info6/>
+              </div> */}
+            </div>
+              <div className={InputCSS.containers}>
+                <div className={InputCSS.tabs}>
+                  <input 
+                    type="radio" 
+                    id="radio1" 
+                    name="tabs"
+                    value="contado"
+                    defaultChecked
+                    onChange={() => handleSelectFinanciation({financiation:1, grid : 'contado'})}
+                    disabled={input7Disabled}
+                  />
+                  <label htmlFor="radio1" className={InputCSS.tab}>Precio contado</label>
+                  <input 
+                    type="radio" 
+                    id="radio2" 
+                    name="tabs"
+                    value="financiado7030"
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'70/30'})}
+                    disabled={input7Disabled}
+
+                  />
+                  <label htmlFor="radio2" className={InputCSS.tab} >Financiado 70%/30%</label>
+                  <input 
+                    type="radio" 
+                    id="radio3"   
+                    name="tabs" 
+                    value="financiado100"
+                    onChange={() => handleSelectFinanciation({financiation :1.1917, grid :'100%'})}
+                    disabled={input7Disabled}
+
+                  />
+                  <label htmlFor="radio3" className={InputCSS.tab}>Financiado 100%</label>
+                  <span className={InputCSS.glider}></span>
+                </div>
               </div>
+                <div className={InputCSS.grilla}>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+                </div>
+          </div>
         </div>
       </div>
-    </div>
     
   );
 }else{
@@ -1258,16 +1271,16 @@ if(cargaron){
     <div className={InputCSS['ref']} ref={pagoRef}>
     <div><b className={InputCSS.b}> Opciones de pago.</b> <p className={InputCSS.p}>Seleccione el que funcione para usted.</p></div>
     <div className={InputCSS['radioInputs']}>
-      <label className={`${InputCSS['radioInput']} ${selectedPago === '1' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="1" checked={selectedPago === '1'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
+      <label className={`${InputCSS['radioInput']} ${ InputCSS.selected}`}>
+        <span><input type="radio" value="1" /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
         1 cuota
       </span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedPago === '6' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="6" checked={selectedPago === '6'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
+      <label className={`${InputCSS['radioInput']} ${InputCSS.selected}`}>
+        <span><input type="radio" value="6"  /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
         6 cuotas
       </span></label>
-      <label className={`${InputCSS['radioInput']} ${selectedPago === '12' ? InputCSS.selected : ''}`}>
-        <span><input type="radio" value="12" checked={selectedPago === '12'} /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
+      <label className={`${InputCSS['radioInput']} ${ InputCSS.selected}`}>
+        <span><input type="radio" value="12" /**onChange={handleSelectPago}**/ disabled={input6Disabled}/>
         12 cuotas
       </span></label>
       <br/>

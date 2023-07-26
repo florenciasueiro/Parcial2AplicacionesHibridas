@@ -11,11 +11,11 @@ export function useDolar() {
                 const response = await axios.get('https://restapinode-production.up.railway.app/v1/getDolar');
 
                 const data = await response;
-
+                console.log(data.data.price)
                 setCotizacion(await data.data.price);
                 // alert(JSON.stringify(data.data.price));
             }catch (error){
-                setCotizacion(491)
+                setCotizacion(500)
                 console.error('There was a problem with the fetch operation:', error);
 
             }

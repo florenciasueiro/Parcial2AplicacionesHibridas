@@ -20,6 +20,8 @@ import { initMercadoPago } from "@mercadopago/sdk-react";
 import InternalProvider from "../Service/ContextProvider";
 import { SpinnerCircular } from 'spinners-react';
 import Checkout from "./Checkout";
+import GridCSS from "../css/Grid.module.css"
+import { Background } from '@cloudinary/url-gen/qualifiers';
 
 
 // import PDFViewer from '../components/PDFViewer';
@@ -166,11 +168,11 @@ export function CardGrid2({ handleClick }) {
     {
       id: 6,
       title: 'Direccion',
-      description:`${usuario.address.address}`,
+      description: usuario.address.address ? usuario.address.address : 'Aun no has ingresado ninguna dirección',
       card: <AddressCard/>,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faLocationDot} />
-    },
+    },    
     {
       id: 7,
       title: 'Idioma',
@@ -186,10 +188,10 @@ export function CardGrid2({ handleClick }) {
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
-        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange},
+        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange, button: 'Aceptar cambios', onClick: handleTelefonoClick},
       ],
-      button: 'Aceptar cambios',
-      change: handleTelefonoClick,
+      // button: 'Aceptar cambios',
+      // change: handleTelefonoClick,
     },
     {
       id: 9,
@@ -201,7 +203,7 @@ export function CardGrid2({ handleClick }) {
         <input type="text" id="email" name="email" placeholder="Modificar emal"/>
         <input type="text" id="email" name="segundoNombre" placeholder="Añadir nuevo email"/>
     </form>),
-    button: 'Cambiar',
+      button: 'Cambiar',
     },
     {
       id: 10,
@@ -209,9 +211,8 @@ export function CardGrid2({ handleClick }) {
       description: `${usuario.genero}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faVenusMars} />,
-      contenido:   (<form>
-      <label for="genero">Género:</label>
-      <select id="genero" name="genero" value={usuario.genero} onChange={handleGeneroChange}>
+      contenido:   (<form style={{ display: "flex", justifyContent: "center" }}>
+      <select id="genero" name="genero" onChange={handleGeneroChange}>
         <option value="Masculino">Masculino</option>
         <option value="Femenino">Femenino</option>
         <option value="No binario">No binario</option>
@@ -280,7 +281,60 @@ export function CardGrid4({ handleClick }) {
   );
 }
 
-export function CardGrid5({ handleClick }) {
+export function CardGrid5({ handleClick, transfer }) {
+  const onSectionClick  = transfer;
+  const usuarioJson = sessionStorage.getItem('user');
+  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+
+  const changePage = () => {onSectionClick('Producto')};
+
+
+
+
+    const cardData = [
+      // {
+      //   id: 14,
+      //   title: 'Productos enlazados',
+      //   description: usuario.productos,
+      //   imageUrl: 'https://via.placeholder.com/150',
+      // },
+      {
+        id: 'quince',
+        title: 'Agregar producto',
+        className: 'card1',
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faCirclePlus} />,
+        link: "/shop",
+      },
+
+    ];
+
+    if (usuario && usuario.productos && usuario.productos.length > 0) {
+      const productCard = usuario.productos.map((producto, index) => ({
+        id: index + 1,
+        title: producto,
+        // description: producto,
+        onClick: changePage,
+        imageUrl: 'https://via.placeholder.com/150',
+        icon: <FontAwesomeIcon icon={faBox} />
+      }),
+      );
+      cardData.unshift(...productCard)
+      
+    }
+
+
+    return (
+      <div className={PerfilCSS.cardGrid} onClick={handleClick}>
+    
+        {cardData.map((card) => (
+          <Card className={PerfilCSS.card} key={card.id} card={card} />
+        ))}
+      </div>
+    );
+  }
+
+export function CardGridInfoProducto({handleClick}){
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const [productName, setProductName] = useState(null);
@@ -288,6 +342,7 @@ export function CardGrid5({ handleClick }) {
   const [selectedFacturaId, setSelectedFacturaId] = useState(null);
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [tipoCuotas,    setTipoCuotas] = useState("");
   const [orderData, setOrderData] = useState({
     amount: 0,
     description: ''
@@ -303,10 +358,10 @@ export function CardGrid5({ handleClick }) {
     const fetchData = async () => {
       try {
         const value = await valorDolar;
-        if(value){setDolarValue(await value);
+        if(value){setDolarValue(parseInt(await value));
         }else{
           console.log('error en bcra, usando valor dolar auxiliar')
-          setDolarValue(492)
+          setDolarValue(510)
         }
         
         
@@ -335,8 +390,9 @@ export function CardGrid5({ handleClick }) {
     // } else {
       setSelectedFacturaId(facturaId);
       setIsLoading(true);
-      orderData.description=`Cuota N: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`
-      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))*0.79
+      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))
+      orderData.description=`Descripcion: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`  //antes aca iba Cuota N
+      orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
     // }
@@ -348,8 +404,8 @@ export function CardGrid5({ handleClick }) {
 //que tenga una lista de IDs de pedidos de compra (factura x), y mostarlas aca, para hacer que el mostrador funcione habria que modificar esta funcion para que el href tambien agregue algo asi como ?doctype=buynote o algo asi para hacer
 //a la funicon mas Generica y que pueda manejar tanto facturas como otro tipo de documentos (habria que agregar en el back que busque ese param) y walla!, problema del recibo unico solucionado y sin modificar el core :_) soy tan bueno dios.
   const generarListaFacturas = () => {
-    return usuario.ordenesCompra?.map((orden) => (
-      <li key={orden.id}>
+    return usuario.ordenesCompra.map((orden) => (
+      <li className={PerfilCSS.listaRecibo} key={orden.id}>
         <a href={`/factura?id=${orden.id}&doctype=purchaseorder`}>
           Recibo {orden.docNumber}
         </a>
@@ -360,14 +416,17 @@ export function CardGrid5({ handleClick }) {
   const calcularMontoCuota = (tipoFinanciacion, montoTotal) => {
     let montoCuota = 0;
     
-    if (tipoFinanciacion === '0') {
+    if (tipoFinanciacion === 'contado') {
       montoCuota = montoTotal- (montoTotal * 0.05);
+      setTipoCuotas("2/2");
     } else if (tipoFinanciacion === '70/30') {
       const monto30Porciento = montoTotal * 0.3;
       montoCuota = (montoTotal - monto30Porciento) / 11;
+      // setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
     } else if (tipoFinanciacion === '100%') {
       const monto5Porciento = montoTotal * 0.05;
       montoCuota = (montoTotal - monto5Porciento) / 12;
+      console.log(facturaInfo.customFields[1].value)
     }
     
     return montoCuota;
@@ -400,65 +459,70 @@ const preference = () => {
   
 
       return (
-    <ul>
+    <div className={PerfilCSS.pagar}>
       {usuario.facturas.map((facturaId) => (
-        <li key={facturaId}>
-          <button onClick={() => toggleFacturaInfo(facturaId)}>
+        <div key={facturaId}>
+          <button className={PerfilCSS.botonPago} onClick={() => toggleFacturaInfo(facturaId)}>
             Pagar Cuota de producto {productName}
           </button>
           {showFacturaInfo && (
-            <div>
-              
-              <h3>Información de la factura</h3>
-              <p>Número de factura: {facturaInfo.docNumber}</p>
-              <p>Fecha de emisión: {format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</p>
-              <p>Fecha de vencimiento: {format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</p>
-              <p>Financiacion: {facturaInfo.customFields[0].value}</p>
-              <p>Total a pagar: USD${facturaInfo.total}</p>
-              <p>Cuota N: {parseInt(facturaInfo.customFields[1].value.charAt(0))+1}</p>
-              <p>Monto cuota: USD${calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</p>
-              <p>Monto cuota: ARS${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</p>
-              
+            <div className={PerfilCSS.divPago}>
+              <h1 className={PerfilCSS.h1Pago}>Información de la factura</h1>
+              <table className={PerfilCSS.tablePago}>
+                <thead>
+                  <tr>
+                    <th className={PerfilCSS.thPago}>N° de Factura:</th>
+                    <th className={PerfilCSS.thPago}>Emisión</th>
+                    <th className={PerfilCSS.thPago}>Vencimiento</th>
+                    <th className={PerfilCSS.thPago}>Financiacion</th>
+                    <th className={PerfilCSS.thPago}>Total en USD</th>
+                    <th className={PerfilCSS.thPago}>Descripcion</th>
+                    <th className={PerfilCSS.thPago}>Monto en USD</th>
+                    <th className={PerfilCSS.thPago}>Monto en ARS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={PerfilCSS.tdPago}>{facturaInfo.docNumber}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{facturaInfo.customFields[0].value}</td>
+                    <td className={PerfilCSS.tdPago}>{facturaInfo.total}</td>
+                    <td className={PerfilCSS.tdPago}>{tipoCuotas}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
-      <main>
-        {/* {renderSpinner()} */}
-        {/* <Checkout onClick={handleClick} description/> */}
-        <Payment />
-        {/* quizas podria implementar un payment distinto que me lleve a otra back url o quizas agregarle ese param
-        y de esta manera podria hacer que haga exactamente lo mismo qeu hacia en la venta pero con el pago de la factura
-        sigue pareciendome medio chanta pero no se me ocurre otra cosa */}
-      </main>
-      
-    </InternalProvider>
+                <main>
+                  {/* {renderSpinner()} */}
+                  {/* <Checkout onClick={handleClick} description/> */}
+                  <Payment />
+                </main>
+                
+              </InternalProvider>
             </div>
           )}
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
     } else {
       return(<div><span>Aun no tienes pagos pendientes</span></div>);
     }
   };
+  
 
   const cardData = [
-    // {
-    //   id: 14,
-    //   title: 'Productos enlazados',
-    //   description: usuario.productos,
-    //   imageUrl: 'https://via.placeholder.com/150',
-    // },
-    // {
-    //   id: 'quince',
-    //   title: 'Agregar producto',
-    //   className: 'card1',
-    //   imageUrl: 'https://via.placeholder.com/150',
-    //   icon: <FontAwesomeIcon icon={faCirclePlus} />
-    // },
     {
       id: 16,
       title: 'Pagos',
-      description: 'Hacer nuevos pagos',
+      description: 'Pagar cuotas',
       imageUrl: 'https://via.placeholder.com/150',
       contenido: pagarCuota(),
       icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,
@@ -494,19 +558,6 @@ const preference = () => {
       icon: <FontAwesomeIcon icon={faFolderOpen} />,
     }
   ];
-
-  if (usuario && usuario.productos && usuario.productos.length > 0) {
-    const productCard = usuario.productos.map((producto, index) => ({
-      id: index + 1,
-      title: producto,
-      // description: producto,
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faBox} />
-    }));
-    
-    cardData.unshift(...productCard);
-  }
-
   return (
     <div className={PerfilCSS.cardGrid} onClick={handleClick}>
       {cardData.map((card) => (
@@ -514,13 +565,12 @@ const preference = () => {
       ))}
     </div>
   );
+
 }
 
-
-
-export function CardGrid6({ handleClick }) {
-  const usuarioJson = sessionStorage.getItem('user');
-  const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
+  export function CardGrid6({ handleClick }) {
+    const usuarioJson = sessionStorage.getItem('user');
+    const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   // console.log(usuario)
 
 
@@ -816,7 +866,8 @@ export function CardGrid17({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Simplificando tu día a día.',
+      title: 'Simplificando',
+      span: 'tu día a día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg',
@@ -838,7 +889,8 @@ export function CardGrid18({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Pedir online sin preocupaciones',
+      title: 'Pedir online',
+      span: 'sin preocupaciones.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/10_INTERIOR_SUM_BLUE_HOUR_4K_POS_gr3ozf.jpg',
@@ -860,7 +912,8 @@ export function CardGrid19({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Mantenerse conectado sin interrupciones, todo el día.',
+      title: 'Mantenerse conectado',
+      span: 'sin interrupciones, todo el día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/08_INTERIOR_SUM_4K_POS_io5hkb.jpg',
@@ -882,7 +935,11 @@ export function CardGrid20({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Relajarse Rejuvenecer Reconectarse.',
+      title:  <div>
+              <h1>  <span>Re</span>lajarse </h1>
+              <h1>  <span>Re</span>juvenecer </h1>
+              <h1>  <span>Re</span>conectarse. </h1>
+              </div>,
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/07_INTERIOR_GUARDERIA_4K_POS_w1ev6q.jpg',
@@ -904,7 +961,8 @@ export function CardGrid21({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'La tranquilidad de tu familia es nuestra prioridad.',
+      title: 'La tranquilidad de tu familia',
+      span: ' es nuestra prioridad.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/01_ACCESO_4K_POS_wurxql.jpg',
@@ -926,7 +984,8 @@ export function CardGrid22({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Inspirado a través del movimiento.',
+      title: 'Inspirado',
+      span: 'a través del movimiento.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751159/02_CONTROL_ACCESO_4K_POS_brydhw.jpg',
@@ -970,7 +1029,8 @@ export function CardGrid24({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Impulsa tu creatividad',
+      title: 'Impulsa',
+      span: 'tu creatividad',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
@@ -992,7 +1052,8 @@ export function CardGrid25({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Disfrutar de momento inolvidables, Juntos.',
+      title: 'Disfrutar de momento inolvidables,',
+      span: ' Juntos.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',

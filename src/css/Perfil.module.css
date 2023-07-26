@@ -345,6 +345,38 @@
     padding-top: 15px;
   }
 
+  .direccion{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dirInput{
+    padding: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      font-size: 1rem;
+      transition: 0.6s;
+      height: 35px;
+      background-color: #E1E1E1;
+      display: flex;
+      margin: 5px auto;
+   }
+
+   .dirLista{
+    list-style: none;
+    display: inline-block;
+   }
+   .dirLista li{
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+   }
+   .dirLista li:hover{
+    background-color: #E1E1E1;
+   }
 
   .cumple{
     display: flex;
@@ -352,3 +384,133 @@
     align-items: center;
     text-align: center;
   }
+
+ .cumpleInput{
+  padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.6s;
+    height: 35px;
+    margin: 5px;
+    background-color: #E1E1E1;
+ }
+
+
+  .react-datepicker-wrapper {
+    display: inline-block;
+  }
+  
+  /* Estilos para el input del date picker */
+  .react-datepicker__input-container input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+  }
+  
+  /* Estilos para el calendario emergente */
+  .react-datepicker {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los días seleccionables */
+  .react-datepicker__day--selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+/* Perfil.module.css */
+
+.botonVolver {
+  background-color: #E1E1E1;
+  border: none;
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  width: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  height: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7f8fa6;
+  margin-right: 10px;
+}
+
+.botonVolver:hover {
+  background-color: #ccc;
+}
+
+
+.text{
+  display: flex;
+  align-items: center;
+}
+.pagar{
+  display: flex;
+  justify-content: center;
+}
+
+.pagar button{
+  background-color: #E1E1E1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagar button:hover{
+  background-color: #ccc;
+}
+
+.listaRecibo{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  color: black;
+  text-decoration: none;
+}
+
+.listaRecibo a{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  color: #0071e3;
+  font-weight: 500;
+  text-decoration: none;
+  
+}
+
+
+.h1Pago{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  font-size: 1.8rem;
+}
+
+.tablePago{
+  margin: 10px 20px;
+}
+
+.tdPago, .thPago{
+  padding: 5px;
+  max-width: 150px; /* Ajusta este valor según lo necesites */
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  overflow: hidden; /* Oculta cualquier contenido que no quepa */
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.botonPago{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}

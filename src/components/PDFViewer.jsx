@@ -5,7 +5,7 @@ const PDFViewer = ({ pdfBase64 }) => {
 
   return (
     <div>
-      <embed src={pdfData} type="application/pdf" width="100%" height="600px" />
+      <embed src={pdfData} type="application/pdf" width="100%" height="1280px" />
     </div>
   );
 };

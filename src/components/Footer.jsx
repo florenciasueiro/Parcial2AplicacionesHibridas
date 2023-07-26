@@ -36,7 +36,7 @@ function Footer() {
     if(!usuario){
       
       activar(true);
-      notificar(<div><span className={IslandNotificationCSS.contenido}>Para poder acceder primero debes registrate</span></div>)
+      notificar(<div><span className={IslandNotificationCSS.acceso}>Para poder acceder primero debes registrate</span></div>)
       setTimeout(() => {
         activar(false);
       }, 3000);
@@ -47,7 +47,7 @@ function Footer() {
       notificar(<div className={IslandNotificationCSS.div}>
         <span className={IslandNotificationCSS.raya}></span>
         <span className={IslandNotificationCSS.consulta}>¿Quieres que un asesor se contacte contigo?
-        <button className={IslandNotificationCSS.boton} onClick={suscribir}>Si quiero</button>
+        <button className={IslandNotificationCSS.boton} onClick={suscribir}>Sí, quiero</button>
         </span>
         </div>)
         setTimeout(() => {
