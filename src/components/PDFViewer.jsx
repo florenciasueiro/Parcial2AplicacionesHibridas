@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-modal';
 
 const PDFViewer = ({ pdfBase64 }) => {
   const pdfData = `data:application/pdf;base64,${pdfBase64}`;
@@ -12,11 +13,11 @@ const PDFViewer = ({ pdfBase64 }) => {
 
 const FacturaPDFComponent = ({ id, doctype }) => {
   const [pdf, setPdf] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchPdf = async () => {
       try {
-        console.log(id,doctype)
         const response = await fetch(
           `https://restapinode-production-8fd5.up.railway.app/v1/getFacturaPDF?id=${id}&doctype=${doctype}`,
           {
@@ -38,7 +39,31 @@ const FacturaPDFComponent = ({ id, doctype }) => {
     fetchPdf();
   }, [id]);
 
-  return <PDFViewer pdfBase64={pdf} />;
+  // Funciones para abrir y cerrar el modal
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      {/* Botón o enlace que abre el modal */}
+      <button onClick={openModal}>Abrir PDF</button>
+      
+      {/* Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="PDF Modal"
+      >
+        <button onClick={closeModal}>Cerrar PDF</button>
+        <PDFViewer pdfBase64={pdf} />
+      </Modal>
+    </>
+  );
 };
 
 export default FacturaPDFComponent;

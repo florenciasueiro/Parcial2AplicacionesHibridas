@@ -138,7 +138,7 @@
     transform: translate(-50%, -50%);
     transition: all 0.3s;
     background-color: #fff;
-    padding: 1rem;
+    padding: 4rem 1rem 1rem 1rem;
     width: 80vw;
     max-width: 800px;
     border-radius: 20px;
@@ -512,5 +512,11 @@
 .botonPago{
   display: flex;
   justify-content: center;
+  margin: auto;
+}
+
+
+.botonChico{
+  max-width: min-content;
   margin: auto;
 }
