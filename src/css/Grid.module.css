@@ -24,8 +24,19 @@
 .tarjeta1 h1{
   font-size: 2rem;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px auto;
+  display: block;
+  width: 100%;
 }
+
+.tarjeta1 h1 span{
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .tarjeta2 {
   grid-column: 3 / span 1;
@@ -93,6 +104,8 @@
 .tarjeta5 h1{
   font-size: 2rem;
   display: flex;
+  bottom: 20px;
+  left: 10px;
 }
 
 .tarjeta5 span{
