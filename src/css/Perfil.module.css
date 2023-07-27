@@ -128,7 +128,28 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
+    /* z-index: 9999; */
+  }
+
+  .modalOverlayQuarters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     z-index: 9999;
+  }
+
+  .modalOverlayRecibo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    /* z-index: 9999; */
   }
   
   .modalCard {
@@ -519,4 +540,47 @@
 .botonChico{
   max-width: min-content;
   margin: auto;
+}
+
+/* Perfil.module.css */
+
+.botonPDF{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 1rem;
+  color: #007AFF;
+}
+
+.modalPerfil{
+  position: absolute;
+  inset: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 20px;
+  outline: none;
+  padding: 20px;
+  margin: 35px;
+  overflow-y: hidden;
+}
+
+
+.pdfContainer {
+  width: 100%; /* Establece el ancho del contenedor del PDF al 100% */
+  height: 620px; /* Establece la altura del contenedor del PDF */
+    margin: 20px auto; /* Establece los márgenes del contenedor del PDF */
+  padding: 10px; /* Establece el relleno del contenedor del PDF */
+}
+
+.botonRecibo{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #007AFF;
+  margin: 5px;
 }

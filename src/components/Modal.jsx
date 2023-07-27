@@ -9,7 +9,7 @@ function ModalCardInicio({ card, isOpen, onClose }) {
       isOpen={isOpen}
       onRequestClose={onClose}
       className={PerfilCSS.modalCard}
-      overlayClassName={PerfilCSS.modalOverlay}>
+      overlayClassName={PerfilCSS.modalOverlayQuarters}>
       <CSSTransition
         in={isOpen}
         timeout={300}

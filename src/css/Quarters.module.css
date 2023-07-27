@@ -28,6 +28,10 @@
     margin: 20px auto;
   }
 
+  .a{
+    text-decoration: none;
+  }
+
   .text h1{
     font-size: 35px;
   }

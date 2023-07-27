@@ -371,7 +371,7 @@ export function CardGridInfoProducto({handleClick,index}){
       setSelectedFacturaId(facturaId);
       setIsLoading(true);
       orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).montoCuota)
-      orderData.description=`Descripcion: ${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}`  //antes aca iba Cuota N
+      orderData.description=`${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}`  //antes aca iba Cuota N
       orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
@@ -823,7 +823,8 @@ export function CardGrid16({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Diseñado para marcar la diferencia.',
+      title: 'Diseñado para marcar',
+      span: 'la diferencia.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/11_PLANTA_CONJUNTO_4K_POS_ujndnr.jpg',

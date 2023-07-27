@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import PerfilCSS from '../css/Perfil.module.css';
 
 const PDFViewer = ({ pdfBase64 }) => {
   const pdfData = `data:application/pdf;base64,${pdfBase64}`;
 
   return (
-    <div>
-      <embed src={pdfData} type="application/pdf" width="100%" height="1280px" />
+    <div className={PerfilCSS.pdfContainer}>
+      <embed src={pdfData} type="application/pdf" width="100%" height="90%" />
     </div>
   );
 };
+
 
 const FacturaPDFComponent = ({ id, doctype }) => {
   const [pdf, setPdf] = useState('');
@@ -51,15 +53,17 @@ const FacturaPDFComponent = ({ id, doctype }) => {
   return (
     <>
       {/* Botón o enlace que abre el modal */}
-      <button onClick={openModal}>Abrir PDF</button>
+      <button onClick={openModal} className={PerfilCSS.botonRecibo} >Recibo</button>
       
       {/* Modal */}
       <Modal
+        className={PerfilCSS.modalPerfil}
+        overlayClassName={PerfilCSS.modalOverlayRecibo}
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="PDF Modal"
       >
-        <button onClick={closeModal}>Cerrar PDF</button>
+        <button className={PerfilCSS.botonPDF} onClick={closeModal}>Cancelar</button>
         <PDFViewer pdfBase64={pdf} />
       </Modal>
     </>
