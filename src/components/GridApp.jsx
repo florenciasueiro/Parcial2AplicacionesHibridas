@@ -371,7 +371,7 @@ export function CardGridInfoProducto({handleClick,index}){
       setSelectedFacturaId(facturaId);
       setIsLoading(true);
       orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).montoCuota)
-      orderData.description=`Descripcion: ${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}`  //antes aca iba Cuota N
+      orderData.description=`${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}`  //antes aca iba Cuota N
       orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
