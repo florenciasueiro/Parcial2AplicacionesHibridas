@@ -281,12 +281,12 @@ export function CardGrid4({ handleClick }) {
   );
 }
 
-export function CardGrid5({ handleClick, transfer }) {
+export function CardGrid5({ handleClick, transfer, product}) {
   const onSectionClick  = transfer;
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
-  const changePage = () => {onSectionClick('Producto')};
+  const changePage = (i) => {onSectionClick('Producto'); product(i)};
 
 
 
@@ -310,11 +310,12 @@ export function CardGrid5({ handleClick, transfer }) {
     ];
 
     if (usuario && usuario.productos && usuario.productos.length > 0) {
-      const productCard = usuario.productos.map((producto, index) => ({
+      const productCard = usuario.productos.map((producto, index) => (
+        {
         id: index + 1,
         title: producto,
         // description: producto,
-        onClick: changePage,
+        onClick: () => changePage(index),
         imageUrl: 'https://via.placeholder.com/150',
         icon: <FontAwesomeIcon icon={faBox} />
       }),
@@ -334,7 +335,7 @@ export function CardGrid5({ handleClick, transfer }) {
     );
   }
 
-export function CardGridInfoProducto({handleClick}){
+export function CardGridInfoProducto({handleClick,index}){
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const [productName, setProductName] = useState(null);
@@ -343,44 +344,23 @@ export function CardGridInfoProducto({handleClick}){
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [tipoCuotas,    setTipoCuotas] = useState("");
-  const [orderData, setOrderData] = useState({
-    amount: 0,
-    description: ''
-  });
+  const [orderData, setOrderData] = useState({amount: 0,description: ''});
   const valorDolar = useDolar();
   const [dolarValue, setDolarValue] = useState(null);
- let facturaInfo = usuario.facturas[0];
+  const [calculatedTipoCuotas, setCalculatedTipoCuotas] = useState("");
+  let facturaInfo = usuario.facturas[index];
 
-
-
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const value = await valorDolar;
-        if(value){setDolarValue(parseInt(await value));
-        }else{
-          console.log('error en bcra, usando valor dolar auxiliar')
-          setDolarValue(500)
-        }
-        
-        
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-    
-  }, [valorDolar]);
-  
-
+  useEffect(() => {const fetchData = async () => {try {const value = await valorDolar;
+    if(value){setDolarValue(parseInt(await value));}
+    else{console.log('error en api, usando valor dolar auxiliar');
+        setDolarValue(500)}} catch (error) {
+        console.error(error);}};
+        fetchData();}, [valorDolar]);
 
   useEffect(() => {
     console.log(facturaInfo)
     if (facturaInfo && facturaInfo.products) {
-      setProductName(facturaInfo.products[0].name);
-    }
+      setProductName(facturaInfo.products[0].name);}
   }, [facturaInfo]);
 
   const toggleFacturaInfo = async (facturaId) => {
@@ -390,19 +370,14 @@ export function CardGridInfoProducto({handleClick}){
     // } else {
       setSelectedFacturaId(facturaId);
       setIsLoading(true);
-      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)))
-      orderData.description=`Descripcion: ${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}`  //antes aca iba Cuota N
+      orderData.amount= (calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).montoCuota)
+      orderData.description=`Descripcion: ${calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}`  //antes aca iba Cuota N
       orderData.facturaInfo = facturaInfo;
       await preference();
       setShowFacturaInfo(true);
     // }
   };
-//lo anoto para no olvidarme como se me ocurrio resolverlo
-//basicamente es asi, las facturas no las tocamos mas por que ya funcionan y es el core economico del sistema, asi que lo que podemos hacer es que en esta funcion en vez de mostrar facturas
-//mostar pedidos de compra con el nombre cambiado a Recibo X, entonces, como esto no impacta al stock, siempre puedo generar un recibo por el monto que pago el cliente, sumarlo a la factura como ya esta pasando, 
-//pero aca, en vez de ver la factura, verias este pedido de compra, para esto nececito que usuarioDTO venga aparte de con la lista de facturas ( que ahora vienen no solo le id, sino toda la factura)
-//que tenga una lista de IDs de pedidos de compra (factura x), y mostarlas aca, para hacer que el mostrador funcione habria que modificar esta funcion para que el href tambien agregue algo asi como ?doctype=buynote o algo asi para hacer
-//a la funicon mas Generica y que pueda manejar tanto facturas como otro tipo de documentos (habria que agregar en el back que busque ese param) y walla!, problema del recibo unico solucionado y sin modificar el core :_) soy tan bueno dios.
+ 
   const generarListaFacturas = () => {
     return usuario.ordenesCompra.map((orden) => (
       <li className={PerfilCSS.listaRecibo} key={orden.id}>
@@ -410,25 +385,31 @@ export function CardGridInfoProducto({handleClick}){
       </li>
     ));
   };
-
+    
   const calcularMontoCuota = (tipoFinanciacion, montoTotal) => {
     let montoCuota = 0;
-    
+    let tipoCuota;
     if (tipoFinanciacion === 'contado') {
       montoCuota = montoTotal- (montoTotal * 0.05);
-      // setTipoCuotas("2/2");
+      tipoCuota = "2/2" ;
+      // alert(tipoCuotas);;
     } else if (tipoFinanciacion === '70/30') {
       const monto30Porciento = montoTotal * 0.3;
       montoCuota = (montoTotal - monto30Porciento) / 11;
-      // setTipoCuotas(parseInt(facturaInfo.customFields[1].value.charAt(0))+1)
+      tipoCuota = parseInt(facturaInfo.customFields[1].value.charAt(0))+1;
+      // alert(tipoCuota)
     } else if (tipoFinanciacion === '100%') {
       const monto5Porciento = montoTotal * 0.05;
       montoCuota = (montoTotal - monto5Porciento) / 12;
-      console.log(facturaInfo.customFields[1].value)
+      console.log(facturaInfo.customFields[1].value);
+      tipoCuota = parseInt(facturaInfo.customFields[1].value.charAt(0))+1;
+      // alert(tipoCuotas)
     }
     
-    return montoCuota;
+    return {montoCuota, tipoCuota};
   };
+
+ 
 
 const preference = () => {
   fetch("http://localhost:8080/payment", {
@@ -458,9 +439,9 @@ const preference = () => {
 
       return (
     <div className={PerfilCSS.pagar}>
-      {usuario.facturas.map((facturaId) => (
-        <div key={facturaId}>
-          <button className={PerfilCSS.botonPago} onClick={() => toggleFacturaInfo(facturaId)}>
+      {
+        <div key={usuario.facturas[index]}>
+          <button className={PerfilCSS.botonPago} onClick={() => toggleFacturaInfo(usuario.facturas[index])}>
             Pagar Cuota de producto {productName}
           </button>
           {showFacturaInfo && (
@@ -481,14 +462,14 @@ const preference = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className={PerfilCSS.tdPago}>{facturaInfo.docNumber}</td>
-                    <td className={PerfilCSS.tdPago}>{format(new Date(facturaInfo.date*1000),'dd/MM/yyyy')}</td>
-                    <td className={PerfilCSS.tdPago}>{format(new Date(facturaInfo.date*2000),'dd/MM/yyyy')}</td>
-                    <td className={PerfilCSS.tdPago}>{facturaInfo.customFields[0].value}</td>
-                    <td className={PerfilCSS.tdPago}>{facturaInfo.total}</td>
-                    <td className={PerfilCSS.tdPago}>{tipoCuotas}</td>
-                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota(facturaInfo.customFields[0].value,facturaInfo.total)}</td>
-                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue))}</td>
+                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].docNumber}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date*1000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date*2000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].customFields[0].value}</td>
+                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].total}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota(usuario.facturas[index].customFields[0].value,usuario.facturas[index].total).montoCuota}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((usuario.facturas[index].customFields[0].value),(usuario.facturas[index].total*dolarValue)).montoCuota}</td>
                   </tr>
                 </tbody>
               </table>
@@ -507,7 +488,7 @@ const preference = () => {
             </div>
           )}
         </div>
-      ))}
+      }
     </div>
   );
     } else {
