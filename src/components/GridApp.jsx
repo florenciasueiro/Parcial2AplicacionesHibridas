@@ -24,7 +24,7 @@ import GridCSS from "../css/Grid.module.css"
 import { Background } from '@cloudinary/url-gen/qualifiers';
 
 
-// import PDFViewer from '../components/PDFViewer';
+import PDFViewer from '../components/PDFViewer';
 
 
 export function CardGrid({ handleClick }) {
@@ -381,9 +381,7 @@ export function CardGridInfoProducto({handleClick,index}){
   const generarListaFacturas = () => {
     return usuario.ordenesCompra.map((orden) => (
       <li className={PerfilCSS.listaRecibo} key={orden.id}>
-        <a href={`/factura?id=${orden.id}&doctype=purchaseorder`}>
-          Recibo {orden.docNumber}
-        </a>
+    <PDFViewer id={orden.id} doctype={"purchaseorder"}/>
       </li>
     ));
   };
@@ -480,7 +478,7 @@ const preference = () => {
 
 
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
-                <main>
+                <main className={PerfilCSS.botonChico}>
                   {/* {renderSpinner()} */}
                   {/* <Checkout onClick={handleClick} description/> */}
                   <Payment />
