@@ -8,12 +8,18 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 function ProfilePage() {
   const [activeSection, setActiveSection] = useState('Inicio de Sesion');
+  const [product, setProduct] = useState(0)
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
   useEffect(() => {
     console.table(`El valor de activeSection ha cambiado a: ${activeSection}`);
   }, [activeSection]);
+
+  
+  // useEffect(() => {
+  //   alert(`El valor de product ha cambiado a: ${product}`);
+  // }, [product]);
 
   if (usuario === null) {
     return <h1>Debes crearte una cuenta para acceder a esta pagina</h1>;
@@ -40,11 +46,11 @@ function ProfilePage() {
             {activeSection === 'Informacion personal' && <CardGrid2 />}
             {activeSection === 'Metodos de pago' && <CardGrid3 />}
             {activeSection === 'Compartir en familia' && <CardGrid4 />}
-            {activeSection === 'Mis Productos' && <CardGrid5 transfer={setActiveSection} />}
+            {activeSection === 'Mis Productos' && <CardGrid5 transfer={setActiveSection} product={setProduct} />}
             {activeSection === 'Mis Servicios' && <CardGrid6 />}
             {activeSection === 'Mis Reservas' && <CardGrid7 />}
             {/* {activeSection === 'Privacidad' && <CardGrid8 />} */}
-            {activeSection === 'Producto' && <CardGridInfoProducto />}
+            {activeSection === 'Producto' && <CardGridInfoProducto index={product}/>}
           </div>
         </div>
       </div>
