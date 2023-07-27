@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import PerfilCSS from '../css/Perfil.module.css';
 
 const PDFViewer = ({ pdfBase64 }) => {
   const pdfData = `data:application/pdf;base64,${pdfBase64}`;
 
   return (
-    <div>
+    <div className={PerfilCSS.pdfContainer}>
       <embed src={pdfData} type="application/pdf" width="100%" height="1280px" />
     </div>
   );
 };
+
 
 const FacturaPDFComponent = ({ id, doctype }) => {
   const [pdf, setPdf] = useState('');

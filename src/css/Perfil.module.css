@@ -128,7 +128,7 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
-    z-index: 9999;
+    /* z-index: 9999; */
   }
   
   .modalCard {
@@ -519,4 +519,13 @@
 .botonChico{
   max-width: min-content;
   margin: auto;
+}
+
+/* Perfil.module.css */
+.pdfContainer {
+  width: 100%; /* Establece el ancho del contenedor del PDF al 100% */
+  height: 600px; /* Establece la altura del contenedor del PDF */
+  background-color: #f0f0f0; /* Establece un color de fondo para el contenedor del PDF */
+  margin: 20px auto; /* Establece los márgenes del contenedor del PDF */
+  padding: 10px; /* Establece el relleno del contenedor del PDF */
 }
