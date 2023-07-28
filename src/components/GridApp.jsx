@@ -380,9 +380,33 @@ export function CardGridInfoProducto({handleClick,index}){
  
   const generarListaFacturas = () => {
     return usuario.ordenesCompra.map((orden) => (
-      <li className={PerfilCSS.listaRecibo} key={orden.id}>
+      <div className={PerfilCSS.tableRecibo}>
+              <table className={PerfilCSS.tablePago}>
+                <thead>
+                  <tr>
+                    <th className={PerfilCSS.thPago}>Código:</th>
+                    <th className={PerfilCSS.thPago}>Concepto</th>
+                    <th className={PerfilCSS.thPago}>Precio</th>
+                    <th className={PerfilCSS.thPago}>Unidades</th>
+                    <th className={PerfilCSS.thPago}>Subtotal</th>
+                    <th className={PerfilCSS.thPago}>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].docNumber}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date*1000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date*2000),'dd/MM/yyyy')}</td>
+                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].customFields[0].value}</td>
+                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].total}</td>
+                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}</td>
+                  </tr>
+                </tbody>
+              </table>
+      <div className={PerfilCSS.listaRecibo} key={orden.id}>
     <PDFViewer id={orden.id} doctype={"purchaseorder"}/>
-      </li>
+      </div>
+      </div>
     ));
   };
     
@@ -440,63 +464,56 @@ const preference = () => {
   
 
       return (
-    <div className={PerfilCSS.pagar}>
-      {
-        <div key={usuario.facturas[index]}>
-          <button className={PerfilCSS.botonPago} onClick={() => toggleFacturaInfo(usuario.facturas[index])}>
-            Pagar Cuota de producto {productName}
-          </button>
-          {showFacturaInfo && (
+        <div className={PerfilCSS.pagar}>
+          <div key={usuario.facturas[index]}>
             <div className={PerfilCSS.divPago}>
               <h1 className={PerfilCSS.h1Pago}>Información de la factura</h1>
-              <table className={PerfilCSS.tablePago}>
-                <thead>
-                  <tr>
-                    <th className={PerfilCSS.thPago}>N° de Factura:</th>
-                    <th className={PerfilCSS.thPago}>Emisión</th>
-                    <th className={PerfilCSS.thPago}>Vencimiento</th>
-                    <th className={PerfilCSS.thPago}>Financiacion</th>
-                    <th className={PerfilCSS.thPago}>Total en USD</th>
-                    <th className={PerfilCSS.thPago}>Descripcion</th>
-                    <th className={PerfilCSS.thPago}>Monto en USD</th>
-                    <th className={PerfilCSS.thPago}>Monto en ARS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].docNumber}</td>
-                    <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date*1000),'dd/MM/yyyy')}</td>
-                    <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date*2000),'dd/MM/yyyy')}</td>
-                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].customFields[0].value}</td>
-                    <td className={PerfilCSS.tdPago}>{usuario.facturas[index].total}</td>
-                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value),(facturaInfo.total*dolarValue)).tipoCuota}</td>
-                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota(usuario.facturas[index].customFields[0].value,usuario.facturas[index].total).montoCuota}</td>
-                    <td className={PerfilCSS.tdPago}>{calcularMontoCuota((usuario.facturas[index].customFields[0].value),(usuario.facturas[index].total*dolarValue)).montoCuota}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-
-
+              <div className={PerfilCSS.tableBotonPago}>
+                <table className={PerfilCSS.tablePago}>
+                  <thead>
+                    <tr>
+                      <th className={PerfilCSS.thPago}>N° de Factura:</th>
+                      <th className={PerfilCSS.thPago}>Emisión</th>
+                      <th className={PerfilCSS.thPago}>Vencimiento</th>
+                      <th className={PerfilCSS.thPago}>Financiacion</th>
+                      <th className={PerfilCSS.thPago}>Total en USD</th>
+                      <th className={PerfilCSS.thPago}>Descripcion</th>
+                      <th className={PerfilCSS.thPago}>Monto en USD</th>
+                      <th className={PerfilCSS.thPago}>Monto en ARS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className={PerfilCSS.tdPago}>{usuario.facturas[index].docNumber}</td>
+                      <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date * 1000), 'dd/MM/yyyy')}</td>
+                      <td className={PerfilCSS.tdPago}>{format(new Date(usuario.facturas[index].date * 2000), 'dd/MM/yyyy')}</td>
+                      <td className={PerfilCSS.tdPago}>{usuario.facturas[index].customFields[0].value}</td>
+                      <td className={PerfilCSS.tdPago}>{usuario.facturas[index].total}</td>
+                      <td className={PerfilCSS.tdPago}>{calcularMontoCuota((facturaInfo.customFields[0].value), (facturaInfo.total * dolarValue)).tipoCuota}</td>
+                      <td className={PerfilCSS.tdPago}>{calcularMontoCuota(usuario.facturas[index].customFields[0].value, usuario.facturas[index].total).montoCuota}</td>
+                      <td className={PerfilCSS.tdPago}>{calcularMontoCuota((usuario.facturas[index].customFields[0].value), (usuario.facturas[index].total * dolarValue)).montoCuota}</td>
+                    </tr>
+                  </tbody>
+                </table>
+      
+                {/* Remove the button that toggles the facturaInfo */}
+                <button className={PerfilCSS.botonPago} onClick={() => toggleFacturaInfo(usuario.facturas[index])}>
+                  Pagar Cuota {productName}
+                </button>
+              </div>
+      
               <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, dolarValue }}>
                 <main className={PerfilCSS.botonChico}>
                   {/* {renderSpinner()} */}
                   {/* <Checkout onClick={handleClick} description/> */}
                   <Payment />
                 </main>
-                
               </InternalProvider>
             </div>
-          )}
+          </div>
         </div>
-      }
-    </div>
-  );
-    } else {
-      return(<div><span>Aun no tienes pagos pendientes</span></div>);
-    }
-  };
+      );
+              }}      
   
 
   const cardData = [
