@@ -53,7 +53,7 @@ const FacturaPDFComponent = ({ id, doctype }) => {
   return (
     <>
       {/* Botón o enlace que abre el modal */}
-      <button onClick={openModal} className={PerfilCSS.botonRecibo} >Recibo</button>
+      <button onClick={openModal} className={PerfilCSS.botonRecibo}>Recibo</button>
       
       {/* Modal */}
       <Modal
