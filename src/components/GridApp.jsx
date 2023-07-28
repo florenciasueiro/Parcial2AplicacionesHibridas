@@ -412,6 +412,8 @@ export function CardGridInfoProducto({handleClick,index}){
  
 
 const preference = () => {
+  sessionStorage.setItem("compra", JSON.stringify(orderData));
+
   fetch("http://localhost:8080/payment", {
     method: "POST",
     headers: {
