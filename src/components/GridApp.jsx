@@ -391,18 +391,18 @@ export function CardGridInfoProducto({handleClick,index}){
     let tipoCuota;
     if (tipoFinanciacion === 'contado') {
       montoCuota = montoTotal- (montoTotal * 0.05);
-      tipoCuota = "2/2" ;
+      tipoCuota =  `${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}/2` ;
       // alert(tipoCuotas);;
     } else if (tipoFinanciacion === '70/30') {
       const monto30Porciento = montoTotal * 0.3;
       montoCuota = (montoTotal - monto30Porciento) / 11;
-      tipoCuota = parseInt(facturaInfo.customFields[1].value.charAt(0))+1;
+      tipoCuota = `${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}/12`;
       // alert(tipoCuota)
     } else if (tipoFinanciacion === '100%') {
       const monto5Porciento = montoTotal * 0.05;
       montoCuota = (montoTotal - monto5Porciento) / 12;
       console.log(facturaInfo.customFields[1].value);
-      tipoCuota = parseInt(facturaInfo.customFields[1].value.charAt(0))+1;
+      tipoCuota = `${parseInt(facturaInfo.customFields[1].value.charAt(0))+1}/12`;
       // alert(tipoCuotas)
     }
     
