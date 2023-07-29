@@ -307,7 +307,7 @@ useEffect(() => {
       // setTimeout(() => {
       //   activar(false);
       // }, 3000);
-  }, [orderData.amount, refA, isLoading]); 
+  }, [orderData.amount, refA, isLoading,orderData,selectedTerreno]); 
 
 
 
@@ -446,6 +446,10 @@ orderData.dolarValue = dolarValue;
     orderData.amount = calculateAmount(selectedFinanciation, event.target.value, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
       if (event.target.value !== '') {
         setInput2Disabled(false);
+        if(selectedTerreno  && selectedCW ){
+          console.log(selectedTerreno, selectedCW)
+          handleClick();
+        }
         
         
       } else {
@@ -541,10 +545,10 @@ orderData.dolarValue = dolarValue;
   const handleSelectFinanciation = (value) => {
     console.log(value);
     orderData.financiation= value.grid;
-    handleClick();
     setSelectedFinanciation(value.financiation);
     setFinanciationGrid(value.grid)
     orderData.amount = calculateAmount(value.financiation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
+    handleClick();
     handleClick();
 
   };
