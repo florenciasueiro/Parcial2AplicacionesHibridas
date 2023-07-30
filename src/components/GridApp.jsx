@@ -846,7 +846,7 @@ export function CardGrid16({ handleClick }) {
       span: 'la diferencia.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/11_PLANTA_CONJUNTO_4K_POS_ujndnr.jpg',
+      videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/v1682603557/04_QF1_DETALLE_FINAL_xjqdau.mp4',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -869,7 +869,7 @@ export function CardGrid17({ handleClick }) {
       span: 'tu día a día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg',
+      videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/q_auto/v1690670681/01_QF1_APP_CELULAR_FINAL_y2w9hk.mp4',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -892,7 +892,7 @@ export function CardGrid18({ handleClick }) {
       span: 'sin preocupaciones.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/10_INTERIOR_SUM_BLUE_HOUR_4K_POS_gr3ozf.jpg',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/v1690675241/02_CONTROL_ACCESO_4K_POS_brydhw.jpg',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -909,13 +909,12 @@ export function CardGrid18({ handleClick }) {
 export function CardGrid19({ handleClick }) {
   const cardData = [
     {
-      id: 31,
+      id: 102,
       icon: "img/LogoBlanco.png",
       title: 'Mantenerse conectado',
       span: 'sin interrupciones, todo el día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/08_INTERIOR_SUM_4K_POS_io5hkb.jpg',
     },
     // Agrega más objetos cardData según sea necesario
   ];

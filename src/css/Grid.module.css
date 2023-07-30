@@ -14,6 +14,8 @@
   text-decoration: none;
   position: relative;
   z-index: 20;
+  
+  background-color: black;
 }
 
 .tarjeta1 {
@@ -317,4 +319,11 @@
 
 .span{
   color: #C0C0C0;
+}
+
+
+
+/* Grid.module.css */
+.defaultCursor:hover {
+  cursor: text!important;
 }
