@@ -572,79 +572,74 @@ orderData.dolarValue = dolarValue;
   let itemGrilla9;
   switch (selectedTerreno) {
     case 'Lote 1':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 2':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
-      break;
-    case 'Lote 2':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 3':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '12,00 x 23,00m';
+      itemGrilla2 = '275,91';
+      itemGrilla3 = '137,96';
       break;
     case 'Lote 4':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '12,00 x 23,00m';
+      itemGrilla2 = '276,00';
+      itemGrilla3 = '138,00';
       break;
     case 'Lote 5':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 6':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 7':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '9,00 x 23,00m';
+      itemGrilla2 = '207,00';
+      itemGrilla3 = '103,50';
       break;
     case 'Lote 8':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 9':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 10':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '12,00 x 27,50m';
+      itemGrilla2 = '330,00';
+      itemGrilla3 = '165,00';
       break;
     case 'Lote 11':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '12,00 x 27,50m';
+      itemGrilla2 = '329,85';
+      itemGrilla3 = '164,93';
       break;
     case 'Lote 12':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 13':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     default:
-      itemGrilla1 = '11,00m x 24,50m';
-      itemGrilla2 = '11,00m x 24,50m';
-      itemGrilla3 = '11,00m x 24,50m';
+      itemGrilla1 = '-';
+      itemGrilla2 = '-';
+      itemGrilla3 = '-';
       break;
   }
 
