@@ -114,7 +114,7 @@ export default function RadioInputs({seleccion}) {
   const [selectedCW,              setSelectedCW]              = useState('');
   const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
   const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
- 
+  
 
   const urlParams = new URLSearchParams(window.location.search);
   const status = Object.fromEntries(urlParams).status;
@@ -307,7 +307,7 @@ useEffect(() => {
       // setTimeout(() => {
       //   activar(false);
       // }, 3000);
-  }, [orderData.amount, refA, isLoading]); 
+  }, [orderData.amount, refA, isLoading,orderData,selectedTerreno]); 
 
 
 
@@ -432,8 +432,6 @@ orderData.dolarValue = dolarValue;
     return (((terrenoPrice)* parseFloat(financiation)*dolarValue).toFixed(2)*0.05);
   };
 
-//FIN DE LO IMPORTANTE!!!!!!!
-
 
 
 
@@ -446,6 +444,10 @@ orderData.dolarValue = dolarValue;
     orderData.amount = calculateAmount(selectedFinanciation, event.target.value, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
       if (event.target.value !== '') {
         setInput2Disabled(false);
+        if(selectedTerreno  && selectedCW ){
+          console.log(selectedTerreno, selectedCW)
+          handleClick();
+        }
         
         
       } else {
@@ -541,12 +543,13 @@ orderData.dolarValue = dolarValue;
   const handleSelectFinanciation = (value) => {
     console.log(value);
     orderData.financiation= value.grid;
-    handleClick();
     setSelectedFinanciation(value.financiation);
     setFinanciationGrid(value.grid)
     orderData.amount = calculateAmount(value.financiation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
     handleClick();
-
+    handleClick();
+    
+    
   };
   
   
@@ -569,79 +572,74 @@ orderData.dolarValue = dolarValue;
   let itemGrilla9;
   switch (selectedTerreno) {
     case 'Lote 1':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 2':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
-      break;
-    case 'Lote 2':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 3':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '12,00 x 23,00m';
+      itemGrilla2 = '275,91';
+      itemGrilla3 = '137,96';
       break;
     case 'Lote 4':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '12,00 x 23,00m';
+      itemGrilla2 = '276,00';
+      itemGrilla3 = '138,00';
       break;
     case 'Lote 5':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 6':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 7':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '9,00 x 23,00m';
+      itemGrilla2 = '207,00';
+      itemGrilla3 = '103,50';
       break;
     case 'Lote 8':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 9':
-      itemGrilla1 = '13,00 x 25,50';
-      itemGrilla2 = '13,00 x 25,50';
-      itemGrilla3 = '13,00 x 25,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 10':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '12,00 x 27,50m';
+      itemGrilla2 = '330,00';
+      itemGrilla3 = '165,00';
       break;
     case 'Lote 11':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '12,00 x 27,50m';
+      itemGrilla2 = '329,85';
+      itemGrilla3 = '164,93';
       break;
     case 'Lote 12':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     case 'Lote 13':
-      itemGrilla1 = '15,00 x 27,50';
-      itemGrilla2 = '15,00 x 27,50';
-      itemGrilla3 = '15,00 x 27,50';
+      itemGrilla1 = '11,50 x 23,00m';
+      itemGrilla2 = '264,50';
+      itemGrilla3 = '132,25';
       break;
     default:
-      itemGrilla1 = '11,00m x 24,50m';
-      itemGrilla2 = '11,00m x 24,50m';
-      itemGrilla3 = '11,00m x 24,50m';
+      itemGrilla1 = '-';
+      itemGrilla2 = '-';
+      itemGrilla3 = '-';
       break;
   }
 
@@ -671,23 +669,23 @@ orderData.dolarValue = dolarValue;
   switch (financiacionGrid) {
     case 'contado':
       itemGrilla7 = 'contado 1';
-      itemGrilla8 = 'contado 2';
-      itemGrilla9 = 'contado 3';
+      itemGrilla8 = 'No aplica';
+      itemGrilla9 = 'No aplica';
       break;
     case '70/30':
       itemGrilla7 = '70/30 primero';
-      itemGrilla8 = '70/30 segundo';
-      itemGrilla9 = '70/30 tercero';
+      itemGrilla8 = ( (((orderData.amount*20)/dolarValue)*0.7)/12).toFixed(2);
+      itemGrilla9 = '70% en 11 cuotas';
       break;
     case '100%':
       itemGrilla7 = '100 primero';
-      itemGrilla8 = '100 segundo';
-      itemGrilla9 = '100 tercero';
+      itemGrilla8 =  ( (((orderData.amount*20)/dolarValue))/12).toFixed(2);
+      itemGrilla9 = '12 cuotas';
       break;
       default:
-        itemGrilla7 = 'deefecto 1';
-        itemGrilla8 = 'defecto 2';
-        itemGrilla9 = 'defecto 3';
+        itemGrilla7 = '-';
+        itemGrilla8 = '-';
+        itemGrilla9 = '-';
         break;
     }
     // className={selectedTerreno? "" : InputCSS.transparency50}
@@ -1060,12 +1058,12 @@ if(cargaron){
                 </div>
               </div>
                 <div className={InputCSS.grilla}>
-                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
-                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
-                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
                   <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
                   <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
                   <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>USD {orderData.amount/dolarValue}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
                 </div>
           </div>
         </div>

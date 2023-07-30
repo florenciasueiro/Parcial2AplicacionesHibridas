@@ -7,7 +7,12 @@ function ProductGrid({ card, cardData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    if (card.id === 102){
+      setIsModalOpen(false);
+    }
+    else {
+      setIsModalOpen(true);
+    }
   };
   
   const handleCloseModal = () => {
@@ -15,7 +20,7 @@ function ProductGrid({ card, cardData }) {
   };
 
   return (
-    <div className={GridCSS.tarjeta}>
+    <div className={`${GridCSS.tarjeta} ${card.id === 102 ? GridCSS.defaultCursor : ''}`}>
       <div className={GridCSS.black}></div>
       <Link className={GridCSS.link} to={card.link}>
         <div className={GridCSS.card} onClick={handleOpenModal}>
@@ -27,7 +32,8 @@ function ProductGrid({ card, cardData }) {
             </h1>
             {/* <p>{card.description}</p> */}
           </div>
-          <img className={GridCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />
+          {card.imageUrl && <img className={GridCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />}
+          {card.videoUrl && <video  className={GridCSS.cardImg} src={card.videoUrl}  autoPlay loop muted />}
         </div>
       </Link>
 

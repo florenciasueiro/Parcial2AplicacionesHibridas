@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import PerfilCSS from '../css/Perfil.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+
+
 
 const PDFViewer = ({ pdfBase64 }) => {
   const pdfData = `data:application/pdf;base64,${pdfBase64}`;
@@ -53,7 +57,8 @@ const FacturaPDFComponent = ({ id, doctype }) => {
   return (
     <>
       {/* Botón o enlace que abre el modal */}
-      <button onClick={openModal} className={PerfilCSS.botonRecibo} >Recibo</button>
+      <button onClick={openModal} className={PerfilCSS.botonRecibo}>
+      <FontAwesomeIcon icon={faFilePdf} /></button>
       
       {/* Modal */}
       <Modal
