@@ -940,7 +940,7 @@ export function CardGrid20({ handleClick }) {
               </div>,
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/07_INTERIOR_GUARDERIA_4K_POS_w1ev6q.jpg',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto/v1690738408/Imagen_12-Familia_ekdo6m.jpg',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -963,7 +963,7 @@ export function CardGrid21({ handleClick }) {
       span: ' es nuestra prioridad.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/01_ACCESO_4K_POS_wurxql.jpg',
+      videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/f_auto,q_auto/v1682603559/06_QF1_GUARDERIA_FINAL_fxsvku.mp4',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -986,7 +986,7 @@ export function CardGrid22({ handleClick }) {
       span: 'a través del movimiento.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751159/02_CONTROL_ACCESO_4K_POS_brydhw.jpg',
+      videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/v1682603557/04_QF1_DETALLE_FINAL_xjqdau.mp4',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -1008,7 +1008,7 @@ export function CardGrid23({ handleClick }) {
       title: 'Ambiente seguro para crecer.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751160/04_CALLE_GUARDERIA_4K_POS_g21a6d.jpg',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto/v1687751161/01_ACCESO_4K_POS_wurxql.jpg',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -1031,7 +1031,7 @@ export function CardGrid24({ handleClick }) {
       span: 'tu creatividad',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/f_auto,q_auto/v1682603560/08_QF1_CANCHA_FINAL_e5xllg.mp4',
     },
     // Agrega más objetos cardData según sea necesario
   ];
@@ -1050,11 +1050,11 @@ export function CardGrid25({ handleClick }) {
     {
       id: 31,
       icon: "img/LogoBlanco.png",
-      title: 'Disfrutar de momento inolvidables,',
-      span: ' Juntos.',
+      title: 'Disfrutar de momentos inolvidables,',
+      span: ' juntos.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto/v1687751162/10_INTERIOR_SUM_BLUE_HOUR_4K_POS_gr3ozf.jpg',
     },
     // Agrega más objetos cardData según sea necesario
   ];

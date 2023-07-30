@@ -183,7 +183,7 @@
 
 .tarjeta10 {
   grid-column: 1 / span 3;
-  grid-row: 7 / span 1;
+  grid-row: 7 / span 0.2;
 }
 
 .tarjeta10 h1{
