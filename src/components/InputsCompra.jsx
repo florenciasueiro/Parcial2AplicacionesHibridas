@@ -114,7 +114,7 @@ export default function RadioInputs({seleccion}) {
   const [selectedCW,              setSelectedCW]              = useState('');
   const [financiacionGrid,        setFinanciationGrid]        = useState('contado');
   const [selectedFinanciation,    setSelectedFinanciation]    = useState(parseFloat(1));
- 
+  
 
   const urlParams = new URLSearchParams(window.location.search);
   const status = Object.fromEntries(urlParams).status;
@@ -432,8 +432,6 @@ orderData.dolarValue = dolarValue;
     return (((terrenoPrice)* parseFloat(financiation)*dolarValue).toFixed(2)*0.05);
   };
 
-//FIN DE LO IMPORTANTE!!!!!!!
-
 
 
 
@@ -550,7 +548,8 @@ orderData.dolarValue = dolarValue;
     orderData.amount = calculateAmount(value.financiation, selectedTerreno, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW);
     handleClick();
     handleClick();
-
+    
+    
   };
   
   
@@ -675,23 +674,23 @@ orderData.dolarValue = dolarValue;
   switch (financiacionGrid) {
     case 'contado':
       itemGrilla7 = 'contado 1';
-      itemGrilla8 = 'contado 2';
-      itemGrilla9 = 'contado 3';
+      itemGrilla8 = 'No aplica';
+      itemGrilla9 = 'No aplica';
       break;
     case '70/30':
       itemGrilla7 = '70/30 primero';
-      itemGrilla8 = '70/30 segundo';
-      itemGrilla9 = '70/30 tercero';
+      itemGrilla8 = ( (((orderData.amount*20)/dolarValue)*0.7)/12).toFixed(2);
+      itemGrilla9 = '70% en 11 cuotas';
       break;
     case '100%':
       itemGrilla7 = '100 primero';
-      itemGrilla8 = '100 segundo';
-      itemGrilla9 = '100 tercero';
+      itemGrilla8 =  ( (((orderData.amount*20)/dolarValue))/12).toFixed(2);
+      itemGrilla9 = '12 cuotas';
       break;
       default:
-        itemGrilla7 = 'deefecto 1';
-        itemGrilla8 = 'defecto 2';
-        itemGrilla9 = 'defecto 3';
+        itemGrilla7 = '-';
+        itemGrilla8 = '-';
+        itemGrilla9 = '-';
         break;
     }
     // className={selectedTerreno? "" : InputCSS.transparency50}
@@ -1064,12 +1063,12 @@ if(cargaron){
                 </div>
               </div>
                 <div className={InputCSS.grilla}>
-                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>{itemGrilla7}</div>
-                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
-                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
                   <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Precio para reservar</div>
                   <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Precio de cuota mensual</div>
                   <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Cantidad de cuotas</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla1}`}>USD {orderData.amount/dolarValue}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla2}`}>{itemGrilla8}</div>
+                  <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla9}</div>
                 </div>
           </div>
         </div>
