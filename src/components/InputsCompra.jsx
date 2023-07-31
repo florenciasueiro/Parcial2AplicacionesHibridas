@@ -573,68 +573,68 @@ orderData.dolarValue = dolarValue;
   switch (selectedTerreno) {
     case 'Lote 1':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 2':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 3':
       itemGrilla1 = '12,00 x 23,00m';
-      itemGrilla2 = '275,91';
-      itemGrilla3 = '137,96';
+      itemGrilla2 = '275,91m2';
+      itemGrilla3 = '137,96m2';
       break;
     case 'Lote 4':
       itemGrilla1 = '12,00 x 23,00m';
-      itemGrilla2 = '276,00';
-      itemGrilla3 = '138,00';
+      itemGrilla2 = '276,00m2';
+      itemGrilla3 = '138,00m2';
       break;
     case 'Lote 5':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 6':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 7':
       itemGrilla1 = '9,00 x 23,00m';
-      itemGrilla2 = '207,00';
-      itemGrilla3 = '103,50';
+      itemGrilla2 = '207,00m2';
+      itemGrilla3 = '103,50m2';
       break;
     case 'Lote 8':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 9':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 10':
       itemGrilla1 = '12,00 x 27,50m';
-      itemGrilla2 = '330,00';
-      itemGrilla3 = '165,00';
+      itemGrilla2 = '330,00m2';
+      itemGrilla3 = '165,00m2';
       break;
     case 'Lote 11':
       itemGrilla1 = '12,00 x 27,50m';
-      itemGrilla2 = '329,85';
-      itemGrilla3 = '164,93';
+      itemGrilla2 = '329,85m2';
+      itemGrilla3 = '164,93m2';
       break;
     case 'Lote 12':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     case 'Lote 13':
       itemGrilla1 = '11,50 x 23,00m';
-      itemGrilla2 = '264,50';
-      itemGrilla3 = '132,25';
+      itemGrilla2 = '264,50m2';
+      itemGrilla3 = '132,25m2';
       break;
     default:
       itemGrilla1 = '-';
@@ -711,7 +711,7 @@ if(cargaron){
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla3}`}>{itemGrilla3}</div>
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla4}`}>Ancho x Largo</div>
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla5}`}>Superficie terreno</div>
-          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Construcción vivienda</div>
+          <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Constructibilidad</div>
         </div>
 
       <div className={InputCSS['radioInputs']} style={{ maxHeight: '265px', overflowY: 'auto' }}>          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>

@@ -14,7 +14,7 @@ function Quarters() {
       <>
       <div className={QuartersCSS.text}>
         <h1>Quarters Family 1</h1>
-        <p className={QuartersCSS.p}>Desde u$d 29.999 o u$d 1.725/mes por 18 meses.</p>
+        <p className={QuartersCSS.p}>Desde u$d 29.999 o u$d 1.725/mes por 12 meses.</p>
         <Link className={QuartersCSS.a} to="/shop"><p className={QuartersCSS.link}>Comprar</p></Link>
       </div>
       <BackgroundQuarters className={QuartersCSS.background}/>
