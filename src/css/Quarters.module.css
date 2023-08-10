@@ -41,3 +41,30 @@
   }
 
 
+  @media (max-width: 768px){
+  .text{
+    position: absolute;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30vh;
+    width: 100%;
+    color: white;
+  }
+  .text h1, .p{
+    display: flex;
+    width: 75vw;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;  
+  }
+
+  .text h1{
+    font-size: 35px;
+  }
+    .p{
+    font-size: 18px;
+    color: #C0C0C0;
+  }
+}
