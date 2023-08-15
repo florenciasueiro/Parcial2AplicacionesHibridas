@@ -33,7 +33,7 @@ function ProductGrid({ card, cardData }) {
             {/* <p>{card.description}</p> */}
           </div>
           {card.imageUrl && <img className={GridCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />}
-          {card.videoUrl && <video  className={GridCSS.cardImg} src={card.videoUrl}  autoPlay loop muted />}
+          {card.videoUrl && <video controls={false} className={GridCSS.cardImg} src={card.videoUrl}  autoPlay loop muted />}
         </div>
       </Link>
 

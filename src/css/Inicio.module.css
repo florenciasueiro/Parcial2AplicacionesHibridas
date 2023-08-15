@@ -181,5 +181,22 @@
     text-decoration: none;
   }
   
+  
+.textEvents{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  width: 95%;
+  color: white;
+  top: 25vh;
+  font-size: 30px;
+}
+
+.pEvent{
+  font-size: 20px;
+  color: #C0C0C0;
+}
 
 }

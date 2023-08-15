@@ -41,7 +41,7 @@
     display: block;
     justify-content: center;
     margin: 20px 0;
-    height: 3520px;
+    height: 890px;
   }
 
   .carousel {
@@ -55,6 +55,17 @@
   .inputs {
     display: flex;
     width: 100vw;
+    max-height: 420px;
+    overflow-y: auto;
+    bottom: 0;
+    top: 90px;
     /* padding-right: 1rem; */
   }
+
+  .faq{
+    padding-bottom: 1rem;
+    margin-top: 50px;
+  }
+  
+
 }

@@ -457,7 +457,7 @@ const preference = () => {
 
   const pagarCuota = () => {
 
-    if (productName) {
+    if (productName && calcularMontoCuota((facturaInfo.customFields[0].value), (facturaInfo.total * dolarValue)).tipoCuota!="3/2") {
 
       
 
@@ -520,7 +520,7 @@ const preference = () => {
     {
       id: 16,
       title: 'Pagos',
-      description: 'Pagar cuotas',
+      description: calcularMontoCuota((facturaInfo.customFields[0].value), (facturaInfo.total * dolarValue)).tipoCuota!="3/2"? 'Pagar cuotas': 'no hay pagos pendientes',
       imageUrl: 'https://via.placeholder.com/150',
       contenido: pagarCuota(),
       icon: <FontAwesomeIcon icon={faMoneyCheckDollar} />,

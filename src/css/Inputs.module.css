@@ -113,7 +113,7 @@ body {
   /* background-color: rgba(0, 0, 0, 0.6); */
   /* -webkit-backdrop-filter: blur(10px); */
   /* backdrop-filter: blur(10px); */
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 40px 10px 10px 10px;
   left: calc(50vw - 146px);
   width: 282px;
@@ -128,7 +128,7 @@ body {
 }
 
 .shoppingCart .content{
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 40px 10px 10px 10px;
   left: calc(50vw - 146px);
   width: 282px;
