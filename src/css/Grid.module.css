@@ -10,7 +10,7 @@
 
 .tarjetas {
   box-shadow: 2px 4px 12px rgba(0,0,0,.08);
-  border-radius: 15px;
+  border-radius: 10px;
   text-decoration: none;
   position: relative;
   z-index: 20;
@@ -37,6 +37,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  font-weight: 400;
 }
 
 
@@ -57,6 +58,7 @@
   font-size: 1.3rem;
   text-align: center;
   display: flex;
+  font-weight: 400;
 }
 
 .tarjeta3 {
@@ -78,6 +80,7 @@
   justify-content: center;
   text-align: center;
   font-size: 1.25rem;
+  font-weight: 400;
 }
 
 .tarjeta4 { 
@@ -96,6 +99,7 @@
   color: white;
   display: flex;
   font-size: 2.5rem;
+  font-weight: 400;
 }
 
 .tarjeta5 {
@@ -113,6 +117,7 @@
 .tarjeta5 span{
   display: flex;
   color: #C0C0C0;
+  font-weight: 400;
 }
 
 
@@ -133,6 +138,7 @@
   display: flex;
   font-size: 1.3rem;
   justify-content: center;
+  font-weight: 400;
 }
 
 .tarjeta7 {
@@ -179,6 +185,7 @@
   display: flex;
   color: white;
   font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .tarjeta10 {
@@ -196,6 +203,7 @@
 .tarjeta10 span{
   display: flex;
   color: white;
+  font-weight: 400;
 }
 
     .contenido{
@@ -209,7 +217,7 @@
       left: 0;
       right: 0;
       margin: auto; /* Esto centra el contenido verticalmente y horizontalmente */
-      border-radius: 20px;
+      border-radius: 10px;
     }
     .contenido h2, .contenido p{
       width: 100%;
@@ -285,7 +293,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .h1{
   display: flex;
@@ -311,8 +319,8 @@
 .black{
   width: 100%;
   height: 100%;
-  border-radius: 15px;
-  background: linear-gradient(to top, #000000 0%, #ffffff00 100%);
+  border-radius: 10px;
+  background: linear-gradient(to top, #000000 0%, #ffffff00 70%);
   /* background-color: rgba(0,0,0,0.7); */
   position: absolute;
 }
@@ -326,4 +334,308 @@
 /* Grid.module.css */
 .defaultCursor:hover {
   cursor: text!important;
+}
+
+
+
+
+
+
+@media (max-width: 768px){
+  .grilla {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    justify-content: center;
+    margin: 30px auto;
+  }
+  
+  .tarjetas {
+    box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    z-index: 20;
+    
+    background-color: black;
+  }
+  
+  .tarjeta1 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta1 h1{
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: 100%;
+  }
+  
+  .tarjeta1 h1 span{
+    display: flex;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .tarjeta2 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta2 h1{
+    font-size: 2rem;
+    text-align: center;
+    bottom: 20px;
+    margin-left: 10px;
+    display: block;
+  }
+  
+  .tarjeta2 span{
+    font-size: 1.3rem;
+    text-align: center;
+    display: flex;
+  }
+  
+  .tarjeta3 {
+    grid-column: auto / span 1;;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta3 h1{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    bottom: 20px;
+  }
+  
+  .tarjeta3 span{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+  
+  .tarjeta4 { 
+    grid-column: auto / span 1;;
+    grid-row: auto / span 1;;
+  }
+  
+  .tarjeta4 h1{ 
+    color: #C0C0C0;
+    display: block;
+    font-size: 1.5rem;
+    margin: 10px;
+  }
+  
+  .tarjeta4 span{ 
+    color: white;
+    display: flex;
+    font-size: 2.5rem;
+  }
+  
+  .tarjeta5 {
+    grid-column: auto / span 1;;
+    grid-row: auto / span 1;;
+  }
+  
+  .tarjeta5 h1{
+    font-size: 2rem;
+    display: flex;
+    bottom: 20px;
+    left: 10px;
+  }
+  
+  .tarjeta5 span{
+    display: flex;
+    color: #C0C0C0;
+  }
+  
+  
+  
+  .tarjeta6 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  } 
+  
+  .tarjeta6 h1{
+    font-size: 2rem;
+    display: block;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .tarjeta6 span{
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: center;
+  }
+  
+  .tarjeta7 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta7 h1{
+    display: block;
+    bottom: 30px;
+    right: 30px;
+    text-align: end;
+    font-size: 2rem;
+    
+  }
+  
+  .tarjeta7 span{
+    display: flex;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  
+  .tarjeta8 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta8 h1{
+    font-size: 2rem;
+  }
+  
+  .tarjeta9 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta9 h1{
+    display: block;
+    color: #C0C0C0;
+    font-size: 1.5rem;
+  }
+  
+  .tarjeta9 span{
+    display: flex;
+    color: white;
+    font-size: 1.5rem;
+  }
+  
+  .tarjeta10 {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .tarjeta10 h1{
+    display: block;
+    bottom: 25px;
+    color: #C0C0C0;
+    left: 25px;
+  }
+  
+  .tarjeta10 span{
+    display: flex;
+    color: white;
+  }
+  
+      .contenido{
+        display: block;
+        color: white;
+        background: rgb(255,255,255);
+        background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);
+        position: absolute; 
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto; /* Esto centra el contenido verticalmente y horizontalmente */
+        border-radius: 10px;
+      }
+      .contenido h2, .contenido p{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+  
+    /* .fondo {
+      position: relative; 
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 0, 0, 0.5);
+  
+    } */
+  
+    .videoContainer{
+      height: 100%;
+    }
+  
+  
+    /* Estilos del modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContent {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80%;
+    background-color: #fff;
+    padding: 20px;
+    overflow: auto;
+    border-radius: 10px;
+    z-index: 100;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .closeButton:hover {
+    background-color: #555;
+  }
+  
+  
+  
+  .cardImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .h1{
+    display: flex;
+    position: absolute;
+    padding: 10px;
+    color: white;
+    font-size: 25px;
+  }
 }

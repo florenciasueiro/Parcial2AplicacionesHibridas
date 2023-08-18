@@ -697,7 +697,7 @@ if(cargaron){
     <div >
       <div>
         <div>
-          <b className={InputCSS.b}>Terreno.</b>
+          <b className={InputCSS.b}>Terreno</b>
           <p className={InputCSS.p}> ¿Cuál es el mejor para su familia?</p>
           {/* <div className={InputCSS.moreInfo}>
             <Info1/>
@@ -816,7 +816,7 @@ if(cargaron){
       <div className={selectedTerreno?        "" : InputCSS.transparency50}>
       <div className={`${InputCSS['ref']}`} ref={cardRef}>
         <div>
-          <b className={InputCSS.b}>Asset Card.</b>
+          <b className={InputCSS.b}>Asset Card</b>
           <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p>
           {/* <div className={InputCSS.moreInfo}>
           <Info2/>
@@ -882,7 +882,7 @@ if(cargaron){
       <div className={selectedCard?           "" : InputCSS.transparency50}>
       <div className={InputCSS['ref']} ref={almacenamientoRef}>
         <div>
-          <b className={InputCSS.b}>Almacenamiento.</b>
+          <b className={InputCSS.b}>Almacenamiento</b>
           <p className={InputCSS.p}>¿Cuánto espacio es el adecuado?</p>
             {/* <div className={InputCSS.moreInfo}>
               <Info3/>
@@ -922,7 +922,7 @@ if(cargaron){
       <div className={selectedAlmacenamiento? "" : InputCSS.transparency50}>
       <div className={InputCSS['ref']} ref={guarderiaRef}>
         <div>
-          <b className={InputCSS.b}> Sala de juegos.</b>
+          <b className={InputCSS.b}>Sala de juegos</b>
           <p className={InputCSS.p}>¿Cuál es el plan que mejor se adapta a ti?</p>
           {/* <div className={InputCSS.moreInfo}>
               <Info4/>
@@ -956,7 +956,7 @@ if(cargaron){
       <div className={selectedGuarderia?      "" : InputCSS.transparency50}>
       <div className={InputCSS['ref']} ref={sumRef}>
         <div>
-          <b className={InputCSS.b}> SUM</b>
+          <b className={InputCSS.b}>SUM</b>
           <p className={InputCSS.p}>Reservá el espacio para juntarte con las personas que más querés.</p>
           {/* <div className={InputCSS.moreInfo}>
               <Info5/>
@@ -1076,7 +1076,7 @@ if(cargaron){
     <div>
     <div>
       <div className={InputCSS.textContainer}>
-  <b className={InputCSS.text}>Terreno.</b> <p className={InputCSS.p}>¿Cuál es el mejor para su familia?</p>
+  <b className={InputCSS.text}>Terreno</b> <p className={InputCSS.p}>¿Cuál es el mejor para su familia?</p>
       </div>
       <div className={InputCSS['radioInputs']}>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
@@ -1182,7 +1182,7 @@ if(cargaron){
 
 
       <div className={InputCSS['ref']} ref={cardRef}>
-      <div><b className={InputCSS.b}>Asset Card.</b> <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p></div>
+      <div><b className={InputCSS.b}>Asset Card</b> <p className={InputCSS.p}>¿Cuántas personas viven con usted?</p></div>
       <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedCard === '1' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="1" checked={selectedCard === '1'} /**onChange={handleSelectCard}**/ disabled={input2Disabled}/>
@@ -1209,7 +1209,7 @@ if(cargaron){
     </div>
 
       <div className={InputCSS['ref']} ref={almacenamientoRef}>
-      <div><b className={InputCSS.b}>Almacenamiento.</b> <p className={InputCSS.p}>¿Cuánto espacio necesitará para almacenar sus cosas?</p></div>
+      <div><b className={InputCSS.b}>Almacenamiento</b> <p className={InputCSS.p}>¿Cuánto espacio necesitará para almacenar sus cosas?</p></div>
       <div className={InputCSS['radioInputs']}>
       <label className={`${InputCSS['radioInput']} ${selectedAlmacenamiento === 'Pequeño' ? InputCSS.selected : ''}`}>
         <span><input type="radio" value="Pequeño" checked={selectedAlmacenamiento === 'Pequeño'} /**onChange={handleSelectAlmacenamiento}**/ disabled={input3Disabled} />

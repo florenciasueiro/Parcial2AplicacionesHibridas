@@ -168,3 +168,16 @@
     transition-delay: .6s;
     transform: translateX(-100px);
   }
+
+
+  @media (max-width: 768px) {
+
+    /* .navprimario{
+      top: 90vh;
+      position: fixed;
+      border-radius: 20px;
+      
+      box-shadow: 0 0 20px 5px rgba(0,0,0,0.1);
+    } */
+
+  }
