@@ -48,15 +48,14 @@
 
     width: 100vw;
     height: fit-content;
-    position: sticky;
-    top: 80px;
+    position: relative;
+    top: 45px;
   }
 
   .inputs {
     display: flex;
     width: 100vw;
-    max-height: 420px;
-    overflow-y: auto;
+
     bottom: 0;
     top: 90px;
     /* padding-right: 1rem; */
