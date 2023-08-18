@@ -45,9 +45,14 @@ function Navbar() {
         
         sessionStorage.setItem('compra',null)
       } else if (status === 'failure') {
+        activar(true);
+
         notificar(<div><span>Tu pago fue rechazado</span></div>)
+        suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
       } else if (status === 'pending') {
+        activar(true);
         notificar(<div><span>Tu pago se encuentra pendiente</span></div>)
+        suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
       }
       setTimeout(() => {
         activar(false);
