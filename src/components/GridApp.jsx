@@ -717,7 +717,7 @@ export function CardGrid11({ handleClick }) {
   const cardData = [
     {
       id: 30,
-      logo: "",
+      logo: "img/LogoBlanco.png",
       icon: "",
       title: 'Sobre Asset',
 

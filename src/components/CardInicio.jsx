@@ -21,7 +21,7 @@ function CardInicio({ card, cardData }) {
       <Link className={PerfilCSS.link} to={card.link}>
         <div className={PerfilCSS.cardInicio} onClick={handleOpenModal}>
           <div className={PerfilCSS.cardBodyInicio}>
-            {card.icon && <img className={PerfilCSS.cardIcon} src={card.logo} alt="Logo" />}
+            {card.icon && <img className={PerfilCSS.cardIcon} src={card.logo} alt="Logo"/>}
             <h1 className={PerfilCSS.h1}>{card.title}</h1>
             {/* <p>{card.description}</p> */}
           </div>
