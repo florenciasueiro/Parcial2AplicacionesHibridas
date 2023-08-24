@@ -53,7 +53,7 @@
   }
   .text h1, .p{
     display: flex;
-    width: 75vw;
+    width: 95vw;
     margin: auto;
     justify-content: center;
     text-align: center;
@@ -61,10 +61,28 @@
   }
 
   .text h1{
-    font-size: 35px;
+    font-size: 2rem;
+    font-weight: 400;
   }
     .p{
-    font-size: 18px;
+    font-size: 1rem;
     color: #C0C0C0;
+    font-weight: 200;
   }
+
+
+  .link{
+    background-color: #0071e3;
+    color: white;
+    display: flex;
+    padding: 6px 8px 8px 8px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 20px auto;
+  }
+
+
 }
+

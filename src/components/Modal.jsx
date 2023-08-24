@@ -17,10 +17,11 @@ function ModalCardInicio({ card, isOpen, onClose }) {
         unmountOnExit>
         <div className={PerfilCSS.modalCardContainer}>
           <div className={PerfilCSS.modalCardHeader}>
-            <h3>{card.title}</h3>
+            <h3>{card.title} {card.span}</h3>
             <button className={PerfilCSS.modalCloseButton} onClick={onClose}></button>
           </div>
-          <img className={PerfilCSS.modalCardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />
+          {card.imageUrl && <img className={PerfilCSS.cardImg} src={card.imageUrl} alt="Imagen de la tarjeta" />}
+          {card.videoUrl && <video controls={false} className={PerfilCSS.cardImg} src={card.videoUrl}  autoPlay loop muted />}
           <div className={PerfilCSS.modalCardBody}>
             <p>{card.description}</p>
           </div>

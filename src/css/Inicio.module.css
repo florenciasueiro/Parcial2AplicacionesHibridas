@@ -102,8 +102,9 @@
 }
 
 .p{
-  margin: 20px;
-  font-weight: 500;
+  margin: 10px;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .logoP{
