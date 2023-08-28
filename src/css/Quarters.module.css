@@ -33,11 +33,13 @@
   }
 
   .text h1{
-    font-size: 35px;
+    font-size: 2rem;
+    font-weight: 400;
   }
     .p{
     font-size: 25px;
     color: #C0C0C0;
+    font-weight: 300;
   }
 
 

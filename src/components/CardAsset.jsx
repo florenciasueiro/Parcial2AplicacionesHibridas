@@ -27,22 +27,15 @@ const CardAsset = ({ card, cardData }) => {
             <FontAwesomeIcon icon={faPlus} />
             <p className={CACSS.registerText}>{card.text}</p>
             {card.buttons && card.buttons.map((input, index) => (
-
-<div  key={index}>
-    
-      <div >
- 
-          <button 
-          className={CACSS.btn}
-          onClick={input.onClick}
-          >{input.button}</button>
-      </div>
-
-  </div>
-))}
+            <div  key={index}>
+                  <div>
+                      <button className={CACSS.btn} onClick={input.onClick}> {input.button} </button>
+                  </div>
+              </div>
+            ))}
           </button>
         </div>
-        <div className={CACSS.title}>
+        <div className={`${CACSS.title} ${isFlipped ? CACSS.flipTitle : ''}`}>
           <h1 className={CACSS.h1}>{card.title}</h1>
           <h2 className={CACSS.h2}>{card.subtitle}</h2>
         </div>

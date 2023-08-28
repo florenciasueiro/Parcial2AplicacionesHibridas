@@ -44,3 +44,16 @@
 .faqQuestion:hover {
   color: #0080ff;
 }
+
+
+@media (max-width: 768px) {
+
+  .faqContainer {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    width: 70vw;
+    margin: auto;
+  }
+
+  
+}

@@ -25,6 +25,9 @@ function Navbar() {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
   const {activar, playAnimation, notificar} = useContext(Context);
+  const [isMobile, setIsMobile] = useState(false);
+
+
 
   useEffect(() => {
     const compraJson = sessionStorage.getItem('compra');
@@ -45,14 +48,9 @@ function Navbar() {
         
         sessionStorage.setItem('compra',null)
       } else if (status === 'failure') {
-        activar(true);
-
         notificar(<div><span>Tu pago fue rechazado</span></div>)
-        suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
       } else if (status === 'pending') {
-        activar(true);
         notificar(<div><span>Tu pago se encuentra pendiente</span></div>)
-        suscrbirUsuario({usuario: usuario,funnelID: "641c5f375ba494fd3803b591",stageID:"644a93336ce5752e8d041dc9"});
       }
       setTimeout(() => {
         activar(false);
@@ -61,6 +59,31 @@ function Navbar() {
     }
   }, []); 
 
+    // // Función para manejar cambios en el tamaño de la ventana
+    // const handleWindowSizeChange = () => {
+    //   if (window.innerWidth <= 768) {
+    //     setIsMobile(true);
+    //   } else {
+    //     setIsMobile(false);
+    //   }
+    // };
+
+
+    // useEffect(() => {
+    //   // Llama a la función de manejo al montar el componente
+    //   handleWindowSizeChange();
+  
+    //   // Agrega un listener para el evento de cambio de tamaño de la ventana
+    //   window.addEventListener('resize', handleWindowSizeChange);
+  
+    //   // Limpia el listener al desmontar el componente
+    //   return () => {
+    //     window.removeEventListener('resize', handleWindowSizeChange);
+    //   };
+    // }, []);
+
+
+    
 
   const displayName = (props) => {
     if (!usuario || Object.keys(usuario).length === 0) {

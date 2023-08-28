@@ -8,13 +8,13 @@
   margin: 30px auto;
 }
 
+
 .tarjetas {
   box-shadow: 2px 4px 12px rgba(0,0,0,.08);
   border-radius: 10px;
   text-decoration: none;
   position: relative;
   z-index: 20;
-  
   background-color: black;
 }
 
@@ -29,6 +29,7 @@
   margin: 20px auto;
   display: block;
   width: 100%;
+  font-weight: 400;
 }
 
 .tarjeta1 h1 span{
@@ -37,7 +38,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 
@@ -49,8 +50,10 @@
 .tarjeta2 h1{
   font-size: 2rem;
   text-align: center;
-  bottom: 20px;
-  margin-left: 10px;
+  /* bottom: 20px;
+  margin-left: 10px; */
+  margin: auto;
+  width: 100%;
   display: block;
 }
 
@@ -58,7 +61,9 @@
   font-size: 1.3rem;
   text-align: center;
   display: flex;
-  font-weight: 400;
+  font-weight: 200;
+  width: 100%;
+  justify-content: center;
 }
 
 .tarjeta3 {
@@ -72,7 +77,8 @@
   text-align: center;
   width: 100%;
   font-size: 2rem;
-  bottom: 20px;
+  /* bottom: 20px; */
+  font-weight: 400;
 }
 
 .tarjeta3 span{
@@ -80,7 +86,7 @@
   justify-content: center;
   text-align: center;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .tarjeta4 { 
@@ -93,13 +99,14 @@
   display: block;
   font-size: 1.5rem;
   margin: 10px;
+  font-weight: 400;
 }
 
 .tarjeta4 span{ 
   color: white;
   display: flex;
   font-size: 2.5rem;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .tarjeta5 {
@@ -112,12 +119,13 @@
   display: flex;
   bottom: 20px;
   left: 10px;
+  font-weight: 400;
 }
 
 .tarjeta5 span{
   display: flex;
   color: #C0C0C0;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 
@@ -132,13 +140,14 @@
   display: block;
   justify-content: center;
   text-align: center;
+  font-weight: 400;
 }
 
 .tarjeta6 span{
   display: flex;
   font-size: 1.3rem;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .tarjeta7 {
@@ -152,13 +161,13 @@
   right: 30px;
   text-align: end;
   font-size: 2rem;
-  
+  font-weight: 400;
 }
 
 .tarjeta7 span{
   display: flex;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .tarjeta8 {
@@ -168,6 +177,7 @@
 
 .tarjeta8 h1{
   font-size: 2rem;
+  font-weight: 400;
 }
 
 .tarjeta9 {
@@ -179,13 +189,14 @@
   display: block;
   color: #C0C0C0;
   font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .tarjeta9 span{
   display: flex;
   color: white;
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .tarjeta10 {
@@ -198,12 +209,13 @@
   bottom: 25px;
   color: #C0C0C0;
   left: 25px;
+  font-weight: 400;
 }
 
 .tarjeta10 span{
   display: flex;
   color: white;
-  font-weight: 400;
+  font-weight: 200;
 }
 
     .contenido{
@@ -638,4 +650,6 @@
     color: white;
     font-size: 25px;
   }
+
+  
 }
