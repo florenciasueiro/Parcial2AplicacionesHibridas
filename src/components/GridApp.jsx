@@ -741,7 +741,7 @@ export function CardGrid12({ handleClick }) {
     {
       id: 31,
       logo: "img/LogoBlanco.png",
-      icon: <FontAwesomeIcon icon={faPlus}/>,
+      icon: "",
       title: 'Soporte',
       description: 'Descripción de la tarjeta 1',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687798522/grupo-jovenes-empresarios-que-trabajan-oficina_izwjdf.jpg',
