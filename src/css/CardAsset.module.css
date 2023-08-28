@@ -229,7 +229,7 @@
       left: 20px;
       width: 80vw;
       transition: transform 0.5s;
-      backface-visibility: hidden;
+      z-index: 2;
     }
 
     
