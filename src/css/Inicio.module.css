@@ -119,6 +119,7 @@
   border-radius: 50px;
   margin: 20px auto;
   border: none;
+  font-size: 1rem;
 }
 .pEvent{
   font-size: 27px;
@@ -196,8 +197,9 @@
 }
 
 .pEvent{
-  font-size: 20px;
+  font-size: 1rem;
   color: #C0C0C0;
+  font-weight: 300;
 }
 
 }

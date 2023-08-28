@@ -597,3 +597,624 @@
   color: #007AFF;
   border-radius: 10px;
 }
+
+
+
+@media (max-width: 768px) {
+
+  .profilePage {
+    display: block;
+    margin: auto;
+    justify-content: center;
+    width: 95vw;
+  }
+  
+  .cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+  }
+  
+  .card {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    background-color: white;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+  }
+  .card p{
+    font-size:15px;
+  }
+  
+  .cardInicio {
+    background-color: white;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .cardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .cardInicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+  }
+  
+  
+  .cardBodyInicio {
+    padding: 20px;
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardIcon{
+    width: 2rem;
+  }
+  
+  .cardLinkInicio {
+    text-decoration: none;
+  }
+  .link{
+    text-decoration: none;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .perfil {
+    padding: 20px;
+  }
+  
+  .lista {
+    display: block;
+    /* margin: 0 0 0 5vw; */
+    background: #c0c0c06e;
+    padding: 10px 10px 0 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  
+  .listaElemento {
+    border-bottom: 1px solid #c0c0c0;
+    margin: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .perfilImg {
+    margin: auto 10px;
+  }
+
+  .header{
+    display: flex;
+    background: #c0c0c06e;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .leftSection {
+    margin: 0 auto;
+  }
+  
+  .listaElemento a {
+    color: black;
+    list-style: none;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+  }
+  
+  .listaElemento a:hover {
+    background-color: aliceblue;
+    border-radius: 10px;
+  }
+  
+  .text h1 {
+    font-size: 28px;
+  }
+  
+  .listaElemento button:focus {
+    color: #0071e3;
+  }
+  
+  /* Modal */
+  
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    /* z-index: 9999; */
+  }
+
+  .modalOverlayQuarters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+  }
+
+  .modalOverlayRecibo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    /* z-index: 9999; */
+  }
+  
+  .modalCard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+    background-color: #fff;
+    padding: 4rem 1rem 1rem 1rem;
+    width: 80vw;
+    max-width: 800px;
+    border-radius: 10px;
+  }
+  
+  .modalCardHeader {
+    display: block;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .modalCardImg {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+  }
+  
+  .modalCloseButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 1.5rem;
+    color: #007AFF;
+  }
+  
+  .modalCloseButton:before {
+    content: 'Cancelar';
+    font-size: 1rem;
+    /* display: block; */
+  }
+  
+  .modalTransition-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  
+  .modalTransition-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: all 300ms ease-in-out;
+  }
+  
+  .modalTransition-exit {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  
+  .modalTransition-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 300ms ease-out;
+  }
+
+  .btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .alto{
+    height: calc(100vh - 30.4px);
+    top: 0;
+    position: relative;
+    padding-top: 80px;
+  }
+
+
+
+
+  .inputContainer{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .button{
+    margin: 20px;
+    background-color: black;
+    color: white  ;
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+
+  .inputContainer .input{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.6s;
+    height: 35px;
+    margin: 5px;
+    background-color: #E1E1E1;
+  }
+  
+    .inputContainer .span{
+      position: absolute;
+      left: 25px;
+      padding: 5px;
+      font-size: 1rem;
+      color: #7f8fa6;
+      pointer-events: none;
+      transition: 0.6s;
+  }
+  
+  .inputContainer .input:valid ~ .span,
+  .inputContainer .input:focus ~ .span{
+      color: black;
+      transform: translateX(0px) translateY(-20px);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0 10px;
+      background-color: white;
+      border-radius: 10px;
+  }
+  
+
+  .modalCardApp{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+    background-color: #fff;
+    /* padding: 1rem; */
+    min-width: 450px;
+    /* min-height: 500px; */
+    justify-content: center;
+    display: flex;
+    border-radius: 10px;
+  }
+
+
+
+
+  .icono{
+    display: none;
+    justify-content: center;
+    /* color: red; */
+  }
+
+  .titulo{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #7f8fa6;
+    padding-bottom: 10px;
+  }
+
+  .description{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .show{
+    margin: 20px;
+    background-color: black;
+    color: white  ;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .none{
+    display: none;
+  }
+
+  #mas:first-child{
+    display: flex;
+    color: red;
+  }
+
+
+  .h1{
+    font-weight: 500;
+    margin: 0px 10px;
+  }
+
+
+  .cardGridInicio{
+    height: 100%;
+  }
+
+
+  .boton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem;
+    font-size: 1rem;
+    color: #007AFF;
+    font-weight: 600;
+  }
+
+  .modalCardContainer{
+    height: 100%;
+    width: 100%;
+    padding-top: 15px;
+  }
+
+  .direccion{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dirInput{
+    padding: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      font-size: 1rem;
+      transition: 0.6s;
+      height: 35px;
+      background-color: #E1E1E1;
+      display: flex;
+      margin: 5px auto;
+   }
+
+   .dirLista{
+    list-style: none;
+    display: inline-block;
+   }
+   .dirLista li{
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+   }
+   .dirLista li:hover{
+    background-color: #E1E1E1;
+   }
+
+  .cumple{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+ .cumpleInput{
+  padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.6s;
+    height: 35px;
+    margin: 5px;
+    background-color: #E1E1E1;
+ }
+
+
+  .react-datepicker-wrapper {
+    display: inline-block;
+  }
+  
+  /* Estilos para el input del date picker */
+  .react-datepicker__input-container input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+  }
+  
+  /* Estilos para el calendario emergente */
+  .react-datepicker {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los días seleccionables */
+  .react-datepicker__day--selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+/* Perfil.module.css */
+
+.botonVolver {
+  background-color: #E1E1E1;
+  border: none;
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  width: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  height: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7f8fa6;
+  margin-right: 10px;
+}
+
+.botonVolver:hover {
+  background-color: #ccc;
+}
+
+
+.text{
+  display: flex;
+  align-items: center;
+}
+.pagar{
+  display: flex;
+  justify-content: center;
+}
+
+.pagar button{
+  background-color: #E1E1E1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: max-content;
+}
+
+.pagar button:hover{
+  background-color: white;
+}
+
+.listaRecibo{
+  margin: 5px 10px;
+}
+
+.listaRecibo a{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  color: #0071e3;
+  font-weight: 500;
+  text-decoration: none;
+  
+}
+
+
+.h1Pago{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  font-size: 1.8rem;
+}
+
+.tablePago{
+  margin: 10px 20px;
+}
+
+.tdPago, .thPago{
+  padding: 5px;
+  max-width: 150px; /* Ajusta este valor según lo necesites */
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  overflow: hidden; /* Oculta cualquier contenido que no quepa */
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.botonPago{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+
+.botonChico{
+  max-width: min-content;
+  margin: auto;
+}
+
+/* Perfil.module.css */
+
+.botonPDF{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 1rem;
+  color: #007AFF;
+}
+
+.modalPerfil{
+  position: absolute;
+  inset: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 10px;
+  outline: none;
+  padding: 20px;
+  margin: 35px;
+  overflow-y: hidden;
+}
+
+
+.pdfContainer {
+  width: 100%; /* Establece el ancho del contenedor del PDF al 100% */
+  height: 620px; /* Establece la altura del contenedor del PDF */
+    margin: 20px auto; /* Establece los márgenes del contenedor del PDF */
+  padding: 10px; /* Establece el relleno del contenedor del PDF */
+}
+
+.botonRecibo{
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #007AFF;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 100px;
+}
+
+.tableRecibo, .tableBotonPago{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E1E1E1;
+  margin: 10px;
+  border-radius: 10px;
+}
+.botonPago{
+  cursor: pointer;
+  font-size: 1rem;
+  color: #007AFF;
+  border-radius: 10px;
+}
+
+
+}
