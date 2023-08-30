@@ -41,7 +41,6 @@
     display: block;
     justify-content: center;
     margin: 20px 0;
-    height: 890px;
   }
 
   .carousel {
@@ -63,7 +62,7 @@
 
   .faq{
     padding-bottom: 1rem;
-    margin-top: 50px;
+    margin-top: 100px;
   }
   
 

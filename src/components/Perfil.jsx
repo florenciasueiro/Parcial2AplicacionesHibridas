@@ -49,10 +49,12 @@ function Perfil(props) {
 
   return (
     <div className={PerfilCSS.perfil}>
+      <div className={PerfilCSS.header}>
       <Avatar className={PerfilCSS.perfilImg} src="/broken-image.jpg" sx={{ width: 64, height: 64 }} />
       <div className={PerfilCSS.perfilInfo}>
         <h2>{usuario.name}</h2>
         <p>{usuario.email}</p>
+      </div>
       </div>
       <ul className={PerfilCSS.lista}>
         <li className={PerfilCSS.listaElemento}>
