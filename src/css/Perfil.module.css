@@ -603,10 +603,12 @@
 @media (max-width: 768px) {
 
   .profilePage {
-    display: block;
+    display: flex;
     margin: auto;
     justify-content: center;
     width: 95vw;
+    position: absolute;
+    left: 0;
   }
   
   .cardGrid {
@@ -1214,6 +1216,10 @@
   font-size: 1rem;
   color: #007AFF;
   border-radius: 10px;
+}
+
+.rightSection{
+  position: absolute;
 }
 
 
