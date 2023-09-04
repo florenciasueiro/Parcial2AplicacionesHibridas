@@ -609,6 +609,7 @@
     width: 95vw;
     position: absolute;
     left: 0;
+    right: 0;
   }
   
   .cardGrid {
@@ -910,7 +911,7 @@
     transition: all 0.3s;
     background-color: #fff;
     /* padding: 1rem; */
-    min-width: 450px;
+    min-width: 90vw;
     /* min-height: 500px; */
     justify-content: center;
     display: flex;
