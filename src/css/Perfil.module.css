@@ -599,6 +599,10 @@
 }
 
 
+.botonVolverAtras{
+  display: none;
+}
+
 
 @media (max-width: 768px) {
 
@@ -1078,9 +1082,9 @@
 .botonVolver {
   background-color: #E1E1E1;
   border: none;
-  border-radius: 50%; /* Hace que el botón sea redondo */
-  width: 30px; /* Ajusta el tamaño del botón según tus necesidades */
-  height: 30px; /* Ajusta el tamaño del botón según tus necesidades */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   font-size: 14px;
   cursor: pointer;
   display: flex;
@@ -1088,6 +1092,8 @@
   align-items: center;
   color: #7f8fa6;
   margin-right: 10px;
+  top: 0;
+  position: absolute;
 }
 
 .botonVolver:hover {
@@ -1238,6 +1244,29 @@
 .leftMoved {
   transform: translateX(-100%);
   transition: transform 0.3s ease;
+}
+
+.rightMoved {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+
+.botonVolverAtras{
+  background-color: #E1E1E1;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7f8fa6;
+  margin-right: 10px;
+  top: 0;
+  position: absolute;
 }
 
 }
