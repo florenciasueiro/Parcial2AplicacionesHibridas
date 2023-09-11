@@ -8,13 +8,17 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 function ProfilePage() {
   const [activeSection, setActiveSection] = useState('Inicio de Sesion');
-  const [product, setProduct] = useState(0)
+  const [product, setProduct] = useState(0);
+  const [isLeftMoved, setIsLeftMoved] = useState(false);
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
+
+
   useEffect(() => {
     console.table(`El valor de activeSection ha cambiado a: ${activeSection}`);
-  }, [activeSection]);
+    console.log(`El valor de activeSection ha cambiado  ${isLeftMoved}`)
+  }, [activeSection, isLeftMoved]);
 
   
   // useEffect(() => {
@@ -26,13 +30,15 @@ function ProfilePage() {
   } else {
     const handleVolverClick = () => {
       setActiveSection('Mis Productos'); // Cambia la sección activa a "Mis Productos"
+      setIsLeftMoved(true);
+
     };
 
     return (
-      <div className={PerfilCSS.alto}>
+      <div className={isLeftMoved ? `${PerfilCSS.alto} ${PerfilCSS.leftMoved}` : PerfilCSS.alto}>
         <div className={PerfilCSS.profilePage}>
           <div className={PerfilCSS.leftSection}>
-            <ProfileInfo onSectionClick={setActiveSection} />
+            <ProfileInfo setIsLeftMoved={setIsLeftMoved} onSectionClick={setActiveSection}/>
           </div>
           <div className={PerfilCSS.rightSection}>
             <div className={PerfilCSS.text}>
@@ -42,7 +48,7 @@ function ProfilePage() {
                 <p>Aqui se encuentra la informacion relacionada a {activeSection}</p>
               </div>
             </div>
-            {activeSection === 'Inicio de Sesion' && <CardGrid />}  
+            {activeSection === 'Inicio de Sesion' && <CardGrid />}
             {activeSection === 'Informacion personal' && <CardGrid2 />}
             {activeSection === 'Metodos de pago' && <CardGrid3 />}
             {activeSection === 'Compartir en familia' && <CardGrid4 />}
