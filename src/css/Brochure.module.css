@@ -1,0 +1,53 @@
+.portada{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: black;
+  height: 100vh;
+}
+
+.container{
+  position: relative;
+}
+
+.derecha .logo{
+  width: 20vw;
+  opacity: 0.2;
+}
+
+.derecha{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide{
+  background-color: white;
+  height: 100vh;
+}
+
+.indice, .slide1, .slide2, .slide3, .slide4, .slide5, .slide6{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* En tu archivo Brochure.module.css o en un archivo de estilos separado */
+
+.derecha img{
+border-radius: 20px;
+width: 100%;
+margin: 20px;
+}
+
+h2{
+padding: 5px;
+}
+
+.indice .izquierda{
+margin: 20px;
+}
+
+.fadeIn {
+opacity: 0;
+transition: opacity 0.5s ease-in-out; /* Ajusta la duración y el easing según tus preferencias */
+}
