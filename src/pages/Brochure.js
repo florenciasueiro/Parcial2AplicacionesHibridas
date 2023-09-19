@@ -1,35 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef } from "react";
+import { useInView } from "framer-motion";
 import BrochureCSS from '../css/Brochure.module.css';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-import ScrollAnimation from 'react-animate-on-scroll';
 
-function Brochure() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Función para manejar el evento onScroll del Parallax
-  const handleScroll = (e) => {
-    // Calcula el punto en el que deseas que los textos aparezcan
-    const threshold = 100; // Ajusta este valor según sea necesario
-
-    // Comprueba si el usuario ha desplazado más allá del umbral
-    if (e.scrollY >= threshold) {
-      setIsVisible(true);
-    }
-  };
-  
-  useEffect(() => {
-    // Agrega un event listener para el scroll
-    window.addEventListener('scroll', handleScroll);
-
-    // Limpia el event listener cuando el componente se desmonta
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+function Section({ children }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-      <ParallaxProvider>
-        <div className={BrochureCSS.container}>
+    <section ref={ref}>
+      <div className={BrochureCSS.titulos}
+        style={{
+          transform: isInView ? "none" : "translateY(200px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 1s cubic-bezier(0.17, 0.55, 0.55, 1) 1s"
+        }}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function Brochure() {
+  return (
+    <div>
       <div className={BrochureCSS.portada}>
         <div className={`${BrochureCSS.izquierda}`}>
         </div>
@@ -37,100 +31,62 @@ function Brochure() {
           <img className={BrochureCSS.logo} src="../img/LogoBlanco.png" alt="" />
         </div>
       </div>
-      <div className={`${BrochureCSS.indice}`}>
-      <ScrollAnimation animateIn="fadeIn">
-        hola como estas
-      </ScrollAnimation>
+      <Section>      <div className={`${BrochureCSS.indice}`}>
         <div className={BrochureCSS.izquierda}>
-          <h2>Sobre Asset</h2>
-          <h2>Quarters Family 1</h2>
-          <h2>Seguridad</h2>
-          <h2>Diseño</h2>
-          <h2>Servicios</h2>
-          <h2>Calidad</h2>
-          <h2>Ubicación</h2>
-          <h2>Equipo</h2>
-          <h2>¿Planos?</h2>
+          {/* Utiliza motion.div para aplicar la animación */}
+          <h2>
+            Sobre Asset
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+            Quarters Family 1
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Seguridad
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Diseño
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Diseño
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Servicios
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Calidad
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Ubicación
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          Equipo
+          </h2>
+          <h2 className={BrochureCSS.fadeIn}>
+          ¿Planos?
+          </h2>
         </div>
         <div className={BrochureCSS.derecha}>
           <img className={BrochureCSS.logo} src="" alt="" />
         </div>
-      </div>
-
-      {/* Repite esta estructura para los otros elementos con las clases slide2, slide3, etc. */}
-      
-      <div className={`${BrochureCSS.slide1}`}>
-          <Parallax y={[-20, 20]}>
-            <div className={BrochureCSS.izquierda}>
-              <h2>Título</h2>
-              <p>Texto de relleno</p>
-            </div>
-          </Parallax>
-        <div className={BrochureCSS.derecha}>
-          <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
-        </div>
-      </div>
-
-      {/* Repite esta estructura para los otros elementos con las clases slide2, slide3, etc. */}
-      <div className={`${BrochureCSS.slide2}`}>
-          <Parallax y={[-20, 20]}>
-            <div className={BrochureCSS.izquierda}>
-              <h2>Título</h2>
-              <p>Texto de relleno</p>
-            </div>
-          </Parallax>
-        <div className={BrochureCSS.derecha}>
-            <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
-        </div>
-      </div>
-      <div className={`${BrochureCSS.slide3}`}>
-          <Parallax y={[-20, 20]}>
-            <div className={BrochureCSS.izquierda}>
-              <h2>Título</h2>
-              <p>Texto de relleno</p>
-            </div>
-          </Parallax>
-        <div className={BrochureCSS.derecha}>
-            <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
-        </div>
-      </div>
-      <div className={`${BrochureCSS.slide4}`}>
-          <Parallax y={[-20, 20]}>
-            <div className={BrochureCSS.izquierda}>
-              <h2>Título</h2>
-              <p>Texto de relleno</p>
-            </div>
-          </Parallax>
-        <div className={BrochureCSS.derecha}>
-            <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
-        </div>
-      </div>
-      <div className={`${BrochureCSS.slide5}`}>
-          <Parallax y={[-20, 20]}>
-            <div className={BrochureCSS.izquierda}>
-              <h2>Título</h2>
-              <p>Texto de relleno</p>
-            </div>
-          </Parallax>
-        <div className={BrochureCSS.derecha}>
-            <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
-        </div>
-      </div>
-      <div className={`${BrochureCSS.slide6}`}>
-          <Parallax y={[-20, 20]}>
-            <div className={BrochureCSS.izquierda}>
-              <h2>Título</h2>
-              <p>Texto de relleno</p>
-            </div>
-          </Parallax>
-        <div className={BrochureCSS.derecha}>
-            <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
-        </div>
-      </div>
-
+      </div></Section>
+      <Section>Quarters Family 1</Section>
+      <Section>Seguridad</Section>
+      <Section>Diseño</Section>
+      <Section>Servicios</Section>
+      <Section>Calidad</Section>
+      <Section>Ubicación</Section>
+      <Section>Equipo</Section>
+      <Section>¿Planos?</Section>
     </div>
-      </ParallaxProvider>
-    );
-  }
-  
+  );
+}
+
 export default Brochure;
+
+
+
+
+
+
+
+
