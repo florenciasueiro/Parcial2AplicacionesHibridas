@@ -10,6 +10,7 @@ import Profile from './Perfil';
 import Feedback from './Feedback';
 import Factura from './factura'; //me esta obligando a ponerlo en minuscula
 import SobreAsset from './SobreAsset';
+import Brochure from './Brochure';
 
 
 
@@ -29,6 +30,7 @@ const Base = () => {
         <Route path='/feedback' element={<Feedback/>}/>
         <Route path='/factura' element={<Factura/>}/>
         <Route path='/sobreasset' element={<SobreAsset/>}/>
+        <Route path='/brochure' element={<Brochure/>}/>
       </Routes>
       </React.Fragment>
   );

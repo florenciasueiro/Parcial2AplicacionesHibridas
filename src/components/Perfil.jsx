@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PerfilCSS from '../css/Perfil.module.css';
 import Avatar from '@mui/material/Avatar';
 // import { Link } from 'react-router-dom';
@@ -6,42 +6,52 @@ import Avatar from '@mui/material/Avatar';
 function Perfil(props) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
-  const { onSectionClick, sectionTitle } = props;
+
+
+  const { onSectionClick, sectionTitle, setIsLeftMoved } = props;
 
   const handleSection1Click = () => {
     onSectionClick('Inicio de Sesion');
+    setIsLeftMoved(true);
   };
 
   const handleSection2Click = () => {
     onSectionClick('Informacion personal');
+    setIsLeftMoved(true);
   };
 
   const handleSection3Click = () => {
     onSectionClick('Metodos de pago');
+    setIsLeftMoved(true);
   };
 
   const handleSection4Click = () => {
     onSectionClick('Compartir en familia');
+    setIsLeftMoved(true);
   };
 
   const handleSection5Click = () => {
     onSectionClick('Mis Productos');
+    setIsLeftMoved(true);
   };
 
   const handleSection6Click = () => {
     onSectionClick('Mis Servicios');
+    setIsLeftMoved(true);
   };
 
   const handleSection7Click = () => {
     onSectionClick('Mis Reservas');
+    setIsLeftMoved(true);
   };
 
   const handleSection8Click = () => {
     onSectionClick('Privacidad');
+    setIsLeftMoved(true);
   };
 
   
-  const handleLogout = () => {
+  const handleLogout = () => {  
     sessionStorage.clear();
     window.location.assign("/");
   }

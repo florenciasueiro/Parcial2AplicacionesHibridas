@@ -358,7 +358,7 @@ height: 100%;
     width: 90vw;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 2fr 1fr 1.5fr 1fr 2fr 1fr 1.5fr 1fr 2fr;
     grid-gap: 15px;
     justify-content: center;
     margin: 30px auto;
@@ -404,8 +404,8 @@ height: 100%;
   .tarjeta2 h1{
     font-size: 2rem;
     text-align: center;
-    bottom: 20px;
-    margin-left: 10px;
+    /* bottom: 20px;
+    margin-left: 10px; */
     display: block;
   }
   
@@ -426,7 +426,7 @@ height: 100%;
     text-align: center;
     width: 100%;
     font-size: 2rem;
-    bottom: 20px;
+    top: 20px;
   }
   
   .tarjeta3 span{
@@ -446,6 +446,7 @@ height: 100%;
     display: block;
     font-size: 1.5rem;
     margin: 10px;
+    text-align: center;
   }
   
   .tarjeta4 span{ 
@@ -464,6 +465,8 @@ height: 100%;
     display: flex;
     bottom: 20px;
     left: 10px;
+    position: initial;
+    justify-content: center;
   }
   
   .tarjeta5 span{
@@ -498,17 +501,18 @@ height: 100%;
   
   .tarjeta7 h1{
     display: block;
-    bottom: 30px;
-    right: 30px;
-    text-align: end;
+    top: 20px;
+    right: 0;
+    left: 0;
+    text-align: center;
     font-size: 2rem;
-    
   }
   
   .tarjeta7 span{
     display: flex;
     font-size: 1rem;
     font-weight: 400;
+    justify-content: center;
   }
   
   .tarjeta8 {
@@ -518,6 +522,7 @@ height: 100%;
   
   .tarjeta8 h1{
     font-size: 2rem;
+    text-align: center;
   }
   
   .tarjeta9 {
@@ -529,12 +534,17 @@ height: 100%;
     display: block;
     color: #C0C0C0;
     font-size: 1.5rem;
+    margin: auto;
+    text-align: center;
+    left: 0;
+    right: 0;
   }
   
   .tarjeta9 span{
     display: flex;
     color: white;
     font-size: 1.5rem;
+    justify-content: center;
   }
   
   .tarjeta10 {
@@ -544,14 +554,16 @@ height: 100%;
   
   .tarjeta10 h1{
     display: block;
-    bottom: 25px;
+    top: 25px;
     color: #C0C0C0;
     left: 25px;
+    text-align: center;
   }
   
   .tarjeta10 span{
     display: flex;
     color: white;
+    justify-content: center;
   }
   
       .contenido{
@@ -649,6 +661,23 @@ height: 100%;
     padding: 10px;
     color: white;
     font-size: 25px;
+  }
+
+  .black{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to top, #ffffff00 0%, #000000c2 90%);
+    /* background-color: rgba(0,0,0,0.7); */
+    position: absolute;
+  }
+  
+  /* Grid.module.css */
+
+  .tarjeta-hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
   

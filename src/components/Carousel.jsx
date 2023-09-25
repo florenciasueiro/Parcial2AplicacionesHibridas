@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import CarouselCSS from '../css/Carousel.module.css';
-import image1 from '../img/image1.png';
-import image2 from '../img/image2.png';
-import image3 from '../img/image3.png';
+
 // import css from 'styled-jsx/css';
 
 const images = [
-  image1,
-  image2,
-  image3,
+  'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/11_PLANTA_CONJUNTO_4K_POS_ujndnr.jpg',
+  'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751162/10_INTERIOR_SUM_BLUE_HOUR_4K_POS_gr3ozf.jpg',
+  'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751161/05_CALLE_SUM_4K_POS_fw7kw7.jpg',
 ];
+
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
