@@ -9,7 +9,7 @@
     padding: 0.5rem;
         position: relative;
         bottom: 0;
-        font-size: 11px;
+        font-size: 12px;
 }
 /*.pt4{
     padding-top: 1.5rem;
@@ -66,7 +66,7 @@ ul{
     color: #0645AD  ;
     text-decoration: none;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .groupLink{

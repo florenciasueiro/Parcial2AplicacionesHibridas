@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
 import BrochureCSS from '../css/Brochure.module.css';
+import { Tilt } from 'react-tilt'
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -21,6 +22,18 @@ function Section({ children }) {
     </section>
   );
 } 
+
+const defaultOptions = {
+	reverse:        false,  // reverse the tilt direction
+	max:            35,     // max tilt rotation (degrees)
+	perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
+	scale:          1.1,    // 2 = 200%, 1.5 = 150%, etc..
+	speed:          1000,   // Speed of the enter/exit transition
+	transition:     true,   // Set a transition on enter/exit.
+	axis:           null,   // What axis should be disabled. Can be X or Y.
+	reset:          true,    // If the tilt effect has to be reset on exit.
+	easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+}
 
 function Brochure() {
   return (
@@ -88,13 +101,18 @@ function Brochure() {
           <div className={BrochureCSS.izquierda}>
                 <div className={BrochureCSS.margenes}>
                   <div>
-                  <h2 className={BrochureCSS.temas}>Quarters Family 1</h2>
-                  <p className={BrochureCSS.parrafo}>Quarters Family es nuestra linea de productos destinado/para familias con hijos/as y tiene como objetivo principal ser de los más seguros de la ciudad. Después de la seguridad, nuestro objetivo es maximizar el tiempo de calidad en familia. Diseñamos espacios y servicios para que solo tengas que dedicarte a disfrutar. Propuesta de valor (debe enterderse rápidamente yfacilmente).Con diseño innovador, simple e inteligente, Quarters family 1 tienen todo lo que necesitas.</p>
+                  <h2 className={BrochureCSS.temas}>Sobre Asset</h2>
+                  <p className={BrochureCSS.parrafo}>Simplificar la vida de las personas.
+                  En asset, simplificamos la vida de las personas, creando productos y servicios simples, innovadores e inteligentes.En Asset,nos comprometemos a llevar a cabo todas nuestras acciones de manera ética, honesta y en pleno cumplimiento de la ley,incluso cuando esto genere dificultades o costos significativos para nosotros.Asset se encuentra en todo el proceso del desarrollo inmobilirario, otorgando los más altos estándares de calidad.Tierra - Proyecto - Comercialización - Contrucción  y Adminitración.
+                  </p>
                   </div>
                 </div>
           </div>
-      <div className={BrochureCSS.derecha}>
-          <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
+      <div className={`${BrochureCSS.derechaqf} ${BrochureCSS.derecha}`}>
+          <img className={BrochureCSS.imgqf1} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
+          <img className={BrochureCSS.imgqf1} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
+          <img className={BrochureCSS.imgqf1} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
+          <img className={BrochureCSS.imgqf1} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div>
     </Section>
@@ -108,8 +126,19 @@ function Brochure() {
       <div className={BrochureCSS.derecha}>
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
-    </div></Section>
-      <Section>      <div className={`${BrochureCSS.slide3}`} >
+    </div>
+    </Section>
+    <Section className={`${BrochureCSS.secVideo}`}>
+      <div className={`${BrochureCSS.video}`}>
+        <video>
+          <source src="https://res.cloudinary.com/dazsjxtmy/video/upload/v1682603550/02_QF1_ACCESO_FINAL_x0qwez.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </Section>
+
+
+      <Section>
+        <div id="seguridad" className={`${BrochureCSS.slide3}`} >
           
           <div className={BrochureCSS.izquierda}>
           <div className={BrochureCSS.margenes}>
@@ -120,7 +149,7 @@ function Brochure() {
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div></Section>
-      <Section>      <div className={`${BrochureCSS.slide4}`}>
+      <Section>      <div id="diseno" className={`${BrochureCSS.slide4}`}>
           
           <div className={BrochureCSS.izquierda}>
           <div className={BrochureCSS.margenes}>
@@ -131,7 +160,7 @@ function Brochure() {
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div></Section>
-      <Section>      <div className={`${BrochureCSS.slide5}`}>
+      <Section>      <div id="servicios" className={`${BrochureCSS.slide5}`}>
           
           <div className={BrochureCSS.izquierda}>
           <div className={BrochureCSS.margenes}>
@@ -145,7 +174,7 @@ function Brochure() {
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div></Section>
-      <Section>      <div className={`${BrochureCSS.slide6}`}>
+      <Section>      <div id="ubicacion" className={`${BrochureCSS.slide6}`}>
           
           <div className={BrochureCSS.izquierda}>
           <div className={BrochureCSS.margenes}>
@@ -156,7 +185,7 @@ function Brochure() {
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div></Section>
-      <Section>      <div className={`${BrochureCSS.slide7}`}>
+      <Section>      <div id="equipo" className={`${BrochureCSS.slide7}`}>
           
           <div className={BrochureCSS.izquierda}>
           <div className={BrochureCSS.margenes}>
@@ -167,11 +196,40 @@ function Brochure() {
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div></Section>
+    <Section>      <div id="planos" className={`${BrochureCSS.slide8}`}>
+          
+          <div className={BrochureCSS.izquierda}>
+          <div className={BrochureCSS.margenes}>
+            <h2 className={BrochureCSS.temas}>Planos</h2>
+            <p className={BrochureCSS.parrafo}>Nos emociona que nuestros equipos innoven para crear experiencias únicas En Asset, somos afortunados de estar rodeados de personas excepcionales que se esfuerzan para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que generen experiencias únicas. Nuestro compromiso es brindarle a nuestros clientes, inversores, proveedores y distribuidores los recursos, las herramientas y las oportunidades para crear juntos productos y servicios increíbles.  </p>
+          </div></div>
+      <div className={BrochureCSS.derecha}>
+          <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
+      </div>
+    </div></Section>
+    <Section>      <Tilt options={defaultOptions} id="cuadro" className={`${BrochureCSS.slide9}`}>
+    
+      <div className={`${BrochureCSS.circles} ${BrochureCSS.circle1}`}> <p className={`${BrochureCSS.cuadroText} ${BrochureCSS.text1}`}>Soluciones</p></div>
+      
+      <div className={`${BrochureCSS.circles} ${BrochureCSS.circle2}`}> <p className={`${BrochureCSS.cuadroText} ${BrochureCSS.text2}`}>Tecnología</p></div>
+      <div className={BrochureCSS.cuadroLogo}>
+          <img className={BrochureCSS.cLogo} src="../img/LogoBlanco.png" alt="" />
+        </div>
+      <div className={`${BrochureCSS.circles} ${BrochureCSS.circle3}`}><p className={`${BrochureCSS.cuadroText} ${BrochureCSS.text3}`}>Innovación</p></div>
+      <div className={`${BrochureCSS.circles} ${BrochureCSS.circle4}`}><p className={`${BrochureCSS.cuadroText} ${BrochureCSS.text4}`}>Gestión 360</p></div>
+      <div className={`${BrochureCSS.text}`}>
+      <p>Te va a encantar lo simple que es vivir en Quarters family 1 y una vez que lo hagas, vas a ver lo que hace única la experiencia Asset. </p>
+      </div>
+
+
+      
+      </Tilt>
+    </Section>
       <Section>    <div className={`${BrochureCSS.contraportada}`}>
           
           <div className={BrochureCSS.izquierda}><div className={BrochureCSS.margenes}>
-            <h2 className={BrochureCSS.temas}>Equipo</h2>
-            <p className={BrochureCSS.parrafo}>Nos emociona que nuestros equipos innoven para crear experiencias únicas En Asset, somos afortunados de estar rodeados de personas excepcionales que se esfuerzan para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que generen experiencias únicas. Nuestro compromiso es brindarle a nuestros clientes, inversores, proveedores y distribuidores los recursos, las herramientas y las oportunidades para crear juntos productos y servicios increíbles.  </p>
+          <img className={BrochureCSS.logo} src="logo" alt="" />
+            <p className={BrochureCSS.parrafoFinal}>Las fotos, planos, ilustraciones, renders, y las superficies y medidas expresadas en este folleto, solo son propuestas y son una representación del proyecto para facilitar su interpretación. No son vinculantes, carecen de rigor técnico y están sujetas a eventuales modificaciones del desarrollador sin previo aviso; quien se reserva el derecho de revisar, modificar, suplementar, complementar o retirar las mismas, total o parcialmente a su sola discreción. Las amenidades, facilidades y atracciones de este folleto están sujetas a cambios del desarrollador sin previo aviso. La información inserta en estos folletos se considera confiable, pero no está garantizada y debe ser verificada de forma independiente. Representaciones orales de personas ajenas al desarrollador, incluyendo inmobiliarias, brokers y comercializadores, no pueden considerarse como correctas declaraciones del desarrollador. Asset Real Estate S.A - Fideicomiso de administrción y construcción Quarters Family 1- CUIT  </p>
           </div></div>
       <div className={BrochureCSS.derecha}>
       </div>

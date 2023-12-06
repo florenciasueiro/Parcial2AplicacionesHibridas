@@ -62,9 +62,7 @@ function Footer() {
     <footer className={FooterCSS.footerBox}>
       <div className={`${FooterCSS.textCenter} ${FooterCSS.footerCopy} ${FooterCSS.p3}`}>
       Copyright © 2023 Asset Real Estate S.A. Todos los derechos reservados.
-        <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'>
-          
-        </a>
+        {/* <a className={FooterCSS.linkText} href='https://mdbootstrap.com/'></a> */}
         
       </div>
       {/* <div  className={`${FooterCSS.pt4} ${FooterCSS.container}`}>
