@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
 import BrochureCSS from '../css/Brochure.module.css';
+import { Tilt } from 'react-tilt'
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -21,6 +22,18 @@ function Section({ children }) {
     </section>
   );
 } 
+
+const defaultOptions = {
+	reverse:        false,  // reverse the tilt direction
+	max:            35,     // max tilt rotation (degrees)
+	perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
+	scale:          1.1,    // 2 = 200%, 1.5 = 150%, etc..
+	speed:          1000,   // Speed of the enter/exit transition
+	transition:     true,   // Set a transition on enter/exit.
+	axis:           null,   // What axis should be disabled. Can be X or Y.
+	reset:          true,    // If the tilt effect has to be reset on exit.
+	easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+}
 
 function Brochure() {
   return (
@@ -194,8 +207,10 @@ function Brochure() {
           <img className={BrochureCSS.img} src="https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687751164/09_CALLE_INTERNA_BLUE_HOUR_4K_POS_mscfkm.jpg" alt="" />
       </div>
     </div></Section>
-    <Section>      <div id="cuadro" className={`${BrochureCSS.slide9}`}>
+    <Section>      <Tilt options={defaultOptions} id="cuadro" className={`${BrochureCSS.slide9}`}>
+    
       <div className={`${BrochureCSS.circles} ${BrochureCSS.circle1}`}> <p className={`${BrochureCSS.cuadroText} ${BrochureCSS.text1}`}>Soluciones</p></div>
+      
       <div className={`${BrochureCSS.circles} ${BrochureCSS.circle2}`}> <p className={`${BrochureCSS.cuadroText} ${BrochureCSS.text2}`}>Tecnología</p></div>
       <div className={BrochureCSS.cuadroLogo}>
           <img className={BrochureCSS.cLogo} src="../img/LogoBlanco.png" alt="" />
@@ -208,7 +223,7 @@ function Brochure() {
 
 
       
-      </div>
+      </Tilt>
     </Section>
       <Section>    <div className={`${BrochureCSS.contraportada}`}>
           

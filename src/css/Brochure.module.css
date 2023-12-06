@@ -243,5 +243,13 @@ section span {
   justify-content: end;
   position: relative;
   bottom: 0;
-  height: 100%;
+  margin-top: 60%;
+}
+
+.text4{
+  display: flex;
+  justify-content: end;
+  position: relative;
+  bottom: 0;
+  margin-bottom: 60%;
 }
