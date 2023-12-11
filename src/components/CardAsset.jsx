@@ -36,8 +36,8 @@ const CardAsset = ({ card, cardData }) => {
           </button>
         </div>
         <div className={`${CACSS.title} ${isFlipped ? CACSS.flipTitle : ''}`}>
-          <h1 className={CACSS.h1}>{card.title}</h1>
-          <h2 className={CACSS.h2}>{card.subtitle}</h2>
+          <h2 className={CACSS.h1}>{card.title}</h2>
+          <h3 className={CACSS.h2}>{card.subtitle}</h3>
         </div>
       </div>
       <div className={CACSS.rightSection}>

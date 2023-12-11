@@ -43,7 +43,7 @@ const Carousel = () => {
     <div>
       <div className={CarouselCSS.h1}>
         <span className={CarouselCSS.span}>Nuevo</span>
-        <h1>Quarters Family 1</h1>
+        <h2>Quarters Family 1</h2>
       </div>
     <div className={CarouselCSS.carousel}>
       <div className={CarouselCSS.carouselImages} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>

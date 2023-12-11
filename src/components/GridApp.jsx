@@ -467,7 +467,7 @@ const preference = () => {
         <div className={PerfilCSS.pagar}>
           <div key={usuario.facturas[index]}>
             <div className={PerfilCSS.divPago}>
-              <h1 className={PerfilCSS.h1Pago}>Información de la factura</h1>
+              <h2 className={PerfilCSS.h1Pago}>Información de la factura</h2>
               <div className={PerfilCSS.tableBotonPago}>
                 <table className={PerfilCSS.tablePago}>
                   <thead>
@@ -934,9 +934,9 @@ export function CardGrid20({ handleClick }) {
       id: 31,
       icon: "img/LogoBlanco.png",
       title:  <div>
-              <h1>  <span>Re</span>lajarse </h1>
-              <h1>  <span>Re</span>juvenecer </h1>
-              <h1>  <span>Re</span>conectarse. </h1>
+              <h2>  <span>Re</span>lajarse </h2>
+              <h2>  <span>Re</span>juvenecer </h2>
+              <h2>  <span>Re</span>conectarse. </h2>
               </div>,
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',

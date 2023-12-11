@@ -66,7 +66,7 @@ const renderSpinner = () => {
 
       <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginCSS.loginContainer : ''}`}>
         {renderSpinner()}
-        <h1 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.h1 : ''}`}>Iniciar Sesión</h1>
+        <h2 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.h1 : ''}`}>Iniciar Sesión</h2>
 
         {showError && <p className={LoginCSS.error}>Email o contraseña inválidos.</p>}
 
