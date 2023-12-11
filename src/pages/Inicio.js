@@ -60,7 +60,7 @@ function Inicio() {
       <Link to="/quarters" className={InicioCSS.background}>
       <div className={InicioCSS.text}>
         {/* <img className={InicioCSS.img} src={"/img/LogoBlanco.png"}/> */}
-        <p className={InicioCSS.p}>Quarters Family 1</p>
+        <h2 className={InicioCSS.p}>Quarters Family 1</h2>
       </div>
         <BackgroundQuarters />
       </Link>  
