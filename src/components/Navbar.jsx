@@ -167,7 +167,7 @@ function Navbar() {
                 <img
                   src={"/img/LogoNegro.png"}
                   alt="Logo asset"
-                  style={{ width: '1.5rem', height: 'auto' }}
+                  style={{ width: '25px', height: '25px' }}
                 />
               </h1>
             </NavLink>
