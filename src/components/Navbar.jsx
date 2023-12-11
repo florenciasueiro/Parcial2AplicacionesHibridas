@@ -162,11 +162,16 @@ function Navbar() {
       <div className={`${NavbarCSS.navprimario} ${isShopPage ? NavbarCSS.navbarcontainer : ''}`}>
         <ul className={`${NavbarCSS.box} ${isShopPage ? NavbarCSS.box : ''}`}>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
-            <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarCSS.logo : ''}`}>
+          <NavLink onClick={hideLoginDropdown} exact="true" to="/" className={`${NavbarCSS.logo} ${isShopPage ? NavbarCSS.logo : ''}`}>
               <h1>
-                <img src={"/img/LogoNegro.png"} alt="Logo asset" />
+                <img
+                  src={"/img/LogoNegro.png"}
+                  alt="Logo asset"
+                  style={{ width: '1.5rem', height: 'auto' }}
+                />
               </h1>
             </NavLink>
+
           </li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} to="/quarters">Quarters</NavLink>
