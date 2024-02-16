@@ -721,12 +721,13 @@ export function CardGrid11({ handleClick }) {
       logo: "img/LogoBlanco.png",
       icon: "",
       title: 'Sobre Asset',
+
       description: 'Descripción de la tarjeta 1',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto:low/v1687714295/MicrosoftTeams-image_biu2dz.png',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687714295/MicrosoftTeams-image_biu2dz.png',
       link: "/sobreasset",
     },
-  ];
 
+  ];
   return (
     <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
       {cardData.map((card) => (
@@ -735,7 +736,6 @@ export function CardGrid11({ handleClick }) {
     </div>
   );
 }
-
 
 export function CardGrid12({ handleClick }) {
   const cardData = [
@@ -745,19 +745,19 @@ export function CardGrid12({ handleClick }) {
       icon: "",
       title: 'Soporte',
       description: 'Descripción de la tarjeta 1',
-      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto:low/v1687798522/grupo-jovenes-empresarios-que-trabajan-oficina_izwjdf.jpg',
+      imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687798522/grupo-jovenes-empresarios-que-trabajan-oficina_izwjdf.jpg',
+      
     },
+    
   ];
-
   return (
     <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
       {cardData.map((card) => (
         <CardInicio className={PerfilCSS.cardInicio} key={card.id} card={card} />
-      ))}
+        ))}
     </div>
   );
-}
-
+} 
 
 
 // Sobre Asset cards
