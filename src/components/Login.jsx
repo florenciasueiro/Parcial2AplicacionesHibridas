@@ -1,14 +1,14 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useContactos from '../Service/APIlogin';
 import LoginCSS from '../css/Login.module.css';
 // import LoginCSS from '../css/LoginBlack.module.css'
 import { SpinnerCircular } from 'spinners-react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
-
-
-export default function SignIn() {
-
+export default function SingIn() {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
@@ -22,14 +22,11 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
 
 
- 
   
   const contactos = useContactos();
   // if(usuario!=null || !usuario==[]){
   // console.log(usuario[0].name)}
 
-  
- 
 
   const handleSubmit = async (event) => {
     setIsLoading(true);
@@ -41,8 +38,6 @@ export default function SignIn() {
       setShowError(true);
     };
   };
-
-
 
 const renderSpinner = () => {
   if (isLoading) {
@@ -59,12 +54,27 @@ const renderSpinner = () => {
   //   sessionStorage.clear();
   //   window.location.reload();
   // }
-
   if (!usuario) {
+  return (
 
-    return (
+    <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginCSS.loginContainer : ''}`}>
 
-      <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginCSS.loginContainer : ''}`}>
+
+{/* <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="filled-basic" label="Filled" variant="filled" />
+      <TextField id="standard-basic" label="Standard" variant="standard" />
+    </Box> */}
+
+
+
         {renderSpinner()}
         <h2 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.h1 : ''}`}>Iniciar Sesión</h2>
 
@@ -117,21 +127,21 @@ const renderSpinner = () => {
         </form>
       </div>
     );
-  } else {
-    return (
-      <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.loginContainer : ''}`}>
-        {/* <form onSubmit={handleLogout}>
-          <div className={`${LoginCSS.loginContainer}`}>
-            <Link className={`${LoginCSS.link}`} to="/profile">
-              Mi Perfil
-            </Link>
+} else {
+  return (
+    <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.loginContainer : ''}`}>
+      {/* <form onSubmit={handleLogout}>
+        <div className={`${LoginCSS.loginContainer}`}>
+          <Link className={`${LoginCSS.link}`} to="/profile">
+            Mi Perfil
+          </Link>
 
-            <button className={`${LoginCSS.link}`} type="button" onClick={handleLogout}>
-              Cerrar Sesión
-            </button>
-          </div>
-        </form> */}
-      </div>
-    );
-  }
+          <button className={`${LoginCSS.link}`} type="button" onClick={handleLogout}>
+            Cerrar Sesión
+          </button>
+        </div>
+      </form> */}
+    </div>
+  );
+}
 }

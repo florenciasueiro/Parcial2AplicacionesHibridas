@@ -57,13 +57,13 @@ function Inicio() {
 
   return (
     <div className={InicioCSS.inicio}>
-      <Link to="/quarters" className={InicioCSS.background}>
+      {/* <Link to="/quarters" className={InicioCSS.background}>
       <div className={InicioCSS.text}>
-        {/* <img className={InicioCSS.img} src={"/img/LogoBlanco.png"}/> */}
+        <img className={InicioCSS.img} src={"/img/LogoBlanco.png"}/>
         <h2 className={InicioCSS.p}>Quarters Family 1</h2>
       </div>
         <BackgroundQuarters />
-      </Link>  
+      </Link>   */}
 
       <div className={InicioCSS.cards}>
         {/* <CardGrid9/>
@@ -76,4 +76,3 @@ function Inicio() {
 }
 
 export default Inicio;
-

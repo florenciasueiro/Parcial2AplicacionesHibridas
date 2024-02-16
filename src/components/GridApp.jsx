@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faKey, faIdCard, faCalendar, faPlus, faShapes,faHouseLaptop, faCalendarCheck, faMoneyCheckDollar, faFileInvoiceDollar, faFileLines, faGears, faFolderOpen, faHouseChimneyUser, faVenusMars, faBox, faLocationDot, faUser, faLanguage, faMobile, faAt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import {useDolar }    from '../Service/APIdolar';
 import CardAsset from './CardAsset'; 
+import Productos from './Productos';
 import ProductGrid from './ProductGrid';
 import  {Context} from '../context/notification-context'
 import {suscrbirUsuario} from '../Service/APIfunnel'
@@ -1125,5 +1126,41 @@ export function CardGrid26({ handleClick }) {
     </div>
   );
 }
+
+
+// Productos
+
+export function CardGrid27({ handleClick }) {
+
+// Fuera del componente Productos
+const cardData = [
+  {
+    id: 32,
+    logo: "img/LogoBlanco.png",
+    icon: <FontAwesomeIcon icon={faPlus}/>,
+    title: 'Invertí con nosotros',
+    subtitle: 'test',
+    description: 'test',
+    imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1687716368/MicrosoftTeams-image_1_asfpbu.png',
+    link: "/sobreasset",
+    buttons: [
+      { button: 'Registrate' ,onClick: btnCheckUserClick}
+    ],
+  },
+  // Agrega más objetos cardData según sea necesario
+];
+
+// Dentro del componente padre (donde renderizas Productos)
+return (
+  <div className={PerfilCSS.cardGridInicio} onClick={handleClick}>
+    {cardData.map((card) => (
+      <Productos key={card.id} card={card} /> // Pasa cada objeto card como prop al componente Productos
+    ))}
+  </div>
+);
+}
+
+
+
 
 export default CardGrid;

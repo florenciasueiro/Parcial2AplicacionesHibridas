@@ -44,7 +44,7 @@ function Quarters() {
               <p className={QuartersCSS.link}>Comprar</p>
             </Link>
           </div>
-          <BackgroundQuarters className={QuartersCSS.background} />
+          {/* <BackgroundQuarters className={QuartersCSS.background} /> */} 
         </>
         <div className={GridCSS.grilla}>
           <div

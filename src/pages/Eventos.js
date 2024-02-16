@@ -7,7 +7,7 @@ import { BackgroundQuarters } from  '../components/Background';
 function Eventos() {
   return (
     <div className={InicioCSS.inicio}>
-      <a href="/quarters" className={InicioCSS.background}>
+      {/* <a href="/quarters" className={InicioCSS.background}>
       <div className={InicioCSS.textEvents}>
         <div className={InicioCSS.logoP}>
           <img className={InicioCSS.img} src={"/img/LogoBlanco.png"}/>
@@ -17,7 +17,7 @@ function Eventos() {
         <button className={InicioCSS.button}>Registrarse</button>
       </div>
         <BackgroundQuarters />
-      </a>  
+      </a>   */}
 
       <div>
         <CardGrid26/>

@@ -13,14 +13,16 @@ import { BackgroundQuarters } from  '../components/Background';
 function SobreAsset() {
   return (
     <div className={InicioCSS.inicio}>
-      <h1 className={InicioCSS.titulo}>Sobre Asset</h1>
+      {/* <h1 className={InicioCSS.titulo}>Sobre Asset</h1> */}
       <>
-      <BackgroundQuarters className={InicioCSS.background}/>
+      {/* <BackgroundQuarters className={InicioCSS.background}/> */}
       </>
         <>
+        <div className={InicioCSS.gridCards}>
         <CardGrid13/>
         <CardGrid14/>
         <CardGrid15/>
+        </div>
         </>
     </div>
   );

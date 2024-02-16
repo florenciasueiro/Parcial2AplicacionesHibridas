@@ -11,6 +11,8 @@ import Feedback from './Feedback';
 import Factura from './factura'; //me esta obligando a ponerlo en minuscula
 import SobreAsset from './SobreAsset';
 import Brochure from './Brochure';
+import Landing from './Landingpage';
+import Producto from './Producto';
 
 
 
@@ -20,7 +22,8 @@ const Base = () => {
     <React.Fragment>
 
       <Routes>
-        <Route path='/' element={<Inicio/>}/>
+        <Route path='/' element={<Landing/>}/>
+        {/* Antes era Inicio */}
         <Route path='/quarters' element={<Quarters/>}/>
         <Route path='/eventos' element={<Eventos/>}/>
         <Route path='/registro' element={<Registro/>}/>
@@ -31,7 +34,10 @@ const Base = () => {
         <Route path='/factura' element={<Factura/>}/>
         <Route path='/sobreasset' element={<SobreAsset/>}/>
         <Route path='/brochure' element={<Brochure/>}/>
+        <Route path='/landing' element={<Landing/>}/>
+        <Route path='/producto' element={<Producto/>}/>
       </Routes>
+      
       </React.Fragment>
   );
 }
