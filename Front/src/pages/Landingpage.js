@@ -13,9 +13,6 @@ const Landing = () => {
       <Background/>
       <Inicio/>
       <SobreAsset/>
-      <Productos/>
-      <Quarters/>
-      <Eventos/>
     </div>
   );
 };

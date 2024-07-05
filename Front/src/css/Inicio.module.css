@@ -274,14 +274,14 @@
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type='range'] {
     width: 80%; /* Se establece el ancho al 80% del contenedor */
-    -webkit-appearance: none;
+    appearance: none;
     background-color: white;
     border-radius: 50px;
   }
   
   input[type='range']::-webkit-slider-runnable-track {
     height: 5px;
-    -webkit-appearance: none;
+    appearance: none;
     color: #C0C0C0;
     margin-top: 5px;
     border-radius: 50%;
@@ -290,7 +290,7 @@
   input[type='range']::-webkit-slider-thumb {
     width: 15px; /* Se establece el ancho del punto deslizante */
     height: 15px; /* Se establece la altura del punto deslizante */
-    -webkit-appearance: none;
+    appearance: none;
     cursor: ew-resize;
     border-radius: 50px;
     background-color: #C0C0C0;
