@@ -22,8 +22,12 @@
   border-radius: 50px;
   justify-content: center;
   align-items: center;
-    
 }
+
+.navprimario ul{
+  margin-bottom: 0 !important;
+}
+
 .menuItem{
   display: inline-block;
   padding: 5px 15px 5px 5px;
@@ -86,6 +90,10 @@
   background-color: transparent;
   border: none;
   color: black;
+}
+
+.btn p{
+  margin-bottom: 0;
 }
 /* .btn:hover{
   height: 1000px;
