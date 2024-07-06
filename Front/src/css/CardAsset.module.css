@@ -3,7 +3,7 @@
     margin: 15px auto;
     flex-direction: row;
     width: 30vw;
-    height: 300px;
+    height: 400px;
     background-color: #f1f1f1;
     border-radius: 10px;
     overflow: hidden;
@@ -121,9 +121,11 @@
   }
   
   h2{
-    
     font-weight: 400;
+  }
 
+  h3{
+    font-size: 16pt !important;
   }
 
 

@@ -53,6 +53,22 @@
   height: 100%;
 }
 
+.link::before{
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0%;
+  width: 49.5%;
+  bottom: 0;
+  border-radius: 10px;
+  transition: height 0.5s ease-out;
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+.link:hover:before {
+  height: 100%;
+}
+
 .cardBodyInicio {
   padding: 20px;
   position: absolute;
