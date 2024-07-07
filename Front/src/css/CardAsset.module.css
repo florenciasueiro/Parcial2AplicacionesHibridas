@@ -119,13 +119,13 @@
     /* align-items: center; */
     left: 70px; /* Ajusta el margen según sea necesario */
   }
-  
+
   h2{
-    font-weight: 400;
+    font-size: calc(1rem + 0.5vw) !important;
   }
 
   h3{
-    font-size: 16pt !important;
+    font-size: calc(0.7rem + 0.5vw) !important;
   }
 
 
@@ -263,14 +263,6 @@
     }
     
     h2{
-      
       font-weight: 300;
-  
     }
-
-
-
-
-
-    
   }
