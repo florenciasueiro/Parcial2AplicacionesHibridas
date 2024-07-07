@@ -28,4 +28,3 @@ function SobreAsset() {
   );
 }
 export default SobreAsset;
-//xd

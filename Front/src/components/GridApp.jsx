@@ -916,6 +916,7 @@ export function CardGrid19({ handleClick }) {
       span: 'sin interrupciones, todo el día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
       description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      imageUrl: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGNvbTVpMjE3MHp5c21paXRpMnJodzNyZ2pqcHpwcWxqdmp4dHI2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4no7ul3pa571e/giphy.webp',
     },
     // Agrega más objetos cardData según sea necesario
   ];
