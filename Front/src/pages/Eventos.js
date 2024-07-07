@@ -30,6 +30,26 @@ export default function Eventos() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className={styles['content-section']}>
+        <div className={styles['text-with-image']}>
+          <img src="https://via.placeholder.com/150" alt="Placeholder 1" className={styles['image-left']} />
+          <p className={styles['text-content']}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi quis euismod ultrices. 
+            Mauris bibendum purus sed nisl viverra, in aliquam massa commodo. Nulla facilisi. Curabitur ut venenatis eros.
+            Vivamus scelerisque justo in eros sagittis, et lacinia metus imperdiet. Donec ultricies volutpat magna, 
+            non placerat libero efficitur eu. Suspendisse potenti. Integer interdum sem a lorem euismod, vel viverra ligula tincidunt.
+          </p>
+        </div>
+        <div className={styles['text-with-image']}>
+          <p className={styles['text-content']}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi quis euismod ultrices. 
+            Mauris bibendum purus sed nisl viverra, in aliquam massa commodo. Nulla facilisi. Curabitur ut venenatis eros.
+            Vivamus scelerisque justo in eros sagittis, et lacinia metus imperdiet. Donec ultricies volutpat magna, 
+            non placerat libero efficitur eu. Suspendisse potenti. Integer interdum sem a lorem euismod, vel viverra ligula tincidunt.
+          </p>
+          <img src="https://via.placeholder.com/150" alt="Placeholder 2" className={styles['image-right']} />
+        </div>
+      </div>
     </div>
   );
 }
