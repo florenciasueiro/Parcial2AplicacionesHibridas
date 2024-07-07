@@ -17,6 +17,7 @@ import {
 import GridCSS from '../css/Grid.module.css';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import Carousel from 'react-bootstrap/Carousel'; 
+import styles from '../css/BCarousel.module.css';
 
 function Quarters() {
   const [scrollY, setScrollY] = useState(0);
@@ -36,25 +37,12 @@ function Quarters() {
   return (
     <div className={QuartersCSS.Inicio}>
       <React.Fragment>
-        <>
-          <div className={QuartersCSS.text}>
-            <h1>Quarters Family 1</h1>
-            <p className={QuartersCSS.p}>
-              Desde u$d 29.999 o u$d 1.725/mes por 12 meses.
-            </p>
-            <Link className={QuartersCSS.a} to="/shop">
-              <p className={QuartersCSS.link}>Comprar</p>
-            </Link>
-          </div>
-          {/* <BackgroundQuarters className={QuartersCSS.background} /> */} 
-        </>
-        <div style={{ display: 'block', width: 700, padding: 30 }}> 
-          <h4>React-Bootstrap Carousel Component</h4> 
-          <Carousel> 
-            <Carousel.Item interval={1500}> 
+      <div className={styles['carousel-container']}> 
+        <Carousel className={styles.carousel}>
+            <Carousel.Item interval={3000}> 
               <img 
-                className="d-block w-100"
-                src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
+                className={`d-block w-100 ${styles['custom-carousel-img']}`}
+                src="img/image10.png"
                 alt="Image One"
               /> 
               <Carousel.Caption> 
@@ -62,10 +50,10 @@ function Quarters() {
                 <p>Sample Text for Image One</p> 
               </Carousel.Caption> 
             </Carousel.Item> 
-            <Carousel.Item interval={500}> 
+            <Carousel.Item interval={3000}> 
               <img 
-                className="d-block w-100"
-                src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122716/1-300x115.png"
+                className={`d-block w-100 ${styles['custom-carousel-img']}`}
+                src="img/image9.png"
                 alt="Image Two"
               /> 
               <Carousel.Caption> 
@@ -74,6 +62,15 @@ function Quarters() {
               </Carousel.Caption> 
             </Carousel.Item> 
           </Carousel> 
+        </div>
+        <div className={QuartersCSS.text}>
+          <h1>Quarters Family 1</h1>
+          <p className={QuartersCSS.p}>
+            Desde u$d 29.999 o u$d 1.725/mes por 12 meses.
+          </p>
+          <Link className={QuartersCSS.a} to="/shop">
+            <p className={QuartersCSS.link}>Comprar</p>
+          </Link>
         </div>
         <div className={GridCSS.grilla}>
           <div
@@ -151,4 +148,5 @@ function Quarters() {
     </div>
   );
 }
+
 export default Quarters;
