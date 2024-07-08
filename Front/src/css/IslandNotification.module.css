@@ -1,6 +1,6 @@
 .container {
     position: absolute;
-    top: 0px;
+    top: 20px;
     width: -webkit-fill-available;
     display: flex;
     justify-content: center;
