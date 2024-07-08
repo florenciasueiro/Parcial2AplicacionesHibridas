@@ -72,11 +72,11 @@ function Perfil(props) {
             Inicio de sesion
           </button>
         </li>
-        <li className={PerfilCSS.listaElemento}>
+        {/* <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection2Click}>
             Informacion personal
           </button>
-        </li>
+        </li>*/}
         {/* <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection3Click}>
             Metodos de pago
@@ -92,21 +92,23 @@ function Perfil(props) {
             Mis Productos
           </button>
         </li>
-        <li className={PerfilCSS.listaElemento}>
+        {/* <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection6Click}>
             Mis Servicios
           </button>
-        </li>
+        </li> */}
         <li className={PerfilCSS.listaElemento}>
           <button className={PerfilCSS.btn} onClick={handleSection7Click}>
             Mis Reservas
           </button>
         </li>
         <li className={PerfilCSS.listaElemento}>
-          <button className={PerfilCSS.btn} onClick={handleLogout}>
-            Cerrar Sesión
-          </button>
-        </li>
+        <button
+          className={`${PerfilCSS.btn} ${PerfilCSS.btnCerrarSesion}`}
+          onClick={handleLogout}>
+          Cerrar Sesión
+        </button>
+      </li>
       </ul>
     </div>
   );
