@@ -818,7 +818,7 @@ export function CardGrid15({ handleClick }) {
       icon: <FontAwesomeIcon icon={faPlus}/>,
       title: 'Nuestra política empresarial',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Nos especializamos en ofrecer terrenos que no solo cumplen con los más altos estándares de calidad, sino que también están ubicados estratégicamente para maximizar su valor y potencial. Desde urbanizaciones modernas hasta áreas rurales tranquilas, en Asset tenemos la propiedad perfecta que se adapta a tus necesidades y deseos.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto/v1683125222/image9_idbdi3.png',
       link: "/sobreasset",
     },
@@ -846,7 +846,7 @@ export function CardGrid16({ handleClick }) {
       title: 'Diseñado para marcar',
       span: 'la diferencia.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Nuestro compromiso con la excelencia se refleja en cada aspecto de nuestra operación. Desde la selección de ubicaciones privilegiadas hasta la atención al detalle en la documentación y el soporte al cliente, nos aseguramos de que cada paso del proceso sea claro, sencillo y satisfactorio.',
       videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/v1682603557/04_QF1_DETALLE_FINAL_xjqdau.mp4',
     },
     // Agrega más objetos cardData según sea necesario
@@ -869,7 +869,7 @@ export function CardGrid17({ handleClick }) {
       title: 'Simplificando',
       span: 'tu día a día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Nuestro equipo está compuesto por profesionales apasionados y experimentados en el ámbito inmobiliario, quienes trabajan incansablemente para simplificar y mejorar cada etapa del proceso de adquisición de terrenos.',
       videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/q_auto/v1690670681/01_QF1_APP_CELULAR_FINAL_y2w9hk.mp4',
     },
     // Agrega más objetos cardData según sea necesario
@@ -892,7 +892,7 @@ export function CardGrid18({ handleClick }) {
       title: 'Pedir online',
       span: 'sin preocupaciones.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'A través de nuestro compromiso con la calidad y la excelencia, hemos logrado establecer una reputación sólida y confiable en la industria.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/v1690675241/02_CONTROL_ACCESO_4K_POS_brydhw.jpg',
     },
     // Agrega más objetos cardData según sea necesario
@@ -915,7 +915,7 @@ export function CardGrid19({ handleClick }) {
       title: 'Mantenerse conectado',
       span: 'sin interrupciones, todo el día.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Sabemos que la compra de un terreno es una decisión importante y personal, por eso estamos aquí para acompañarte en cada etapa, proporcionando la información y el asesoramiento que necesitas para tomar la mejor decisión. ',
       imageUrl: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGNvbTVpMjE3MHp5c21paXRpMnJodzNyZ2pqcHpwcWxqdmp4dHI2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4no7ul3pa571e/giphy.webp',
     },
     // Agrega más objetos cardData según sea necesario
@@ -941,7 +941,7 @@ export function CardGrid20({ handleClick }) {
               <h2>  <span>Re</span>conectarse. </h2>
               </div>,
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Asset se distingue por su enfoque integral y holístico. No solo ofrecemos terrenos, sino también un conjunto de servicios complementarios diseñados para facilitar la vida de nuestros clientes.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto/v1690738408/Imagen_12-Familia_ekdo6m.jpg',
     },
     // Agrega más objetos cardData según sea necesario
@@ -964,7 +964,7 @@ export function CardGrid21({ handleClick }) {
       title: 'La tranquilidad de tu familia',
       span: ' es nuestra prioridad.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'En Asset, creemos que cada terreno es una semilla para el futuro, y nos dedicamos a cultivarlo con cuidado y respeto.',
       videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/f_auto,q_auto/v1682603559/06_QF1_GUARDERIA_FINAL_fxsvku.mp4',
     },
     // Agrega más objetos cardData según sea necesario
@@ -987,7 +987,7 @@ export function CardGrid22({ handleClick }) {
       title: 'Inspirado',
       span: 'a través del movimiento.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Implementamos prácticas ecológicas y fomentamos el desarrollo de comunidades sostenibles, asegurando que nuestras acciones tengan un impacto positivo en el medio ambiente y en la sociedad.',
       videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/v1682603557/04_QF1_DETALLE_FINAL_xjqdau.mp4',
     },
     // Agrega más objetos cardData según sea necesario
@@ -1009,7 +1009,7 @@ export function CardGrid23({ handleClick }) {
       icon: "img/LogoBlanco.png",
       title: 'Ambiente seguro para crecer.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Nos enorgullece ser parte de un cambio positivo, promoviendo prácticas responsables y sostenibles que beneficien tanto a nuestros clientes como al entorno. ',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto/v1687751161/01_ACCESO_4K_POS_wurxql.jpg',
     },
     // Agrega más objetos cardData según sea necesario
@@ -1032,7 +1032,7 @@ export function CardGrid24({ handleClick }) {
       title: 'Impulsa',
       span: 'tu creatividad',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Desde asesoramiento financiero hasta servicios de diseño y construcción, estamos aquí para ayudarte a materializar tus sueños y convertir tu terreno en un espacio que refleje tus valores y estilo de vida.',
       videoUrl: 'https://res.cloudinary.com/dazsjxtmy/video/upload/f_auto,q_auto/v1682603560/08_QF1_CANCHA_FINAL_e5xllg.mp4',
     },
     // Agrega más objetos cardData según sea necesario
@@ -1055,7 +1055,7 @@ export function CardGrid25({ handleClick }) {
       title: 'Disfrutar de momentos inolvidables,',
       span: ' juntos.',
       subtitle: 'Honestidad, Respeto, Sostenibilidad, Privacidad y Cumplimiento.',
-      description: 'En Asset, somos afortunados de estar rodeados de gente que se esfuerza para simplificar la vida de las personas, creando productos y servicios simples e inteligentes que aporten experiencias únicas.',
+      description: 'Juntos, podemos construir un futuro donde cada terreno se convierta en un legado duradero y valioso.',
       imageUrl: 'https://res.cloudinary.com/dazsjxtmy/image/upload/f_auto,q_auto/v1687751162/10_INTERIOR_SUM_BLUE_HOUR_4K_POS_gr3ozf.jpg',
     },
     // Agrega más objetos cardData según sea necesario

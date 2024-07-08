@@ -177,7 +177,7 @@ function Navbar() {
             <NavLink onClick={hideLoginDropdown} to="/quarters">Quarters</NavLink>
           </li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
-            <NavLink onClick={hideLoginDropdown} to="/eventos">Eventos</NavLink>
+            <NavLink onClick={hideLoginDropdown} to="/nosotros">Nosotros</NavLink>
           </li>
           <li className={`${NavbarCSS.menuItem} ${isShopPage ? NavbarCSS.menuItem : ''}`}>
             <NavLink onClick={hideLoginDropdown} exact="true" to="/shop">Store</NavLink>

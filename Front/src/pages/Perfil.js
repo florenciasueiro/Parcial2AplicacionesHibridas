@@ -32,7 +32,7 @@ function ProfilePage() {
   // }, [product]);
 
   if (usuario === null) {
-    return <h1>Debes crearte una cuenta para acceder a esta pagina</h1>;
+    return <div className={PerfilCSS.containerprofile}><div className={PerfilCSS.noprofile}><h1>Debes crearte una cuenta para acceder a esta pagina</h1><a href='/registro'><button className={PerfilCSS.profilebtn}>Registrate</button></a></div></div>;
   } else {
     const handleVolverClick = () => {
       setActiveSection('Mis Productos'); // Cambia la sección activa a "Mis Productos"

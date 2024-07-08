@@ -14,6 +14,10 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import CheckIcon from '@mui/icons-material/Check';
 import FormHelperText from '@mui/material/FormHelperText';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import LoginCSS from '../css/Login.module.css';
 import useRegistro from '../Service/APIregister';
@@ -49,6 +53,7 @@ const Register = () => {
     phoneNumber: false,
     password: false,
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const registro = useRegistro();
 
@@ -154,6 +159,10 @@ const Register = () => {
     } finally {
       setRegisterClicked(false);
     }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -270,13 +279,26 @@ const Register = () => {
                   fullWidth
                   name="password"
                   label="Contraseña"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   id="password"
                   autoComplete="new-password"
                   error={inputErrors.password}
                   helperText={inputErrors.password && 'Ingrese su contraseña'}
                   onChange={handleInputChange}
                   className={isInputShaking('password') ? LoginCSS.shake : ''}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleShowPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
