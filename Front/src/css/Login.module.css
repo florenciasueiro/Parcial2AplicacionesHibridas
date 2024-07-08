@@ -17,7 +17,7 @@
 }
 
 .loginContainer{
-  top: 10px;
+  top: 30px;
   position: relative;
   margin: 35px 0px;
 }
@@ -33,16 +33,10 @@
   cursor: pointer;
 }
 
-.form{
-}
-
 .centeredContainer{
   display: flex;
   justify-content: center;
 }
-
-
-
 
  .inputContainer {
   position: relative;
@@ -67,10 +61,6 @@
   transition: all 0.2s ease-out;
   margin: 0.5rem;
 } 
-
-
-
-
 
 .inputContainer .input{
   padding: 10px;

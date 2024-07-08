@@ -1,0 +1,36 @@
+.custom-carousel-img {
+    height: 90vh;
+    object-fit: cover !important;
+}
+  
+  .content-section {
+    padding: 20px;
+    width: 70%;
+    margin: 5rem auto;
+  }
+  
+  .text-with-image {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .text-with-image img {
+    max-width: 150px;
+    margin: 0 20px;
+  }
+  
+  .image-left {
+    order: 1;
+  }
+  
+  .image-right {
+    order: 2;
+  }
+  
+  .text-content {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  

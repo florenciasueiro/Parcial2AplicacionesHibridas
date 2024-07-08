@@ -11,9 +11,12 @@
 .navprimario{
   top: 20px;
   position: fixed;
-  border-radius: 20px;
-  
+  border-radius: 50px;
   box-shadow: 0 0 20px 5px rgba(0,0,0,0.1);
+}
+
+.navprimario h1{
+  margin-bottom: 0;
 }
 
 .box{
@@ -22,11 +25,16 @@
   border-radius: 50px;
   justify-content: center;
   align-items: center;
-    
 }
+
+.navprimario ul{
+  margin-bottom: 0 !important;
+  padding: 10px;
+}
+
 .menuItem{
   display: inline-block;
-  padding: 5px 15px 5px 5px;
+  padding: 5px 10px;
   z-index: 10;
 }
 .menuItem a{
@@ -75,7 +83,7 @@
   overflow: hidden;
   max-height: 0;
   transform: translateY(-100%);
-  box-shadow: 0 0 50px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px 5px rgba(0,0,0,0.1);
 }
 
 #active:not(:checked) ~ .wrapper {
@@ -86,6 +94,10 @@
   background-color: transparent;
   border: none;
   color: black;
+}
+
+.btn p{
+  margin-bottom: 0;
 }
 /* .btn:hover{
   height: 1000px;

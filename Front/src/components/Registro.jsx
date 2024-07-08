@@ -177,7 +177,7 @@ const Register = ({ Registro }) => {
             </>
           ) : (
             <>
-              <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+              <Avatar sx={{ m: 3, bgcolor: 'primary.main' }}>
                 {registerClicked ? (
                   <CircularProgress color="inherit" size={24} />
                 ) : (

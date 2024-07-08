@@ -3,7 +3,7 @@
     margin: 15px auto;
     flex-direction: row;
     width: 30vw;
-    height: 300px;
+    height: 400px;
     background-color: #f1f1f1;
     border-radius: 10px;
     overflow: hidden;
@@ -119,11 +119,13 @@
     /* align-items: center; */
     left: 70px; /* Ajusta el margen según sea necesario */
   }
-  
-  h2{
-    
-    font-weight: 400;
 
+  h2{
+    font-size: calc(1rem + 0.5vw) !important;
+  }
+
+  h3{
+    font-size: calc(0.7rem + 0.5vw) !important;
   }
 
 
@@ -261,14 +263,6 @@
     }
     
     h2{
-      
       font-weight: 300;
-  
     }
-
-
-
-
-
-    
   }

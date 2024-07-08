@@ -15,6 +15,9 @@ import {
   CardGrid25,
 } from '../components/GridApp';
 import GridCSS from '../css/Grid.module.css';
+import 'bootstrap/dist/css/bootstrap.css'; 
+import Carousel from 'react-bootstrap/Carousel'; 
+import styles from '../css/BCarousel.module.css';
 
 function Quarters() {
   const [scrollY, setScrollY] = useState(0);
@@ -34,18 +37,41 @@ function Quarters() {
   return (
     <div className={QuartersCSS.Inicio}>
       <React.Fragment>
-        <>
-          <div className={QuartersCSS.text}>
-            <h1>Quarters Family 1</h1>
-            <p className={QuartersCSS.p}>
-              Desde u$d 29.999 o u$d 1.725/mes por 12 meses.
-            </p>
-            <Link className={QuartersCSS.a} to="/shop">
-              <p className={QuartersCSS.link}>Comprar</p>
-            </Link>
-          </div>
-          {/* <BackgroundQuarters className={QuartersCSS.background} /> */} 
-        </>
+      <div className={styles['carousel-container']}> 
+        <Carousel className={styles.carousel}>
+            <Carousel.Item interval={3000}> 
+              <img 
+                className={`d-block w-100 ${styles['custom-carousel-img']}`}
+                src="img/image10.png"
+                alt="Image One"
+              /> 
+              <Carousel.Caption> 
+                <h3>Label for first slide</h3> 
+                <p>Sample Text for Image One</p> 
+              </Carousel.Caption> 
+            </Carousel.Item> 
+            <Carousel.Item interval={3000}> 
+              <img 
+                className={`d-block w-100 ${styles['custom-carousel-img']}`}
+                src="img/image9.png"
+                alt="Image Two"
+              /> 
+              <Carousel.Caption> 
+                <h3>Label for second slide</h3> 
+                <p>Sample Text for Image Two</p> 
+              </Carousel.Caption> 
+            </Carousel.Item> 
+          </Carousel> 
+        </div>
+        <div className={QuartersCSS.text}>
+          <h1>Quarters Family 1</h1>
+          <p className={QuartersCSS.p}>
+            Desde u$d 29.999 o u$d 1.725/mes por 12 meses.
+          </p>
+          <Link className={QuartersCSS.a} to="/shop">
+            <p className={QuartersCSS.link}>Comprar</p>
+          </Link>
+        </div>
         <div className={GridCSS.grilla}>
           <div
             className={`${GridCSS.tarjetas} ${GridCSS.tarjeta1} ${
@@ -122,4 +148,5 @@ function Quarters() {
     </div>
   );
 }
+
 export default Quarters;
