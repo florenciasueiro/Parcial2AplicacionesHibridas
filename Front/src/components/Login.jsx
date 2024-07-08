@@ -75,7 +75,7 @@ export default function SignIn() {
               type="email"
               id="email"
               name="email"
-              label="E-mail *"
+              label="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -88,7 +88,7 @@ export default function SignIn() {
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
-              label="Password *"
+              label="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
