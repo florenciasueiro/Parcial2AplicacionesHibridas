@@ -3,8 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useLogin from '../Service/APIlogin';
 import LoginCSS from '../css/Login.module.css';
 import { SpinnerCircular } from 'spinners-react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -22,18 +20,22 @@ export default function SignIn() {
   const login = useLogin();
 
   const handleSubmit = async (event) => {
-    setIsLoading(true);
     event.preventDefault();
+    setIsLoading(true);
 
-    const response = await login(email, password);
+    try {
+      const response = await login(email, password);
 
-    setIsLoading(false);
-
-    if (!response) {
+      if (!response) {
+        setShowError(true);
+        setIsLoading(false);
+      } else {
+        sessionStorage.setItem('user', JSON.stringify(response));
+        navigate('/profile');
+      }
+    } catch (error) {
       setShowError(true);
-    } else {
-      sessionStorage.setItem('user', JSON.stringify(response));
-      navigate('/profile');
+      setIsLoading(false);
     }
   };
 
@@ -50,16 +52,16 @@ export default function SignIn() {
 
   if (!usuario) {
     return (
-      <div className={`${LoginCSS.loginContainer}  ${isShopPage ? LoginCSS.loginContainer : ''}`}>
+      <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
         {renderSpinner()}
-        <h2 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.h1 : ''}`}>Iniciar Sesión</h2>
+        <h2 className={`${LoginCSS.h1} ${isShopPage ? LoginCSS.shopPage : ''}`}>Iniciar Sesión</h2>
 
         {showError && <p className={LoginCSS.error}>Email o contraseña inválidos.</p>}
 
-        <form className={`${LoginCSS.form} ${isShopPage ? LoginCSS.form : ''}`} onSubmit={handleSubmit}>
-          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.inputContainer : ''}`}>
+        <form className={`${LoginCSS.form} ${isShopPage ? LoginCSS.shopPage : ''}`} onSubmit={handleSubmit}>
+          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
             <input
-              className={`${LoginCSS.input} ${isShopPage ? LoginCSS.input : ''}`}
+              className={`${LoginCSS.input} ${isShopPage ? LoginCSS.shopPage : ''}`}
               type="email"
               id="email"
               name="email"
@@ -67,11 +69,11 @@ export default function SignIn() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.span : ''}`}>E-mail *</span>
+            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.shopPage : ''}`}>E-mail *</span>
           </div>
-          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.inputContainer : ''}`}>
+          <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
             <input
-              className={`${LoginCSS.input} ${isShopPage ? LoginCSS.input : ''}`}
+              className={`${LoginCSS.input} ${isShopPage ? LoginCSS.shopPage : ''}`}
               type="password"
               id="password"
               name="password"
@@ -79,12 +81,12 @@ export default function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.span : ''}`}>Password *</span>
+            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.shopPage : ''}`}>Password *</span>
           </div>
-          <button className={`${LoginCSS.btn} ${isShopPage ? LoginCSS.btn : ''}`} type="submit">INICIAR SESIÓN</button>
-          <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginCSS.centeredContainer : ''}`}>
-            <p className={`${LoginCSS.p} ${isShopPage ? LoginCSS.p : ''}`}>¿No tienes cuenta? ‎</p>
-            <Link className={`${LoginCSS.linkR} ${isShopPage ? LoginCSS.linkR : ''}`} to="/registro">
+          <button className={`${LoginCSS.btn} ${isShopPage ? LoginCSS.shopPage : ''}`} type="submit">INICIAR SESIÓN</button>
+          <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
+            <p className={`${LoginCSS.p} ${isShopPage ? LoginCSS.shopPage : ''}`}>¿No tienes cuenta? ‎</p>
+            <Link className={`${LoginCSS.linkR} ${isShopPage ? LoginCSS.shopPage : ''}`} to="/registro">
               Regístrate
             </Link>
           </div>
@@ -93,7 +95,7 @@ export default function SignIn() {
     );
   } else {
     return (
-      <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.loginContainer : ''}`}>
+      <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
         {/* Puedes agregar aquí el código para mostrar el perfil o cerrar sesión */}
       </div>
     );

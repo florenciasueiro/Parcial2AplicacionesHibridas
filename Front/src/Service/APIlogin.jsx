@@ -1,36 +1,33 @@
-import {useCallback } from 'react';
+import { useCallback } from 'react';
 
-//esta funcion es la que llama el login form para enviar los datos de email y password al api
-// de que trae la lista de contactos pero usamos el filtro de customid para que solo traiga el
-// usuario que tenga ese mismo customid.
+// Esta función es la que llama el formulario de login para enviar los datos de email y password al API
 
-
-// ya que en holded no hay un campo de contraseña decidi usar el custom id como la suma de email y password
-
-
-export default function useContactos(){
+export default function useContactos() {
   const contactos = useCallback(async (email, password) => {
     try {
+      console.log(JSON.stringify({ email, password }))
       const response = await fetch(`http://localhost:4000/api/login`, {
-        headers: { //192.168.1.89:8080
-          'accept': 'application/json',
-          'Acces-Control-Allow-Origin': '*'
-        }
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include', // Importante para manejar las cookies
+
       });
 
-      if (!response.ok){
+      if (!response.ok) {
         throw new Error(`Network response was not ok (${response.status})`);
       }
-      
 
       const data = await response.json();
-      console.log("se ejecuto holded");
-      
+      console.log("Login exitoso");
+
+      // Guarda los datos del usuario en el sessionStorage
       sessionStorage.setItem("user", JSON.stringify(data));
       window.location.reload();
     } catch (error) {
-      
-      
       console.error("There was a problem with the fetch operation:", error);
       // Puedes manejar el error de otra manera, por ejemplo, mostrar un mensaje de error en la aplicación.
     }
@@ -38,19 +35,3 @@ export default function useContactos(){
 
   return contactos;
 }
-
-
-// const options = {
-//   method: 'POST',
-//   headers: {
-//     accept: 'application/json',
-//     'content-type': 'application/json',
-//     key: '343654e3d1014f792344a19ee8f40503'
-//   },
-//   body: JSON.stringify({name: 'test', email: 'testReg@gmail.com', mobile: '1234', note: 'password'})
-// };
-
-// fetch('https://api.holded.com/api/invoicing/v1/contacts', options)
-//   .then(response => response.json())
-//   .then(response => console.log(response))
-//   .catch(err => console.error(err));

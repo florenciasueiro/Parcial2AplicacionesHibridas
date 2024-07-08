@@ -92,7 +92,7 @@ function Navbar() {
         <p>Login</p>
       );
     } else {
-      // console.log(usuario);
+      console.log(usuario);
       return (
         <NavLink  to="/profile">{usuario.name.split(" ")[0]}</NavLink>
       );
