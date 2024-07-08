@@ -2,8 +2,10 @@ import { useCallback } from 'react';
 
 export default function useRegistro() {
     const registro = useCallback(async (usuario) => {
+          console.log("se ejecuto registro");
+
         try {
-          const response = await fetch(`https://restapinode-production-8fd5.up.railway.app/v1/register`, {
+          const response = await fetch(`http://localhost:4000/api/register`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

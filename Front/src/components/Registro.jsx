@@ -34,20 +34,19 @@ const theme = createTheme({
   },
 });
 
-const Register = ({ Registro }) => {
-  const navigate = useNavigate(); // Access the navigation object
+const Register = () => {
+  const navigate = useNavigate();
   const [show201, setShow201] = useState(false);
-  const [show400, setShow400] = useState(false);
-  const [show409, setShow409] = useState(false);
-  const [show500, setShow500] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [shakingInputs, setShakingInputs] = useState([]);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [registerClicked, setRegisterClicked] = useState(false);
   const [inputErrors, setInputErrors] = useState({
-    name: false,
-    sureName: false,
+    username: false,
+    firstName: false,
+    lastName: false,
     email: false,
-    tel: false,
+    phoneNumber: false,
     password: false,
   });
 
@@ -55,21 +54,21 @@ const Register = ({ Registro }) => {
 
   const isInputShaking = (name) =>
     registerClicked &&
-    (name === 'name' ||
-      name === 'sureName' ||
-      name === 'tel' ||
+    (name === 'username' ||
+      name === 'firstName' ||
+      name === 'lastName' ||
+      name === 'email' ||
+      name === 'phoneNumber' ||
       shakingInputs.includes(name.toLowerCase()));
 
-      useEffect(() => {
-        if (show201) {
-          setRegisterClicked(false);
-          setTimeout(() => {
-            navigate('/'); // Redirect to the home page after 3 seconds
-          }, 2000);
-        }
-      }, [show201, navigate]);
-
-
+  useEffect(() => {
+    if (show201) {
+      setRegisterClicked(false);
+      setTimeout(() => {
+        navigate('/'); // Redirect to the home page after 3 seconds
+      }, 2000);
+    }
+  }, [show201, navigate]);
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -95,10 +94,6 @@ const Register = ({ Registro }) => {
         prevInputs.filter((input) => input !== name)
       );
     }
-    if (type === 'checkbox' && name === 'terms') {
-      setTermsAccepted(checked);
-      setRegisterClicked(false); // Agregar esta línea
-    }
   };
 
   const handleSubmit = async (event) => {
@@ -107,50 +102,57 @@ const Register = ({ Registro }) => {
     const data = new FormData(event.currentTarget);
 
     const usuario = {
-      nombre: data.get('name'),
-      sureName: data.get('sureName'),
+      username: data.get('username'),
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
       email: data.get('email'),
-      mobile: data.get('tel'),
+      phoneNumber: data.get('phoneNumber'),
       password: data.get('password'),
     };
 
     // Validación de campos requeridos
     const errors = {};
-    if (usuario.nombre.trim() === '') {
-      errors.name = true;
+    if (usuario.username.trim() === '') {
+      errors.username = true;
     }
-    if (usuario.sureName.trim() === '') {
-      errors.sureName = true;
+    if (usuario.firstName.trim() === '') {
+      errors.firstName = true;
+    }
+    if (usuario.lastName.trim() === '') {
+      errors.lastName = true;
     }
     if (usuario.email.trim() === '') {
       errors.email = true;
     }
-    if (usuario.mobile.trim() === '') {
-      errors.tel = true;
+    if (usuario.phoneNumber.trim() === '') {
+      errors.phoneNumber = true;
     }
     if (usuario.password.trim() === '') {
       errors.password = true;
     }
 
-    // Agrega más validaciones para los otros campos requeridos aquí
-
     if (Object.keys(errors).length > 0) {
       setInputErrors(errors);
+      setRegisterClicked(false);
       return; // Detener el envío del formulario si hay errores
     }
 
-    const res = await registro(usuario, () => {
-      console.log("usuario enviado a api.jsx");
-    });
+    try {
+      const res = await registro(usuario);
 
-    if (res === 201) {
-      setShow201(true);
-    } else if (res === 400) {
-      setShow400(true);
-    } else if (res === 409) {
-      setShow409(true);
-    } else if (res === 500) {
-      setShow500(true);
+      if (res === 201) {
+        setShow201(true);
+      } else if (res === 400) {
+        setErrorMessage('Por favor, verifique los datos ingresados.');
+      } else if (res === 409) {
+        setErrorMessage('Ya existe un usuario con esa dirección de correo electrónico.');
+      } else if (res === 500) {
+        setErrorMessage('Por favor, inténtelo nuevamente más tarde.');
+      }
+    } catch (error) {
+      setErrorMessage('Error inesperado. Por favor, inténtelo nuevamente más tarde.');
+    } finally {
+      setRegisterClicked(false);
     }
   };
 
@@ -191,33 +193,47 @@ const Register = ({ Registro }) => {
           )}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-name"
+                  name="username"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Nombre de usuario"
+                  autoFocus
+                  error={inputErrors.username}
+                  helperText={inputErrors.username && 'Ingrese su nombre de usuario'}
+                  onChange={handleInputChange}
+                  className={isInputShaking('username') ? LoginCSS.shake : ''}
+                />
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="name"
+                  name="firstName"
                   required
                   fullWidth
-                  id="name"
+                  id="firstName"
                   label="Nombre"
-                  autoFocus
-                  error={inputErrors.name}
-                  helperText={inputErrors.name && 'Ingrese su nombre'}
+                  error={inputErrors.firstName}
+                  helperText={inputErrors.firstName && 'Ingrese su nombre'}
                   onChange={handleInputChange}
-                  className={isInputShaking('name') ? LoginCSS.shake : ''}
+                  className={isInputShaking('firstName') ? LoginCSS.shake : ''}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
-                  id="sureName"
+                  id="lastName"
                   label="Apellido"
-                  name="sureName"
+                  name="lastName"
                   autoComplete="family-name"
-                  error={inputErrors.sureName}
-                  helperText={inputErrors.sureName && 'Ingrese su apellido'}
+                  error={inputErrors.lastName}
+                  helperText={inputErrors.lastName && 'Ingrese su apellido'}
                   onChange={handleInputChange}
-                  className={isInputShaking('sureName') ? LoginCSS.shake : ''}
+                  className={isInputShaking('lastName') ? LoginCSS.shake : ''}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -238,14 +254,14 @@ const Register = ({ Registro }) => {
                 <TextField
                   required
                   fullWidth
-                  id="tel"
+                  id="phoneNumber"
                   label="Teléfono"
-                  name="tel"
+                  name="phoneNumber"
                   autoComplete="tel"
-                  error={inputErrors.tel}
-                  helperText={inputErrors.tel && 'Ingrese su número de teléfono'}
+                  error={inputErrors.phoneNumber}
+                  helperText={inputErrors.phoneNumber && 'Ingrese su número de teléfono'}
                   onChange={handleInputChange}
-                  className={isInputShaking('tel') ? LoginCSS.shake : ''}
+                  className={isInputShaking('phoneNumber') ? LoginCSS.shake : ''}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -298,19 +314,9 @@ const Register = ({ Registro }) => {
               </Grid>
             </Grid>
           </Box>
-          {show400 && (
+          {errorMessage && (
             <Typography component="p" variant="body2" color="error" className={LoginCSS.error}>
-              Por favor, verifique los datos ingresados.
-            </Typography>
-          )}
-          {show409 && (
-            <Typography component="p" variant="body2" color="error" className={LoginCSS.error}>
-              Ya existe un usuario con esa dirección de correo electrónico.
-            </Typography>
-          )}
-          {show500 && (
-            <Typography component="p" variant="body2" color="error" className={LoginCSS.error}>
-              Por favor, inténtelo nuevamente más tarde.
+              {errorMessage}
             </Typography>
           )}
         </Box>
