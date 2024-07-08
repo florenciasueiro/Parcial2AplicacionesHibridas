@@ -13,6 +13,7 @@ import Nosotros from './Nosotros';
 import Brochure from './Brochure';
 import Landing from './Landingpage';
 import Producto from './Producto';
+import Admin from './Admin'
 
 
 
@@ -36,6 +37,7 @@ const Base = () => {
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/producto' element={<Producto/>}/>
         <Route path='/nosotros' element={<Nosotros/>}/>
+        <Route path='/admin' element={<Admin/>}/>
       </Routes>
       
       </React.Fragment>
