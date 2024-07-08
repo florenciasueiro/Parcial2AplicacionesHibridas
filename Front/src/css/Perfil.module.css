@@ -1286,3 +1286,68 @@ position: absolute;
 }
 
 }
+
+/*---- No registrados ---*/
+
+.containerprofile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 35px);
+}
+
+.containerprofile h1{
+  color: darkred;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.noprofile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 700px;
+  border: 2px darkgrey solid;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 7rem 0 5rem 0;
+}
+
+.profilebtn {
+  background-color: transparent;
+  border: 2px solid darkgrey;
+  box-sizing: border-box;
+  font-size: 22px;
+  font-weight: 600;
+  height: 48px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  touch-action: manipulation;
+  border-radius: 20px;
+  color: darkgrey;
+  margin: 2rem auto;
+}
+
+.profilebtn:hover {
+  border-color: darkred;
+  color: darkred;
+}
+
+.profilebtn:active {
+  border-color: rgb(40, 0, 0);
+  color: white;
+  background-color: rgb(60, 0, 0);
+}
+
+@media (min-width: 768px) {
+  .profilebtn {
+    min-width: 170px;
+  }
+}
