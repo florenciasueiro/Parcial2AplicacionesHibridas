@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route} from 'react-router-dom';
 import Quarters from './Quarters';
-import Eventos from './Eventos';
 import Inicio from './Inicio';
 import Registro from './Registro';
 import PreguntasFrecuentes from './PreguntasFrecuentes';
@@ -10,6 +9,7 @@ import Profile from './Perfil';
 import Feedback from './Feedback';
 import Factura from './factura'; //me esta obligando a ponerlo en minuscula
 import SobreAsset from './SobreAsset';
+import Nosotros from './Nosotros';
 import Brochure from './Brochure';
 import Landing from './Landingpage';
 import Producto from './Producto';
@@ -25,7 +25,6 @@ const Base = () => {
         <Route path='/' element={<Landing/>}/>
         {/* Antes era Inicio */}
         <Route path='/quarters' element={<Quarters/>}/>
-        <Route path='/eventos' element={<Eventos/>}/>
         <Route path='/registro' element={<Registro/>}/>
         <Route path='/preguntasfrecuentes' element={<PreguntasFrecuentes/>}/>
         <Route path='/shop' element={<Shop/>}/>
@@ -36,6 +35,7 @@ const Base = () => {
         <Route path='/brochure' element={<Brochure/>}/>
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/producto' element={<Producto/>}/>
+        <Route path='/nosotros' element={<Nosotros/>}/>
       </Routes>
       
       </React.Fragment>
