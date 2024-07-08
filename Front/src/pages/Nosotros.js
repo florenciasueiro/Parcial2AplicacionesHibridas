@@ -45,8 +45,6 @@ export default function Nosotros() {
         </div>
         <div className={styles['text-with-image']}>
           <p className={styles['text-content']}>
-          Bienvenidos a Asset, donde cada terreno es una oportunidad para comenzar una nueva historia. Nos especializamos en ofrecer terrenos que no solo cumplen con los más altos estándares de calidad, sino que también están ubicados estratégicamente para maximizar su valor y potencial. Desde urbanizaciones modernas hasta áreas rurales tranquilas, en Asset tenemos la propiedad perfecta que se adapta a tus necesidades y deseos.
-
           Nuestro compromiso con la excelencia se refleja en cada aspecto de nuestra operación. Desde la selección de ubicaciones privilegiadas hasta la atención al detalle en la documentación y el soporte al cliente, nos aseguramos de que cada paso del proceso sea claro, sencillo y satisfactorio. Sabemos que la compra de un terreno es una decisión importante y personal, por eso estamos aquí para acompañarte en cada etapa, proporcionando la información y el asesoramiento que necesitas para tomar la mejor decisión.
 
           Asset se distingue por su enfoque integral y holístico. No solo ofrecemos terrenos, sino también un conjunto de servicios complementarios diseñados para facilitar la vida de nuestros clientes. Desde asesoramiento financiero hasta servicios de diseño y construcción, estamos aquí para ayudarte a materializar tus sueños y convertir tu terreno en un espacio que refleje tus valores y estilo de vida.
