@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import PerfilCSS from '../css/Perfil.module.css';
+import AdminCSS from '../css/Admin.module.css';
 import Avatar from '@mui/material/Avatar';
 // import { Link } from 'react-router-dom';
 
-function Perfil(props) {
+function Admin(props) {
   const usuarioJson = sessionStorage.getItem('user');
   const usuario = usuarioJson ? JSON.parse(usuarioJson) : null;
 
@@ -58,17 +58,17 @@ function Perfil(props) {
 
 
   return (
-    <div className={PerfilCSS.perfil}>
-      <div className={PerfilCSS.header}>
-      <Avatar className={PerfilCSS.perfilImg} src="/broken-image.jpg" sx={{ width: 64, height: 64 }} />
-      <div className={PerfilCSS.perfilInfo}>
+    <div className={AdminCSS.Admin}>
+      <div className={AdminCSS.header}>
+      <Avatar className={AdminCSS.AdminImg} src="/broken-image.jpg" sx={{ width: 64, height: 64 }} />
+      <div className={AdminCSS.AdminInfo}>
         <h2>{usuario.name}</h2>
         <p>{usuario.email}</p>
       </div>
       </div>
-      <ul className={PerfilCSS.lista}>
-        <li className={PerfilCSS.listaElemento}>
-          <button className={PerfilCSS.btn} onClick={handleSection1Click}>
+      <ul className={AdminCSS.lista}>
+        <li className={AdminCSS.listaElemento}>
+          <button className={AdminCSS.btn} onClick={handleSection1Click}>
             Inicio de sesion
           </button>
         </li>
@@ -87,24 +87,24 @@ function Perfil(props) {
             Compartir en familia
           </button>
         </li> */}
-        <li className={PerfilCSS.listaElemento}>
-          <button className={PerfilCSS.btn} onClick={handleSection5Click}>
-            Mis Productos
+        <li className={AdminCSS.listaElemento}>
+          <button className={AdminCSS.btn} onClick={handleSection5Click}>
+            Agregar productos
           </button>
         </li>
-        {/* <li className={PerfilCSS.listaElemento}>
-          <button className={PerfilCSS.btn} onClick={handleSection6Click}>
-            Mis Servicios
-          </button>
-        </li> */}
-        <li className={PerfilCSS.listaElemento}>
-          <button className={PerfilCSS.btn} onClick={handleSection7Click}>
-            Mis Reservas
+        <li className={AdminCSS.listaElemento}>
+          <button className={AdminCSS.btn} onClick={handleSection6Click}>
+            Modificar productos
           </button>
         </li>
-        <li className={PerfilCSS.listaElemento}>
+        <li className={AdminCSS.listaElemento}>
+          <button className={AdminCSS.btn} onClick={handleSection7Click}>
+            Eliminar productos
+          </button>
+        </li>
+        <li className={AdminCSS.listaElemento}>
         <button
-          className={`${PerfilCSS.btn} ${PerfilCSS.btnCerrarSesion}`}
+          className={`${AdminCSS.btn} ${AdminCSS.btnCerrarSesion}`}
           onClick={handleLogout}>
           Cerrar Sesión
         </button>
@@ -114,4 +114,4 @@ function Perfil(props) {
   );
 }
 
-export default Perfil;
+export default Admin;

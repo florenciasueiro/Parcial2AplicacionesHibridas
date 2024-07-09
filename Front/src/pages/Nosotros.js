@@ -13,10 +13,6 @@ export default function Nosotros() {
             src="img/image6.png"
             alt="Image One"
           />
-          <Carousel.Caption>
-            <h3 className={styles['carousel-caption-h3']}>Label for first slide</h3>
-            <p className={styles['carousel-caption-p']}>Sample Text for Image One</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
           <img
@@ -24,15 +20,11 @@ export default function Nosotros() {
             src="img/image7.png"
             alt="Image Two"
           />
-          <Carousel.Caption>
-            <h3 className={styles['carousel-caption-h3']}>Label for second slide</h3>
-            <p className={styles['carousel-caption-p']}>Sample Text for Image Two</p>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
       <div className={styles['content-section']}>
         <div className={styles['text-with-image']}>
-          <img src="https://via.placeholder.com/150" alt="Placeholder 1" className={styles['image-left']} />
+          <img src="img/image10.png" alt="Placeholder 1" className={styles['image-left']} />
           <p className={styles['text-content']}>
           En Asset, nuestra misión es transformar el sueño de poseer un terreno en una realidad accesible y gratificante para todos. Desde nuestra fundación, hemos estado comprometidos en brindar un servicio excepcional, caracterizado por la transparencia, la confianza y la dedicación. Creemos firmemente en la importancia de escuchar y comprender las necesidades individuales de cada cliente, para ofrecer soluciones personalizadas que se alineen con sus aspiraciones y objetivos.
 
@@ -53,7 +45,7 @@ export default function Nosotros() {
 
           Te invitamos a descubrir lo que hace de Asset una elección única y confiable en el mercado de terrenos. Únete a nosotros y sé parte de una comunidad que valora la innovación, la integridad y el compromiso con el bienestar de todos. Juntos, podemos construir un futuro donde cada terreno se convierta en un legado duradero y valioso.
           </p>
-          <img src="https://via.placeholder.com/150" alt="Placeholder 2" className={styles['image-right']} />
+          <img src="img/image11.png" alt="Placeholder 2" className={styles['image-right']} />
         </div>
       </div>
     </div>

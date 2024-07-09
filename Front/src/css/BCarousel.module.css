@@ -16,16 +16,19 @@
   }
   
   .text-with-image img {
-    max-width: 150px;
-    margin: 0 20px;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
   }
   
   .image-left {
     order: 1;
+    margin-left: 2rem;
   }
   
   .image-right {
-    order: 2;
+    order: -1;
+    margin-right: 2rem;
   }
   
   .text-content {

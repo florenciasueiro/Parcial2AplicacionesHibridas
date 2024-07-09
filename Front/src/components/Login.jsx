@@ -3,6 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useLogin from '../Service/APIlogin';
 import LoginCSS from '../css/Login.module.css';
 import { SpinnerCircular } from 'spinners-react';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -16,6 +21,7 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const login = useLogin();
 
@@ -50,6 +56,10 @@ export default function SignIn() {
     return null;
   };
 
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   if (!usuario) {
     return (
       <div className={`${LoginCSS.loginContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
@@ -60,28 +70,43 @@ export default function SignIn() {
 
         <form className={`${LoginCSS.form} ${isShopPage ? LoginCSS.shopPage : ''}`} onSubmit={handleSubmit}>
           <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
-            <input
+            <TextField
               className={`${LoginCSS.input} ${isShopPage ? LoginCSS.shopPage : ''}`}
               type="email"
               id="email"
               name="email"
+              label="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              fullWidth
             />
-            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.shopPage : ''}`}>E-mail *</span>
           </div>
           <div className={`${LoginCSS.inputContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
-            <input
+            <TextField
               className={`${LoginCSS.input} ${isShopPage ? LoginCSS.shopPage : ''}`}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
+              label="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              fullWidth
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
-            <span className={`${LoginCSS.span} ${isShopPage ? LoginCSS.shopPage : ''}`}>Password *</span>
           </div>
           <button className={`${LoginCSS.btn} ${isShopPage ? LoginCSS.shopPage : ''}`} type="submit">INICIAR SESIÓN</button>
           <div className={`${LoginCSS.centeredContainer} ${isShopPage ? LoginCSS.shopPage : ''}`}>
