@@ -6,7 +6,7 @@ export default function useProductos() {
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const response = await fetch('https://restapinode-production-8fd5.up.railway.app/v1/getallProducto');
+        const response = await fetch('http://localhost:4000/api/terrenos');
         if (!response.ok) {
           throw new Error(`Network response was not ok (${response.status})`);
         }
@@ -21,7 +21,6 @@ export default function useProductos() {
     fetchProductos();
   }, []);
 
- 
 
   return productos;
 }

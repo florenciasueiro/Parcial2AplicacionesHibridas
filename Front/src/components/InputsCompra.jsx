@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 
 import InputCSS from '../css/Inputs.module.css';
-import useProducto from '../Service/APIproducto';
+// import useProducto from '../Service/APIproducto';
 import useServicio from '../Service/APIservicio';
 import {useDolar }    from '../Service/APIdolar';
 import { initMercadoPago } from "@mercadopago/sdk-react";
@@ -16,29 +16,6 @@ import { OpacityOutlined } from '@mui/icons-material';
 
 //credencial de prueba test user 1
 initMercadoPago("TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd");
-// credenciales de prueba:
-// ASSET (it@asset)
-// credencial  public key:  "TEST-026812a7-4811-43d1-8f09-8207c13823a5"
-// credencial  Acces Token: TEST-6453243717102029-050120-8e42db516068f5814f7146cefe6696b4-1362723906  
-
-// Produccion
-// public key: APP_USR-cea272c1-a889-4a00-8d37-6f86ba43adb1
-//Access Token: APP_USR-6453243717102029-050120-86625470ed742e0c3a8dfdfa709ade8a-1362723906
-// Credenciales de prueba:
-
-// Test user 1 vendedor TTEST53609
-// test_user_1617378711@testuser.com
-// credencial  public key:  "TEST-8cc0de02-11c6-4f51-86f9-5243bcc0b1cd"
-// credencial  Acces Token: TEST-5990004718573364-050309-6f5ddb7d13b533596d97451683dcf03e-1365118455
-
-// Produccion
-// Publick key: "APP_USR-d1d798ac-ada1-4e7e-8ab8-512fe38520a4"
-// Access token: APP_USR-5990004718573364-050309-e155277ff5747f15411c67de313903fd-1365118455
-
-// Client Secret: oPB0PWcUBp0cTl9WzzqxW4XJJOjBCiok
-
-
-//Test user 2  dor TTEST65297
 
 export default function RadioInputs({seleccion}) {
   
@@ -49,6 +26,31 @@ export default function RadioInputs({seleccion}) {
   const refA = useRef(null);
 
 
+
+const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      if(!productos){
+      try {
+        const response = await fetch('http://localhost:4000/api/terrenos');
+        if (!response.ok) {
+          throw new Error(`Network response was not ok (${response.status})`);
+        }
+        
+        const data = await response.json();
+        console.log(data)
+        sessionStorage.setItem('productos', JSON.stringify(data));
+        setProductos(data.productos);
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    }else {return productos}
+  };
+
+    fetchProductos()
+    console.log("productos",productos);
+  },[productos]);
   
     const valorDolar = useDolar();
     // const [dolarValue, setDolarValue] = useState(null);
@@ -220,7 +222,6 @@ useEffect(()=>{
 },[orderData, setOrderData,selectedTerreno, selectedCard, selectedAlmacenamiento, selectedGuarderia, selectedSUM, selectedCW]);
 
 //
-const productos = useProducto();
 const servicios = useServicio();
 
 
@@ -571,7 +572,7 @@ orderData.dolarValue = dolarValue;
   let itemGrilla8;
   let itemGrilla9;
   switch (selectedTerreno) {
-    case 'Lote 1':
+    case 'Test1':
       itemGrilla1 = '11,50 x 23,00m';
       itemGrilla2 = '264,50m2';
       itemGrilla3 = '132,25m2';
@@ -688,7 +689,7 @@ orderData.dolarValue = dolarValue;
         itemGrilla9 = '-';
         break;
     }
-    // className={selectedTerreno? "" : InputCSS.transparency50}
+    // className={selectedTerreno? "" : InputCSS.transparency50}o
 
 if(cargaron){
 
@@ -714,15 +715,15 @@ if(cargaron){
           <div className={`${InputCSS.itemGrilla} ${InputCSS.itemGrilla6}`}>Constructibilidad</div>
         </div>
 
-      <div className={InputCSS['radioInputs']} style={{ maxHeight: '265px', overflowY: 'auto' }}>          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
+      <div className={InputCSS['radioInputs']} style={{ maxHeight: '265px', overflowY: 'auto' }}>          <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Test1' ? InputCSS.selected : ''}`}>
             <span><input
               type="radio" 
-              value="Lote 1"
-              checked={selectedTerreno === 'Lote 1'} 
+              value="Test1"
+              checked={selectedTerreno === 'Test1'} 
               onChange={handleSelectTerreno}
-              disabled={!checkStockByName("Lote 1")} 
+              disabled={!checkStockByName("Test1")} 
               />
-            F1 </span> <div><span className={InputCSS['precio']}>${numeral(checkPriceByName("Lote 1")*selectedFinanciation.toFixed(2)).format('0,0.00')}</span>  {!checkStockByName("Lote 1") && <div className={InputCSS['end']}>  <span className={InputCSS['noDisp']}>‎ Lote no disponible</span></div>}</div>
+            F1 </span> <div><span className={InputCSS['precio']}>${numeral(checkPriceByName("Test1")*selectedFinanciation.toFixed(2)).format('0,0.00')}</span>  {!checkStockByName("Test1") && <div className={InputCSS['end']}>  <span className={InputCSS['noDisp']}>‎ Lote no disponible</span></div>}</div>
           </label>
         <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 2' ? InputCSS.selected : ''}`}>
           <span><input 
@@ -1079,11 +1080,11 @@ if(cargaron){
   <b className={InputCSS.text}>Terreno</b> <p className={InputCSS.p}>¿Cuál es el mejor para su familia?</p>
       </div>
       <div className={InputCSS['radioInputs']}>
-        <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Lote 1' ? InputCSS.selected : ''}`}>
+        <label className={`${InputCSS['radioInput']} ${selectedTerreno === 'Test1' ? InputCSS.selected : ''}`}>
           <input 
             type="radio" 
             value="F1" 
-            checked={selectedTerreno === 'Lote 1'} 
+            checked={selectedTerreno === 'Test1'} 
             readOnly
             
             />

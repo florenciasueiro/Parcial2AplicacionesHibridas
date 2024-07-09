@@ -15,14 +15,14 @@ export default function useContactos() {
         body: JSON.stringify({ email, password }),
         credentials: 'include', // Importante para manejar las cookies
 
-      });
+      }); 
 
       if (!response.ok) {
         throw new Error(`Network response was not ok (${response.status})`);
       }
 
       const data = await response.json();
-      console.log("Login exitoso");
+      console.log("Login exitoso", data);
 
       // Guarda los datos del usuario en el sessionStorage
       sessionStorage.setItem("user", JSON.stringify(data));

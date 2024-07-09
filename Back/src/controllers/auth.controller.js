@@ -32,7 +32,6 @@ export const register = async (req, res) => {
       id: userSaved._id,
       username: userSaved.username,
       email: userSaved.email,
-      
       firstName: userSaved.firstName,
       lastName: userSaved.lastName,
       phoneNumber: userSaved.phoneNumber,
@@ -52,7 +51,7 @@ export const login = async (req, res) => {
     if (!userFound) return res.status(401).json({ message: 'User not found' });
 
     const isMatch = await bcrypt.compare(password, userFound.password);
-    console.log("pasword",password, "userFound",userFound.password);
+    console.log("password", password, "userFound", userFound.password);
     if (!isMatch) return res.status(402).json({ message: 'Incorrect password' });
 
     const token = await createAccesToken({ id: userFound._id });
@@ -98,8 +97,38 @@ export const profile = async (req, res) => {
       firstName: userFound.firstName,
       lastName: userFound.lastName,
       phoneNumber: userFound.phoneNumber,
+      birthday: userFound.birthday,
       createdAt: userFound.createdAt,
     });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Actualización de usuario
+export const updateUser = async (req, res) => {
+  const { id } = req.params;
+  const { name, genero, mobile } = req.body;
+
+  try {
+    const user = await User.findByIdAndUpdate(id, { name, genero, mobile }, { new: true });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Eliminación de usuario
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByIdAndDelete(id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
