@@ -4,7 +4,7 @@ import { createAccesToken } from '../libs/jwt.js';
 
 // Registro de usuario
 export const register = async (req, res) => {
-  const { email, password, username, firstName, lastName, phoneNumber } = req.body;
+  const { email, password, username, firstName, lastName, phoneNumber, role } = req.body;
 
   try {
     // Verificar si el usuario ya existe
@@ -22,6 +22,7 @@ export const register = async (req, res) => {
       firstName,
       lastName,
       phoneNumber,
+      role: role || 'user', // Asignar rol por defecto si no se proporciona
     });
 
     const userSaved = await newUser.save();
@@ -35,6 +36,7 @@ export const register = async (req, res) => {
       firstName: userSaved.firstName,
       lastName: userSaved.lastName,
       phoneNumber: userSaved.phoneNumber,
+      role: userSaved.role,
       createdAt: userSaved.createdAt,
     });
   } catch (error) {
@@ -65,6 +67,7 @@ export const login = async (req, res) => {
       firstName: userFound.firstName,
       lastName: userFound.lastName,
       phoneNumber: userFound.phoneNumber,
+      role: userFound.role,
       createdAt: userFound.createdAt,
       token: token,
     });
@@ -98,6 +101,7 @@ export const profile = async (req, res) => {
       lastName: userFound.lastName,
       phoneNumber: userFound.phoneNumber,
       birthday: userFound.birthday,
+      role: userFound.role,
       createdAt: userFound.createdAt,
     });
   } catch (error) {
@@ -108,10 +112,10 @@ export const profile = async (req, res) => {
 // Actualización de usuario
 export const updateUser = async (req, res) => {
   const { id } = req.params;
-  const { name, genero, mobile } = req.body;
+  const { name, genero, mobile, role } = req.body;
 
   try {
-    const user = await User.findByIdAndUpdate(id, { name, genero, mobile }, { new: true });
+    const user = await User.findByIdAndUpdate(id, { name, genero, mobile, role }, { new: true });
     if (!user) return res.status(404).json({ message: 'User not found' });
 
     res.status(200).json(user);

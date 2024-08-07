@@ -26,7 +26,6 @@ export const createTerreno = async (req, res) => {
     }
 };
 
-
 export const getTerreno = async (req, res) => {
     try {
         const task = await Terreno.findById(req.params.id).populate('terreno');

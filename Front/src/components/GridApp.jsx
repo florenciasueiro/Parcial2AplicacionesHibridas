@@ -153,19 +153,19 @@ export function CardGrid2({ handleClick }) {
       icon: <FontAwesomeIcon icon={faIdCard} />,
       // button: 'Cambiar',
     },
-    {
-      id: 5,
-      title: 'Cumpleaños',
-      description:(
-        <span style={{ textAlign: 'center' }}>
-          {formattedDate}<br/>
-        </span>
-      ),
-      // button: 'Cambiar',
-      card: <BirthdayCard />,
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faCalendar} />
-    },    
+    // {
+    //   id: 5,
+    //   title: 'Cumpleaños',
+    //   description:(
+    //     <span style={{ textAlign: 'center' }}>
+    //       {formattedDate}<br/>
+    //     </span>
+    //   ),
+    //   // button: 'Cambiar',
+    //   card: <BirthdayCard />,
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faCalendar} />
+    // },    
     // {
     //   id: 6,
     //   title: 'Direccion',
@@ -174,22 +174,22 @@ export function CardGrid2({ handleClick }) {
     //   imageUrl: 'https://via.placeholder.com/150',
     //   icon: <FontAwesomeIcon icon={faLocationDot} />
     // },    
-    {
-      id: 7,
-      title: 'Idioma',
-      description: `${usuario.lang}`,
-      card: <LanguageCard />,
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faLanguage} />
-    },
+    // {
+    //   id: 7,
+    //   title: 'Idioma',
+    //   description: `${usuario.lang}`,
+    //   card: <LanguageCard />,
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faLanguage} />
+    // },
     {
       id: 8,
       title: 'Teléfono',
-      description: `${usuario.mobile}`,
+      description: `${usuario.phoneNumber}`,
       imageUrl: 'https://via.placeholder.com/150',
       icon: <FontAwesomeIcon icon={faMobile} />,
       inputs: [
-        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange, button: 'Aceptar cambios', onClick: handleTelefonoClick},
+        { placeholder: 'Editar teléfono', type: 'text', change: handleTelefonoChange, button: 'Guardar', onClick: handleTelefonoClick},
       ],
       // button: 'Aceptar cambios',
       // change: handleTelefonoClick,
@@ -206,23 +206,23 @@ export function CardGrid2({ handleClick }) {
     </form>),
       button: 'Cambiar',
     },
-    {
-      id: 10,
-      title: 'Género',
-      description: `${usuario.genero}`,
-      imageUrl: 'https://via.placeholder.com/150',
-      icon: <FontAwesomeIcon icon={faVenusMars} />,
-      contenido:   (<form style={{ display: "flex", justifyContent: "center" }}>
-      <select id="genero" name="genero" onChange={handleGeneroChange}>
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-        <option value="No binario">No binario</option>
-        <option value="Prefiero no mencionarlo">Prefiero no mencionarlo</option>
-      </select>
-    </form>),
-    button: 'Cambiar',
-    change: handleGeneroClick,
-    },
+    // {
+    //   id: 10,
+    //   title: 'Género',
+    //   description: `${usuario.genero}`,
+    //   imageUrl: 'https://via.placeholder.com/150',
+    //   icon: <FontAwesomeIcon icon={faVenusMars} />,
+    //   contenido:   (<form style={{ display: "flex", justifyContent: "center" }}>
+    //   <select id="genero" name="genero" onChange={handleGeneroChange}>
+    //     <option value="Masculino">Masculino</option>
+    //     <option value="Femenino">Femenino</option>
+    //     <option value="No binario">No binario</option>
+    //     <option value="Prefiero no mencionarlo">Prefiero no mencionarlo</option>
+    //   </select>
+    // </form>),
+    // button: 'Cambiar',
+    // change: handleGeneroClick,
+    // },
   ];
   return (
     <div className={PerfilCSS.cardGrid} onClick={handleClick}>
@@ -636,6 +636,42 @@ export function CardGrid7({ handleClick }) {
     {
       id: 26,
       title: 'Reservas de llamadas',
+      description: 'Próximamente estará disponible.',
+      imageUrl: 'https://via.placeholder.com/150',
+      // icon: <FontAwesomeIcon icon={faPhoneArrowUpRight} />,
+    },
+    
+
+  ];
+  return (
+    <div className={PerfilCSS.cardGrid} onClick={handleClick}>
+      {cardData.map((card) => (
+        <Card className={PerfilCSS.card} key={card.id} card={card} />
+      ))}
+    </div>
+  );
+}
+
+export function CardGridAdmin({ handleClick }) {
+  const cardData = [
+    {
+      id: 23,
+      title: 'Editar Rol',
+      description: 'Próximamente estará disponible.',
+      imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faCalendarCheck} />,
+    },
+    {
+      id: 24,
+      title: 'Eliminar usuarios',
+      description: 'Próximamente estará disponible.',
+      imageUrl: 'https://via.placeholder.com/150',
+      icon: <FontAwesomeIcon icon={faCalendarCheck} />,
+
+    },
+    {
+      id: 26,
+      title: 'Añadir usuarios',
       description: 'Próximamente estará disponible.',
       imageUrl: 'https://via.placeholder.com/150',
       // icon: <FontAwesomeIcon icon={faPhoneArrowUpRight} />,

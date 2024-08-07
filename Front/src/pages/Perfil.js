@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProfileInfo from '../components/Perfil';
-import { CardGrid, CardGrid2, CardGrid3, CardGrid4, CardGrid5, CardGrid6, CardGrid7, /*CardGrid8*/CardGridInfoProducto } from '../components/GridApp';
+import { CardGrid, CardGrid2, CardGrid3, CardGrid4, CardGrid5, CardGrid6, CardGrid7, CardGridAdmin, /*CardGrid8*/CardGridInfoProducto } from '../components/GridApp';
 import PerfilCSS from '../css/Perfil.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -62,6 +62,7 @@ function ProfilePage() {
             {activeSection === 'Mis Productos' && <CardGrid5 transfer={setActiveSection} product={setProduct} />}
             {activeSection === 'Mis Servicios' && <CardGrid6 />}
             {activeSection === 'Mis Reservas' && <CardGrid7 />}
+            {activeSection === 'Admin' && <CardGridAdmin />}
             {/* {activeSection === 'Privacidad' && <CardGrid8 />} */}
             {activeSection === 'Producto' && <CardGridInfoProducto index={product}/>}
           </div>

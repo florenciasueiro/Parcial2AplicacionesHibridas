@@ -26,8 +26,13 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    birthday:{
+    birthday: {
       type: Date,
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'], // Define los roles disponibles
+      default: 'user', // Asigna un rol por defecto
     },
     createdAt: {
       type: Date,
